@@ -76,16 +76,16 @@ public class ListaStudenata implements Serializable{
 					else	return "S";
 				}
 			case 6:
-				return Double.toString(s.getProsecaOcena());
+				return Double.toString(s.getProsecnaOcena());
 			default:
 				return null;
 		}
 	}
 	
 	public void dodajStudenta(String ime, String prezime, String datumRodjenja, String adresa, String telefon, String eMail,
-			String brIndeksa, String datumUpisa, int godStudija, NacinFinansiranja finansiranje, double prosecaOcena)
+			String brIndeksa, String datumUpisa, int godStudija, NacinFinansiranja finansiranje, double prosecnaOcena)
 	{
-		this.studenti.add(new Student(ime, prezime, datumRodjenja, adresa, telefon, eMail, brIndeksa, datumUpisa, godStudija, finansiranje, prosecaOcena));
+		this.studenti.add(new Student(ime, prezime, datumRodjenja, adresa, telefon, eMail, brIndeksa, datumUpisa, godStudija, finansiranje, prosecnaOcena));
 	}
 	
 	public void izbrisiStudenta(String brI)
@@ -101,7 +101,7 @@ public class ListaStudenata implements Serializable{
 	}
 	
 	public void izmeniStudenta(String brI, String ime, String prezime, String datumRodjenja, String adresa, String telefon, String eMail,
-			String datumUpisa, int godStudija, NacinFinansiranja finansiranje, double prosecaOcena)
+			String datumUpisa, int godStudija, NacinFinansiranja finansiranje, double prosecnaOcena)
 	{
 		for(Student s : studenti)
 		{
@@ -116,7 +116,7 @@ public class ListaStudenata implements Serializable{
 				s.setDatumUpisa(datumUpisa);
 				s.setGodStudija(godStudija);
 				s.setFinansiranje(finansiranje);
-				s.setProsecaOcena(prosecaOcena);
+				s.setProsecnaOcena(prosecnaOcena);
 				break;
 			}
 		}
