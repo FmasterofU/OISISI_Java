@@ -14,7 +14,7 @@ public class ListaStudenata implements Serializable{
 	private List<Student> studenti;
 	private List<String> kolone;
 	
-	private ListaStudenata getInstance()
+	public static ListaStudenata getInstance()
 	{
 		if(instance == null)
 			instance = new ListaStudenata();
