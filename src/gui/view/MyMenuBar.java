@@ -1,4 +1,4 @@
-package GUI.view;
+package gui.view;
 
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
