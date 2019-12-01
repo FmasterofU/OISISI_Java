@@ -1,6 +1,7 @@
 package gui.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 public class Student implements Serializable{
 	
@@ -16,12 +17,13 @@ public class Student implements Serializable{
 	private String eMail;
 	private String brIndeksa;
 	private String datumUpisa;
-	private int godStudija;
+	private short godStudija;
 	private NacinFinansiranja finansiranje;
 	private double prosecnaOcena;
+	private ArrayList<Predmet> slusaPredmete;
 	
 	public Student(String ime, String prezime, String datumRodjenja, String adresa, String telefon, String eMail,
-			String brIndeksa, String datumUpisa, int godStudija, NacinFinansiranja finansiranje, double prosecnaOcena) {
+			String brIndeksa, String datumUpisa, short godStudija, NacinFinansiranja finansiranje, double prosecnaOcena) {
 		super();
 		this.ime = ime;
 		this.prezime = prezime;
@@ -34,6 +36,24 @@ public class Student implements Serializable{
 		this.godStudija = godStudija;
 		this.finansiranje = finansiranje;
 		this.prosecnaOcena = prosecnaOcena;
+		this.slusaPredmete = new ArrayList<Predmet>();
+	}
+	
+	public Student(String ime, String prezime, String datumRodjenja, String adresa, String telefon, String eMail, String brIndeksa, 
+			String datumUpisa, short godStudija, NacinFinansiranja finansiranje, double prosecnaOcena, ArrayList<Predmet> slusaPredmete) {
+		super();
+		this.ime = ime;
+		this.prezime = prezime;
+		this.datumRodjenja = datumRodjenja;
+		this.adresa = adresa;
+		this.telefon = telefon;
+		this.eMail = eMail;
+		this.brIndeksa = brIndeksa;
+		this.datumUpisa = datumUpisa;
+		this.godStudija = godStudija;
+		this.finansiranje = finansiranje;
+		this.prosecnaOcena = prosecnaOcena;
+		this.slusaPredmete = slusaPredmete;
 	}
 	
 	public Student() {
@@ -49,6 +69,7 @@ public class Student implements Serializable{
 		this.godStudija = 1;
 		this.finansiranje = NacinFinansiranja.BUDZET;
 		this.prosecnaOcena = 5.0;
+		this.slusaPredmete = new ArrayList<Predmet>();
 	}
 
 	public String getIme() {
@@ -115,11 +136,11 @@ public class Student implements Serializable{
 		this.datumUpisa = datumUpisa;
 	}
 
-	public int getGodStudija() {
+	public short getGodStudija() {
 		return godStudija;
 	}
 
-	public void setGodStudija(int godStudija) {
+	public void setGodStudija(short godStudija) {
 		this.godStudija = godStudija;
 	}
 
@@ -139,12 +160,30 @@ public class Student implements Serializable{
 		this.prosecnaOcena = prosecnaOcena;
 	}
 
+	public ArrayList<Predmet> getSlusaPredmete() {
+		return slusaPredmete;
+	}
+
+	public void setSlusaPredmete(ArrayList<Predmet> slusaPredmete) {
+		this.slusaPredmete = slusaPredmete;
+	}
+
 	@Override
 	public String toString() {
-		return "Student [ime=" + ime + ", prezime=" + prezime + ", datumRodjenja=" + datumRodjenja + ", adresa="
+		String ret =  "Student [ime=" + ime + ", prezime=" + prezime + ", datumRodjenja=" + datumRodjenja + ", adresa="
 				+ adresa + ", telefon=" + telefon + ", eMail=" + eMail + ", brIndeksa=" + brIndeksa + ", datumUpisa="
 				+ datumUpisa + ", godStudija=" + godStudija + ", finansiranje=" + finansiranje + ", prosecnaOcena=" + prosecnaOcena
-				+ "]";
+				+ ".\n\t\tSlusa predmete sa siframa: ";
+		if(slusaPredmete.isEmpty())		ret += "Ne slusa niti jedan predmet! ";
+		else
+		{
+			for(Predmet s : slusaPredmete)
+			{
+				ret += s.getSifra() + " ";
+			}
+		}
+		ret += "]";
+		return ret;
 	}
 
 }
