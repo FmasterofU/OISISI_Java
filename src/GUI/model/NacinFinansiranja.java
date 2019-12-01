@@ -1,3 +1,3 @@
 package GUI.model;
 
-public enum NacinFinansiranja { samofinansiranje, budzet }
+public enum NacinFinansiranja { SAMOFINANSIRANJE, BUDZET }

@@ -72,7 +72,7 @@ public class ListaStudenata implements Serializable{
 			case 5:
 				{
 					NacinFinansiranja nf = s.getFinansiranje();
-					if(nf == NacinFinansiranja.budzet)	return "B";
+					if(nf == NacinFinansiranja.BUDZET)	return "B";
 					else	return "S";
 				}
 			case 6:
