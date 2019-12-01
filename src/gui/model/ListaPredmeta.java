@@ -4,7 +4,6 @@ import java.io.Serializable;
 import java.util.LinkedList;
 
 public class ListaPredmeta implements Serializable{
-	
 	/**
 	 * 
 	 */
