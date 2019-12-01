@@ -170,20 +170,59 @@ public class Student implements Serializable{
 
 	@Override
 	public String toString() {
-		String ret =  "Student [ime=" + ime + ", prezime=" + prezime + ", datumRodjenja=" + datumRodjenja + ", adresa="
-				+ adresa + ", telefon=" + telefon + ", eMail=" + eMail + ", brIndeksa=" + brIndeksa + ", datumUpisa="
-				+ datumUpisa + ", godStudija=" + godStudija + ", finansiranje=" + finansiranje + ", prosecnaOcena=" + prosecnaOcena
-				+ ".\n\t\tSlusa predmete sa siframa: ";
-		if(slusaPredmete.isEmpty())		ret += "Ne slusa niti jedan predmet! ";
+		StringBuilder builder = new StringBuilder();
+		builder.append("Student [ime=");
+		builder.append(ime);
+		builder.append(", prezime=");
+		builder.append(prezime);
+		builder.append(", datumRodjenja=");
+		builder.append(datumRodjenja);
+		builder.append(", adresa=");
+		builder.append(adresa);
+		builder.append(", telefon=");
+		builder.append(telefon);
+		builder.append(", eMail=");
+		builder.append(eMail);
+		builder.append(", brIndeksa=");
+		builder.append(brIndeksa);
+		builder.append(", datumUpisa=");
+		builder.append(datumUpisa);
+		builder.append(", godStudija=");
+		builder.append(godStudija);
+		builder.append(", finansiranje=");
+		builder.append(finansiranje);
+		builder.append(", prosecnaOcena=");
+		builder.append(prosecnaOcena);
+		builder.append(".\\n\\t\\tSlusa predmete sa siframa: ");
+		
+		if(slusaPredmete.isEmpty())		builder.append("Ne slusa niti jedan predmet! ");
 		else
 		{
 			for(Predmet s : slusaPredmete)
 			{
-				ret += s.getSifra() + " ";
+				builder.append(s.getSifra());
+				builder.append(" ");
 			}
 		}
-		ret += "]";
-		return ret;
+		builder.append("]");
+		return builder.toString();
 	}
 
+//	@Override
+//	public String toString() {
+//		String ret =  "Student [ime=" + ime + ", prezime=" + prezime + ", datumRodjenja=" + datumRodjenja + ", adresa="
+//				+ adresa + ", telefon=" + telefon + ", eMail=" + eMail + ", brIndeksa=" + brIndeksa + ", datumUpisa="
+//				+ datumUpisa + ", godStudija=" + godStudija + ", finansiranje=" + finansiranje + ", prosecnaOcena=" + prosecnaOcena
+//				+ ".\n\t\tSlusa predmete sa siframa: ";
+//		if(slusaPredmete.isEmpty())		ret += "Ne slusa niti jedan predmet! ";
+//		else
+//		{
+//			for(Predmet s : slusaPredmete)
+//			{
+//				ret += s.getSifra() + " ";
+//			}
+//		}
+//		ret += "]";
+//		return ret;
+//	}
 }
