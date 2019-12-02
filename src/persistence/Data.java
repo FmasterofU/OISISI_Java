@@ -6,7 +6,6 @@ import gui.model.ListaPredmeta;
 import gui.model.ListaStudenata;
 
 public class Data implements Serializable {
-	
 	/**
 	 * 
 	 */

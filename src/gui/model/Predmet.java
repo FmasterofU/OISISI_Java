@@ -9,7 +9,7 @@ public class Predmet implements Serializable{
 	 */
 	private static final long serialVersionUID = 3474955802889019798L;
 	private String sifra, naziv;
-	byte semestar, godinaStudija; 
+	private byte semestar, godinaStudija; 
 	private Profesor profesor;
 	private ArrayList<Student> studenti;
 	
