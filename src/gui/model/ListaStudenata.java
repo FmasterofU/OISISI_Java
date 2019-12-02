@@ -2,7 +2,6 @@ package gui.model;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.List;
 
 public class ListaStudenata implements Serializable{
 	
@@ -11,8 +10,8 @@ public class ListaStudenata implements Serializable{
 	 */
 	private static final long serialVersionUID = 3654331325580773015L;
 	private static ListaStudenata instance = null;
-	private List<Student> studenti;
-	private List<String> kolone;
+	private ArrayList<Student> studenti;
+	private transient ArrayList<String> kolone;
 	
 	public static ListaStudenata getInstance()
 	{
@@ -36,11 +35,11 @@ public class ListaStudenata implements Serializable{
 		this.kolone.add("Prosek");
 	}
 
-	public List<Student> getStudenti() {
+	public ArrayList<Student> getStudenti() {
 		return studenti;
 	}
 
-	public void setStudenti(List<Student> studenti) {
+	public void setStudenti(ArrayList<Student> studenti) {
 		this.studenti = studenti;
 	}
 	
@@ -88,6 +87,11 @@ public class ListaStudenata implements Serializable{
 		this.studenti.add(new Student(ime, prezime, datumRodjenja, adresa, telefon, eMail, brIndeksa, datumUpisa, godStudija, finansiranje, prosecnaOcena));
 	}
 	
+	public void dodajStudenta(Student s)
+	{
+		this.studenti.add(s);
+	}
+	
 	public void izbrisiStudenta(String brI)
 	{
 		for(Student s : studenti)
@@ -121,5 +125,20 @@ public class ListaStudenata implements Serializable{
 			}
 		}
 	}
+
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("ListaStudenata [studenti=");
+		for(Student s : studenti)
+		{
+			builder.append(s);
+			builder.append(", ");
+		}
+		builder.append("]");
+		return builder.toString();
+	}
+	
+	
 
 }

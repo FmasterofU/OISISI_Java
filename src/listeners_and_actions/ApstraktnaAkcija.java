@@ -15,10 +15,12 @@ public class ApstraktnaAkcija extends AbstractAction{
 	 * 
 	 */
 	private static final long serialVersionUID = 4889011984599408652L;
+	private String name;
 	
 	public ApstraktnaAkcija(String s) {
 		String rez = s.trim();
 		rez = s.toLowerCase();
+		name = rez;
 		switch(rez)
 		{
 			case "new":
@@ -78,5 +80,12 @@ public class ApstraktnaAkcija extends AbstractAction{
 		
 	}
 	
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
 
 }
