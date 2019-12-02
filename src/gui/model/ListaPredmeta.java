@@ -45,4 +45,13 @@ public class ListaPredmeta implements Serializable{
 	 public void deletePredmet(int index) {
 		 predmeti.remove(index);
 	 }
+
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("ListaPredmeta [predmeti=");
+		builder.append(predmeti);
+		builder.append("]");
+		return builder.toString();
+	}
 }
