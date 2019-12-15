@@ -18,6 +18,7 @@ public class MainWindow  extends JFrame {
 	
 	private MainWindow() {
 		setTitle("Studentska Služba");
+		this.setJMenuBar(MenuBar.getInstance());
 		ImageIcon img = new ImageIcon("Slike/student_32x32.jpg");
 		setIconImage(img.getImage());
 		setSize(Toolkit.getDefaultToolkit().getScreenSize().width*3/4, Toolkit.getDefaultToolkit().getScreenSize().height*3/4);
@@ -36,7 +37,7 @@ public class MainWindow  extends JFrame {
 		JPanel defaultPanel = new JPanel();
 		BoxLayout vBox = new BoxLayout(defaultPanel, BoxLayout.Y_AXIS);
 		defaultPanel.setLayout(vBox);
-		defaultPanel.add(MenuBar.getInstance());
+		//defaultPanel.add(MenuBar.getInstance());
 		//defaultPanel.add(ToolBar.getInstance());
 		//defaultPanel.add(CenterBox.getInstance());
 		//defaultPanel.add(StatusBar.getInstance());

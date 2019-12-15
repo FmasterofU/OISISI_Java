@@ -1,15 +1,13 @@
 package gui.view;
 
-import java.awt.Component;
 
-import javax.swing.JPanel;
-
+import javax.swing.JMenuBar;
 @SuppressWarnings("serial")
-class MenuBar extends JPanel {
-	private static Component instance = null;
-	public static Component getInstance() {
-		if(instance==null) instance =  new MenuBar();
-		return (Component) instance;
+class MenuBar extends JMenuBar {
+	private static JMenuBar instance = null;
+	public static JMenuBar getInstance() {
+		if(instance==null) instance =  new MyMenuBar();
+		return instance;
 	}
-	private MenuBar() {}
+	//private MenuBar() {}
 }
