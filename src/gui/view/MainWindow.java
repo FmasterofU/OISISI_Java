@@ -4,14 +4,19 @@ import java.awt.Toolkit;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
+import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JSplitPane;
 
 import persistence.Data;
 
 @SuppressWarnings("serial")
 public class MainWindow  extends JFrame {
-	public MainWindow() {
+	private static MainWindow instance = null;
+	
+	private MainWindow() {
 		setTitle("Studentska Služba");
 		ImageIcon img = new ImageIcon("Slike/student_32x32.jpg");
 		setIconImage(img.getImage());
@@ -28,5 +33,19 @@ public class MainWindow  extends JFrame {
 				mw.dispose();
 			}
 		});
+		JPanel defaultPanel = new JPanel();
+		BoxLayout vBox = new BoxLayout(defaultPanel, BoxLayout.Y_AXIS);
+		defaultPanel.setLayout(vBox);
+		defaultPanel.add(MenuBar.getInstance());
+		//defaultPanel.add(ToolBar.getInstance());
+		//defaultPanel.add(CenterBox.getInstance());
+		//defaultPanel.add(StatusBar.getInstance());
+		add(defaultPanel);
+		//pack();
+	}
+	
+	public static MainWindow getInstance() {
+		if(MainWindow.instance==null) MainWindow.instance = new MainWindow();
+		return MainWindow.instance;
 	}
 }

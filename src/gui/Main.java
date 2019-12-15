@@ -7,7 +7,7 @@ public class Main {
 
 	public static void main(String[] args) {
 		Data.init();
-		new MainWindow().setVisible(true);
+		MainWindow.getInstance().setVisible(true);
 	}
 
 }
