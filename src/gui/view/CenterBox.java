@@ -13,7 +13,7 @@ class CenterBox extends JTabbedPane {
 	}
 	private CenterBox() {
 		super();
-		//addTab("Studenti", ViewStudenti.getInstance());
+		addTab("Studenti", ViewStudenti.getInstance());
 		addTab("Profesori", ViewProfesori.getInstance());
 		addTab("Predmeti", ViewPredmeti.getInstance());
 	}
