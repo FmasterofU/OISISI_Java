@@ -7,8 +7,9 @@ import java.awt.event.WindowEvent;
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JSplitPane;
+import javax.swing.UIManager;
 
 import persistence.Data;
 
@@ -24,14 +25,11 @@ public class MainWindow  extends JFrame {
 		setSize(Toolkit.getDefaultToolkit().getScreenSize().width*3/4, Toolkit.getDefaultToolkit().getScreenSize().height*3/4);
 		setLocationRelativeTo(null);
 		setResizable(true);
-		setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);//hide on close with data.close
-		MainWindow mw = this;
+		setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
 		addWindowListener(new WindowAdapter() {
 			@Override
 			public void windowClosing(WindowEvent we) {
-				Data.close();
-				mw.setVisible(false);
-				mw.dispose();
+				if(!MainWindow.exit()) System.exit(0);
 			}
 		});
 		JPanel defaultPanel = new JPanel();
@@ -48,5 +46,21 @@ public class MainWindow  extends JFrame {
 	public static MainWindow getInstance() {
 		if(MainWindow.instance==null) MainWindow.instance = new MainWindow();
 		return MainWindow.instance;
+	}
+	
+	public static boolean exit() {
+		if(instance==null) return false;
+		else {
+			UIManager.put("OptionPane.yesButtonText", "Da");
+			UIManager.put("OptionPane.noButtonText", "Ne");
+			int option = JOptionPane.showConfirmDialog(MainWindow.getInstance(), "Da li želite ugasiti aplikaciju?", "Gašenje", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+			if(option == JOptionPane.YES_OPTION)
+			{
+				Data.close();
+				instance.setVisible(false);
+				instance.dispose();
+			}
+			return true;
+		}
 	}
 }
