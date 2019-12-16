@@ -35,9 +35,9 @@ public class MainWindow  extends JFrame {
 		JPanel defaultPanel = new JPanel();
 		BoxLayout vBox = new BoxLayout(defaultPanel, BoxLayout.Y_AXIS);
 		defaultPanel.setLayout(vBox);
-		//defaultPanel.add(ToolBar.getInstance());
-		//defaultPanel.add(CenterBox.getInstance());
-		//defaultPanel.add(StatusBar.getInstance());
+		defaultPanel.add(ToolBar.getInstance());
+		defaultPanel.add(CenterBox.getInstance());
+		defaultPanel.add(StatusBar.getInstance());
 		add(defaultPanel);
 		//pack();
 	}
