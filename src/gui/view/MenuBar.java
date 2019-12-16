@@ -7,7 +7,7 @@ import com.sun.glass.events.KeyEvent;
 
 import listeners_and_actions.ApstraktnaAkcija;
 
-public class MyMenuBar extends JMenuBar{
+public class MenuBar extends JMenuBar{
 
 	/**
 	 * 
@@ -16,11 +16,11 @@ public class MyMenuBar extends JMenuBar{
 	private static JMenuBar instance = null;
 	public static JMenuBar getInstance()
 	{
-		if(instance == null)	instance = new MyMenuBar();
+		if(instance == null)	instance = new MenuBar();
 		return instance;
 	}
 	
-	private MyMenuBar()
+	private MenuBar()
 	{
 		JMenu file = new JMenu("File");
 		JMenu edit = new JMenu("Edit");
