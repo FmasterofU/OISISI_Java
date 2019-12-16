@@ -79,8 +79,7 @@ public class ApstraktnaAkcija extends AbstractAction{
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		if(name.equals("close")) 
-			if(!MainWindow.exit()) 
-				System.exit(0);
+			MainWindow.exit();
 	}
 	
 	public String getName() {

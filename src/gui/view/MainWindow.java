@@ -29,9 +29,9 @@ public class MainWindow  extends JFrame {
 		addWindowListener(new WindowAdapter() {
 			@Override
 			public void windowClosing(WindowEvent we) {
-				if(!MainWindow.exit()) System.exit(0);
-			}
-		});
+				MainWindow.exit();
+				}
+			});
 		JPanel defaultPanel = new JPanel();
 		BoxLayout vBox = new BoxLayout(defaultPanel, BoxLayout.Y_AXIS);
 		defaultPanel.setLayout(vBox);
@@ -47,19 +47,17 @@ public class MainWindow  extends JFrame {
 		return MainWindow.instance;
 	}
 	
-	public static boolean exit() {
-		if(instance==null) return false;
-		else {
-			UIManager.put("OptionPane.yesButtonText", "Da");
-			UIManager.put("OptionPane.noButtonText", "Ne");
-			int option = JOptionPane.showConfirmDialog(MainWindow.getInstance(), "Da li želite ugasiti aplikaciju?", "Gašenje", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
-			if(option == JOptionPane.YES_OPTION)
-			{
-				Data.close();
-				instance.setVisible(false);
-				instance.dispose();
-			}
-			return true;
+	public static void exit() {
+		if(instance==null) return;
+		UIManager.put("OptionPane.yesButtonText", "Da");
+		UIManager.put("OptionPane.noButtonText", "Ne");
+		int option = JOptionPane.showConfirmDialog(MainWindow.getInstance(), "Da li želite ugasiti aplikaciju?", "Gašenje", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+		if(option == JOptionPane.YES_OPTION)
+		{
+			Data.close();
+			instance.setVisible(false);
+			instance.dispose();
+			System.exit(0);
 		}
 	}
 }
