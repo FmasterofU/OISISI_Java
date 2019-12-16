@@ -5,9 +5,6 @@ import java.util.ArrayList;
 
 public class ListaStudenata implements Serializable{
 	
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 3654331325580773015L;
 	private static ListaStudenata instance = null;
 	private ArrayList<Student> studenti;
@@ -45,7 +42,17 @@ public class ListaStudenata implements Serializable{
 	
 	public int getColumnCount()
 	{
-		return 7;
+		return this.kolone.size();
+	}
+	
+	public String getColumnName(int index)
+	{
+		return kolone.get(index);
+	}
+	
+	public int getRowCount()
+	{
+		return this.studenti.size();
 	}
 	
 	public Student getRow(int index)
