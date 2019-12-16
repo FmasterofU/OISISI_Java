@@ -9,8 +9,8 @@ import persistence.Data;
 
 public class Test {
 
-	public static void main(String[] args) {
-		System.out.println("Da li radi? :)");
+	//public static void main(String[] args) {
+		//System.out.println("Da li radi? :)");
 		/*Predmet pred = new Predmet();
 		Profesor prof = new Profesor();
 		Student stud = new Student();
@@ -27,6 +27,6 @@ public class Test {
 		System.out.println(Data.data.listaStudenata);
 		Data.close();*/
 		//System.out.println(Data.data);*/
-	}
+	//}
 
 }

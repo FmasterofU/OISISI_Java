@@ -18,7 +18,7 @@ public class MainWindow  extends JFrame {
 	
 	private MainWindow() {
 		setTitle("Studentska Služba");
-		this.setJMenuBar(MenuBar.getInstance());
+		this.setJMenuBar(MyMenuBar.getInstance());
 		ImageIcon img = new ImageIcon("Slike/student_32x32.jpg");
 		setIconImage(img.getImage());
 		setSize(Toolkit.getDefaultToolkit().getScreenSize().width*3/4, Toolkit.getDefaultToolkit().getScreenSize().height*3/4);

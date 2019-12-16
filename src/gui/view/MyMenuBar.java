@@ -11,8 +11,14 @@ public class MyMenuBar extends JMenuBar{
 	 * 
 	 */
 	private static final long serialVersionUID = -4419127483078704097L;
+	private static JMenuBar instance = null;
+	public static JMenuBar getInstance()
+	{
+		if(instance == null)	instance = new MyMenuBar();
+		return instance;
+	}
 	
-	public MyMenuBar()
+	private MyMenuBar()
 	{
 		JMenu file = new JMenu("File");
 		JMenu edit = new JMenu("Edit");
