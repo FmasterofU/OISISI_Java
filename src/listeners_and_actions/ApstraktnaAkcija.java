@@ -5,9 +5,14 @@ import java.awt.event.InputEvent;
 
 import javax.swing.AbstractAction;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 import javax.swing.KeyStroke;
+import javax.swing.UIManager;
 
 import com.sun.glass.events.KeyEvent;
+
+import gui.view.MainWindow;
+import persistence.Data;
 
 public class ApstraktnaAkcija extends AbstractAction{
 
@@ -77,6 +82,17 @@ public class ApstraktnaAkcija extends AbstractAction{
 
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
+		if(name.equals("close"))
+		{
+			UIManager.put("OptionPane.yesButtonText", "Da");
+			UIManager.put("OptionPane.noButtonText", "Ne");
+			int option = JOptionPane.showConfirmDialog(MainWindow.getInstance(), "Da li želite ugasiti prozor", "Gašenje", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+			if(option == JOptionPane.YES_OPTION)
+			{
+				Data.close();
+				System.exit(0);
+			}
+		}
 		
 	}
 	
