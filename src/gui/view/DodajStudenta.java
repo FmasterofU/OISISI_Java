@@ -24,7 +24,7 @@ import javax.swing.JTextField;
 public class DodajStudenta extends JDialog{
 	
 	private static final long serialVersionUID = 5160676555418089845L;
-	public static DodajStudenta instance = null;
+	private static DodajStudenta instance = null;
 	private int labGBC = 0;
 	private int tfGBC = 0;
 	

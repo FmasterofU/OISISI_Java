@@ -5,9 +5,6 @@ import java.util.ArrayList;
 
 public class Student implements Serializable{
 	
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 5260140464028562379L;
 	private String ime;
 	private String prezime;
@@ -17,13 +14,13 @@ public class Student implements Serializable{
 	private String eMail;
 	private String brIndeksa;
 	private String datumUpisa;
-	private short godStudija;
+	private byte godStudija;
 	private NacinFinansiranja finansiranje;
 	private double prosecnaOcena;
 	private ArrayList<Predmet> slusaPredmete;
 	
 	public Student(String ime, String prezime, String datumRodjenja, String adresa, String telefon, String eMail,
-			String brIndeksa, String datumUpisa, short godStudija, NacinFinansiranja finansiranje, double prosecnaOcena) {
+			String brIndeksa, String datumUpisa, byte godStudija, NacinFinansiranja finansiranje, double prosecnaOcena) {
 		super();
 		this.ime = ime;
 		this.prezime = prezime;
@@ -40,7 +37,7 @@ public class Student implements Serializable{
 	}
 	
 	public Student(String ime, String prezime, String datumRodjenja, String adresa, String telefon, String eMail, String brIndeksa, 
-			String datumUpisa, short godStudija, NacinFinansiranja finansiranje, double prosecnaOcena, ArrayList<Predmet> slusaPredmete) {
+			String datumUpisa, byte godStudija, NacinFinansiranja finansiranje, double prosecnaOcena, ArrayList<Predmet> slusaPredmete) {
 		super();
 		this.ime = ime;
 		this.prezime = prezime;
@@ -59,9 +56,9 @@ public class Student implements Serializable{
 	public Student() {
 		super();
 		this.ime = "Pera";
-		this.prezime = "Peric";
+		this.prezime = "Periæ";
 		this.datumRodjenja = "01.01.1950.";
-		this.adresa = "Bulevar Oslobodjenja 1, Novi Sad";
+		this.adresa = "Bulevar Osloboðenja 1, Novi Sad";
 		this.telefon = "060/111-111";
 		this.eMail = "pera.peric@gmail.com";
 		this.brIndeksa = "BR-1/2000";
@@ -136,11 +133,11 @@ public class Student implements Serializable{
 		this.datumUpisa = datumUpisa;
 	}
 
-	public short getGodStudija() {
+	public byte getGodStudija() {
 		return godStudija;
 	}
 
-	public void setGodStudija(short godStudija) {
+	public void setGodStudija(byte godStudija) {
 		this.godStudija = godStudija;
 	}
 
@@ -175,7 +172,7 @@ public class Student implements Serializable{
 		builder.append(ime);
 		builder.append(", prezime=");
 		builder.append(prezime);
-		builder.append(", datumRodjenja=");
+		builder.append(", datumRoðenja=");
 		builder.append(datumRodjenja);
 		builder.append(", adresa=");
 		builder.append(adresa);
@@ -191,11 +188,11 @@ public class Student implements Serializable{
 		builder.append(godStudija);
 		builder.append(", finansiranje=");
 		builder.append(finansiranje);
-		builder.append(", prosecnaOcena=");
+		builder.append(", proseènaOcena=");
 		builder.append(prosecnaOcena);
-		builder.append(".\\n\\t\\tSlusa predmete sa siframa: ");
+		builder.append(".\\n\\t\\tSlusa predmete sa šiframa: ");
 		
-		if(slusaPredmete.isEmpty())		builder.append("Ne slusa niti jedan predmet! ");
+		if(slusaPredmete.isEmpty())		builder.append("Ne sluša niti jedan predmet! ");
 		else
 		{
 			for(Predmet s : slusaPredmete)

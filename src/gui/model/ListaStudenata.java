@@ -26,7 +26,7 @@ public class ListaStudenata implements Serializable{
 		this.kolone.add("Indeks");
 		this.kolone.add("Ime");
 		this.kolone.add("Prezime");
-		this.kolone.add("Datum rodjenja");
+		this.kolone.add("Datum roðenja");
 		this.kolone.add("Godina studija");
 		this.kolone.add("Status");
 		this.kolone.add("Prosek");
@@ -89,7 +89,7 @@ public class ListaStudenata implements Serializable{
 	}
 	
 	public void dodajStudenta(String ime, String prezime, String datumRodjenja, String adresa, String telefon, String eMail,
-			String brIndeksa, String datumUpisa, short godStudija, NacinFinansiranja finansiranje, double prosecnaOcena)
+			String brIndeksa, String datumUpisa, byte godStudija, NacinFinansiranja finansiranje, double prosecnaOcena)
 	{
 		this.studenti.add(new Student(ime, prezime, datumRodjenja, adresa, telefon, eMail, brIndeksa, datumUpisa, godStudija, finansiranje, prosecnaOcena));
 	}
@@ -112,7 +112,7 @@ public class ListaStudenata implements Serializable{
 	}
 	
 	public void izmeniStudenta(String brI, String ime, String prezime, String datumRodjenja, String adresa, String telefon, String eMail,
-			String datumUpisa, short godStudija, NacinFinansiranja finansiranje, double prosecnaOcena)
+			String datumUpisa, byte godStudija, NacinFinansiranja finansiranje, double prosecnaOcena)
 	{
 		for(Student s : studenti)
 		{
