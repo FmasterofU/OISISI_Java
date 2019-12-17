@@ -6,8 +6,11 @@ import java.awt.event.InputEvent;
 import javax.swing.AbstractAction;
 import javax.swing.ImageIcon;
 import javax.swing.KeyStroke;
+
 import com.sun.glass.events.KeyEvent;
 
+import gui.view.CenterBox;
+import gui.view.DodajStudenta;
 import gui.view.MainWindow;
 
 public class ApstraktnaAkcija extends AbstractAction{
@@ -80,6 +83,14 @@ public class ApstraktnaAkcija extends AbstractAction{
 	public void actionPerformed(ActionEvent arg0) {
 		if(name.equals("close")) 
 			MainWindow.exit();
+		if(name.equals("new"))
+		{
+			if(CenterBox.getInstance().getSelectedIndex() == 0)
+			{
+				DodajStudenta.getInstance().setVisible(true);
+			}
+
+		}
 	}
 	
 	public String getName() {

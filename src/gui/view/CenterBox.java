@@ -5,7 +5,7 @@ import java.awt.Component;
 import javax.swing.JTabbedPane;
 
 @SuppressWarnings("serial")
-class CenterBox extends JTabbedPane {
+public class CenterBox extends JTabbedPane {
 	private static CenterBox instance = null;
 	public static CenterBox getInstance() {
 		if(instance==null) instance = new CenterBox();
