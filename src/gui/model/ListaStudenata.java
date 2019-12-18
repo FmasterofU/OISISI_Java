@@ -3,7 +3,7 @@ package gui.model;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-public class ListaStudenata implements Serializable{
+public class ListaStudenata implements Serializable, IAbstractTableModel {
 	
 	private static final long serialVersionUID = 3654331325580773015L;
 	private static ListaStudenata instance = null;

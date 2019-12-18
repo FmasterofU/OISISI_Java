@@ -7,6 +7,7 @@ import java.awt.GridBagLayout;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.ListSelectionModel;
 import javax.swing.table.TableCellRenderer;
 
 @SuppressWarnings("serial")
@@ -28,6 +29,9 @@ class ViewTableCenter extends JPanel {
         		return c;
         	}
         };
+        table.setRowSelectionAllowed(true);
+		table.setColumnSelectionAllowed(true);
+		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         //table.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
         JScrollPane tableContainer = new JScrollPane(table);
         add(tableContainer);
