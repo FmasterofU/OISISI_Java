@@ -9,7 +9,7 @@ class ThisTableModel<T extends IAbstractTableModel> extends AbstractTableModel {
 	T o;
 	
 	public ThisTableModel(T o) {
-		this.o=(T)o;
+		this.o=o;
 	}
 	
 	@Override

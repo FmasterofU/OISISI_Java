@@ -74,7 +74,7 @@ public class ListaStudenata implements Serializable, IAbstractTableModel {
 			case 3:
 				return s.getDatumRodjenja();
 			case 4:
-				return Integer.toString(s.getGodStudija());
+				return Byte.toString(s.getGodStudija());
 			case 5:
 				{
 					NacinFinansiranja nf = s.getFinansiranje();
@@ -128,6 +128,27 @@ public class ListaStudenata implements Serializable, IAbstractTableModel {
 				s.setGodStudija(godStudija);
 				s.setFinansiranje(finansiranje);
 				s.setProsecnaOcena(prosecnaOcena);
+				break;
+			}
+		}
+	}
+	
+	public void izmeniStudenta(String brI, Student s)
+	{
+		for(Student stud : studenti)
+		{
+			if(stud.getBrIndeksa() == brI)
+			{
+				stud.setIme(s.getIme());
+				stud.setPrezime(s.getPrezime());
+				stud.setDatumRodjenja(s.getDatumRodjenja());
+				stud.setAdresa(s.getAdresa());
+				stud.setTelefon(s.getTelefon());
+				stud.seteMail(s.geteMail());
+				stud.setDatumUpisa(s.getDatumUpisa());
+				stud.setGodStudija(s.getGodStudija());
+				stud.setFinansiranje(s.getFinansiranje());
+				stud.setProsecnaOcena(s.getProsecnaOcena());
 				break;
 			}
 		}

@@ -28,9 +28,9 @@ public class StudentController {
 		ViewStudenti.getInstance().updateTable();
 	}
 	
-	public void izmeniStudenta(String indeks)
+	public void izmeniStudenta(String indeks, Student s)
 	{
-		ListaStudenata.getInstance().izbrisiStudenta(indeks);
+		ListaStudenata.getInstance().izmeniStudenta(indeks, s);
 		ViewStudenti.getInstance().updateTable();
 	}
 
