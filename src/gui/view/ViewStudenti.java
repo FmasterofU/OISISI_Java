@@ -1,23 +1,23 @@
 package gui.view;
 
-import java.awt.Component;
-
 import gui.model.ListaStudenata;
 
-class ViewStudenti extends ViewTableCenter {
+public class ViewStudenti extends ViewTableCenter {
 	
 	private static final long serialVersionUID = -4008708277153917046L;
-	private static Component instance = null;
-	public static Component getInstance() {
+	private static ViewStudenti instance = null;
+	private ThisTableModel<ListaStudenata> model = null;
+	public static ViewStudenti getInstance() {
 		if(instance == null)	instance = new ViewStudenti();
-		return (Component) instance;
+		return instance;
 	}
 	private ViewStudenti() {
-			table.setModel(new TableModel<ListaStudenata>(ListaStudenata.getInstance()));
+			model = new ThisTableModel<ListaStudenata>(ListaStudenata.getInstance());
+			table.setModel(model);
 	}
 	
-	public int getSelectedIndex()
+	public void updateTable()
 	{
-		return table.getSelectedRow();
+		if(model != null)		model.fireTableDataChanged();
 	}
 }

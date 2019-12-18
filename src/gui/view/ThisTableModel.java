@@ -5,10 +5,10 @@ import javax.swing.table.AbstractTableModel;
 import gui.model.IAbstractTableModel;
 
 @SuppressWarnings("serial")
-class TableModel<T extends IAbstractTableModel> extends AbstractTableModel {
+class ThisTableModel<T extends IAbstractTableModel> extends AbstractTableModel {
 	T o;
 	
-	public TableModel(T o) {
+	public ThisTableModel(T o) {
 		this.o=(T)o;
 	}
 	
