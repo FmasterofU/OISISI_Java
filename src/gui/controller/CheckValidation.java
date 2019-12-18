@@ -65,7 +65,6 @@ public class CheckValidation {
 		
 		public static boolean checkIndex(String index)
 		{
-			//BR1-2000
 			//ssX-YYYY or ssXX-YYYY or ssXXX-YYYY
 			
 			index = index.trim().toUpperCase();
