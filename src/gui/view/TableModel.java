@@ -8,8 +8,7 @@ import gui.model.IAbstractTableModel;
 class TableModel<T extends IAbstractTableModel> extends AbstractTableModel {
 	T o;
 	
-	@SuppressWarnings("unchecked")
-	public TableModel(Object o) {
+	public TableModel(T o) {
 		this.o=(T)o;
 	}
 	
