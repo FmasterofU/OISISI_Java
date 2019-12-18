@@ -59,10 +59,8 @@ public class DodajStudenta extends JDialog{
 				NacinFinansiranja nf;
 				if(CheckValidation.isStudentValid(s))
 				{
-					System.out.println("valid");
 					if(budget.isSelected())	nf = NacinFinansiranja.BUDZET;
 					else		nf = NacinFinansiranja.SAMOFINANSIRANJE;
-					System.out.println(s[8] + " " +s[9]);
 					Student novi = new Student(s[0], s[1], s[2], s[3], s[4], s[5], s[6], s[7], Byte.parseByte(s[8]), nf, Double.parseDouble(s[9]));
 					StudentController.getInstance().dodajStudenta(novi);
 				}
