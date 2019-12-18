@@ -18,11 +18,15 @@ public class Data implements Serializable {
 		if(Data.data == null) {
 			Data.data = new Data();
 			DeserializeSystem.deserialize();
+			ListaStudenata.getInstance(Data.data.listaStudenata);
+			ListaPredmeta.getInstance(Data.data.listaPredmeta);
 		}
 		System.gc();
 	}
 
 	public static void close() {
+		Data.data.listaStudenata = ListaStudenata.getInstance();
+		Data.data.listaPredmeta = ListaPredmeta.getInstance();
 		SerializeSystem.serialize();
 	}
 	

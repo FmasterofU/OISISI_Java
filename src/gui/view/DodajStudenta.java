@@ -19,6 +19,10 @@ import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 
+import gui.controller.CheckValidation;
+import gui.controller.StudentController;
+import gui.model.NacinFinansiranja;
+import gui.model.Student;
 import listeners_and_actions.StudentListener;
 
 public class DodajStudenta extends JDialog{
@@ -50,9 +54,18 @@ public class DodajStudenta extends JDialog{
 		potvrda.addActionListener(new ActionListener() {
 			
 			@Override
-			public void actionPerformed(ActionEvent e) {
-				if(budget.isSelected())	listener.check("b");
-				else 		listener.check("s");
+			public void actionPerformed(ActionEvent e) {				
+				String[] s = listener.getData();
+				NacinFinansiranja nf;
+				if(CheckValidation.isStudentValid(s))
+				{
+					System.out.println("valid");
+					if(budget.isSelected())	nf = NacinFinansiranja.BUDZET;
+					else		nf = NacinFinansiranja.SAMOFINANSIRANJE;
+					System.out.println(s[8] + " " +s[9]);
+					Student novi = new Student(s[0], s[1], s[2], s[3], s[4], s[5], s[6], s[7], Byte.parseByte(s[8]), nf, Double.parseDouble(s[9]));
+					StudentController.getInstance().dodajStudenta(novi);
+				}
 				DodajStudenta.getInstance().setVisible(false);
 			}
 		});

@@ -8,12 +8,20 @@ public class ListaStudenata implements Serializable, IAbstractTableModel {
 	private static final long serialVersionUID = 3654331325580773015L;
 	private static ListaStudenata instance = null;
 	private ArrayList<Student> studenti;
-	private transient ArrayList<String> kolone;
+	private ArrayList<String> kolone;
 	
 	public static ListaStudenata getInstance()
 	{
 		if(instance == null)
 			instance = new ListaStudenata();
+		return instance;
+	}
+	
+	public static ListaStudenata getInstance(ListaStudenata l)
+	{
+		if(instance == null)
+			instance = new ListaStudenata();
+		instance.studenti = l.studenti;
 		return instance;
 	}
 	
@@ -166,7 +174,4 @@ public class ListaStudenata implements Serializable, IAbstractTableModel {
 		builder.append("]");
 		return builder.toString();
 	}
-	
-	
-
 }

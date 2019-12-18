@@ -10,7 +10,7 @@ import javax.swing.JTextField;
 
 public class StudentListener implements FocusListener, ItemListener{
 	
-	private String data[] = {"", "", "", "", "", "", "", "", "", "", ""};
+	private static String data[] = {"", "", "", "", "", "", "", "", "1", ""};
 
 	@Override
 	public void focusGained(FocusEvent e) {
@@ -24,14 +24,14 @@ public class StudentListener implements FocusListener, ItemListener{
 		txt.setBackground(Color.GRAY);
 		
 		if(txt.getName().trim().equals("tfime"))					data[0] = (txt.getText());
-		else if(txt.getName().trim().equals("tfprez"))			data[1] = (txt.getText());
-		else if(txt.getName().trim().equals("tfindeks"))		data[2] = (txt.getText());
-		else if(txt.getName().trim().equals("tfdatr"))			data[3] = (txt.getText());
-		else if(txt.getName().trim().equals("tfadr"))			data[4] = (txt.getText());
-		else if(txt.getName().trim().equals("tftel"))			data[5] = (txt.getText());
-		else if(txt.getName().trim().equals("tfmail"))			data[6] = (txt.getText());
-		else if(txt.getName().trim().equals("tfpros"))			data[7] = (txt.getText());
-		else if(txt.getName().trim().equals("tfdatu"))			data[8] = (txt.getText());
+		else if(txt.getName().trim().equals("tfprez"))			data[1] = (txt.getText());	
+		else if(txt.getName().trim().equals("tfdatr"))			data[2] = (txt.getText());
+		else if(txt.getName().trim().equals("tfadr"))			data[3] = (txt.getText());
+		else if(txt.getName().trim().equals("tftel"))			data[4] = (txt.getText());
+		else if(txt.getName().trim().equals("tfmail"))			data[5] = (txt.getText());
+		else if(txt.getName().trim().equals("tfindeks"))		data[6] = (txt.getText());
+		else if(txt.getName().trim().equals("tfdatu"))			data[7] = (txt.getText());
+		else if(txt.getName().trim().equals("tfpros"))			data[9] = (txt.getText());
 	}
 	
 	public void ispis()
@@ -42,14 +42,17 @@ public class StudentListener implements FocusListener, ItemListener{
 	@Override
 	public void itemStateChanged(ItemEvent e) {
 		if (e.getStateChange() == ItemEvent.SELECTED) {
-	          data[9] = (String) e.getItem();
+			String temp = (String) e.getItem();
+			if(temp.contains("prva"))		data[8] = "1";
+			else if(temp.contains("druga"))		data[8] = "2";
+			else if(temp.contains("tre"))		data[8] = "3";
+			else		data[8] = "4";
 	       }
 	}
-	
-	//will be updated
-	public void check(String b)
+
+	public String[] getData()
 	{
-		data[10] = b;
+		return data;
 	}
 
 }

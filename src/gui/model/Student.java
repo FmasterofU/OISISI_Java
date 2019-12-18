@@ -61,7 +61,7 @@ public class Student implements Serializable{
 		this.adresa = "Bulevar Osloboðenja 1, Novi Sad";
 		this.telefon = "060/111-111";
 		this.eMail = "pera.peric@gmail.com";
-		this.brIndeksa = "BR-1/2000";
+		this.brIndeksa = "BR1-2000";
 		this.datumUpisa = "01.10.2000.";
 		this.godStudija = 1;
 		this.finansiranje = NacinFinansiranja.BUDZET;

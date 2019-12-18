@@ -4,9 +4,7 @@ import java.io.Serializable;
 import java.util.LinkedList;
 
 public class ListaPredmeta implements Serializable{
-	/**
-	 * 
-	 */
+
 	private static final long serialVersionUID = -8045180299982898373L;
 	private LinkedList<Predmet> predmeti;
 	private static ListaPredmeta instance = null;
@@ -18,6 +16,14 @@ public class ListaPredmeta implements Serializable{
 	public static ListaPredmeta getInstance() {
 		if(ListaPredmeta.instance==null) ListaPredmeta.instance = new ListaPredmeta();
 		return ListaPredmeta.instance;
+	}
+	
+	public static ListaPredmeta getInstance(ListaPredmeta l)
+	{
+		if(instance == null)
+			instance = new ListaPredmeta();
+		instance.predmeti = l.predmeti;
+		return instance;
 	}
 
 	public LinkedList<Predmet> getPredmeti() {
