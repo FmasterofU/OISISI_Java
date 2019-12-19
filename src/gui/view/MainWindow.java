@@ -18,7 +18,7 @@ public class MainWindow  extends JFrame {
 	private static MainWindow instance = null;
 	
 	private MainWindow() {
-		setTitle("Studentska Sluûba");
+		setTitle("Studentska Slu≈æba");
 		this.setJMenuBar(MenuBar.getInstance());
 		ImageIcon img = new ImageIcon("Slike/student_32x32.jpg");
 		setIconImage(img.getImage());
@@ -51,7 +51,7 @@ public class MainWindow  extends JFrame {
 		if(instance==null) return;
 		UIManager.put("OptionPane.yesButtonText", "Da");
 		UIManager.put("OptionPane.noButtonText", "Ne");
-		int option = JOptionPane.showConfirmDialog(MainWindow.getInstance(), "Da li ûelite ugasiti aplikaciju?", "Gaöenje", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+		int option = JOptionPane.showConfirmDialog(MainWindow.getInstance(), "Da li ≈æelite ugasiti aplikaciju?", "Ga≈°enje", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
 		if(option == JOptionPane.YES_OPTION)
 		{
 			Data.close();

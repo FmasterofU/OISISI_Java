@@ -17,7 +17,7 @@ public class ListaStudenata implements Serializable, IAbstractTableModel {
 		kolone.add("Indeks");
 		kolone.add("Ime");
 		kolone.add("Prezime");
-		kolone.add("Datum roðenja");
+		kolone.add("Datum roÄ‘enja");
 		kolone.add("Godina studija");
 		kolone.add("Status");
 		kolone.add("Prosek");

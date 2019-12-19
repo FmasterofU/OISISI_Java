@@ -16,9 +16,9 @@ public class Profesor implements Serializable {
 	public Profesor() {
 		super();
 		this.ime = "Marko";
-		this.prezime = "Markoviæ";
+		this.prezime = "MarkoviÄ‡";
 		this.datumRodjenja = "01.01.1970.";
-		this.adresaStanovanja = "Bulevar Osloboðenja 1";
+		this.adresaStanovanja = "Bulevar OsloboÄ‘enja 1";
 		this.telefon = "021/000-000";
 		this.eMail = "marko@uns.ac.rs";
 		this.adresaKancelarije = "A1";
