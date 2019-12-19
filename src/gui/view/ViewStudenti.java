@@ -15,6 +15,7 @@ public class ViewStudenti extends ViewTableCenter {
 	private ViewStudenti() {
 			model = new ThisTableModel<ListaStudenata>(Data.data.listaStudenata);
 			table.setModel(model);
+			resizeColumnWidth();
 	}
 	
 	public void updateTable()
