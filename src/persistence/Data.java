@@ -32,8 +32,8 @@ public class Data implements Serializable {
 	public static void checkStackTrace() {
 		StackTraceElement[] stackTraceDataClassCallingCheck = Thread.currentThread().getStackTrace();
 		if(!stackTraceDataClassCallingCheck[3].getMethodName().equals("<init>") || !stackTraceDataClassCallingCheck[3].getClassName().equals("persistence.Data")) {
-//			for(StackTraceElement s : stackTraceDataClassCallingCheck)
-//				System.out.println(s.getMethodName()+s.getClassName());
+			for(StackTraceElement s : stackTraceDataClassCallingCheck)
+				System.out.println(s.getMethodName()+" from "+s.getClassName());
 			System.out.flush();
 			throw new RuntimeException("Nije dozvoljeno pozivati getInstance metode kod listi izvan konstruktora persistence.Data klase!");
 		}

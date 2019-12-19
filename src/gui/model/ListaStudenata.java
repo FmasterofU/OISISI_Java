@@ -10,7 +10,22 @@ public class ListaStudenata implements Serializable, IAbstractTableModel {
 	private static final long serialVersionUID = 3654331325580773015L;
 	private static ListaStudenata instance = null;
 	private ArrayList<Student> studenti;
-	private ArrayList<String> kolone;
+	private static ArrayList<String> kolone;
+	
+	static {
+		kolone = new ArrayList<String>();
+		kolone.add("Indeks");
+		kolone.add("Ime");
+		kolone.add("Prezime");
+		kolone.add("Datum roðenja");
+		kolone.add("Godina studija");
+		kolone.add("Status");
+		kolone.add("Prosek");
+		kolone.add("Adresa");
+		kolone.add("Telefon");
+		kolone.add("Mail");
+		kolone.add("Datum upisa");
+	}
 	
 	public static ListaStudenata getInstance()
 	{
@@ -24,19 +39,6 @@ public class ListaStudenata implements Serializable, IAbstractTableModel {
 	{
 		this.studenti = new ArrayList<Student>();
 		this.studenti.add(new Student());
-		
-		this.kolone = new ArrayList<String>();
-		this.kolone.add("Indeks");
-		this.kolone.add("Ime");
-		this.kolone.add("Prezime");
-		this.kolone.add("Datum roðenja");
-		this.kolone.add("Godina studija");
-		this.kolone.add("Status");
-		this.kolone.add("Prosek");
-		this.kolone.add("Adresa");
-		this.kolone.add("Telefon");
-		this.kolone.add("Mail");
-		this.kolone.add("Datum upisa");
 	}
 
 	public ArrayList<Student> getStudenti() {
@@ -49,7 +51,7 @@ public class ListaStudenata implements Serializable, IAbstractTableModel {
 	
 	public int getColumnCount()
 	{
-		return this.kolone.size();
+		return kolone.size();
 	}
 	
 	public String getColumnName(int index)
