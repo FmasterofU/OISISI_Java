@@ -44,7 +44,7 @@ public class DodajStudenta extends JDialog{
 
 	private DodajStudenta(){
 		super(MainWindow.getInstance(), "Dodavanje studenta", true);
-		setSize(500, 500);
+		setSize(550, 550);
 		setLocationRelativeTo(MainWindow.getInstance());
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		
@@ -66,6 +66,7 @@ public class DodajStudenta extends JDialog{
 					Student novi = new Student(s[0], s[1], s[2], s[3], s[4], s[5], s[6], s[7], Byte.parseByte(s[8]), nf, Double.parseDouble(s[9]));
 					StudentController.getInstance().dodajStudenta(novi);
 					instance.setVisible(false);
+					instance = null;
 					System.gc();
 				}
 				else
@@ -81,20 +82,25 @@ public class DodajStudenta extends JDialog{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				instance.setVisible(false);
+				instance = null;
 				System.gc();
 			}
 		});
+		JPanel dugmici = new JPanel();
+		BoxLayout box1 = new BoxLayout(dugmici, BoxLayout.Y_AXIS);
+		dugmici.setLayout(box1);
 		
-		BoxLayout box = new BoxLayout(doleZaDugmice, BoxLayout.X_AXIS);
-		doleZaDugmice.setLayout(box);
-		
+		BoxLayout box2 = new BoxLayout(doleZaDugmice, BoxLayout.X_AXIS);
+		doleZaDugmice.setLayout(box2);
 		doleZaDugmice.add(Box.createGlue());
 		doleZaDugmice.add(odustanak);
 		doleZaDugmice.add(Box.createHorizontalStrut(10));
 		doleZaDugmice.add(potvrda);
 		doleZaDugmice.add(Box.createHorizontalStrut(10));
+		dugmici.add(doleZaDugmice);
+		dugmici.add(new JLabel(" "));
 		
-		this.add(doleZaDugmice, BorderLayout.SOUTH);
+		this.add(dugmici, BorderLayout.SOUTH);
 		
 		JPanel podaciSredina = new JPanel();
 		podaciSredina.setLayout(new GridBagLayout());
