@@ -3,6 +3,8 @@ package gui.model;
 import java.io.Serializable;
 import java.util.LinkedList;
 
+import persistence.Data;
+
 public class ListaPredmeta implements Serializable{
 
 	private static final long serialVersionUID = -8045180299982898373L;
@@ -14,15 +16,8 @@ public class ListaPredmeta implements Serializable{
 	}
 	
 	public static ListaPredmeta getInstance() {
-		if(ListaPredmeta.instance==null) ListaPredmeta.instance = new ListaPredmeta();
-		return ListaPredmeta.instance;
-	}
-	
-	public static ListaPredmeta getInstance(ListaPredmeta l)
-	{
-		if(instance == null)
-			instance = new ListaPredmeta();
-		instance.predmeti = l.predmeti;
+		Data.checkStackTrace();
+		if(instance==null) instance = new ListaPredmeta();
 		return instance;
 	}
 

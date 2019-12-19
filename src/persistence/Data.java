@@ -18,20 +18,26 @@ public class Data implements Serializable {
 		if(Data.data == null) {
 			Data.data = new Data();
 			DeserializeSystem.deserialize();
-			ListaStudenata.getInstance(Data.data.listaStudenata);
-			ListaPredmeta.getInstance(Data.data.listaPredmeta);
 		}
 		System.gc();
 	}
 
 	public static void close() {
-		Data.data.listaStudenata = ListaStudenata.getInstance();
-		Data.data.listaPredmeta = ListaPredmeta.getInstance();
 		SerializeSystem.serialize();
 	}
 	
 	protected Data() {
 		this.listaPredmeta = ListaPredmeta.getInstance();
 		this.listaStudenata = ListaStudenata.getInstance();
+	}
+
+	public static void checkStackTrace() {
+		StackTraceElement[] stackTraceDataClassCallingCheck = Thread.currentThread().getStackTrace();
+		if(!stackTraceDataClassCallingCheck[3].getMethodName().equals("<init>") || !stackTraceDataClassCallingCheck[3].getClassName().equals("persistence.Data")) {
+			for(StackTraceElement s : stackTraceDataClassCallingCheck)
+				System.out.println(s.getMethodName()+s.getClassName());
+			System.out.flush();
+			throw new RuntimeException("Nije dozvoljeno pozivati getInstance metode kod listi izvan konstruktora persistende.Data klase!");
+		}
 	}
 }

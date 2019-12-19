@@ -1,6 +1,7 @@
 package gui.view;
 
 import gui.model.ListaStudenata;
+import persistence.Data;
 
 public class ViewStudenti extends ViewTableCenter {
 	
@@ -12,7 +13,7 @@ public class ViewStudenti extends ViewTableCenter {
 		return instance;
 	}
 	private ViewStudenti() {
-			model = new ThisTableModel<ListaStudenata>(ListaStudenata.getInstance());
+			model = new ThisTableModel<ListaStudenata>(Data.data.listaStudenata);
 			table.setModel(model);
 	}
 	

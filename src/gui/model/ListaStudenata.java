@@ -3,6 +3,8 @@ package gui.model;
 import java.io.Serializable;
 import java.util.ArrayList;
 
+import persistence.Data;
+
 public class ListaStudenata implements Serializable, IAbstractTableModel {
 	
 	private static final long serialVersionUID = 3654331325580773015L;
@@ -12,16 +14,9 @@ public class ListaStudenata implements Serializable, IAbstractTableModel {
 	
 	public static ListaStudenata getInstance()
 	{
+		Data.checkStackTrace();
 		if(instance == null)
 			instance = new ListaStudenata();
-		return instance;
-	}
-	
-	public static ListaStudenata getInstance(ListaStudenata l)
-	{
-		if(instance == null)
-			instance = new ListaStudenata();
-		instance.studenti = l.studenti;
 		return instance;
 	}
 	

@@ -1,8 +1,8 @@
 package gui.controller;
 
-import gui.model.ListaStudenata;
 import gui.model.Student;
 import gui.view.ViewStudenti;
+import persistence.Data;
 
 public class StudentController {
 	
@@ -18,19 +18,19 @@ public class StudentController {
 	
 	public void dodajStudenta(Student s)
 	{
-		ListaStudenata.getInstance().dodajStudenta(s);
+		Data.data.listaStudenata.dodajStudenta(s);
 		ViewStudenti.getInstance().updateTable();
 	}
 	
 	public void izbrisiStudenta(String indeks)
 	{
-		ListaStudenata.getInstance().izbrisiStudenta(indeks);
+		Data.data.listaStudenata.izbrisiStudenta(indeks);
 		ViewStudenti.getInstance().updateTable();
 	}
 	
 	public void izmeniStudenta(String indeks, Student s)
 	{
-		ListaStudenata.getInstance().izmeniStudenta(indeks, s);
+		Data.data.listaStudenata.izmeniStudenta(indeks, s);
 		ViewStudenti.getInstance().updateTable();
 	}
 
