@@ -6,9 +6,7 @@ import gui.model.ListaPredmeta;
 import gui.model.ListaStudenata;
 
 public class Data implements Serializable {
-	/**
-	 * 
-	 */
+
 	private static final long serialVersionUID = -3785262540558754322L;
 	public ListaPredmeta listaPredmeta = null;
 	public ListaStudenata listaStudenata = null;
@@ -34,10 +32,10 @@ public class Data implements Serializable {
 	public static void checkStackTrace() {
 		StackTraceElement[] stackTraceDataClassCallingCheck = Thread.currentThread().getStackTrace();
 		if(!stackTraceDataClassCallingCheck[3].getMethodName().equals("<init>") || !stackTraceDataClassCallingCheck[3].getClassName().equals("persistence.Data")) {
-			for(StackTraceElement s : stackTraceDataClassCallingCheck)
-				System.out.println(s.getMethodName()+s.getClassName());
+//			for(StackTraceElement s : stackTraceDataClassCallingCheck)
+//				System.out.println(s.getMethodName()+s.getClassName());
 			System.out.flush();
-			throw new RuntimeException("Nije dozvoljeno pozivati getInstance metode kod listi izvan konstruktora persistende.Data klase!");
+			throw new RuntimeException("Nije dozvoljeno pozivati getInstance metode kod listi izvan konstruktora persistence.Data klase!");
 		}
 	}
 }

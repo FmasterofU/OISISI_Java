@@ -11,7 +11,7 @@ class DeserializeSystem {
 	         Data.data = (Data) in.readObject();
 	         in.close();
 	      } catch (IOException i) {
-	         i.printStackTrace();
+	        // i.printStackTrace();
 	      } catch (Exception e) {
 	    	 e.printStackTrace();
 		  }

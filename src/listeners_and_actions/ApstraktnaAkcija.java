@@ -15,9 +15,6 @@ import gui.view.MainWindow;
 
 public class ApstraktnaAkcija extends AbstractAction{
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 4889011984599408652L;
 	private String name;
 	
@@ -87,7 +84,7 @@ public class ApstraktnaAkcija extends AbstractAction{
 		{
 			if(CenterBox.getInstance().getSelectedIndex() == 0)
 			{
-				DodajStudenta.getInstance().setVisible(true);
+				DodajStudenta.getNew().setVisible(true);
 			}
 
 		}

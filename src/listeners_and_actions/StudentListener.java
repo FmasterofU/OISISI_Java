@@ -29,7 +29,7 @@ public class StudentListener implements FocusListener, ItemListener{
 		else if(txt.getName().trim().equals("tfadr"))			data[3] = (txt.getText());
 		else if(txt.getName().trim().equals("tftel"))			data[4] = (txt.getText());
 		else if(txt.getName().trim().equals("tfmail"))			data[5] = (txt.getText());
-		else if(txt.getName().trim().equals("tfindeks"))		data[6] = (txt.getText());
+		else if(txt.getName().trim().equals("tfindeks"))		data[6] = (txt.getText().toUpperCase());
 		else if(txt.getName().trim().equals("tfdatu"))			data[7] = (txt.getText());
 		else if(txt.getName().trim().equals("tfpros"))			data[9] = (txt.getText());
 	}

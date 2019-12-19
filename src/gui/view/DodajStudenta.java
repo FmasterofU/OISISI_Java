@@ -15,9 +15,11 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
+import javax.swing.UIManager;
 
 import gui.controller.CheckValidation;
 import gui.controller.StudentController;
@@ -34,9 +36,9 @@ public class DodajStudenta extends JDialog{
 	JRadioButton budget, samof;
 	StudentListener listener = new StudentListener();
 	
-	public static DodajStudenta getInstance()
+	public static DodajStudenta getNew()
 	{
-		if(instance == null)	instance = new DodajStudenta();
+		instance = new DodajStudenta();
 		return instance;
 	}
 
@@ -63,8 +65,14 @@ public class DodajStudenta extends JDialog{
 					else		nf = NacinFinansiranja.SAMOFINANSIRANJE;
 					Student novi = new Student(s[0], s[1], s[2], s[3], s[4], s[5], s[6], s[7], Byte.parseByte(s[8]), nf, Double.parseDouble(s[9]));
 					StudentController.getInstance().dodajStudenta(novi);
+					instance.setVisible(false);
+					System.gc();
 				}
-				DodajStudenta.getInstance().setVisible(false);
+				else
+				{
+					UIManager.put("OptionPane.cancelButtonText", "Dobro");
+					JOptionPane.showConfirmDialog(instance, "Pogre≈°ni podaci!", "Gr–µ≈°ka", JOptionPane.OK_CANCEL_OPTION, JOptionPane.ERROR_MESSAGE);
+				}
 			}
 		});
 		
@@ -72,7 +80,8 @@ public class DodajStudenta extends JDialog{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				DodajStudenta.getInstance().setVisible(false);
+				instance.setVisible(false);
+				System.gc();
 			}
 		});
 		
@@ -94,7 +103,7 @@ public class DodajStudenta extends JDialog{
 		JLabel lime = new JLabel("Ime*: ");
 		JLabel lprez = new JLabel("Prezime*: ");
 		JLabel lindeks = new JLabel("Indeks*: ");
-		JLabel ldatr = new JLabel("Datum roenja*: ");
+		JLabel ldatr = new JLabel("Datum roƒëenja*: ");
 		JLabel ladr = new JLabel("Adresa*: ");
 		JLabel ltel = new JLabel("Broj telefona*: ");
 		JLabel lmail = new JLabel("eMail*: ");
@@ -182,7 +191,7 @@ public class DodajStudenta extends JDialog{
 		GridBagConstraints gbclgod = generateLabelGBC();
 		podaciSredina.add(lgod, gbclgod);
 		
-		String[] cbItems = {"I(prva)", "II(druga)", "III(treÊa)", "IV(Ëetvrta)"};
+		String[] cbItems = {"I(prva)", "II(druga)", "III(treƒáa)", "IV(ƒçetvrta)"};
 		@SuppressWarnings({ "unchecked", "rawtypes" })
 		JComboBox cbgod = new JComboBox(cbItems);
 		cbgod.addItemListener(listener);
@@ -200,8 +209,8 @@ public class DodajStudenta extends JDialog{
 		GridBagConstraints gbctfpros = generateTextFieldGBC();
 		podaciSredina.add(tfpros, gbctfpros);
 		
-		budget = new JRadioButton("Budûet");
-		budget.setName("Budûet");
+		budget = new JRadioButton("Bud≈æet");
+		budget.setName("Bud≈æet");
 		budget.setSelected(true);
 		samof = new JRadioButton("Samofinansiranje");
 		samof.setName("Samofinansiranje");

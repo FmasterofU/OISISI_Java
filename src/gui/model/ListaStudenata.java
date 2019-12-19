@@ -33,6 +33,10 @@ public class ListaStudenata implements Serializable, IAbstractTableModel {
 		this.kolone.add("Godina studija");
 		this.kolone.add("Status");
 		this.kolone.add("Prosek");
+		this.kolone.add("Adresa");
+		this.kolone.add("Telefon");
+		this.kolone.add("Mail");
+		this.kolone.add("Datum upisa");
 	}
 
 	public ArrayList<Student> getStudenti() {
@@ -86,6 +90,14 @@ public class ListaStudenata implements Serializable, IAbstractTableModel {
 				}
 			case 6:
 				return Double.toString(s.getProsecnaOcena());
+			case 7:
+				return s.getAdresa();
+			case 8:
+				return s.getTelefon();
+			case 9:
+				return s.geteMail();
+			case 10:
+				return s.getDatumUpisa();
 			default:
 				return null;
 		}
