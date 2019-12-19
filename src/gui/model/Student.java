@@ -64,7 +64,7 @@ public class Student implements Serializable{
 		this.brIndeksa = "BR1-2000";
 		this.datumUpisa = "01.10.2000.";
 		this.godStudija = 1;
-		this.finansiranje = NacinFinansiranja.BUDZET;
+		this.finansiranje = NacinFinansiranja.BUDŽET;
 		this.prosecnaOcena = 5.0;
 		this.slusaPredmete = new ArrayList<Predmet>();
 	}

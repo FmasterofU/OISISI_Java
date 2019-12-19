@@ -3,6 +3,7 @@ package persistence;
 import java.io.Serializable;
 
 import gui.model.ListaPredmeta;
+import gui.model.ListaProfesora;
 import gui.model.ListaStudenata;
 
 public class Data implements Serializable {
@@ -10,6 +11,7 @@ public class Data implements Serializable {
 	private static final long serialVersionUID = -3785262540558754322L;
 	public ListaPredmeta listaPredmeta = null;
 	public ListaStudenata listaStudenata = null;
+	public ListaProfesora listaProfesora = null;
 	public static Data data = null;
 	
 	public static void init() {
@@ -27,6 +29,7 @@ public class Data implements Serializable {
 	protected Data() {
 		this.listaPredmeta = ListaPredmeta.getInstance();
 		this.listaStudenata = ListaStudenata.getInstance();
+		this.listaProfesora = ListaProfesora.getInstance();
 	}
 
 	public static void checkStackTrace() {

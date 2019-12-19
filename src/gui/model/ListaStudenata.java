@@ -85,11 +85,7 @@ public class ListaStudenata implements Serializable, IAbstractTableModel {
 			case 4:
 				return Byte.toString(s.getGodStudija());
 			case 5:
-				{
-					NacinFinansiranja nf = s.getFinansiranje();
-					if(nf == NacinFinansiranja.BUDZET)	return "B";
-					else	return "S";
-				}
+					return s.getFinansiranje().name();
 			case 6:
 				return Double.toString(s.getProsecnaOcena());
 			case 7:
