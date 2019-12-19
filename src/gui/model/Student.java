@@ -56,9 +56,9 @@ public class Student implements Serializable{
 	public Student() {
 		super();
 		this.ime = "Pera";
-		this.prezime = "Periæ";
+		this.prezime = "PeriÄ‡";
 		this.datumRodjenja = "01.01.1950.";
-		this.adresa = "Bulevar Osloboğenja 1, Novi Sad";
+		this.adresa = "Bulevar OsloboÄ‘enja 1, Novi Sad";
 		this.telefon = "060/111-111";
 		this.eMail = "pera.peric@gmail.com";
 		this.brIndeksa = "BR1-2000";
@@ -172,7 +172,7 @@ public class Student implements Serializable{
 		builder.append(ime);
 		builder.append(", prezime=");
 		builder.append(prezime);
-		builder.append(", datumRoğenja=");
+		builder.append(", datumRoÄ‘enja=");
 		builder.append(datumRodjenja);
 		builder.append(", adresa=");
 		builder.append(adresa);
@@ -188,11 +188,11 @@ public class Student implements Serializable{
 		builder.append(godStudija);
 		builder.append(", finansiranje=");
 		builder.append(finansiranje);
-		builder.append(", proseènaOcena=");
+		builder.append(", proseÄnaOcena=");
 		builder.append(prosecnaOcena);
-		builder.append(".\\n\\t\\tSlusa predmete sa šiframa: ");
+		builder.append(".\\n\\t\\tSluÅ¡a predmete sa Å¡iframa: ");
 		
-		if(slusaPredmete.isEmpty())		builder.append("Ne sluša niti jedan predmet! ");
+		if(slusaPredmete.isEmpty())		builder.append("Ne sluÅ¡a niti jedan predmet! ");
 		else
 		{
 			for(Predmet s : slusaPredmete)
@@ -204,22 +204,4 @@ public class Student implements Serializable{
 		builder.append("]");
 		return builder.toString();
 	}
-
-//	@Override
-//	public String toString() {
-//		String ret =  "Student [ime=" + ime + ", prezime=" + prezime + ", datumRodjenja=" + datumRodjenja + ", adresa="
-//				+ adresa + ", telefon=" + telefon + ", eMail=" + eMail + ", brIndeksa=" + brIndeksa + ", datumUpisa="
-//				+ datumUpisa + ", godStudija=" + godStudija + ", finansiranje=" + finansiranje + ", prosecnaOcena=" + prosecnaOcena
-//				+ ".\n\t\tSlusa predmete sa siframa: ";
-//		if(slusaPredmete.isEmpty())		ret += "Ne slusa niti jedan predmet! ";
-//		else
-//		{
-//			for(Predmet s : slusaPredmete)
-//			{
-//				ret += s.getSifra() + " ";
-//			}
-//		}
-//		ret += "]";
-//		return ret;
-//	}
 }
