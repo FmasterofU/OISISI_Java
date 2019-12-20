@@ -1,6 +1,5 @@
 package listeners_and_actions;
 
-import java.awt.Color;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 import java.awt.event.ItemEvent;
@@ -14,14 +13,14 @@ public class StudentListener implements FocusListener, ItemListener{
 
 	@Override
 	public void focusGained(FocusEvent e) {
-		JTextField txt = (JTextField) e.getComponent();
-		txt.setBackground(Color.WHITE);	
+//		JTextField txt = (JTextField) e.getComponent();
+//		txt.setBackground(Color.WHITE);	
 	}
 
 	@Override
 	public void focusLost(FocusEvent e) {
 		JTextField txt = (JTextField) e.getComponent();
-		txt.setBackground(Color.GRAY);
+//		txt.setBackground(Color.GRAY);
 		
 		if(txt.getName().trim().equals("tfime"))					data[0] = (txt.getText());
 		else if(txt.getName().trim().equals("tfprez"))			data[1] = (txt.getText());	

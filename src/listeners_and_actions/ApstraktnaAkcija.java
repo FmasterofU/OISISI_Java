@@ -86,7 +86,7 @@ public class ApstraktnaAkcija extends AbstractAction{
 		{
 			if(CenterBox.getInstance().getSelectedIndex() == 0)
 			{
-				DodajStudenta.getNew().setVisible(true);
+				DodajStudenta.getInstance().setVisible(true);
 			}
 
 		}

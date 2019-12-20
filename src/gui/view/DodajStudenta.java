@@ -7,7 +7,6 @@ import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.ButtonGroup;
@@ -20,7 +19,6 @@ import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import javax.swing.UIManager;
-
 import gui.controller.CheckValidation;
 import gui.controller.StudentController;
 import gui.model.NacinFinansiranja;
@@ -36,9 +34,9 @@ public class DodajStudenta extends JDialog{
 	JRadioButton budget, samof;
 	StudentListener listener = new StudentListener();
 	
-	public static DodajStudenta getNew()
+	public static DodajStudenta getInstance()
 	{
-		instance = new DodajStudenta();
+		if(instance==null) instance = new DodajStudenta();
 		return instance;
 	}
 
@@ -59,7 +57,14 @@ public class DodajStudenta extends JDialog{
 			public void actionPerformed(ActionEvent e) {				
 				String[] s = listener.getData();
 				NacinFinansiranja nf;
-				if(CheckValidation.isStudentValid(s))
+				boolean check = true;
+				boolean[] result = CheckValidation.isStudentValid(s);
+				for(boolean b : result)
+					if(b==false) {
+						check=false;
+						break;
+					}
+				if(check)
 				{
 					if(budget.isSelected())	nf = NacinFinansiranja.BUDŽET;
 					else		nf = NacinFinansiranja.SAMOFINANSIRANJE;
@@ -122,9 +127,15 @@ public class DodajStudenta extends JDialog{
 		GridBagConstraints gbclime = generateLabelGBC();
 		podaciSredina.add(lime, gbclime);
 		
-		JTextField tfime = new JTextField(10);
+		@SuppressWarnings("serial")
+		JTextField tfime = new TextField(10) {
+			@Override
+			public void maybeHighlight() {
+				setBorder(((/*this.getText().trim().length() > 0  && */ CheckValidation.checkName(this.getText())) ? IHighlight.defaultBorder : IHighlight.highlightBorder));
+			}
+		};
 		tfime.setName("tfime");
-		tfime.setBackground(Color.GRAY);
+		//tfime.setBackground(Color.WHITE);
 		tfime.addFocusListener(listener);
 		
 		GridBagConstraints gbctfime = generateTextFieldGBC();
@@ -135,7 +146,7 @@ public class DodajStudenta extends JDialog{
 		
 		JTextField tfprez = new JTextField(10);
 		tfprez.setName("tfprez");
-		tfprez.setBackground(Color.GRAY);
+		//tfprez.setBackground(Color.GRAY);
 		tfprez.addFocusListener(listener);
 		
 		GridBagConstraints gbctfprez = generateTextFieldGBC();
@@ -146,7 +157,7 @@ public class DodajStudenta extends JDialog{
 		
 		JTextField tfindeks = new JTextField(10);
 		tfindeks.setName("tfindeks");
-		tfindeks.setBackground(Color.GRAY);
+		//tfindeks.setBackground(Color.GREEN);
 		tfindeks.addFocusListener(listener);
 		
 		GridBagConstraints gbctfindeks = generateTextFieldGBC();
@@ -157,7 +168,7 @@ public class DodajStudenta extends JDialog{
 		
 		JTextField tfdatr = new JTextField(10);
 		tfdatr.setName("tfdatr");
-		tfdatr.setBackground(Color.GRAY);
+		//tfdatr.setBackground(Color.GRAY);
 		tfdatr.addFocusListener(listener);
 		
 		GridBagConstraints gbctfdatr = generateTextFieldGBC();
@@ -168,7 +179,7 @@ public class DodajStudenta extends JDialog{
 		
 		JTextField tfadr = new JTextField(10);
 		tfadr.setName("tfadr");
-		tfadr.setBackground(Color.GRAY);
+		//tfadr.setBackground(Color.GRAY);
 		tfadr.addFocusListener(listener);
 		
 		GridBagConstraints gbctfadr = generateTextFieldGBC();
@@ -179,7 +190,7 @@ public class DodajStudenta extends JDialog{
 		
 		JTextField tftel = new JTextField(10);
 		tftel.setName("tftel");
-		tftel.setBackground(Color.GRAY);
+		//tftel.setBackground(Color.GRAY);
 		tftel.addFocusListener(listener);
 		
 		GridBagConstraints gbctftel = generateTextFieldGBC();
@@ -190,7 +201,7 @@ public class DodajStudenta extends JDialog{
 		
 		JTextField tfmail = new JTextField(10);
 		tfmail.setName("tfmail");
-		tfmail.setBackground(Color.GRAY);
+		//tfmail.setBackground(Color.GRAY);
 		tfmail.addFocusListener(listener);
 		
 		GridBagConstraints gbctfmail = generateTextFieldGBC();
@@ -211,7 +222,7 @@ public class DodajStudenta extends JDialog{
 		
 		JTextField tfpros = new JTextField(10);
 		tfpros.setName("tfpros");
-		tfpros.setBackground(Color.GRAY);
+		//tfpros.setBackground(Color.GRAY);
 		tfpros.addFocusListener(listener);
 		
 		GridBagConstraints gbctfpros = generateTextFieldGBC();
@@ -236,12 +247,17 @@ public class DodajStudenta extends JDialog{
 		
 		JTextField tfdatu = new JTextField(10);
 		tfdatu.setName("tfdatu");
-		tfdatu.setBackground(Color.GRAY);
+		//tfdatu.setBackground(Color.GRAY);
 		tfdatu.addFocusListener(listener);
 		
 		GridBagConstraints gbctfdatu = generateTextFieldGBC();
 		podaciSredina.add(tfdatu, gbctfdatu);
 	}
+	/*
+	protected void setFieldHighlightColors(boolean[] result) {
+		
+	}
+*/
 	private GridBagConstraints generateLabelGBC()
 	{
 		GridBagConstraints ret = new GridBagConstraints();

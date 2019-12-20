@@ -177,10 +177,13 @@ public class CheckValidation {
 		}
 		
 		@SuppressWarnings({ "unused", "finally" })
-		public static boolean isStudentValid(String[] data)
+		public static boolean[] isStudentValid(String[] data)
 		{
 			if(data.length != 10)
-				return false;
+				return new boolean[data.length];
+			
+			boolean[] ret = {checkName(data[0]), checkName(data[1]), checkDate(data[2]), checkPhoneNumber(data[4]), checkMail(data[5]), checkIndex(data[6]), checkDate(data[7]), false, checkProsek(data[9])};
+			
 			byte g;
 			try
 			{
@@ -188,14 +191,12 @@ public class CheckValidation {
 			}
 			catch(Exception e)
 			{
-				return false;
+				return ret;
 			}
 			finally
 			{
-				if(checkName(data[0]) && checkName(data[1]) && checkDate(data[2]) && checkPhoneNumber(data[4]) && 
-					checkMail(data[5]) && checkIndex(data[6]) && checkDate(data[7]) && checkProsek(data[9]))
-						return true;
-				return false;
+				ret[8] = true;
+				return ret;
 			}
 		}
 }
