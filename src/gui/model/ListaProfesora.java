@@ -41,6 +41,32 @@ public class ListaProfesora implements Serializable, IAbstractTableModel {
 		return instance;
 	}
 	
+	public LinkedList<Profesor> getProfesori() {
+		return profesori;
+	}
+
+	public void setProfesori(LinkedList<Profesor> profesor) {
+		this.profesori = profesor;
+	}
+	
+	public void addProfesor(Profesor profesor) {
+		profesori.add(profesor);
+	}
+	
+	// index==row gui
+	
+	 public void getProfesor(int index) {
+		 profesori.get(index);
+	 }
+	 
+	 public void changeProfesor(int index, Profesor p) {
+		 profesori.set(index, p);
+	 }
+	 
+	 public void deleteProfesor(int index) {
+		 profesori.remove(index);
+	 }
+	
 	@Override
 	public int getColumnCount() {
 		return kolone.size();
