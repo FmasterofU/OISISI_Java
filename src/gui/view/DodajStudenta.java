@@ -7,6 +7,9 @@ import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
+
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.ButtonGroup;
@@ -45,6 +48,28 @@ public class DodajStudenta extends JDialog{
 		setSize(550, 550);
 		setLocationRelativeTo(MainWindow.getInstance());
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+		
+		addWindowListener(new WindowListener() {
+			@Override
+			public void windowOpened(WindowEvent e) {}
+			@Override
+			public void windowIconified(WindowEvent e) {}
+			@Override
+			public void windowDeiconified(WindowEvent e) {}
+			@Override
+			public void windowDeactivated(WindowEvent e) {}
+			@Override
+			public void windowClosing(WindowEvent e) {
+				instance.setVisible(false);
+				instance = null;
+				listener.clearData();
+				System.gc();
+			}
+			@Override
+			public void windowClosed(WindowEvent e) {}
+			@Override
+			public void windowActivated(WindowEvent e) {}
+		});
 		
 		JPanel doleZaDugmice = new JPanel();
 		JButton odustanak = new JButton("Odustanak");
