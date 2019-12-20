@@ -9,7 +9,6 @@ public class HighlightListener<T extends IHighlight> implements DocumentListener
 
 	T instance=null;
 	public HighlightListener(T o) {
-		System.out.println("instanca");
 		instance=o;
 	}
 	
