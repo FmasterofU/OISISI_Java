@@ -22,4 +22,6 @@ public class ViewStudenti extends ViewTableCenter {
 	{
 		if(model != null)		model.fireTableDataChanged();
 	}
+	
+	public int getSelectedIndex()		{ return table.getSelectedRow(); }
 }

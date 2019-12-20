@@ -34,7 +34,7 @@ public class StudentListener implements FocusListener, ItemListener{
 		else if(txt.getName().trim().equals("tfpros"))			data[9] = (txt.getText());
 	}
 	
-	public void ispis()
+	public static void ispis()
 	{
 		for(int i = 0; i < data.length; i++)	System.out.println(data[i]);
 	}
@@ -53,6 +53,12 @@ public class StudentListener implements FocusListener, ItemListener{
 	public String[] getData()
 	{
 		return data;
+	}
+	
+	public void clearData()
+	{
+		for(int i = 0; i < data.length; i++)		data[i] = "";
+		data[8] = "1";
 	}
 
 }

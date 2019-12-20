@@ -67,6 +67,7 @@ public class DodajStudenta extends JDialog{
 					StudentController.getInstance().dodajStudenta(novi);
 					instance.setVisible(false);
 					instance = null;
+					listener.clearData();
 					System.gc();
 				}
 				else
@@ -83,6 +84,7 @@ public class DodajStudenta extends JDialog{
 			public void actionPerformed(ActionEvent e) {
 				instance.setVisible(false);
 				instance = null;
+				listener.clearData();
 				System.gc();
 			}
 		});
