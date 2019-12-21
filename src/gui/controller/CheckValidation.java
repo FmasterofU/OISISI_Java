@@ -71,7 +71,7 @@ public class CheckValidation {
 		
 		public static boolean checkIndex(String index)
 		{
-			//ssX-YYYY or ssXX-YYYY or ssXXX-YYYY
+			//	ssX/YYYY or ssXX/YYYY or ssXXX/YYYY
 			
 			index = index.trim().toUpperCase();
 			return index.matches("[a-zA-Z]{2}[0-9]{1,3}/[0-9]{4}");
@@ -87,12 +87,12 @@ public class CheckValidation {
 		public static boolean checkProsek(String prosek)
 		{
 			prosek = prosek.trim();
-			return prosek.matches("(5.00)|([6-9].[0-9]{2})|(10.00)");
+			return prosek.matches("(5)|(5.0)|(5.00)|([6-9].[0-9]{2})|(10)|(10.0)|(10.00)");
 		}
 		
 		public static boolean checkPhoneNumber(String num)
 		{
-			//	nnn/nnn-nnn or nnn/nnn-nnnn
+			//	nnn/nnn-nnn or nnn/nnn-nnnn or nnn/nnn-nnnnn
 			
 			num = num.trim();
 			return num.matches("0[1-9][0-9][/][0-9]{3}-[0-9]{3,5}");
@@ -112,7 +112,7 @@ public class CheckValidation {
 			if(data.length != 10)
 				return new boolean[2];
 			
-			boolean[] ret = {checkName(data[0],1), checkName(data[1],1), checkDate(data[2]), checkAdress(data[3]), checkPhoneNumber(data[4]), checkMail(data[5]), checkIndex(data[6]), checkDate(data[7]), false, checkProsek(data[9])};
+			boolean[] ret = {checkName(data[0],0), checkName(data[1],0), checkDate(data[2]), checkAdress(data[3]), checkPhoneNumber(data[4]), checkMail(data[5]), checkIndex(data[6]), checkDate(data[7]), false, checkProsek(data[9])};
 			
 			byte g;
 			try
