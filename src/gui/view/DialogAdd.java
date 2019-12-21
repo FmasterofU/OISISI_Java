@@ -15,8 +15,8 @@ import javax.swing.JPanel;
 
 @SuppressWarnings("serial")
 public class DialogAdd extends JDialog {
-	public int labGBC = 0;
-	public int tfGBC = 0;
+	private int labGBC = 0;
+	private int tfGBC = 0;
 	public JButton acceptButton;
 	public JButton cancelButton = new JButton("Odustanak");
 	public JPanel middleLabelsNFields = new JPanel();
