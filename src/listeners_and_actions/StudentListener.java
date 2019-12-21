@@ -59,5 +59,4 @@ public class StudentListener implements FocusListener, ItemListener{
 		for(int i = 0; i < data.length; i++)		data[i] = "";
 		data[8] = "1";
 	}
-
 }
