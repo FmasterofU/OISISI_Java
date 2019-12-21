@@ -51,7 +51,7 @@ public class MainWindow  extends JFrame {
 		if(instance==null) return;
 		UIManager.put("OptionPane.yesButtonText", "Da");
 		UIManager.put("OptionPane.noButtonText", "Samo gašenje");
-		UIManager.put("OptionPane.cacnelButtonText", "Odustani");
+		UIManager.put("OptionPane.cancelButtonText", "Odustani");
 		int option = JOptionPane.showConfirmDialog(MainWindow.getInstance(), "Da li želite ugasiti aplikaciju i sačuvati izmjene u bazu?", "Gašenje", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE);
 		if(option == JOptionPane.YES_OPTION ||  option == JOptionPane.NO_OPTION) {
 			if(option == JOptionPane.YES_OPTION) Data.close();
