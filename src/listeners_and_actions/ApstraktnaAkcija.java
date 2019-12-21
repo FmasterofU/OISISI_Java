@@ -9,13 +9,13 @@ import javax.swing.KeyStroke;
 
 import com.sun.glass.events.KeyEvent;
 
-import gui.view.CenterBox;
-import gui.view.AddPredmet;
-import gui.view.AddStudent;
 import gui.view.MainWindow;
-import gui.view.DeleteStudent;
-import gui.view.EditStudent;
-import gui.view.ViewStudenti;
+import gui.view.centerdata.CenterBox;
+import gui.view.centerdata.ViewStudenti;
+import gui.view.modify.data.AddPredmet;
+import gui.view.modify.data.AddStudent;
+import gui.view.modify.data.DeleteStudent;
+import gui.view.modify.data.EditStudent;
 
 public class ApstraktnaAkcija extends AbstractAction{
 

@@ -1,10 +1,11 @@
-package gui.view;
+package gui.view.modify.data;
 
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 
 import gui.controller.StudentController;
 import gui.model.Student;
+import gui.view.MainWindow;
 import persistence.Data;
 
 public class DeleteStudent extends JOptionPane{

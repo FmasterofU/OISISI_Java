@@ -1,4 +1,4 @@
-package gui.view;
+package gui.view.modify.data;
 
 import java.awt.GridBagConstraints;
 import java.awt.event.ActionEvent;
@@ -18,6 +18,10 @@ import gui.controller.PredmetController;
 import gui.model.Predmet;
 import gui.model.Profesor;
 import gui.model.Student;
+import gui.view.modify.Dialog;
+import gui.view.modify.IHighlight;
+import gui.view.modify.MandatoryTextFieldLabel;
+import gui.view.modify.TextField;
 import listeners_and_actions.PredmetListener;
 import persistence.Data;
 

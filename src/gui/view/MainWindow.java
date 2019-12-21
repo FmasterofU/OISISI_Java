@@ -11,6 +11,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.UIManager;
 
+import gui.view.centerdata.CenterBox;
 import persistence.Data;
 
 @SuppressWarnings("serial")

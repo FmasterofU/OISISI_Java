@@ -3,7 +3,7 @@ package listeners_and_actions;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 
-import gui.view.IHighlight;
+import gui.view.modify.IHighlight;
 
 public class HighlightListener<T extends IHighlight> implements DocumentListener {
 

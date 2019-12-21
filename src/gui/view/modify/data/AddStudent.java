@@ -1,4 +1,4 @@
-package gui.view;
+package gui.view.modify.data;
 
 import java.awt.GridBagConstraints;
 import java.awt.event.ActionEvent;
@@ -13,38 +13,31 @@ import javax.swing.JOptionPane;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import javax.swing.UIManager;
-
 import gui.controller.CheckValidation;
 import gui.controller.StudentController;
 import gui.model.NacinFinansiranja;
 import gui.model.Student;
+import gui.view.modify.Dialog;
+import gui.view.modify.IHighlight;
+import gui.view.modify.MandatoryTextFieldLabel;
+import gui.view.modify.TextField;
 import listeners_and_actions.StudentListener;
-import persistence.Data;
 
-public class EditStudent extends Dialog{
-
-	private static final long serialVersionUID = -4788486876873441092L;
-	private static EditStudent instance = null;
-	private  JRadioButton budget, samof;
-	private StudentListener listener = new StudentListener();
-	Student old = null;
-	private String ime, prez, indeks, datr, adr, tel, mail, datu;
-	private byte god;
-	private NacinFinansiranja n;
-	private Double pros;
+public class AddStudent extends Dialog {
 	
-	public static EditStudent getInstance(int idx)
-	{
-		if(instance == null)		instance = new EditStudent(idx);
+	private static final long serialVersionUID = 5160676555418089845L;
+	private static AddStudent instance = null;
+	JRadioButton budget, samof;
+	StudentListener listener = new StudentListener();
+	
+	public static AddStudent getInstance() {
+		if(instance==null) instance = new AddStudent();
 		return instance;
 	}
 
 	@SuppressWarnings("serial")
-	private  EditStudent(int idx)
-	{
-		super("Izmeni studenta", "Potvrda", "Odustanak");
-		old = getStudent(idx);
-		listener.setInitialData(old);
+	private AddStudent(){
+		super("Dodavanje studenta", "Potvrda", "Odustanak");
 		
 		addWindowListener(new WindowAdapter() {
 			@Override
@@ -74,7 +67,7 @@ public class EditStudent extends Dialog{
 					if(budget.isSelected())	nf = NacinFinansiranja.BUDŽET;
 					else		nf = NacinFinansiranja.SAMOFINANSIRANJE;
 					Student novi = new Student(s[0], s[1], s[2], s[3], s[4], s[5], s[6], s[7], Byte.parseByte(s[8]), nf, Double.parseDouble(s[9]));
-					StudentController.getInstance().izmeniStudenta(old.getBrIndeksa(), novi);
+					StudentController.getInstance().dodajStudenta(novi);
 					instance.setVisible(false);
 					instance = null;
 					listener.clearData();
@@ -113,14 +106,14 @@ public class EditStudent extends Dialog{
 		GridBagConstraints gbclime = generateLabelGBC();
 		middlePanel.add(lime, gbclime);
 		
-		ime = old.getIme();
-		JTextField tfime = new TextField(ime) {
+		JTextField tfime = new TextField(10) {
 			@Override
 			public void maybeHighlight() {
 				setBorder(((CheckValidation.checkName(this.getText(),0)) ? IHighlight.defaultBorder : IHighlight.highlightBorder));
 			}
 		};
 		tfime.setName("tfime");
+		//tfime.setBackground(Color.WHITE);
 		tfime.addFocusListener(listener);
 		
 		GridBagConstraints gbctfime = generateTextFieldGBC();
@@ -129,8 +122,7 @@ public class EditStudent extends Dialog{
 		GridBagConstraints gbclprez = generateLabelGBC();
 		middlePanel.add(lprez, gbclprez);
 		
-		prez = old.getPrezime();
-		JTextField tfprez = new TextField(prez)
+		JTextField tfprez = new TextField(10)
 		{
 			@Override
 			public void maybeHighlight() {
@@ -138,6 +130,7 @@ public class EditStudent extends Dialog{
 			}
 		};
 		tfprez.setName("tfprez");
+		//tfprez.setBackground(Color.GRAY);
 		tfprez.addFocusListener(listener);
 		
 		GridBagConstraints gbctfprez = generateTextFieldGBC();
@@ -146,10 +139,15 @@ public class EditStudent extends Dialog{
 		GridBagConstraints gbclindeks = generateLabelGBC();
 		middlePanel.add(lindeks, gbclindeks);
 		
-		indeks = old.getBrIndeksa();
-		JTextField tfindeks = new JTextField(indeks);
+		JTextField tfindeks = new TextField(10)
+		{
+			@Override
+			public void maybeHighlight() {
+				setBorder(((CheckValidation.checkIndex(this.getText())) ? IHighlight.defaultBorder : IHighlight.highlightBorder));
+			}
+		};
 		tfindeks.setName("tfindeks");
-		tfindeks.setEditable(false);
+		//tfindeks.setBackground(Color.GREEN);
 		tfindeks.addFocusListener(listener);
 		
 		GridBagConstraints gbctfindeks = generateTextFieldGBC();
@@ -158,8 +156,7 @@ public class EditStudent extends Dialog{
 		GridBagConstraints gbcldatr = generateLabelGBC();
 		middlePanel.add(ldatr, gbcldatr);
 		
-		datr = old.getDatumRodjenja();
-		JTextField tfdatr = new TextField(datr)
+		JTextField tfdatr = new TextField(10)
 		{
 			@Override
 			public void maybeHighlight() {
@@ -167,6 +164,7 @@ public class EditStudent extends Dialog{
 			}
 		};
 		tfdatr.setName("tfdatr");
+		//tfdatr.setBackground(Color.GRAY);
 		tfdatr.addFocusListener(listener);
 		
 		GridBagConstraints gbctfdatr = generateTextFieldGBC();
@@ -175,8 +173,7 @@ public class EditStudent extends Dialog{
 		GridBagConstraints gbcladr = generateLabelGBC();
 		middlePanel.add(ladr, gbcladr);
 		
-		adr = old.getAdresa();
-		JTextField tfadr = new TextField(adr)
+		JTextField tfadr = new TextField(10)
 		{
 			@Override
 			public void maybeHighlight() {
@@ -184,6 +181,7 @@ public class EditStudent extends Dialog{
 			}
 		};
 		tfadr.setName("tfadr");
+		//tfadr.setBackground(Color.GRAY);
 		tfadr.addFocusListener(listener);
 		
 		GridBagConstraints gbctfadr = generateTextFieldGBC();
@@ -192,8 +190,7 @@ public class EditStudent extends Dialog{
 		GridBagConstraints gbcltel = generateLabelGBC();
 		middlePanel.add(ltel, gbcltel);
 		
-		tel = old.getTelefon();
-		JTextField tftel = new TextField(tel)
+		JTextField tftel = new TextField(10)
 		{
 			@Override
 			public void maybeHighlight() {
@@ -201,6 +198,7 @@ public class EditStudent extends Dialog{
 			}
 		};
 		tftel.setName("tftel");
+		//tftel.setBackground(Color.GRAY);
 		tftel.addFocusListener(listener);
 		
 		GridBagConstraints gbctftel = generateTextFieldGBC();
@@ -209,8 +207,7 @@ public class EditStudent extends Dialog{
 		GridBagConstraints gbclmail = generateLabelGBC();
 		middlePanel.add(lmail, gbclmail);
 		
-		mail = old.geteMail();
-		JTextField tfmail = new TextField(mail)
+		JTextField tfmail = new TextField(10)
 		{
 			@Override
 			public void maybeHighlight() {
@@ -218,6 +215,7 @@ public class EditStudent extends Dialog{
 			}
 		};
 		tfmail.setName("tfmail");
+		//tfmail.setBackground(Color.GRAY);
 		tfmail.addFocusListener(listener);
 		
 		GridBagConstraints gbctfmail = generateTextFieldGBC();
@@ -226,10 +224,7 @@ public class EditStudent extends Dialog{
 		GridBagConstraints gbclgod = generateLabelGBC();
 		middlePanel.add(lgod, gbclgod);
 		
-		god = old.getGodStudija();
-		String first = getGodina(god);
-		String[] others = getOthersGod(god);
-		String[] cbItems = {first, others[0], others[1], others[2]};
+		String[] cbItems = {"I(prva)", "II(druga)", "III(treća)", "IV(četvrta)"};
 		@SuppressWarnings({ "unchecked", "rawtypes" })
 		JComboBox cbgod = new JComboBox(cbItems);
 		cbgod.addItemListener(listener);
@@ -239,8 +234,7 @@ public class EditStudent extends Dialog{
 		GridBagConstraints gbclpros = generateLabelGBC();
 		middlePanel.add(lpros, gbclpros);
 		
-		pros = old.getProsecnaOcena();
-		JTextField tfpros = new TextField(pros.toString())
+		JTextField tfpros = new TextField(10)
 		{
 			@Override
 			public void maybeHighlight() {
@@ -248,18 +242,17 @@ public class EditStudent extends Dialog{
 			}
 		};
 		tfpros.setName("tfpros");
+		//tfpros.setBackground(Color.GRAY);
 		tfpros.addFocusListener(listener);
 		
 		GridBagConstraints gbctfpros = generateTextFieldGBC();
 		middlePanel.add(tfpros, gbctfpros);
 		
-		n = old.getFinansiranje();
 		budget = new JRadioButton("Budžet");
 		budget.setName("Budžet");
+		budget.setSelected(true);
 		samof = new JRadioButton("Samofinansiranje");
 		samof.setName("Samofinansiranje");
-		if(n == NacinFinansiranja.BUDŽET)		budget.setSelected(true);
-		else		samof.setSelected(true);
 		ButtonGroup group = new ButtonGroup();
 		group.add(budget);
 		group.add(samof);
@@ -272,8 +265,7 @@ public class EditStudent extends Dialog{
 		GridBagConstraints gbcldatu = generateLabelGBC();
 		middlePanel.add(ldatu, gbcldatu);
 		
-		datu = old.getDatumUpisa();
-		JTextField tfdatu = new TextField(datu)
+		JTextField tfdatu = new TextField(10)
 		{
 			@Override
 			public void maybeHighlight() {
@@ -281,59 +273,10 @@ public class EditStudent extends Dialog{
 			}
 		};
 		tfdatu.setName("tfdatu");
+		//tfdatu.setBackground(Color.GRAY);
 		tfdatu.addFocusListener(listener);
 		
 		GridBagConstraints gbctfdatu = generateTextFieldGBC();
 		middlePanel.add(tfdatu, gbctfdatu);
-	}
-	
-	private Student getStudent(int i)
-	{
-		int temp = 0;
-		for(Student s: Data.data.listaStudenata.getStudenti())
-		{
-			if(i == temp)
-				return s;
-			temp++;
-		}
-		return null;
-	}
-	
-	private String getGodina(byte g)
-	{
-		if(g == 1)		return "I(prva)";
-		else if(g == 2)		return "II(druga)";
-		else if(g == 3)		return "III(treća)";
-		else return "IV(četvrta)";
-	}
-	
-	private String[] getOthersGod(byte g)
-	{
-		String[] ret = {"", "", ""};
-		if(g == 1)	
-		{
-			ret[0] = "II(druga)";
-			ret[1] = "III(treća)";
-			ret[2] =  "IV(četvrta)";
-		}
-		else if(g == 2)
-		{
-			ret[0] = "I(prva)";
-			ret[1] = "III(treća)";
-			ret[2] =  "IV(četvrta)";
-		}
-		else if(g == 3)
-		{
-			ret[0] = "I(prva)";
-			ret[1] = "II(druga)";
-			ret[2] =  "IV(četvrta)";
-		}
-		else
-		{
-			ret[0] = "I(prva)";
-			ret[1] = "II(druga)";
-			ret[2] =  "III(treća)";
-		}
-		return ret;
 	}
 }

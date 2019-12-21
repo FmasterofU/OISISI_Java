@@ -1,4 +1,4 @@
-package gui.view;
+package gui.view.centerdata;
 
 import java.awt.Component;
 

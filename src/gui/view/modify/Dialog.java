@@ -1,4 +1,4 @@
-package gui.view;
+package gui.view.modify;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -12,6 +12,8 @@ import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+
+import gui.view.MainWindow;
 
 @SuppressWarnings("serial")
 public class Dialog extends JDialog {

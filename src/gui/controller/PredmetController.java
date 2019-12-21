@@ -1,7 +1,7 @@
 package gui.controller;
 
 import gui.model.Predmet;
-import gui.view.ViewPredmeti;
+import gui.view.centerdata.ViewPredmeti;
 import persistence.Data;
 
 public class PredmetController {

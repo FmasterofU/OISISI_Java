@@ -1,4 +1,4 @@
-package gui.view;
+package gui.view.modify;
 
 import javax.swing.JTextField;
 
