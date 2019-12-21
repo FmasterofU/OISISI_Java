@@ -14,14 +14,16 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 @SuppressWarnings("serial")
-public class DialogAdd extends JDialog {
+public class Dialog extends JDialog {
 	private int labGBC = 0;
 	private int tfGBC = 0;
 	public JButton acceptButton;
 	public JButton cancelButton = new JButton("Odustanak");
 	public JPanel middleLabelsNFields = new JPanel();
+	public JPanel buttonPanel = new JPanel();
+	public JPanel buttons = new JPanel();
 	
-	public DialogAdd(String windowName, String acceptButtonName, String cancelButtonName) {
+	public Dialog(String windowName, String acceptButtonName, String cancelButtonName) {
 		super(MainWindow.getInstance(), windowName, true);
 		acceptButton = new JButton(acceptButtonName);
 		cancelButton = new JButton(cancelButtonName);
@@ -29,11 +31,9 @@ public class DialogAdd extends JDialog {
 		setLocationRelativeTo(MainWindow.getInstance());
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		
-		JPanel buttonPanel = new JPanel();
 		acceptButton.setForeground(Color.BLACK);
 		acceptButton.setBackground(Color.CYAN);
 		
-		JPanel buttons = new JPanel();
 		BoxLayout box1 = new BoxLayout(buttons, BoxLayout.Y_AXIS);
 		buttons.setLayout(box1);
 		

@@ -19,7 +19,7 @@ import gui.model.NacinFinansiranja;
 import gui.model.Student;
 import listeners_and_actions.StudentListener;
 
-public class AddStudent extends DialogAdd {
+public class AddStudent extends Dialog {
 	
 	private static final long serialVersionUID = 5160676555418089845L;
 	private static AddStudent instance = null;
