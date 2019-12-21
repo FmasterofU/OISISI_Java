@@ -127,16 +127,16 @@ public class DodajStudenta extends JDialog{
 		podaciSredina.setLayout(new GridBagLayout());
 		this.add(podaciSredina, BorderLayout.CENTER);
 		
-		JLabel lime = new JLabel("Ime*: ");
-		JLabel lprez = new JLabel("Prezime*: ");
-		JLabel lindeks = new JLabel("Indeks*: ");
-		JLabel ldatr = new JLabel("Datum rođenja*: ");
-		JLabel ladr = new JLabel("Adresa*: ");
-		JLabel ltel = new JLabel("Broj telefona*: ");
-		JLabel lmail = new JLabel("eMail*: ");
-		JLabel lgod = new JLabel("Godina studija*: ");
-		JLabel lpros = new JLabel("Prosek*: ");
-		JLabel ldatu = new JLabel("Datum upisa*: ");
+		JLabel lime = new MandatoryTextFieldLabel("Ime:");
+		JLabel lprez = new MandatoryTextFieldLabel("Prezime:");
+		JLabel lindeks = new MandatoryTextFieldLabel("Indeks:");
+		JLabel ldatr = new MandatoryTextFieldLabel("Datum rođenja:");
+		JLabel ladr = new MandatoryTextFieldLabel("Adresa:");
+		JLabel ltel = new MandatoryTextFieldLabel("Broj telefona:");
+		JLabel lmail = new MandatoryTextFieldLabel("eMail:");
+		JLabel lgod = new MandatoryTextFieldLabel("Godina studija:");
+		JLabel lpros = new MandatoryTextFieldLabel("Prosek:");
+		JLabel ldatu = new MandatoryTextFieldLabel("Datum upisa:");
 		
 		GridBagConstraints gbclime = generateLabelGBC();
 		podaciSredina.add(lime, gbclime);
