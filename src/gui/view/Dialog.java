@@ -19,7 +19,7 @@ public class Dialog extends JDialog {
 	private int tfGBC = 0;
 	public JButton acceptButton;
 	public JButton cancelButton = new JButton("Odustanak");
-	public JPanel middleLabelsNFields = new JPanel();
+	public JPanel middlePanel = new JPanel();
 	public JPanel buttonPanel = new JPanel();
 	public JPanel buttons = new JPanel();
 	
@@ -49,8 +49,8 @@ public class Dialog extends JDialog {
 		
 		this.add(buttons, BorderLayout.SOUTH);
 		
-		middleLabelsNFields.setLayout(new GridBagLayout());
-		this.add(middleLabelsNFields, BorderLayout.CENTER);
+		middlePanel.setLayout(new GridBagLayout());
+		this.add(middlePanel, BorderLayout.CENTER);
 	}
 	
 	public GridBagConstraints generateLabelGBC(){
