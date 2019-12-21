@@ -7,18 +7,18 @@ import gui.controller.StudentController;
 import gui.model.Student;
 import persistence.Data;
 
-public class ObrisiStudenta extends JOptionPane{
+public class DeleteStudent extends JOptionPane{
 
 		private static final long serialVersionUID = 8706916055932739479L;
-		private static ObrisiStudenta instance = null;
+		private static DeleteStudent instance = null;
 		
-		public static ObrisiStudenta getNew(int idx)
+		public static DeleteStudent getNew(int idx)
 		{
-			instance = new ObrisiStudenta(idx);
+			instance = new DeleteStudent(idx);
 			return instance;
 		}
 		
-		private ObrisiStudenta(int idx)
+		private DeleteStudent(int idx)
 		{
 			String index = getIndex(idx);
 			String message = "Da li želite obrisati studenta sa indeksom ";

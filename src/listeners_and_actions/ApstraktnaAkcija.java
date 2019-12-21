@@ -12,7 +12,7 @@ import com.sun.glass.events.KeyEvent;
 import gui.view.CenterBox;
 import gui.view.AddStudent;
 import gui.view.MainWindow;
-import gui.view.ObrisiStudenta;
+import gui.view.DeleteStudent;
 import gui.view.ViewStudenti;
 
 public class ApstraktnaAkcija extends AbstractAction{
@@ -95,7 +95,7 @@ public class ApstraktnaAkcija extends AbstractAction{
 			if(CenterBox.getInstance().getSelectedIndex() == 0)
 			{
 				int idx = ViewStudenti.getInstance().getSelectedIndex();
-				if(idx != -1)		ObrisiStudenta.getNew(idx).setVisible(true);
+				if(idx != -1)		DeleteStudent.getNew(idx).setVisible(true);
 			}
 		}
 	}
