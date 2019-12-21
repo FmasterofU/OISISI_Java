@@ -14,6 +14,10 @@ public class TextField extends JTextField implements IHighlight {
 		super(i);
 		getDocument().addDocumentListener(new HighlightListener<TextField>(this));
 	}
+	public TextField(String i) {
+		super(i);
+		getDocument().addDocumentListener(new HighlightListener<TextField>(this));
+	}
 	
 	@Override
 	public void maybeHighlight() {

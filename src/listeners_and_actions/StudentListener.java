@@ -7,6 +7,8 @@ import java.awt.event.ItemListener;
 
 import javax.swing.JTextField;
 
+import gui.model.Student;
+
 public class StudentListener implements FocusListener, ItemListener{
 	
 	private static String data[] = {"", "", "", "", "", "", "", "", "1", ""};
@@ -31,6 +33,22 @@ public class StudentListener implements FocusListener, ItemListener{
 		else if(txt.getName().trim().equals("tfindeks"))		data[6] = (txt.getText().toUpperCase().trim());
 		else if(txt.getName().trim().equals("tfdatu"))			data[7] = (txt.getText().trim());
 		else if(txt.getName().trim().equals("tfpros"))			data[9] = (txt.getText().trim());
+	}
+	
+	public void setInitialData(Student s)
+	{
+		data[0] = s.getIme();
+		data[1] = s.getPrezime();
+		data[2] = s.getDatumRodjenja();
+		data[3] = s.getAdresa();
+		data[4] = s.getTelefon();
+		data[5] = s.geteMail();
+		data[6] = s.getBrIndeksa();
+		data[7] = s.getDatumUpisa();
+		Byte g = s.getGodStudija();
+		data[8] = g.toString();
+		Double p = s.getProsecnaOcena();
+		data[9] = p.toString();
 	}
 	
 	public static void ispis()

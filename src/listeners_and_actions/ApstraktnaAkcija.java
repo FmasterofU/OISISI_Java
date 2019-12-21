@@ -13,6 +13,7 @@ import gui.view.CenterBox;
 import gui.view.AddStudent;
 import gui.view.MainWindow;
 import gui.view.DeleteStudent;
+import gui.view.EditStudent;
 import gui.view.ViewStudenti;
 
 public class ApstraktnaAkcija extends AbstractAction{
@@ -96,6 +97,14 @@ public class ApstraktnaAkcija extends AbstractAction{
 			{
 				int idx = ViewStudenti.getInstance().getSelectedIndex();
 				if(idx != -1)		DeleteStudent.getNew(idx).setVisible(true);
+			}
+		}
+		if(name.equals("edit"))
+		{
+			if(CenterBox.getInstance().getSelectedIndex() == 0)
+			{
+				int idx = ViewStudenti.getInstance().getSelectedIndex();
+				if(idx != -1)		EditStudent.getInstance(idx).setVisible(true);
 			}
 		}
 	}
