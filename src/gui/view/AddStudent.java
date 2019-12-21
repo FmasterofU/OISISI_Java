@@ -33,7 +33,7 @@ public class AddStudent extends DialogAdd {
 
 	@SuppressWarnings("serial")
 	private AddStudent(){
-		super("Dodavanje studenta");
+		super("Dodavanje studenta", "Potvrda", "Odustanak");
 		
 		addWindowListener(new WindowAdapter() {
 			@Override

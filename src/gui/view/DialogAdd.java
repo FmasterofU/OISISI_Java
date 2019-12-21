@@ -17,12 +17,14 @@ import javax.swing.JPanel;
 public class DialogAdd extends JDialog {
 	public int labGBC = 0;
 	public int tfGBC = 0;
-	public JButton acceptButton = new JButton("Potvrda");
+	public JButton acceptButton;
 	public JButton cancelButton = new JButton("Odustanak");
 	public JPanel middleLabelsNFields = new JPanel();
 	
-	public DialogAdd(String name) {
-		super(MainWindow.getInstance(), name, true);
+	public DialogAdd(String windowName, String acceptButtonName, String cancelButtonName) {
+		super(MainWindow.getInstance(), windowName, true);
+		acceptButton = new JButton(acceptButtonName);
+		cancelButton = new JButton(cancelButtonName);
 		setSize(550, 550);
 		setLocationRelativeTo(MainWindow.getInstance());
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
