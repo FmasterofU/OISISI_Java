@@ -80,7 +80,7 @@ public class CheckValidation {
 		public static boolean checkMail(String mail)
 		{
 			mail = mail.trim();
-			return mail.matches("[a-zA-Z.0-9]+@[a-z0-9.]+.[a-z]{2,3}");
+			return mail.matches("([a-zA-Z0-9]+\\.?)*[a-zA-Z0-9]@[a-z0-9]+(\\.[a-z]{2,3})+");
 		}
 		
 		//@SuppressWarnings("finally")
