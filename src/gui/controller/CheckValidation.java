@@ -195,7 +195,7 @@ public class CheckValidation {
 			}
 			finally
 			{
-				ret[8] = true;
+				ret[7] = true;
 				return ret;
 			}
 		}
