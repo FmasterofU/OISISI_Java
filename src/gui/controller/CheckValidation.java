@@ -112,8 +112,12 @@ public class CheckValidation {
 		
 		public static boolean checkMail(String mail)
 		{
+			int num = 0;
 			mail = mail.trim();
-			if(!mail.contains("@"))
+			for(int i = 0; i < mail.length(); i++)
+				if(mail.charAt(i) == '@')
+					num++;
+			if(num != 1 || mail.lastIndexOf("@") == mail.length() - 1)
 				return false;
 			return true;
 		}
@@ -176,13 +180,21 @@ public class CheckValidation {
 			return true;
 		}
 		
+		public static boolean checkAdress(String adress)
+		{
+			adress = adress.trim();
+			if(adress.length() == 0)
+				return false;
+			return true;
+		}
+		
 		@SuppressWarnings({ "unused", "finally" })
 		public static boolean[] isStudentValid(String[] data)
 		{
 			if(data.length != 10)
-				return new boolean[data.length];
+				return new boolean[2];
 			
-			boolean[] ret = {checkName(data[0]), checkName(data[1]), checkDate(data[2]), checkPhoneNumber(data[4]), checkMail(data[5]), checkIndex(data[6]), checkDate(data[7]), false, checkProsek(data[9])};
+			boolean[] ret = {checkName(data[0]), checkName(data[1]), checkDate(data[2]), checkAdress(data[3]), checkPhoneNumber(data[4]), checkMail(data[5]), checkIndex(data[6]), checkDate(data[7]), false, checkProsek(data[9])};
 			
 			byte g;
 			try
@@ -195,7 +207,7 @@ public class CheckValidation {
 			}
 			finally
 			{
-				ret[7] = true;
+				ret[8] = true;
 				return ret;
 			}
 		}

@@ -7,8 +7,8 @@ import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.awt.event.WindowListener;
 
 import javax.swing.Box;
 import javax.swing.BoxLayout;
@@ -43,21 +43,14 @@ public class DodajStudenta extends JDialog{
 		return instance;
 	}
 
+	@SuppressWarnings("serial")
 	private DodajStudenta(){
 		super(MainWindow.getInstance(), "Dodavanje studenta", true);
 		setSize(550, 550);
 		setLocationRelativeTo(MainWindow.getInstance());
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		
-		addWindowListener(new WindowListener() {
-			@Override
-			public void windowOpened(WindowEvent e) {}
-			@Override
-			public void windowIconified(WindowEvent e) {}
-			@Override
-			public void windowDeiconified(WindowEvent e) {}
-			@Override
-			public void windowDeactivated(WindowEvent e) {}
+		addWindowListener(new WindowAdapter() {
 			@Override
 			public void windowClosing(WindowEvent e) {
 				instance.setVisible(false);
@@ -65,10 +58,6 @@ public class DodajStudenta extends JDialog{
 				listener.clearData();
 				System.gc();
 			}
-			@Override
-			public void windowClosed(WindowEvent e) {}
-			@Override
-			public void windowActivated(WindowEvent e) {}
 		});
 		
 		JPanel doleZaDugmice = new JPanel();
@@ -152,11 +141,10 @@ public class DodajStudenta extends JDialog{
 		GridBagConstraints gbclime = generateLabelGBC();
 		podaciSredina.add(lime, gbclime);
 		
-		@SuppressWarnings("serial")
 		JTextField tfime = new TextField(10) {
 			@Override
 			public void maybeHighlight() {
-				setBorder(((/*this.getText().trim().length() > 0  && */ CheckValidation.checkName(this.getText())) ? IHighlight.defaultBorder : IHighlight.highlightBorder));
+				setBorder(((CheckValidation.checkName(this.getText())) ? IHighlight.defaultBorder : IHighlight.highlightBorder));
 			}
 		};
 		tfime.setName("tfime");
@@ -169,7 +157,13 @@ public class DodajStudenta extends JDialog{
 		GridBagConstraints gbclprez = generateLabelGBC();
 		podaciSredina.add(lprez, gbclprez);
 		
-		JTextField tfprez = new JTextField(10);
+		JTextField tfprez = new TextField(10)
+		{
+			@Override
+			public void maybeHighlight() {
+				setBorder(((CheckValidation.checkName(this.getText())) ? IHighlight.defaultBorder : IHighlight.highlightBorder));
+			}
+		};
 		tfprez.setName("tfprez");
 		//tfprez.setBackground(Color.GRAY);
 		tfprez.addFocusListener(listener);
@@ -180,7 +174,13 @@ public class DodajStudenta extends JDialog{
 		GridBagConstraints gbclindeks = generateLabelGBC();
 		podaciSredina.add(lindeks, gbclindeks);
 		
-		JTextField tfindeks = new JTextField(10);
+		JTextField tfindeks = new TextField(10)
+		{
+			@Override
+			public void maybeHighlight() {
+				setBorder(((CheckValidation.checkIndex(this.getText())) ? IHighlight.defaultBorder : IHighlight.highlightBorder));
+			}
+		};
 		tfindeks.setName("tfindeks");
 		//tfindeks.setBackground(Color.GREEN);
 		tfindeks.addFocusListener(listener);
@@ -191,7 +191,13 @@ public class DodajStudenta extends JDialog{
 		GridBagConstraints gbcldatr = generateLabelGBC();
 		podaciSredina.add(ldatr, gbcldatr);
 		
-		JTextField tfdatr = new JTextField(10);
+		JTextField tfdatr = new TextField(10)
+		{
+			@Override
+			public void maybeHighlight() {
+				setBorder(((CheckValidation.checkDate(this.getText())) ? IHighlight.defaultBorder : IHighlight.highlightBorder));
+			}
+		};
 		tfdatr.setName("tfdatr");
 		//tfdatr.setBackground(Color.GRAY);
 		tfdatr.addFocusListener(listener);
@@ -202,7 +208,13 @@ public class DodajStudenta extends JDialog{
 		GridBagConstraints gbcladr = generateLabelGBC();
 		podaciSredina.add(ladr, gbcladr);
 		
-		JTextField tfadr = new JTextField(10);
+		JTextField tfadr = new TextField(10)
+		{
+			@Override
+			public void maybeHighlight() {
+				setBorder(((CheckValidation.checkAdress(this.getText())) ? IHighlight.defaultBorder : IHighlight.highlightBorder));
+			}
+		};
 		tfadr.setName("tfadr");
 		//tfadr.setBackground(Color.GRAY);
 		tfadr.addFocusListener(listener);
@@ -213,7 +225,13 @@ public class DodajStudenta extends JDialog{
 		GridBagConstraints gbcltel = generateLabelGBC();
 		podaciSredina.add(ltel, gbcltel);
 		
-		JTextField tftel = new JTextField(10);
+		JTextField tftel = new TextField(10)
+		{
+			@Override
+			public void maybeHighlight() {
+				setBorder(((CheckValidation.checkPhoneNumber(this.getText())) ? IHighlight.defaultBorder : IHighlight.highlightBorder));
+			}
+		};
 		tftel.setName("tftel");
 		//tftel.setBackground(Color.GRAY);
 		tftel.addFocusListener(listener);
@@ -224,7 +242,13 @@ public class DodajStudenta extends JDialog{
 		GridBagConstraints gbclmail = generateLabelGBC();
 		podaciSredina.add(lmail, gbclmail);
 		
-		JTextField tfmail = new JTextField(10);
+		JTextField tfmail = new TextField(10)
+		{
+			@Override
+			public void maybeHighlight() {
+				setBorder(((CheckValidation.checkMail(this.getText())) ? IHighlight.defaultBorder : IHighlight.highlightBorder));
+			}
+		};
 		tfmail.setName("tfmail");
 		//tfmail.setBackground(Color.GRAY);
 		tfmail.addFocusListener(listener);
@@ -245,7 +269,13 @@ public class DodajStudenta extends JDialog{
 		GridBagConstraints gbclpros = generateLabelGBC();
 		podaciSredina.add(lpros, gbclpros);
 		
-		JTextField tfpros = new JTextField(10);
+		JTextField tfpros = new TextField(10)
+		{
+			@Override
+			public void maybeHighlight() {
+				setBorder(((CheckValidation.checkProsek(this.getText())) ? IHighlight.defaultBorder : IHighlight.highlightBorder));
+			}
+		};
 		tfpros.setName("tfpros");
 		//tfpros.setBackground(Color.GRAY);
 		tfpros.addFocusListener(listener);
@@ -270,7 +300,13 @@ public class DodajStudenta extends JDialog{
 		GridBagConstraints gbcldatu = generateLabelGBC();
 		podaciSredina.add(ldatu, gbcldatu);
 		
-		JTextField tfdatu = new JTextField(10);
+		JTextField tfdatu = new TextField(10)
+		{
+			@Override
+			public void maybeHighlight() {
+				setBorder(((CheckValidation.checkDate(this.getText())) ? IHighlight.defaultBorder : IHighlight.highlightBorder));
+			}
+		};
 		tfdatu.setName("tfdatu");
 		//tfdatu.setBackground(Color.GRAY);
 		tfdatu.addFocusListener(listener);
