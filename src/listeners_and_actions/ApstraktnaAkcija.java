@@ -37,9 +37,9 @@ public class ApstraktnaAkcija extends AbstractAction{
 			case "close":
 				{
 					putValue(NAME, "Close");
-					putValue(MNEMONIC_KEY, KeyEvent.VK_C);
+					putValue(MNEMONIC_KEY, KeyEvent.VK_Q);
 					putValue(SMALL_ICON, new ImageIcon("Slike/close.png"));
-					putValue(ACCELERATOR_KEY, KeyStroke.getKeyStroke(KeyEvent.VK_C, InputEvent.CTRL_MASK));
+					putValue(ACCELERATOR_KEY, KeyStroke.getKeyStroke(KeyEvent.VK_Q, InputEvent.CTRL_MASK));
 					break;
 				}
 			case "edit":
@@ -70,9 +70,9 @@ public class ApstraktnaAkcija extends AbstractAction{
 			case "about":
 				{
 					putValue(NAME, "About");
-					putValue(MNEMONIC_KEY, KeyEvent.VK_A);
+					putValue(MNEMONIC_KEY, KeyEvent.VK_I);
 					putValue(SMALL_ICON, new ImageIcon("Slike/about.png"));
-					putValue(ACCELERATOR_KEY, KeyStroke.getKeyStroke(KeyEvent.VK_A, InputEvent.CTRL_MASK));
+					putValue(ACCELERATOR_KEY, KeyStroke.getKeyStroke(KeyEvent.VK_I, InputEvent.CTRL_MASK));
 					break;
 				}
 		}
