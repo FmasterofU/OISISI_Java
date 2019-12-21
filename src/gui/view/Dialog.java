@@ -18,7 +18,7 @@ public class Dialog extends JDialog {
 	private int labGBC = 0;
 	private int tfGBC = 0;
 	public JButton acceptButton;
-	public JButton cancelButton = new JButton("Odustanak");
+	public JButton cancelButton;
 	public JPanel middlePanel = new JPanel();
 	public JPanel buttonPanel = new JPanel();
 	public JPanel buttons = new JPanel();
