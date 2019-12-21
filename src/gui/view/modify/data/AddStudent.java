@@ -27,8 +27,8 @@ public class AddStudent extends Dialog {
 	
 	private static final long serialVersionUID = 5160676555418089845L;
 	private static AddStudent instance = null;
-	JRadioButton budget, samof;
-	StudentListener listener = new StudentListener();
+	private JRadioButton budget, samof;
+	private StudentListener listener = new StudentListener();
 	
 	public static AddStudent getInstance() {
 		if(instance==null) instance = new AddStudent();

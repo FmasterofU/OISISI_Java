@@ -74,7 +74,34 @@ public class CheckValidation {
 			//	ssX/YYYY or ssXX/YYYY or ssXXX/YYYY
 			
 			index = index.trim().toUpperCase();
+			if(!checkIndexYear(index))
+				return false;
 			return index.matches("[a-zA-Z]{2}[0-9]{1,3}/[0-9]{4}");
+		}
+		
+		@SuppressWarnings("finally")
+		public static boolean checkIndexYear(String index)
+		{
+			String s = "0";
+			Double year = 0.0;
+			if(index.length() > 4)
+			{
+				s = index.substring(index.length() - 4, index.length());
+			}
+			try
+			{
+				year = Double.parseDouble(s);
+			}
+			catch(Exception e)
+			{
+				return false;
+			}
+			finally
+			{
+				if(year <= 2019)
+					return true;
+				return false;
+			}
 		}
 		
 		public static boolean checkMail(String mail)
