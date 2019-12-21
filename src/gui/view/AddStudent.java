@@ -100,7 +100,7 @@ public class AddStudent extends Dialog {
 		JLabel ldatu = new MandatoryTextFieldLabel("Datum upisa:");
 		
 		GridBagConstraints gbclime = generateLabelGBC();
-		middleLabelsNFields.add(lime, gbclime);
+		middlePanel.add(lime, gbclime);
 		
 		JTextField tfime = new TextField(10) {
 			@Override
@@ -113,10 +113,10 @@ public class AddStudent extends Dialog {
 		tfime.addFocusListener(listener);
 		
 		GridBagConstraints gbctfime = generateTextFieldGBC();
-		middleLabelsNFields.add(tfime, gbctfime);
+		middlePanel.add(tfime, gbctfime);
 		
 		GridBagConstraints gbclprez = generateLabelGBC();
-		middleLabelsNFields.add(lprez, gbclprez);
+		middlePanel.add(lprez, gbclprez);
 		
 		JTextField tfprez = new TextField(10)
 		{
@@ -130,10 +130,10 @@ public class AddStudent extends Dialog {
 		tfprez.addFocusListener(listener);
 		
 		GridBagConstraints gbctfprez = generateTextFieldGBC();
-		middleLabelsNFields.add(tfprez, gbctfprez);
+		middlePanel.add(tfprez, gbctfprez);
 		
 		GridBagConstraints gbclindeks = generateLabelGBC();
-		middleLabelsNFields.add(lindeks, gbclindeks);
+		middlePanel.add(lindeks, gbclindeks);
 		
 		JTextField tfindeks = new TextField(10)
 		{
@@ -147,10 +147,10 @@ public class AddStudent extends Dialog {
 		tfindeks.addFocusListener(listener);
 		
 		GridBagConstraints gbctfindeks = generateTextFieldGBC();
-		middleLabelsNFields.add(tfindeks, gbctfindeks);
+		middlePanel.add(tfindeks, gbctfindeks);
 		
 		GridBagConstraints gbcldatr = generateLabelGBC();
-		middleLabelsNFields.add(ldatr, gbcldatr);
+		middlePanel.add(ldatr, gbcldatr);
 		
 		JTextField tfdatr = new TextField(10)
 		{
@@ -164,10 +164,10 @@ public class AddStudent extends Dialog {
 		tfdatr.addFocusListener(listener);
 		
 		GridBagConstraints gbctfdatr = generateTextFieldGBC();
-		middleLabelsNFields.add(tfdatr, gbctfdatr);
+		middlePanel.add(tfdatr, gbctfdatr);
 		
 		GridBagConstraints gbcladr = generateLabelGBC();
-		middleLabelsNFields.add(ladr, gbcladr);
+		middlePanel.add(ladr, gbcladr);
 		
 		JTextField tfadr = new TextField(10)
 		{
@@ -181,10 +181,10 @@ public class AddStudent extends Dialog {
 		tfadr.addFocusListener(listener);
 		
 		GridBagConstraints gbctfadr = generateTextFieldGBC();
-		middleLabelsNFields.add(tfadr, gbctfadr);
+		middlePanel.add(tfadr, gbctfadr);
 		
 		GridBagConstraints gbcltel = generateLabelGBC();
-		middleLabelsNFields.add(ltel, gbcltel);
+		middlePanel.add(ltel, gbcltel);
 		
 		JTextField tftel = new TextField(10)
 		{
@@ -198,10 +198,10 @@ public class AddStudent extends Dialog {
 		tftel.addFocusListener(listener);
 		
 		GridBagConstraints gbctftel = generateTextFieldGBC();
-		middleLabelsNFields.add(tftel, gbctftel);
+		middlePanel.add(tftel, gbctftel);
 		
 		GridBagConstraints gbclmail = generateLabelGBC();
-		middleLabelsNFields.add(lmail, gbclmail);
+		middlePanel.add(lmail, gbclmail);
 		
 		JTextField tfmail = new TextField(10)
 		{
@@ -215,20 +215,20 @@ public class AddStudent extends Dialog {
 		tfmail.addFocusListener(listener);
 		
 		GridBagConstraints gbctfmail = generateTextFieldGBC();
-		middleLabelsNFields.add(tfmail, gbctfmail);
+		middlePanel.add(tfmail, gbctfmail);
 		
 		GridBagConstraints gbclgod = generateLabelGBC();
-		middleLabelsNFields.add(lgod, gbclgod);
+		middlePanel.add(lgod, gbclgod);
 		
 		String[] cbItems = {"I(prva)", "II(druga)", "III(treća)", "IV(četvrta)"};
 		@SuppressWarnings({ "unchecked", "rawtypes" })
 		JComboBox cbgod = new JComboBox(cbItems);
 		cbgod.addItemListener(listener);
 		GridBagConstraints gbccb = generateTextFieldGBC();
-		middleLabelsNFields.add(cbgod, gbccb);
+		middlePanel.add(cbgod, gbccb);
 		
 		GridBagConstraints gbclpros = generateLabelGBC();
-		middleLabelsNFields.add(lpros, gbclpros);
+		middlePanel.add(lpros, gbclpros);
 		
 		JTextField tfpros = new TextField(10)
 		{
@@ -242,7 +242,7 @@ public class AddStudent extends Dialog {
 		tfpros.addFocusListener(listener);
 		
 		GridBagConstraints gbctfpros = generateTextFieldGBC();
-		middleLabelsNFields.add(tfpros, gbctfpros);
+		middlePanel.add(tfpros, gbctfpros);
 		
 		budget = new JRadioButton("Budžet");
 		budget.setName("Budžet");
@@ -254,12 +254,12 @@ public class AddStudent extends Dialog {
 		group.add(samof);
 		
 		GridBagConstraints gbcbudget = generateLabelGBC();
-		middleLabelsNFields.add(budget, gbcbudget);
+		middlePanel.add(budget, gbcbudget);
 		GridBagConstraints gbcsamof = generateTextFieldGBC();
-		middleLabelsNFields.add(samof, gbcsamof);
+		middlePanel.add(samof, gbcsamof);
 		
 		GridBagConstraints gbcldatu = generateLabelGBC();
-		middleLabelsNFields.add(ldatu, gbcldatu);
+		middlePanel.add(ldatu, gbcldatu);
 		
 		JTextField tfdatu = new TextField(10)
 		{
@@ -273,6 +273,6 @@ public class AddStudent extends Dialog {
 		tfdatu.addFocusListener(listener);
 		
 		GridBagConstraints gbctfdatu = generateTextFieldGBC();
-		middleLabelsNFields.add(tfdatu, gbctfdatu);
+		middlePanel.add(tfdatu, gbctfdatu);
 	}
 }
