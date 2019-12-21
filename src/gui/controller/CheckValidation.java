@@ -87,7 +87,7 @@ public class CheckValidation {
 		public static boolean checkProsek(String prosek)
 		{
 			prosek = prosek.trim();
-			return prosek.matches("(5)|(5.0)|(5.00)|([6-9].[0-9]{1,2})|(10)|(10.0)|(10.00)");
+			return prosek.matches("(5)|(5\\.0)|(5\\.00)|([6-9]\\.[0-9]{1,2})|(10)|(10\\.0)|(10\\.00)");
 		}
 		
 		public static boolean checkPhoneNumber(String num)
