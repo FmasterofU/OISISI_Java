@@ -10,7 +10,7 @@ import javax.swing.KeyStroke;
 import com.sun.glass.events.KeyEvent;
 
 import gui.view.CenterBox;
-import gui.view.DodajStudenta;
+import gui.view.AddStudent;
 import gui.view.MainWindow;
 import gui.view.ObrisiStudenta;
 import gui.view.ViewStudenti;
@@ -86,7 +86,7 @@ public class ApstraktnaAkcija extends AbstractAction{
 		{
 			if(CenterBox.getInstance().getSelectedIndex() == 0)
 			{
-				DodajStudenta.getInstance().setVisible(true);
+				AddStudent.getInstance().setVisible(true);
 			}
 
 		}
