@@ -114,4 +114,10 @@ public class ListaProfesora implements Serializable, IAbstractTableModel {
 		return kolone.get(col);
 	}
 
+	public ArrayList<String> getUniqueProfList() {
+		ArrayList<String> ret = new ArrayList<String>();
+		for(Profesor p : profesori) ret.add(p.getIme()+ " "+ p.getPrezime()+" PK"+p.getBrojLK().toString()); 
+		return ret;
+	}
+
 }

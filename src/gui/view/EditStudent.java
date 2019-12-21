@@ -117,7 +117,7 @@ public class EditStudent extends Dialog{
 		JTextField tfime = new TextField(ime) {
 			@Override
 			public void maybeHighlight() {
-				setBorder(((CheckValidation.checkName(this.getText())) ? IHighlight.defaultBorder : IHighlight.highlightBorder));
+				setBorder(((CheckValidation.checkName(this.getText(),0)) ? IHighlight.defaultBorder : IHighlight.highlightBorder));
 			}
 		};
 		tfime.setName("tfime");
@@ -134,7 +134,7 @@ public class EditStudent extends Dialog{
 		{
 			@Override
 			public void maybeHighlight() {
-				setBorder(((CheckValidation.checkName(this.getText())) ? IHighlight.defaultBorder : IHighlight.highlightBorder));
+				setBorder(((CheckValidation.checkName(this.getText(),0)) ? IHighlight.defaultBorder : IHighlight.highlightBorder));
 			}
 		};
 		tfprez.setName("tfprez");

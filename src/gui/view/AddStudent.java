@@ -105,7 +105,7 @@ public class AddStudent extends Dialog {
 		JTextField tfime = new TextField(10) {
 			@Override
 			public void maybeHighlight() {
-				setBorder(((CheckValidation.checkName(this.getText())) ? IHighlight.defaultBorder : IHighlight.highlightBorder));
+				setBorder(((CheckValidation.checkName(this.getText(),0)) ? IHighlight.defaultBorder : IHighlight.highlightBorder));
 			}
 		};
 		tfime.setName("tfime");
@@ -122,7 +122,7 @@ public class AddStudent extends Dialog {
 		{
 			@Override
 			public void maybeHighlight() {
-				setBorder(((CheckValidation.checkName(this.getText())) ? IHighlight.defaultBorder : IHighlight.highlightBorder));
+				setBorder(((CheckValidation.checkName(this.getText(),0)) ? IHighlight.defaultBorder : IHighlight.highlightBorder));
 			}
 		};
 		tfprez.setName("tfprez");

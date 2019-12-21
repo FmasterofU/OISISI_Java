@@ -10,6 +10,7 @@ import javax.swing.KeyStroke;
 import com.sun.glass.events.KeyEvent;
 
 import gui.view.CenterBox;
+import gui.view.AddPredmet;
 import gui.view.AddStudent;
 import gui.view.MainWindow;
 import gui.view.DeleteStudent;
@@ -86,9 +87,9 @@ public class ApstraktnaAkcija extends AbstractAction{
 		if(name.equals("new"))
 		{
 			if(CenterBox.getInstance().getSelectedIndex() == 0)
-			{
 				AddStudent.getInstance().setVisible(true);
-			}
+			else if(CenterBox.getInstance().getSelectedIndex() == 2)
+				AddPredmet.getInstance().setVisible(true);
 
 		}
 		if(name.equals("delete"))

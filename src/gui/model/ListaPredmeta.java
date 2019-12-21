@@ -104,4 +104,11 @@ public class ListaPredmeta implements Serializable, IAbstractTableModel {
 	public String getColumnName(int col) {
 		return kolone.get(col);
 	}
+
+	public boolean predmetCodeExists(String text) {
+		for(Predmet p : predmeti)
+			if(p.getSifra().equals(text))
+				return true;
+		return false;
+	}
 }
