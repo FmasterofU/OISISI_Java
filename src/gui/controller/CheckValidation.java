@@ -159,7 +159,7 @@ public class CheckValidation {
 				case 7:
 				case 8:
 				case 10:
-				case 11:
+				case 12:
 					return true;
 				default:
 					return false;
