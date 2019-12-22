@@ -67,7 +67,9 @@ public class CheckValidation {
 			if((god = Integer.parseInt(godina)) > 2019)
 				return false;
 			
-			if((!isLeapYear(god)) && (m == 3) && (d == 29))
+			if(m==2 && d > 29)
+				return false;
+			if((!isLeapYear(god)) && (m == 2) && (d >= 29))
 				return false;
 			
 			if(date.charAt(10) != '.')
