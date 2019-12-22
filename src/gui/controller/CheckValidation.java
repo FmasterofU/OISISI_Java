@@ -49,6 +49,9 @@ public class CheckValidation {
 			if((m = Integer.parseInt(mesec)) > 12)
 				return false;
 			
+			if(!doesHave31Days(m) && (d == 31))
+				return false;
+			
 			if(date.charAt(5) != '.')
 				return false;
 			else if(date.charAt(6) < '0' || date.charAt(6) > '2')
@@ -62,6 +65,9 @@ public class CheckValidation {
 			String godina = date.substring(6, 10);
 			int god;
 			if((god = Integer.parseInt(godina)) > 2019)
+				return false;
+			
+			if((!isLeapYear(god)) && (m == 3) && (d == 29))
 				return false;
 			
 			if(date.charAt(10) != '.')
@@ -131,6 +137,33 @@ public class CheckValidation {
 			if(adress.length() == 0)
 				return false;
 			return true;
+		}
+		
+		public static boolean isLeapYear(int god)
+		{
+			if((god % 4 == 0) && (god % 100 != 0))
+				return true;
+			else if((god % 4 == 0) && (god % 100 == 0) && (god % 400 == 0))
+				return true;
+			else
+				return false;
+		}
+		
+		public static boolean doesHave31Days(int mes)
+		{
+			switch(mes)
+			{
+				case 1:
+				case 3:
+				case 5:
+				case 7:
+				case 8:
+				case 10:
+				case 11:
+					return true;
+				default:
+					return false;
+			}
 		}
 		
 		@SuppressWarnings({ "unused", "finally" })
