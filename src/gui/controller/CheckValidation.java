@@ -127,10 +127,12 @@ public class CheckValidation {
 		
 		public static boolean checkPhoneNumber(String num)
 		{
-			//	nnn/nnn-nnn or nnn/nnn-nnnn or nnn/nnn-nnnnn
+			//	0nn/nnn-nnn or 0nn/nnn-nnnn or 0nn/nnn-nnnnn for domestic numbers
+			//    +MMMnn/nnn-nnn or +MMMnn/nnn-nnnn or +MMMnn/nnn-nnnnn for foreign numbers
 			
 			num = num.trim();
-			return num.matches("0[1-9][0-9][/][0-9]{3}-[0-9]{3,5}");
+			//return num.matches("0[1-9][0-9][/][0-9]{3}-[0-9]{3,5}");
+			return num.matches("(\\+[1-9][0-9]{2}[1-9][0-9][/][0-9]{3}-[0-9]{3,5})|(0[1-9][0-9][/][0-9]{3}-[0-9]{3,5})");
 		}
 		
 		public static boolean checkAdress(String adress)
