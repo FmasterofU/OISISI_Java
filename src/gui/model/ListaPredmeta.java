@@ -4,8 +4,6 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.LinkedList;
 
-import persistence.Data;
-
 public class ListaPredmeta implements Serializable, IAbstractTableModel {
 
 	private static final long serialVersionUID = -8045180299982898373L;
@@ -27,7 +25,7 @@ public class ListaPredmeta implements Serializable, IAbstractTableModel {
 		this.setPredmeti(new LinkedList<Predmet>());
 	}
 	
-	public static ListaPredmeta getInstance() {
+	protected static ListaPredmeta getInstance() {
 		Data.checkStackTrace();
 		if(instance==null) instance = new ListaPredmeta();
 		return instance;

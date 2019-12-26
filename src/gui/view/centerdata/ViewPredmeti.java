@@ -2,8 +2,8 @@ package gui.view.centerdata;
 
 import java.awt.Component;
 
+import gui.model.Data;
 import gui.model.ListaPredmeta;
-import persistence.Data;
 
 @SuppressWarnings("serial")
 public class ViewPredmeti extends ViewTableCenter {

@@ -15,6 +15,7 @@ import javax.swing.UIManager;
 
 import gui.controller.CheckValidation;
 import gui.controller.PredmetController;
+import gui.model.Data;
 import gui.model.Predmet;
 import gui.model.Profesor;
 import gui.model.Student;
@@ -23,7 +24,6 @@ import gui.view.modify.IHighlight;
 import gui.view.modify.MandatoryTextFieldLabel;
 import gui.view.modify.TextField;
 import listeners_and_actions.PredmetListener;
-import persistence.Data;
 
 @SuppressWarnings("serial")
 public class AddPredmet extends Dialog {

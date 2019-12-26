@@ -1,6 +1,6 @@
 package gui.controller;
 
-import persistence.Data;
+import gui.model.Data;
 
 public class CheckValidation {
 	
@@ -21,7 +21,6 @@ public class CheckValidation {
 			}
 		}
 		
-		@SuppressWarnings("unused")
 		public static boolean checkDate(String date)
 		{
 			//dd.mm.yyyy.

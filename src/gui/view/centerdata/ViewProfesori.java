@@ -2,8 +2,8 @@ package gui.view.centerdata;
 
 import java.awt.Component;
 
+import gui.model.Data;
 import gui.model.ListaProfesora;
-import persistence.Data;
 
 @SuppressWarnings("serial")
 class ViewProfesori extends ViewTableCenter {

@@ -3,8 +3,8 @@ package gui.view.centerdata;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
+import gui.model.Data;
 import gui.model.ListaStudenata;
-import persistence.Data;
 
 public class ViewStudenti extends ViewTableCenter {
 	

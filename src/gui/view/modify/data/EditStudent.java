@@ -16,6 +16,7 @@ import javax.swing.UIManager;
 
 import gui.controller.CheckValidation;
 import gui.controller.StudentController;
+import gui.model.Data;
 import gui.model.NacinFinansiranja;
 import gui.model.Student;
 import gui.view.modify.Dialog;
@@ -23,7 +24,6 @@ import gui.view.modify.IHighlight;
 import gui.view.modify.MandatoryTextFieldLabel;
 import gui.view.modify.TextField;
 import listeners_and_actions.StudentListener;
-import persistence.Data;
 
 public class EditStudent extends Dialog{
 

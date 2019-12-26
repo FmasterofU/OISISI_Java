@@ -1,8 +1,8 @@
 package gui.controller;
 
+import gui.model.Data;
 import gui.model.Student;
 import gui.view.centerdata.ViewStudenti;
-import persistence.Data;
 
 public class StudentController {
 	

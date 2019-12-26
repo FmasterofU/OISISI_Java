@@ -1,8 +1,8 @@
 package gui;
 
+import gui.model.Data;
 import gui.model.Profesor;
 import gui.view.MainWindow;
-import persistence.Data;
 
 public class Main {
 

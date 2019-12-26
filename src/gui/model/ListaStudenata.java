@@ -3,8 +3,6 @@ package gui.model;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-import persistence.Data;
-
 public class ListaStudenata implements Serializable, IAbstractTableModel {
 	
 	private static final long serialVersionUID = 3654331325580773015L;
@@ -27,7 +25,7 @@ public class ListaStudenata implements Serializable, IAbstractTableModel {
 		kolone.add("Datum upisa");
 	}
 	
-	public static ListaStudenata getInstance()
+	protected static ListaStudenata getInstance()
 	{
 		Data.checkStackTrace();
 		if(instance == null)

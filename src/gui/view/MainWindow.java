@@ -11,8 +11,8 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.UIManager;
 
+import gui.model.Data;
 import gui.view.centerdata.CenterBox;
-import persistence.Data;
 
 @SuppressWarnings("serial")
 public class MainWindow  extends JFrame {

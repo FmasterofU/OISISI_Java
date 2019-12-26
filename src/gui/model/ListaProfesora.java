@@ -4,8 +4,6 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.LinkedList;
 
-import persistence.Data;
-
 public class ListaProfesora implements Serializable, IAbstractTableModel {
 
 	/**
@@ -35,7 +33,7 @@ public class ListaProfesora implements Serializable, IAbstractTableModel {
 		this.profesori = new LinkedList<Profesor>();
 	}
 	
-	public static ListaProfesora getInstance() {
+	protected static ListaProfesora getInstance() {
 		Data.checkStackTrace();
 		if(instance==null) instance = new ListaProfesora();
 		return instance;
