@@ -1,11 +1,14 @@
 package listeners_and_actions;
 
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
+
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 
 import gui.view.modify.IHighlight;
 
-public class HighlightListener<T extends IHighlight> implements DocumentListener {
+public class HighlightListener<T extends IHighlight> implements DocumentListener, ItemListener {
 
 	T instance=null;
 	public HighlightListener(T o) {
@@ -30,6 +33,12 @@ public class HighlightListener<T extends IHighlight> implements DocumentListener
 		instance.setBorder(IHighlight.defaultBorder);
 		instance.maybeHighlight();
 		
+	}
+	
+	@Override
+	public void itemStateChanged(ItemEvent e) {
+		instance.setBorder(IHighlight.defaultBorder);
+		instance.maybeHighlight();
 	}
 
 }

@@ -7,7 +7,6 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 
-import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
@@ -19,6 +18,7 @@ import gui.model.Data;
 import gui.model.Predmet;
 import gui.model.Profesor;
 import gui.model.Student;
+import gui.view.modify.ComboBox;
 import gui.view.modify.Dialog;
 import gui.view.modify.IHighlight;
 import gui.view.modify.MandatoryTextFieldLabel;
@@ -91,10 +91,9 @@ public class AddPredmet extends Dialog {
 		
 		JLabel lSifra = new MandatoryTextFieldLabel("Šifra:");
 		JLabel lNaziv = new MandatoryTextFieldLabel("Naziv:");
-		JLabel lSemestar = new MandatoryTextFieldLabel("Semestar:");
-		JLabel lGodina = new MandatoryTextFieldLabel("Godina:");
-		JLabel lProfesor = new MandatoryTextFieldLabel("Profesor:");
-		JLabel lStudenti = new MandatoryTextFieldLabel("Studenti:");
+		JLabel lSemestar = new JLabel("Semestar:");
+		JLabel lGodina = new JLabel("Godina:");
+		JLabel lProfesor = new JLabel("Profesor:");
 		
 
 		GridBagConstraints gbclSifra = generateLabelGBC();
@@ -136,7 +135,7 @@ public class AddPredmet extends Dialog {
 		
 		String[] cbItems1 = {"I (prvi)", "II (drugi)", "III (treći)", "IV (četvrti)", "V (peti)", "VI (šesti)", "VII (sedmi)", "VIII (osmi)"};
 		@SuppressWarnings({ "unchecked", "rawtypes" })
-		JComboBox cbSemestar = new JComboBox(cbItems1);
+		ComboBox cbSemestar = new ComboBox(cbItems1);
 		cbSemestar.addItemListener(listener);
 		GridBagConstraints gbccb1 = generateTextFieldGBC();
 		middlePanel.add(cbSemestar, gbccb1);
@@ -147,7 +146,7 @@ public class AddPredmet extends Dialog {
 		
 		String[] cbItems2 = {"I (prva)", "II (druga)", "III (treća)", "IV (četvrta)"};
 		@SuppressWarnings({ "unchecked", "rawtypes" })
-		JComboBox cbGodina = new JComboBox(cbItems2);
+		ComboBox cbGodina = new ComboBox(cbItems2);
 		cbGodina.addItemListener(listener);
 		GridBagConstraints gbccb2 = generateTextFieldGBC();
 		middlePanel.add(cbGodina, gbccb2);
@@ -157,13 +156,10 @@ public class AddPredmet extends Dialog {
 		
 		ArrayList<String> cbItems3 = Data.data.listaProfesora.getUniqueProfList();
 		@SuppressWarnings({ "unchecked", "rawtypes" })
-		JComboBox cbProfesor = new JComboBox(cbItems3.toArray());
+		ComboBox cbProfesor = new ComboBox(cbItems3.toArray());
 		cbProfesor.addItemListener(listener);
 		GridBagConstraints gbccb3 = generateTextFieldGBC();
 		middlePanel.add(cbProfesor, gbccb3);
-		
-		GridBagConstraints gbclStudenti = generateLabelGBC();
-		middlePanel.add(lStudenti, gbclStudenti);
 	}
 
 }

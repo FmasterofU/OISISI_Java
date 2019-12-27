@@ -7,7 +7,6 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
 import javax.swing.ButtonGroup;
-import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JRadioButton;
@@ -17,6 +16,7 @@ import gui.controller.StudentController;
 import gui.model.Data;
 import gui.model.NacinFinansiranja;
 import gui.model.Student;
+import gui.view.modify.ComboBox;
 import gui.view.modify.Dialog;
 import gui.view.modify.IHighlight;
 import gui.view.modify.MandatoryTextFieldLabel;
@@ -105,7 +105,7 @@ public class EditStudent extends Dialog{
 		JLabel ladr = new MandatoryTextFieldLabel("Adresa:");
 		JLabel ltel = new MandatoryTextFieldLabel("Broj telefona:");
 		JLabel lmail = new MandatoryTextFieldLabel("eMail:");
-		JLabel lgod = new MandatoryTextFieldLabel("Godina studija:");
+		JLabel lgod = new JLabel("Godina studija:");
 		JLabel lpros = new MandatoryTextFieldLabel("Prosek:");
 		JLabel ldatu = new MandatoryTextFieldLabel("Datum upisa:");
 		
@@ -226,11 +226,13 @@ public class EditStudent extends Dialog{
 		middlePanel.add(lgod, gbclgod);
 		
 		god = old.getGodStudija();
-		String first = getGodina(god);
-		String[] others = getOthersGod(god);
-		String[] cbItems = {first, others[0], others[1], others[2]};
+		String[] cbItems = {"I(prva)", "II(druga)", "III(treća)", "IV(četvrta)"};
+		//String first = getGodina(god);
+		//String[] others = getOthersGod(god);
+		//String[] cbItems = {first, others[0], others[1], others[2]};
 		@SuppressWarnings({ "unchecked", "rawtypes" })
-		JComboBox cbgod = new JComboBox(cbItems);
+		ComboBox cbgod = new ComboBox(cbItems);
+		cbgod.setSelectedIndex(god-1);
 		cbgod.addItemListener(listener);
 		GridBagConstraints gbccb = generateTextFieldGBC();
 		middlePanel.add(cbgod, gbccb);

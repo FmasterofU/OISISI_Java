@@ -206,4 +206,8 @@ public class CheckValidation {
 			return text.matches("[1-8]");
 		}
 
+		public static boolean checkSelection(Object selectedItem) {
+			return selectedItem != null ? true : false;
+		}
+
 }

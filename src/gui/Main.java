@@ -1,9 +1,12 @@
 package gui;
 
 import gui.model.Data;
+import gui.model.Predmet;
 import gui.model.Profesor;
+import gui.model.Student;
 import gui.view.MainWindow;
 
+@SuppressWarnings("unused")
 public class Main {
 
 	public static void main(String[] args) {
