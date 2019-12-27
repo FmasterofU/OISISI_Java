@@ -12,8 +12,6 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
-import javax.swing.UIManager;
-
 import gui.controller.CheckValidation;
 import gui.controller.StudentController;
 import gui.model.Data;
@@ -85,10 +83,7 @@ public class EditStudent extends Dialog{
 					System.gc();
 				}
 				else
-				{
-					UIManager.put("OptionPane.cancelButtonText", "Dobro");
-					JOptionPane.showConfirmDialog(instance, "Pogrešni podaci!", "Grеška", JOptionPane.OK_CANCEL_OPTION, JOptionPane.ERROR_MESSAGE);
-				}
+					JOptionPane.showConfirmDialog(instance, "Uneseni su neispravni podaci!", "Grеška", JOptionPane.DEFAULT_OPTION, JOptionPane.ERROR_MESSAGE);
 			}
 		});
 		

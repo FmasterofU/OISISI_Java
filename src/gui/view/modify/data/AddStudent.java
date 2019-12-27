@@ -12,7 +12,6 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
-import javax.swing.UIManager;
 import gui.controller.CheckValidation;
 import gui.controller.StudentController;
 import gui.model.NacinFinansiranja;
@@ -62,8 +61,7 @@ public class AddStudent extends Dialog {
 						check=false;
 						break;
 					}
-				if(check)
-				{
+				if(check){
 					if(budget.isSelected())	nf = NacinFinansiranja.BUDŽET;
 					else		nf = NacinFinansiranja.SAMOFINANSIRANJE;
 					Student novi = new Student(s[0], s[1], s[2], s[3], s[4], s[5], s[6], s[7], Byte.parseByte(s[8]), nf, Double.parseDouble(s[9]));
@@ -72,12 +70,8 @@ public class AddStudent extends Dialog {
 					instance = null;
 					listener.clearData();
 					System.gc();
-				}
-				else
-				{
-					UIManager.put("OptionPane.cancelButtonText", "Dobro");
-					JOptionPane.showConfirmDialog(instance, "Pogrešni podaci!", "Grеška", JOptionPane.OK_CANCEL_OPTION, JOptionPane.ERROR_MESSAGE);
-				}
+				} else
+					JOptionPane.showConfirmDialog(instance, "Uneseni su neispravni podaci!", "Grеška", JOptionPane.DEFAULT_OPTION, JOptionPane.ERROR_MESSAGE);
 			}
 		});
 		
