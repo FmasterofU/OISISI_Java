@@ -22,14 +22,17 @@ public class DeleteStudent extends JOptionPane{
 		private DeleteStudent(int idx)
 		{
 			String index = getIndex(idx);
-			String message = "Da li želite obrisati studenta sa indeksom ";
-			message += index + "?";
-			UIManager.put("OptionPane.yesButtonText", "Naravno");
-			UIManager.put("OptionPane.noButtonText", "Nikako");
-			int type = JOptionPane.showConfirmDialog(MainWindow.getInstance(), message, "Brisanje studenta", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
-			if(type == JOptionPane.YES_OPTION)
+			if(!index.equals(""))
 			{
-				StudentController.getInstance().izbrisiStudenta(index);
+				String message = "Da li želite obrisati studenta sa indeksom ";
+				message += index + "?";
+				UIManager.put("OptionPane.yesButtonText", "Naravno");
+				UIManager.put("OptionPane.noButtonText", "Nikako");
+				int type = JOptionPane.showConfirmDialog(MainWindow.getInstance(), message, "Brisanje studenta", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+				if(type == JOptionPane.YES_OPTION)
+				{
+					StudentController.getInstance().izbrisiStudenta(index);
+				}
 			}
 		}
 		

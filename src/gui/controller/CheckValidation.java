@@ -36,6 +36,8 @@ public class CheckValidation {
 			int d;
 			if((d = Integer.parseInt(dan)) > 31)
 				return false;
+			if(d == 0)
+				return false;
 			
 			if(date.charAt(2) != '.')
 				return false;
@@ -46,6 +48,8 @@ public class CheckValidation {
 			String mesec = date.substring(3, 5);
 			int m;
 			if((m = Integer.parseInt(mesec)) > 12)
+				return false;
+			if(m == 0)
 				return false;
 			
 			if(!doesHave31Days(m) && (d == 31))
@@ -65,6 +69,8 @@ public class CheckValidation {
 			int god;
 			if((god = Integer.parseInt(godina)) > 2019)
 				return false;
+			if(god < 1930)
+				return false;
 			
 			if(m==2 && d > 29)
 				return false;
@@ -83,6 +89,7 @@ public class CheckValidation {
 			index = index.trim().toUpperCase();
 			if(!checkIndexYear(index))
 				return false;
+			if(Data.data.listaStudenata.indexExists(index))		return false;
 			return index.matches("[a-zA-Z]{2}[0-9]{1,3}/[0-9]{4}");
 		}
 		
