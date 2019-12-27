@@ -175,7 +175,7 @@ public class CheckValidation {
 			if(data.length != 10)
 				return new boolean[2];
 			
-			boolean[] ret = {checkName(data[0],0), checkName(data[1],0), checkDate(data[2]), checkAdress(data[3]), checkPhoneNumber(data[4]), checkMail(data[5]), checkIndex(data[6]), checkDate(data[7]), false, checkProsek(data[9])};
+			boolean[] ret = {checkName(data[0],0), checkName(data[1],0), checkDate(data[2]), checkAdress(data[3]), checkPhoneNumber(data[4]), checkMail(data[5]), checkIndex(data[6]), checkDate(data[7]), true, checkProsek(data[9])};
 			
 			byte g;
 			try
@@ -184,11 +184,11 @@ public class CheckValidation {
 			}
 			catch(Exception e)
 			{
+				ret[8] = false;
 				return ret;
 			}
 			finally
 			{
-				ret[8] = true;
 				return ret;
 			}
 		}
