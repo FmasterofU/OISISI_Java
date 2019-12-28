@@ -35,6 +35,7 @@ class StatusBar extends JPanel implements ActionListener{
 	    timer.start();
 	    this.add(date);
 	    this.setBackground(Color.LIGHT_GRAY);
+	    this.setSize(100, 100);
 	}
 	@Override
 	public void actionPerformed(ActionEvent e) {

@@ -1,10 +1,10 @@
 package gui.view;
 
+import java.awt.BorderLayout;
 import java.awt.Toolkit;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
-import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -34,11 +34,11 @@ public class MainWindow  extends JFrame {
 				}
 			});
 		JPanel defaultPanel = new JPanel();
-		BoxLayout vBox = new BoxLayout(defaultPanel, BoxLayout.Y_AXIS);
-		defaultPanel.setLayout(vBox);
-		defaultPanel.add(ToolBar.getInstance());
-		defaultPanel.add(CenterBox.getInstance());
-		defaultPanel.add(StatusBar.getInstance());
+		//BoxLayout vBox = new BoxLayout(defaultPanel, BoxLayout.Y_AXIS);
+		defaultPanel.setLayout(new BorderLayout());
+		defaultPanel.add(ToolBar.getInstance(), BorderLayout.NORTH);
+		defaultPanel.add(CenterBox.getInstance(),BorderLayout.CENTER);
+		defaultPanel.add(StatusBar.getInstance(), BorderLayout.SOUTH);
 		add(defaultPanel);
 		//pack();
 	}
