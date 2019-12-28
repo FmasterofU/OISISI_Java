@@ -21,7 +21,7 @@ class StatusBar extends JPanel implements ActionListener{
 		return instance;
 	}
 	private JLabel date = new JLabel();
-	SimpleDateFormat dateFormat = new SimpleDateFormat( "hh:mm:ss  dd.MM.yyyy.  " );
+	SimpleDateFormat dateFormat = new SimpleDateFormat( "E  HH:mm:ss  dd.MM.yyyy.  " );
 	private StatusBar() 
 	{
 		JLabel name = new JLabel("  Studentska Služba");
