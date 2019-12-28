@@ -65,7 +65,7 @@ public class EditStudent extends Dialog{
 				String[] s = listener.getData();
 				NacinFinansiranja nf;
 				boolean check = true;
-				boolean[] result = CheckValidation.isStudentValid(s);
+				boolean[] result = CheckValidation.isStudentValid(s, true);
 				for(boolean b : result)
 					if(b==false) {
 						check=false;
