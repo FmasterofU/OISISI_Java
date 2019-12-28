@@ -13,6 +13,7 @@ import gui.view.MainWindow;
 import gui.view.centerdata.CenterBox;
 import gui.view.centerdata.ViewStudenti;
 import gui.view.modify.data.AddPredmet;
+import gui.view.modify.data.AddProfesor;
 import gui.view.modify.data.AddStudent;
 import gui.view.modify.data.DeleteStudent;
 import gui.view.modify.data.EditStudent;
@@ -88,6 +89,8 @@ public class ApstraktnaAkcija extends AbstractAction{
 		{
 			if(CenterBox.getInstance().getSelectedIndex() == 0)
 				AddStudent.getInstance().setVisible(true);
+			else if(CenterBox.getInstance().getSelectedIndex() == 1)
+				AddProfesor.getInstance().setVisible(true);
 			else if(CenterBox.getInstance().getSelectedIndex() == 2)
 				AddPredmet.getInstance().setVisible(true);
 

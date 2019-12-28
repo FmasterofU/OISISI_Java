@@ -209,5 +209,29 @@ public class CheckValidation {
 		public static boolean checkSelection(Object selectedItem) {
 			return selectedItem != null ? true : false;
 		}
+		
+		public static boolean checkLK(String lk)
+		{
+			return lk.matches("[0-9]{9}");
+		}
+		
+		public static boolean checkTitula(String t)
+		{
+			return t.matches("[a-zA-Z]+");
+		}
+		
+		public static boolean checkZvanje(String z)
+		{
+			return z.matches("[a-zA-Z]+");
+		}
+		
+		public static boolean[] isProfesorValid(String[] data)
+		{
+			if(data.length != 10)
+				return new boolean[2];
+			
+			boolean[] ret = {checkName(data[0],0), checkName(data[1],0), checkDate(data[2]), checkAdress(data[3]), checkPhoneNumber(data[4]), checkMail(data[5]), checkAdress(data[6]), checkLK(data[7]), checkTitula(data[8]), checkZvanje(data[9])};
+			return ret;
+		}
 
 }

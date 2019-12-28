@@ -101,7 +101,8 @@ public class ListaProfesora implements Serializable, IAbstractTableModel {
 			case 9:
 				return p.getZvanje();
 			case 10:
-				return p.getPredajePredmete();
+				//return p.getPredajePredmete();
+				return "Will be added";
 			default:
 				return null;
 		}
