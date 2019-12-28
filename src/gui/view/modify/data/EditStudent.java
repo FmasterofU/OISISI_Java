@@ -299,7 +299,7 @@ public class EditStudent extends Dialog{
 		}
 		return null;
 	}
-	
+	/*
 	private String getGodina(byte g)
 	{
 		if(g == 1)		return "I(prva)";
@@ -336,5 +336,5 @@ public class EditStudent extends Dialog{
 			ret[2] =  "III(treća)";
 		}
 		return ret;
-	}
+	}*/
 }
