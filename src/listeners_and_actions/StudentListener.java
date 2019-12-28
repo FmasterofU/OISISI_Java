@@ -14,15 +14,11 @@ public class StudentListener implements FocusListener, ItemListener{
 	private static String data[] = {"", "", "", "", "", "", "", "", "", ""};
 
 	@Override
-	public void focusGained(FocusEvent e) {
-//		JTextField txt = (JTextField) e.getComponent();
-//		txt.setBackground(Color.WHITE);	
-	}
+	public void focusGained(FocusEvent e) {}
 
 	@Override
 	public void focusLost(FocusEvent e) {
 		JTextField txt = (JTextField) e.getComponent();
-//		txt.setBackground(Color.GRAY);
 		
 		if(txt.getName().trim().equals("tfime"))					data[0] = (txt.getText().trim());
 		else if(txt.getName().trim().equals("tfprez"))			data[1] = (txt.getText().trim());	

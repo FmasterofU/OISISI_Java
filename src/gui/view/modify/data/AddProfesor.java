@@ -123,6 +123,7 @@ public class AddProfesor extends Dialog{
 		GridBagConstraints gbctfprez = generateTextFieldGBC();
 		middlePanel.add(tfprez, gbctfprez);
 		
+		ldatr.setToolTipText("dd.MM.yyyy.");
 		GridBagConstraints gbcldatr = generateLabelGBC();
 		middlePanel.add(ldatr, gbcldatr);
 		
@@ -251,5 +252,4 @@ public class AddProfesor extends Dialog{
 		GridBagConstraints gbctfzvanje = generateTextFieldGBC();
 		middlePanel.add(tfzvanje, gbctfzvanje);
 	}
-
 }

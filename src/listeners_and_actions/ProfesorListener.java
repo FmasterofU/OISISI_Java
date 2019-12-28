@@ -10,8 +10,7 @@ public class ProfesorListener implements FocusListener{
 	String data[] = {"", "", "", "", "", "", "", "", "", ""};
 
 	@Override
-	public void focusGained(FocusEvent arg0) {
-	}
+	public void focusGained(FocusEvent arg0) {}
 
 	@Override
 	public void focusLost(FocusEvent arg0) {
@@ -38,5 +37,4 @@ public class ProfesorListener implements FocusListener{
 	{
 		for(int i = 0; i < data.length; i++)		data[i] = "";
 	}
-
 }

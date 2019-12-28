@@ -107,7 +107,6 @@ public class AddStudent extends Dialog {
 			}
 		};
 		tfime.setName("tfime");
-		//tfime.setBackground(Color.WHITE);
 		tfime.addFocusListener(listener);
 		
 		GridBagConstraints gbctfime = generateTextFieldGBC();
@@ -124,12 +123,12 @@ public class AddStudent extends Dialog {
 			}
 		};
 		tfprez.setName("tfprez");
-		//tfprez.setBackground(Color.GRAY);
 		tfprez.addFocusListener(listener);
 		
 		GridBagConstraints gbctfprez = generateTextFieldGBC();
 		middlePanel.add(tfprez, gbctfprez);
 		
+		lindeks.setToolTipText("ssN[NN]/YYYY");
 		GridBagConstraints gbclindeks = generateLabelGBC();
 		middlePanel.add(lindeks, gbclindeks);
 		
@@ -141,12 +140,12 @@ public class AddStudent extends Dialog {
 			}
 		};
 		tfindeks.setName("tfindeks");
-		//tfindeks.setBackground(Color.GREEN);
 		tfindeks.addFocusListener(listener);
 		
 		GridBagConstraints gbctfindeks = generateTextFieldGBC();
 		middlePanel.add(tfindeks, gbctfindeks);
 		
+		ldatr.setToolTipText("dd.MM.yyyy.");
 		GridBagConstraints gbcldatr = generateLabelGBC();
 		middlePanel.add(ldatr, gbcldatr);
 		
@@ -158,7 +157,6 @@ public class AddStudent extends Dialog {
 			}
 		};
 		tfdatr.setName("tfdatr");
-		//tfdatr.setBackground(Color.GRAY);
 		tfdatr.addFocusListener(listener);
 		
 		GridBagConstraints gbctfdatr = generateTextFieldGBC();
@@ -175,7 +173,6 @@ public class AddStudent extends Dialog {
 			}
 		};
 		tfadr.setName("tfadr");
-		//tfadr.setBackground(Color.GRAY);
 		tfadr.addFocusListener(listener);
 		
 		GridBagConstraints gbctfadr = generateTextFieldGBC();
@@ -192,7 +189,6 @@ public class AddStudent extends Dialog {
 			}
 		};
 		tftel.setName("tftel");
-		//tftel.setBackground(Color.GRAY);
 		tftel.addFocusListener(listener);
 		
 		GridBagConstraints gbctftel = generateTextFieldGBC();
@@ -209,7 +205,6 @@ public class AddStudent extends Dialog {
 			}
 		};
 		tfmail.setName("tfmail");
-		//tfmail.setBackground(Color.GRAY);
 		tfmail.addFocusListener(listener);
 		
 		GridBagConstraints gbctfmail = generateTextFieldGBC();
@@ -236,7 +231,6 @@ public class AddStudent extends Dialog {
 			}
 		};
 		tfpros.setName("tfpros");
-		//tfpros.setBackground(Color.GRAY);
 		tfpros.addFocusListener(listener);
 		
 		GridBagConstraints gbctfpros = generateTextFieldGBC();
@@ -256,6 +250,7 @@ public class AddStudent extends Dialog {
 		GridBagConstraints gbcsamof = generateTextFieldGBC();
 		middlePanel.add(samof, gbcsamof);
 		
+		ldatu.setToolTipText("dd.MM.yyyy.");
 		GridBagConstraints gbcldatu = generateLabelGBC();
 		middlePanel.add(ldatu, gbcldatu);
 		
@@ -267,7 +262,6 @@ public class AddStudent extends Dialog {
 			}
 		};
 		tfdatu.setName("tfdatu");
-		//tfdatu.setBackground(Color.GRAY);
 		tfdatu.addFocusListener(listener);
 		
 		GridBagConstraints gbctfdatu = generateTextFieldGBC();
