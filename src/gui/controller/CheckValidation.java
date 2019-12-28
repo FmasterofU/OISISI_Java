@@ -93,7 +93,6 @@ public class CheckValidation {
 			return index.matches("[a-zA-Z]{2}[0-9]{1,3}/[0-9]{4}");
 		}
 		
-		@SuppressWarnings("finally")
 		public static boolean checkIndexYear(String index)
 		{
 			String s = "0";
@@ -105,15 +104,12 @@ public class CheckValidation {
 			try
 			{
 				year = Double.parseDouble(s);
+				if(year <= 2019)
+					return true;
+				return false;
 			}
 			catch(Exception e)
 			{
-				return false;
-			}
-			finally
-			{
-				if(year <= 2019)
-					return true;
 				return false;
 			}
 		}
@@ -124,7 +120,6 @@ public class CheckValidation {
 			return mail.matches("([a-zA-Z0-9]+\\.?)*[a-zA-Z0-9]@[a-z0-9]+(\\.[a-z]{2,3})+");
 		}
 		
-		//@SuppressWarnings("finally")
 		public static boolean checkProsek(String prosek)
 		{
 			prosek = prosek.trim();
@@ -138,7 +133,7 @@ public class CheckValidation {
 			
 			num = num.trim();
 			//return num.matches("0[1-9][0-9][/][0-9]{3}-[0-9]{3,5}");
-			return num.matches("(\\+[1-9][0-9]{2}[1-9][0-9][/][0-9]{3}-[0-9]{3,5})|(0[1-9][0-9][/][0-9]{3}-[0-9]{3,5})");
+			return num.matches("(\\+[1-9][0-9]{2}|0)[1-9][0-9][/][0-9]{3}-[0-9]{3,5}");
 		}
 		
 		public static boolean checkAdress(String adress)
@@ -176,7 +171,7 @@ public class CheckValidation {
 			}
 		}
 		
-		@SuppressWarnings({ "unused", "finally" })
+		@SuppressWarnings("unused")
 		public static boolean[] isStudentValid(String[] data)
 		{
 			if(data.length != 10)
@@ -188,14 +183,11 @@ public class CheckValidation {
 			try
 			{
 				g = Byte.parseByte(data[8]);
+				return ret;
 			}
 			catch(Exception e)
 			{
 				ret[8] = false;
-				return ret;
-			}
-			finally
-			{
 				return ret;
 			}
 		}
