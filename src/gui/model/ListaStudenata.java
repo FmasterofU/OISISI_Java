@@ -3,6 +3,10 @@ package gui.model;
 import java.io.Serializable;
 import java.util.ArrayList;
 
+import javax.swing.JOptionPane;
+
+import gui.view.MainWindow;
+
 public class ListaStudenata implements Serializable, IAbstractTableModel {
 	
 	private static final long serialVersionUID = 3654331325580773015L;
@@ -37,6 +41,16 @@ public class ListaStudenata implements Serializable, IAbstractTableModel {
 	{
 		this.studenti = new ArrayList<Student>();
 		this.studenti.add(new Student());
+	}
+	
+	public boolean indexExists(String index)
+	{
+		for(Student s : studenti)
+		{
+			if(s.getBrIndeksa().equals(index))
+				return true;
+		}
+		return false;
 	}
 
 	public ArrayList<Student> getStudenti() {
@@ -102,12 +116,22 @@ public class ListaStudenata implements Serializable, IAbstractTableModel {
 	public void dodajStudenta(String ime, String prezime, String datumRodjenja, String adresa, String telefon, String eMail,
 			String brIndeksa, String datumUpisa, byte godStudija, NacinFinansiranja finansiranje, double prosecnaOcena)
 	{
-		this.studenti.add(new Student(ime, prezime, datumRodjenja, adresa, telefon, eMail, brIndeksa, datumUpisa, godStudija, finansiranje, prosecnaOcena));
+		if(!indexExists(brIndeksa))
+			this.studenti.add(new Student(ime, prezime, datumRodjenja, adresa, telefon, eMail, brIndeksa, datumUpisa, godStudija, finansiranje, prosecnaOcena));
+		else
+		{
+			JOptionPane.showConfirmDialog(MainWindow.getInstance(), "Student sa unetim indeksom već postoji!", "Grеška", JOptionPane.DEFAULT_OPTION, JOptionPane.ERROR_MESSAGE);
+		}	
 	}
 	
 	public void dodajStudenta(Student s)
 	{
-		this.studenti.add(s);
+		if(!indexExists(s.getBrIndeksa()))
+			this.studenti.add(s);
+		else
+		{
+			JOptionPane.showConfirmDialog(MainWindow.getInstance(), "Student sa unetim indeksom već postoji!", "Grеška", JOptionPane.DEFAULT_OPTION, JOptionPane.ERROR_MESSAGE);
+		}	
 	}
 	
 	public void izbrisiStudenta(String brI)

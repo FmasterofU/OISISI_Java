@@ -11,7 +11,7 @@ import gui.model.Student;
 
 public class StudentListener implements FocusListener, ItemListener{
 	
-	private static String data[] = {"", "", "", "", "", "", "", "", "1", ""};
+	private static String data[] = {"", "", "", "", "", "", "", "", "", ""};
 
 	@Override
 	public void focusGained(FocusEvent e) {
@@ -75,6 +75,5 @@ public class StudentListener implements FocusListener, ItemListener{
 	public void clearData()
 	{
 		for(int i = 0; i < data.length; i++)		data[i] = "";
-		data[8] = "1";
 	}
 }

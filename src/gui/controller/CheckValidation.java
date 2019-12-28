@@ -36,6 +36,8 @@ public class CheckValidation {
 			int d;
 			if((d = Integer.parseInt(dan)) > 31)
 				return false;
+			if(d == 0)
+				return false;
 			
 			if(date.charAt(2) != '.')
 				return false;
@@ -46,6 +48,8 @@ public class CheckValidation {
 			String mesec = date.substring(3, 5);
 			int m;
 			if((m = Integer.parseInt(mesec)) > 12)
+				return false;
+			if(m == 0)
 				return false;
 			
 			if(!doesHave31Days(m) && (d == 31))
@@ -65,6 +69,8 @@ public class CheckValidation {
 			int god;
 			if((god = Integer.parseInt(godina)) > 2019)
 				return false;
+			if(god < 1930)
+				return false;
 			
 			if(m==2 && d > 29)
 				return false;
@@ -83,10 +89,10 @@ public class CheckValidation {
 			index = index.trim().toUpperCase();
 			if(!checkIndexYear(index))
 				return false;
+			if(Data.data.listaStudenata.indexExists(index))		return false;
 			return index.matches("[a-zA-Z]{2}[0-9]{1,3}/[0-9]{4}");
 		}
 		
-		@SuppressWarnings("finally")
 		public static boolean checkIndexYear(String index)
 		{
 			String s = "0";
@@ -98,15 +104,12 @@ public class CheckValidation {
 			try
 			{
 				year = Double.parseDouble(s);
+				if(year <= 2019)
+					return true;
+				return false;
 			}
 			catch(Exception e)
 			{
-				return false;
-			}
-			finally
-			{
-				if(year <= 2019)
-					return true;
 				return false;
 			}
 		}
@@ -117,7 +120,6 @@ public class CheckValidation {
 			return mail.matches("([a-zA-Z0-9]+\\.?)*[a-zA-Z0-9]@[a-z0-9]+(\\.[a-z]{2,3})+");
 		}
 		
-		//@SuppressWarnings("finally")
 		public static boolean checkProsek(String prosek)
 		{
 			prosek = prosek.trim();
@@ -131,7 +133,7 @@ public class CheckValidation {
 			
 			num = num.trim();
 			//return num.matches("0[1-9][0-9][/][0-9]{3}-[0-9]{3,5}");
-			return num.matches("(\\+[1-9][0-9]{2}[1-9][0-9][/][0-9]{3}-[0-9]{3,5})|(0[1-9][0-9][/][0-9]{3}-[0-9]{3,5})");
+			return num.matches("(\\+[1-9][0-9]{2}|0)[1-9][0-9][/][0-9]{3}-[0-9]{3,5}");
 		}
 		
 		public static boolean checkAdress(String adress)
@@ -169,26 +171,24 @@ public class CheckValidation {
 			}
 		}
 		
-		@SuppressWarnings({ "unused", "finally" })
-		public static boolean[] isStudentValid(String[] data)
+		@SuppressWarnings("unused")
+		public static boolean[] isStudentValid(String[] data, boolean editable)
 		{
 			if(data.length != 10)
 				return new boolean[2];
 			
-			boolean[] ret = {checkName(data[0],0), checkName(data[1],0), checkDate(data[2]), checkAdress(data[3]), checkPhoneNumber(data[4]), checkMail(data[5]), checkIndex(data[6]), checkDate(data[7]), false, checkProsek(data[9])};
+			boolean[] ret = {checkName(data[0],0), checkName(data[1],0), checkDate(data[2]), checkAdress(data[3]), checkPhoneNumber(data[4]), checkMail(data[5]), checkIndex(data[6]), checkDate(data[7]), true, checkProsek(data[9])};
+			if(editable)		ret[6] = true;
 			
 			byte g;
 			try
 			{
 				g = Byte.parseByte(data[8]);
+				return ret;
 			}
 			catch(Exception e)
 			{
-				return ret;
-			}
-			finally
-			{
-				ret[8] = true;
+				ret[8] = false;
 				return ret;
 			}
 		}
