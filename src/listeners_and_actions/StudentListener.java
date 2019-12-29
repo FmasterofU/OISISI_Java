@@ -24,18 +24,18 @@ public class StudentListener implements FocusListener, ItemListener{
 		if(txt.getName().trim().equals("tfime")) 
 		{
 			data[0] = (txt.getText().trim()); 
-			data[0] = CheckValidation.firstLetterToCapital(data[0]);
+			if(data[0].length() != 0)	data[0] = CheckValidation.firstLetterToCapital(data[0]);
 		}
 		else if(txt.getName().trim().equals("tfprez")) 
 		{
 			data[1] = (txt.getText().trim());	
-			data[1] = CheckValidation.firstLetterToCapital(data[1]);
+			if(data[1].length() != 0)	data[1] = CheckValidation.firstLetterToCapital(data[1]);
 		}
 		else if(txt.getName().trim().equals("tfdatr"))			data[2] = (txt.getText().trim());
 		else if(txt.getName().trim().equals("tfadr"))
 		{
 			data[3] = (txt.getText().trim());
-			data[3] = CheckValidation.firstLetterToCapital(data[3]);
+			if(data[3].length() != 0)	data[3] = CheckValidation.firstLetterToCapital(data[3]);
 		}
 		else if(txt.getName().trim().equals("tftel"))			data[4] = (txt.getText().trim());
 		else if(txt.getName().trim().equals("tfmail"))			data[5] = (txt.getText().trim());
