@@ -4,8 +4,6 @@ import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 
 import gui.controller.StudentController;
-import gui.model.Data;
-import gui.model.Student;
 import gui.view.MainWindow;
 
 public class DeleteStudent extends JOptionPane{
@@ -13,29 +11,29 @@ public class DeleteStudent extends JOptionPane{
 		private static final long serialVersionUID = 8706916055932739479L;
 		private static DeleteStudent instance = null;
 		
-		public static DeleteStudent getNew(int idx)
+		public static DeleteStudent getNew(String idx)
 		{
 			instance = new DeleteStudent(idx);
 			return instance;
 		}
 		
-		private DeleteStudent(int idx)
+		private DeleteStudent(String idx)
 		{
-			String index = getIndex(idx);
-			if(!index.equals(""))
+			//String index = getIndex(idx);
+			if(!idx.equals(""))
 			{
 				String message = "Da li želite obrisati studenta sa indeksom ";
-				message += index + "?";
+				message += idx + "?";
 				UIManager.put("OptionPane.yesButtonText", "Da");
 				UIManager.put("OptionPane.noButtonText", "Ne");
 				int type = JOptionPane.showConfirmDialog(MainWindow.getInstance(), message, "Brisanje studenta", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
 				if(type == JOptionPane.YES_OPTION)
 				{
-					StudentController.getInstance().izbrisiStudenta(index);
+					StudentController.getInstance().deleteStudent(idx);
 				}
 			}
 		}
-		
+		/*
 		private String getIndex(int i)
 		{
 			int temp = 0;
@@ -46,6 +44,6 @@ public class DeleteStudent extends JOptionPane{
 				temp++;
 			}
 			return "";
-		}
+		}*/
 
 }

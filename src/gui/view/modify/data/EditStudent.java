@@ -35,14 +35,14 @@ public class EditStudent extends Dialog{
 	private NacinFinansiranja n;
 	private Double pros;
 	
-	public static EditStudent getInstance(int idx)
+	public static EditStudent getInstance(String idx)
 	{
 		if(instance == null)		instance = new EditStudent(idx);
 		return instance;
 	}
 
 	@SuppressWarnings("serial")
-	private  EditStudent(int idx)
+	private  EditStudent(String idx)
 	{
 		super("Izmeni studenta", "Potvrda", "Odustanak");
 		old = getStudent(idx);
@@ -76,7 +76,7 @@ public class EditStudent extends Dialog{
 					if(budget.isSelected())	nf = NacinFinansiranja.BUDŽET;
 					else		nf = NacinFinansiranja.SAMOFINANSIRANJE;
 					Student novi = new Student(s[0], s[1], s[2], s[3], s[4], s[5], s[6], s[7], Byte.parseByte(s[8]), nf, Double.parseDouble(s[9]));
-					StudentController.getInstance().izmeniStudenta(old.getBrIndeksa(), novi);
+					StudentController.getInstance().editStudent(old.getBrIndeksa(), novi);
 					instance.setVisible(false);
 					instance = null;
 					listener.clearData();
@@ -290,14 +290,12 @@ public class EditStudent extends Dialog{
 		middlePanel.add(tfdatu, gbctfdatu);
 	}
 	
-	private Student getStudent(int i)
+	private Student getStudent(String i)
 	{
-		int temp = 0;
 		for(Student s: Data.data.listaStudenata.getStudenti())
 		{
-			if(i == temp)
+			if(i.equals(s.getBrIndeksa()))
 				return s;
-			temp++;
 		}
 		return null;
 	}

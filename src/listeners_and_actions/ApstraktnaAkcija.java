@@ -104,8 +104,8 @@ public class ApstraktnaAkcija extends AbstractAction{
 		if(name.equals("delete"))
 			switch(CenterBox.getInstance().getSelectedIndex()) {
 				case 0:
-					int idx = ViewStudenti.getInstance().getSelectedIndex();
-					if(idx != -1)		DeleteStudent.getNew(idx).setVisible(true);
+					String idx = ViewStudenti.getInstance().getSelectedKey();
+					if(idx != null)		DeleteStudent.getNew(idx).setVisible(true);
 					break;
 				case 1: break;
 				case 2:
@@ -117,10 +117,16 @@ public class ApstraktnaAkcija extends AbstractAction{
 		
 		if(name.equals("edit"))
 		{
-			if(CenterBox.getInstance().getSelectedIndex() == 0)
+			switch(CenterBox.getInstance().getSelectedIndex())
 			{
-				int idx = ViewStudenti.getInstance().getSelectedIndex();
-				if(idx != -1)		EditStudent.getInstance(idx).setVisible(true);
+				case 0:
+					String idx = ViewStudenti.getInstance().getSelectedKey();
+					if(idx != null)		EditStudent.getInstance(idx).setVisible(true);
+					break;
+				case 1:
+					break;
+				case 2:
+					break;
 			}
 		}
 	}

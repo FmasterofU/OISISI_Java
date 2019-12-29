@@ -11,6 +11,8 @@ public class ViewStudenti extends ViewTableCenter {
 	private static final long serialVersionUID = -4008708277153917046L;
 	private static ViewStudenti instance = null;
 	private ThisTableModel<ListaStudenata> model = null;
+	static final int KEY_COLUMN = 0;
+	
 	public static ViewStudenti getInstance() {
 		if(instance == null)	instance = new ViewStudenti();
 		return instance;
@@ -59,5 +61,10 @@ public class ViewStudenti extends ViewTableCenter {
 		if(model != null)		model.fireTableDataChanged();
 	}
 	
-	public int getSelectedIndex()		{ return table.getSelectedRow(); }
+	public String getSelectedKey()
+	{ 
+		int row = table.getSelectedRow(); 
+		if(row == -1)	return null;
+		return (String) table.getValueAt(row, KEY_COLUMN);
+	}
 }

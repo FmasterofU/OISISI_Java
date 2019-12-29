@@ -113,7 +113,7 @@ public class ListaStudenata implements Serializable, IAbstractTableModel {
 		}
 	}
 	
-	public void dodajStudenta(String ime, String prezime, String datumRodjenja, String adresa, String telefon, String eMail,
+	public void addStudent(String ime, String prezime, String datumRodjenja, String adresa, String telefon, String eMail,
 			String brIndeksa, String datumUpisa, byte godStudija, NacinFinansiranja finansiranje, double prosecnaOcena)
 	{
 		if(!indexExists(brIndeksa))
@@ -124,7 +124,7 @@ public class ListaStudenata implements Serializable, IAbstractTableModel {
 		}	
 	}
 	
-	public void dodajStudenta(Student s)
+	public void addStudent(Student s)
 	{
 		if(!indexExists(s.getBrIndeksa()))
 			this.studenti.add(s);
@@ -134,7 +134,7 @@ public class ListaStudenata implements Serializable, IAbstractTableModel {
 		}	
 	}
 	
-	public void izbrisiStudenta(String brI)
+	public void deleteStudent(String brI)
 	{
 		for(Student s : studenti)
 		{
@@ -146,7 +146,7 @@ public class ListaStudenata implements Serializable, IAbstractTableModel {
 		}
 	}
 	
-	public void izmeniStudenta(String brI, String ime, String prezime, String datumRodjenja, String adresa, String telefon, String eMail,
+	public void editStudent(String brI, String ime, String prezime, String datumRodjenja, String adresa, String telefon, String eMail,
 			String datumUpisa, byte godStudija, NacinFinansiranja finansiranje, double prosecnaOcena)
 	{
 		for(Student s : studenti)
@@ -168,7 +168,7 @@ public class ListaStudenata implements Serializable, IAbstractTableModel {
 		}
 	}
 	
-	public void izmeniStudenta(String brI, Student s)
+	public void editStudent(String brI, Student s)
 	{
 		for(Student stud : studenti)
 		{

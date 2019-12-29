@@ -16,21 +16,21 @@ public class StudentController {
 	
 	private StudentController() {}
 	
-	public void dodajStudenta(Student s)
+	public void addStudent(Student s)
 	{
-		Data.data.listaStudenata.dodajStudenta(s);
+		Data.data.listaStudenata.addStudent(s);
 		ViewStudenti.getInstance().updateTable();
 	}
 	
-	public void izbrisiStudenta(String indeks)
+	public void deleteStudent(String indeks)
 	{
-		Data.data.listaStudenata.izbrisiStudenta(indeks);
+		Data.data.listaStudenata.deleteStudent(indeks);
 		ViewStudenti.getInstance().updateTable();
 	}
 	
-	public void izmeniStudenta(String indeks, Student s)
+	public void editStudent(String indeks, Student s)
 	{
-		Data.data.listaStudenata.izmeniStudenta(indeks, s);
+		Data.data.listaStudenata.editStudent(indeks, s);
 		ViewStudenti.getInstance().updateTable();
 	}
 
