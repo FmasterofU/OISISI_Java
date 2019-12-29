@@ -26,6 +26,8 @@ public class ViewPredmeti extends ViewTableCenter {
 		}
 	
 	public String getSelectedKey() {
+		int row = table.getSelectedRow();
+		if(row==-1) return null;
 		return (String) table.getValueAt(table.getSelectedRow(), KEY_COLLUMN);
 	}
 }

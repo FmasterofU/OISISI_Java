@@ -43,8 +43,6 @@ public class ListaPredmeta implements Serializable, IAbstractTableModel {
 		predmeti.add(predmet);
 	}
 	
-	// index==row gui
-	
 	 public Predmet getPredmet(String sifra) {
 		 for(Predmet p : predmeti)
 			 if(p.getSifra().equals(sifra))
@@ -52,23 +50,14 @@ public class ListaPredmeta implements Serializable, IAbstractTableModel {
 		 return null;
 	 }
 	 
-	 /* TODO ukloniti zavisnost od indeksa u sledecim metodata (get i delete su vec uradjeni)
-	 
-	 public void changePredmet(int index, Predmet p) {
-		 predmeti.set(index, p);
+	 public void editPredmet(String sifra, Predmet p) {
+		 deletePredmet(getPredmet(sifra));
+		 addPredmet(p);
 	 }
 	 
-	 public void deletePredmet(int index) {
-		 predmeti.remove(index);
-	 }
-
 	 public void deletePredmet(String sifra) {
-		 for(Predmet p : predmeti)
-			 if(p.getSifra().equals(sifra)) {
-				 predmeti.remove(p);
-				 return;
-			 }
-	 }*/
+		 predmeti.remove(getPredmet(sifra));
+	 }
 	 
 	 public void deletePredmet(Predmet p) {
 		 predmeti.remove(p);

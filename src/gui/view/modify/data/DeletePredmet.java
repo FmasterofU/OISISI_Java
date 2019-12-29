@@ -13,16 +13,11 @@ public class DeletePredmet extends JOptionPane {
 	
 	public DeletePredmet(String sifra) {
 		Predmet p = Data.data.listaPredmeta.getPredmet(sifra);
-		if(p!=null)
-		{
-			String message = String.format("Da li želite obrisati predmet %s sa šifrom %s?", p.getNaziv(), p.getSifra());
-			UIManager.put("OptionPane.yesButtonText", "Da");
-			UIManager.put("OptionPane.noButtonText", "Ne");
-			int type = JOptionPane.showConfirmDialog(MainWindow.getInstance(), message, "Brisanje predmeta", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
-			if(type == JOptionPane.YES_OPTION)
-			{
-				PredmetController.izbrisiPredmet(p);
-			}
-		}
+		String message = String.format("Da li želite obrisati predmet %s sa šifrom %s?", p.getNaziv(), p.getSifra());
+		UIManager.put("OptionPane.yesButtonText", "Da");
+		UIManager.put("OptionPane.noButtonText", "Ne");
+		int type = JOptionPane.showConfirmDialog(MainWindow.getInstance(), message, "Brisanje predmeta", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+		if(type == JOptionPane.YES_OPTION)
+			PredmetController.deletePredmet(p);
 	}
 }

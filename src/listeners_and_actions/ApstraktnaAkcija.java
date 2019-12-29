@@ -109,7 +109,9 @@ public class ApstraktnaAkcija extends AbstractAction{
 					break;
 				case 1: break;
 				case 2:
-					(new DeletePredmet(ViewPredmeti.getInstance().getSelectedKey())).setVisible(true);
+					String sifra = ViewPredmeti.getInstance().getSelectedKey();
+					if(sifra==null) break;
+					(new DeletePredmet(sifra)).setVisible(true);
 					break;
 			}
 		
