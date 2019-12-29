@@ -59,10 +59,10 @@ public class StudentListener implements FocusListener, ItemListener{
 		data[9] = p.toString();
 	}
 	
-	public static void ispis()
-	{
-		for(int i = 0; i < data.length; i++)	System.out.println(data[i]);
-	}
+//	public static void ispis()
+//	{
+//		for(int i = 0; i < data.length; i++)	System.out.println(data[i]);
+//	}
 
 	@Override
 	public void itemStateChanged(ItemEvent e) {
