@@ -15,8 +15,8 @@ public class CheckValidation {
 			name=name.trim();
 			switch(mode) {
 			case 0: return name.matches("[a-zA-ZšđčćžŠĐČĆŽ ]+");
-			case 1: return name.matches("[a-zA-Z1-9-/.]+");
-			case 2: return name.matches("[a-zA-ZšđčćžŠĐČĆŽ 0-9]+");
+			case 1: return name.matches("[a-zA-Z0-9\\-\\.]+");
+			case 2: return name.matches("[a-zA-ZšđčćžŠĐČĆŽ 1-9]+");
 			default: return false;
 			}
 		}
@@ -193,9 +193,14 @@ public class CheckValidation {
 			}
 		}
 
-		public static boolean[] isPredmetValid(Object[] o) {
-			// TODO Auto-generated method stub
-			return null;
+		public static boolean[] isPredmetValid(Object[] o, boolean editable) {
+			boolean[] ret = new boolean[o.length];
+			ret[0] = checkName((String) o[0], 1) && checkUniquePredmetCode((String) o[0]);
+			ret[1] = checkName((String) o[1], 2) && checkUniquePredmetCode((String) o[1]);
+			ret[2] = o[2]!=null ? true : false;
+			ret[3] = o[3]!=null ? true : false;
+			ret[4] = o[4]!=null ? true : false;
+			return ret;
 		}
 
 		public static boolean checkUniquePredmetCode(String text) {

@@ -9,7 +9,8 @@ public class Predmet implements Serializable{
 	 */
 	private static final long serialVersionUID = 3474955802889019798L;
 	private String sifra, naziv;
-	private byte semestar, godinaStudija; 
+	private Semestar semestar;
+	private GodinaStudija godinaStudija; 
 	private Profesor profesor;
 	private ArrayList<Student> studenti;
 	
@@ -17,13 +18,13 @@ public class Predmet implements Serializable{
 		super();
 		this.sifra = "E213A-06";
 		this.naziv = "Algebra";
-		this.semestar = 1;
-		this.godinaStudija = 1;
+		this.semestar = Semestar.ZIMSKI;
+		this.godinaStudija = GodinaStudija.I;
 		this.profesor = new Profesor();
 		this.studenti = new ArrayList<Student>();
 	}
 	
-	public Predmet(String sifra, String naziv, byte semestar, byte godinaStudija, Profesor profesor) {
+	public Predmet(String sifra, String naziv, Semestar semestar, GodinaStudija godinaStudija, Profesor profesor) {
 		super();
 		this.sifra = sifra;
 		this.naziv = naziv;
@@ -33,7 +34,7 @@ public class Predmet implements Serializable{
 		this.studenti = new ArrayList<Student>();
 	}
 	
-	public Predmet(String sifra, String naziv, byte semestar, byte godinaStudija, Profesor profesor,
+	public Predmet(String sifra, String naziv, Semestar semestar, GodinaStudija godinaStudija, Profesor profesor,
 			ArrayList<Student> studenti) {
 		super();
 		this.sifra = sifra;
@@ -60,19 +61,19 @@ public class Predmet implements Serializable{
 		this.naziv = naziv;
 	}
 	
-	public byte getSemestar() {
+	public Semestar getSemestar() {
 		return semestar;
 	}
 	
-	public void setSemestar(byte semestar) {
+	public void setSemestar(Semestar semestar) {
 		this.semestar = semestar;
 	}
 	
-	public byte getGodinaStudija() {
+	public GodinaStudija getGodinaStudija() {
 		return godinaStudija;
 	}
 	
-	public void setGodinaStudija(byte godinaStudija) {
+	public void setGodinaStudija(GodinaStudija godinaStudija) {
 		this.godinaStudija = godinaStudija;
 	}
 	

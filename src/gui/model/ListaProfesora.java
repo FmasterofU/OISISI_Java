@@ -50,11 +50,14 @@ public class ListaProfesora implements Serializable, IAbstractTableModel {
 	public void addProfesor(Profesor profesor) {
 		profesori.add(profesor);
 	}
-	
+	//TODO izmijeniti metode to narednog linijskog komentara da odgovaraju dogovoru
 	// index==row gui
 	
-	 public void getProfesor(int index) {
-		 profesori.get(index);
+	 public Profesor getProfesor(String lk) {
+		 for(Profesor p : profesori)
+			 if(p.getBrojLK().equals(lk))
+				 return p;
+		 return null;
 	 }
 	 
 	 public void changeProfesor(int index, Profesor p) {
@@ -64,7 +67,10 @@ public class ListaProfesora implements Serializable, IAbstractTableModel {
 	 public void deleteProfesor(int index) {
 		 profesori.remove(index);
 	 }
-	
+	 
+	//
+	 
+	 
 	@Override
 	public int getColumnCount() {
 		return kolone.size();

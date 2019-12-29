@@ -1,20 +1,21 @@
 package gui;
 
 import gui.model.Data;
+import gui.model.GodinaStudija;
 import gui.model.Predmet;
 import gui.model.Profesor;
+import gui.model.Semestar;
 import gui.model.Student;
 import gui.view.MainWindow;
 
-@SuppressWarnings("unused")
 public class Main {
 
 	public static void main(String[] args) {
 		Data.init();
-		//Data.data.listaProfesora.addProfesor(new Profesor());
-		//Data.data.listaPredmeta.addPredmet(new Predmet("fuuuuuuuuuck", "težak predmet", (byte)5, (byte)3, new Profesor()));
-		//Data.data.listaPredmeta.addPredmet(new Predmet("e206", "metode", (byte)5, (byte)3, new Profesor()));
-		//Data.data.listaStudenata.dodajStudenta(new Student());
+		/*Data.data.listaProfesora.addProfesor(new Profesor());
+		Data.data.listaPredmeta.addPredmet(new Predmet("fuuuuuuuuuck", "težak predmet", Semestar.LJETNJI, GodinaStudija.III, new Profesor()));
+		Data.data.listaPredmeta.addPredmet(new Predmet("e206", "metode", Semestar.ZIMSKI, GodinaStudija.I, new Profesor()));
+		//Data.data.listaStudenata.dodajStudenta(new Student());*/
 		MainWindow.getInstance().setVisible(true);
 	}
 }

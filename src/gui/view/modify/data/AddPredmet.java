@@ -15,8 +15,10 @@ import javax.swing.UIManager;
 import gui.controller.CheckValidation;
 import gui.controller.PredmetController;
 import gui.model.Data;
+import gui.model.GodinaStudija;
 import gui.model.Predmet;
 import gui.model.Profesor;
+import gui.model.Semestar;
 import gui.model.Student;
 import gui.view.modify.ComboBox;
 import gui.view.modify.Dialog;
@@ -55,7 +57,7 @@ public class AddPredmet extends Dialog {
 			public void actionPerformed(ActionEvent e) {				
 				Object[] o = listener.getData();
 				boolean check = true;
-				boolean[] result = CheckValidation.isPredmetValid(o);
+				boolean[] result = CheckValidation.isPredmetValid(o, false);
 				for(boolean b : result)
 					if(b==false) {
 						check=false;
@@ -63,7 +65,7 @@ public class AddPredmet extends Dialog {
 					}
 				if(check)
 				{
-					Predmet novi = new Predmet((String)o[0], (String)o[1], (Byte)o[2], (Byte)o[3], (Profesor)o[4], new ArrayList<Student>());
+					Predmet novi = new Predmet((String)o[0], (String)o[1], (Semestar)o[2], (GodinaStudija)o[3], Data.data.listaProfesora.getProfesor(((String)o[4]).trim().split("PK")[1]), new ArrayList<Student>());
 					PredmetController.addPredmet(novi);
 					instance.setVisible(false);
 					instance = null;
@@ -102,7 +104,7 @@ public class AddPredmet extends Dialog {
 		JTextField tfSifra = new TextField(10) {
 			@Override
 			public void maybeHighlight() {
-				setBorder(((CheckValidation.checkUniquePredmetCode(this.getText())) ? IHighlight.defaultBorder : IHighlight.highlightBorder));
+				setBorder((((CheckValidation.checkUniquePredmetCode(this.getText())) && CheckValidation.checkName(this.getText(), 1)) ? IHighlight.defaultBorder : IHighlight.highlightBorder));
 			}
 		};
 		tfSifra.setName("tfSifra");
@@ -119,7 +121,7 @@ public class AddPredmet extends Dialog {
 		JTextField tfNaziv = new TextField(10) {
 			@Override
 			public void maybeHighlight() {
-				setBorder(((CheckValidation.checkName(this.getText(),2)) ? IHighlight.defaultBorder : IHighlight.highlightBorder));
+				setBorder((((CheckValidation.checkUniquePredmetCode(this.getText())) && CheckValidation.checkName(this.getText(), 2)) ? IHighlight.defaultBorder : IHighlight.highlightBorder));
 			}
 		};
 		tfNaziv.setName("tfNaziv");
@@ -133,9 +135,10 @@ public class AddPredmet extends Dialog {
 		GridBagConstraints gbclSemestar = generateLabelGBC();
 		middlePanel.add(lSemestar, gbclSemestar);
 		
-		String[] cbItems1 = {"I (prvi)", "II (drugi)", "III (treći)", "IV (četvrti)", "V (peti)", "VI (šesti)", "VII (sedmi)", "VIII (osmi)"};
+		String[] cbItems1 = {"Zimski", "Ljetnji"};
 		@SuppressWarnings({ "unchecked", "rawtypes" })
 		ComboBox cbSemestar = new ComboBox(cbItems1);
+		cbSemestar.setName("cbSemestar");
 		cbSemestar.addItemListener(listener);
 		GridBagConstraints gbccb1 = generateTextFieldGBC();
 		middlePanel.add(cbSemestar, gbccb1);
@@ -147,6 +150,7 @@ public class AddPredmet extends Dialog {
 		String[] cbItems2 = {"I (prva)", "II (druga)", "III (treća)", "IV (četvrta)"};
 		@SuppressWarnings({ "unchecked", "rawtypes" })
 		ComboBox cbGodina = new ComboBox(cbItems2);
+		cbGodina.setName("cbGodina");
 		cbGodina.addItemListener(listener);
 		GridBagConstraints gbccb2 = generateTextFieldGBC();
 		middlePanel.add(cbGodina, gbccb2);
@@ -157,6 +161,7 @@ public class AddPredmet extends Dialog {
 		ArrayList<String> cbItems3 = Data.data.listaProfesora.getUniqueProfList();
 		@SuppressWarnings({ "unchecked", "rawtypes" })
 		ComboBox cbProfesor = new ComboBox(cbItems3.toArray());
+		cbProfesor.setName("cbProfesor");
 		cbProfesor.addItemListener(listener);
 		GridBagConstraints gbccb3 = generateTextFieldGBC();
 		middlePanel.add(cbProfesor, gbccb3);
