@@ -23,9 +23,9 @@ public class PredmetController {
 		ViewPredmeti.getInstance().updateTable();
 	}
 	
-	public static void editPredmet(String sifra, Predmet p)
+	public static void editPredmet(String sifra, Predmet novi)
 	{
-		Data.data.listaPredmeta.editPredmet(sifra, p);
+		Data.data.listaPredmeta.editPredmet(sifra, novi);
 		ViewPredmeti.getInstance().updateTable();
 	}
 }

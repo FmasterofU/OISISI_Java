@@ -13,8 +13,8 @@ public class Main {
 	public static void main(String[] args) {
 		Data.init();
 		/*Data.data.listaProfesora.addProfesor(new Profesor());
-		Data.data.listaPredmeta.addPredmet(new Predmet("fuuuuuuuuuck", "težak predmet", Semestar.LJETNJI, GodinaStudija.III, new Profesor()));
-		Data.data.listaPredmeta.addPredmet(new Predmet("e206", "metode", Semestar.ZIMSKI, GodinaStudija.I, new Profesor()));
+		Data.data.listaPredmeta.addPredmet(new Predmet("FUUUUUUUUCK", "težak predmet", Semestar.LJETNJI, GodinaStudija.III, new Profesor()));
+		Data.data.listaPredmeta.addPredmet(new Predmet("E206", "metode", Semestar.ZIMSKI, GodinaStudija.I, new Profesor()));
 		//Data.data.listaStudenata.dodajStudenta(new Student());*/
 		MainWindow.getInstance().setVisible(true);
 	}

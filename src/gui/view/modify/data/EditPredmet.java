@@ -17,6 +17,7 @@ import gui.controller.PredmetController;
 import gui.model.Data;
 import gui.model.GodinaStudija;
 import gui.model.Predmet;
+import gui.model.Profesor;
 import gui.model.Semestar;
 import gui.model.Student;
 import gui.view.MainWindow;
@@ -28,20 +29,25 @@ import gui.view.modify.TextField;
 import listeners_and_actions.PredmetListener;
 
 @SuppressWarnings("serial")
-public class AddPredmet extends Dialog {
-
-	private static AddPredmet instance = null;
-	private PredmetListener listener = new PredmetListener();
+public class EditPredmet extends Dialog {
 	
-	public static AddPredmet getInstance() {
-		if(instance == null) instance = new AddPredmet();
+	private static EditPredmet instance = null;
+	private PredmetListener listener = new PredmetListener();
+	Predmet current;
+	
+	public static EditPredmet getInstance(String idx)
+	{
+		if(instance == null) instance = new EditPredmet(idx);
 		return instance;
 	}
 	
-	public AddPredmet() {
-		super("Dodavanje predmeta", "Potvrda", "Odustanak");
-		setSize(400,350);
+	private EditPredmet(String sifra) {
+		super("Izmeni studenta", "Potvrda", "Odustanak");
+		setSize(400,300);
 		setLocationRelativeTo(MainWindow.getInstance());
+		current = Data.data.listaPredmeta.getPredmet(sifra);
+		listener.setInitialData(current);
+		
 		addWindowListener(new WindowAdapter() {
 			@Override
 			public void windowClosing(WindowEvent e) {
@@ -58,7 +64,7 @@ public class AddPredmet extends Dialog {
 			public void actionPerformed(ActionEvent e) {				
 				Object[] o = listener.getData();
 				boolean check = true;
-				boolean[] result = CheckValidation.isPredmetValid(o, false);
+				boolean[] result = CheckValidation.isPredmetValid(o, true);
 				for(boolean b : result)
 					if(b==false) {
 						check=false;
@@ -66,9 +72,10 @@ public class AddPredmet extends Dialog {
 					}
 				if(check)
 				{
-					String[] splits = ((String)o[4]).trim().split("PK");
-					Predmet novi = new Predmet((String)o[0], (String)o[1], (Semestar)o[2], (GodinaStudija)o[3], Data.data.listaProfesora.getProfesor(splits[splits.length-1]), new ArrayList<Student>());
-					PredmetController.addPredmet(novi);
+					@SuppressWarnings("unchecked")
+					Predmet novi = new Predmet((String)o[0], (String)o[1], (Semestar)o[2], (GodinaStudija)o[3], (Profesor)o[4], (ArrayList<Student>) o[5]);
+					System.out.println(o[0]);
+					PredmetController.editPredmet((String) o[0], novi);
 					instance.setVisible(false);
 					instance = null;
 					listener.clearData();
@@ -97,19 +104,19 @@ public class AddPredmet extends Dialog {
 		JLabel lNaziv = new MandatoryTextFieldLabel("Naziv:");
 		JLabel lSemestar = new JLabel("Semestar:");
 		JLabel lGodina = new JLabel("Godina:");
-		JLabel lProfesor = new JLabel("Profesor:");
 		
 
 		GridBagConstraints gbclSifra = generateLabelGBC();
 		middlePanel.add(lSifra, gbclSifra);
 		
-		JTextField tfSifra = new TextField(10) {
+		JTextField tfSifra = new TextField(current.getSifra()) {
 			@Override
 			public void maybeHighlight() {
 				setBorder((((CheckValidation.checkUniquePredmetCode(this.getText())) && CheckValidation.checkName(this.getText(), 1)) ? IHighlight.defaultBorder : IHighlight.highlightBorder));
 			}
 		};
 		tfSifra.setName("tfSifra");
+		tfSifra.setEditable(false);
 		//tfime.setBackground(Color.WHITE);
 		tfSifra.addFocusListener(listener);
 		
@@ -120,7 +127,7 @@ public class AddPredmet extends Dialog {
 		GridBagConstraints gbclNaziv = generateLabelGBC();
 		middlePanel.add(lNaziv, gbclNaziv);
 		
-		JTextField tfNaziv = new TextField(10) {
+		JTextField tfNaziv = new TextField(current.getNaziv()) {
 			@Override
 			public void maybeHighlight() {
 				setBorder((((CheckValidation.checkUniquePredmetCode(this.getText())) && CheckValidation.checkName(this.getText(), 2)) ? IHighlight.defaultBorder : IHighlight.highlightBorder));
@@ -141,6 +148,7 @@ public class AddPredmet extends Dialog {
 		@SuppressWarnings({ "unchecked", "rawtypes" })
 		ComboBox cbSemestar = new ComboBox(cbItems1);
 		cbSemestar.setName("cbSemestar");
+		cbSemestar.setSelectedIndex(current.getSemestar().ordinal());
 		cbSemestar.addItemListener(listener);
 		GridBagConstraints gbccb1 = generateTextFieldGBC();
 		middlePanel.add(cbSemestar, gbccb1);
@@ -153,20 +161,9 @@ public class AddPredmet extends Dialog {
 		@SuppressWarnings({ "unchecked", "rawtypes" })
 		ComboBox cbGodina = new ComboBox(cbItems2);
 		cbGodina.setName("cbGodina");
+		cbGodina.setSelectedIndex(current.getGodinaStudija().ordinal());
 		cbGodina.addItemListener(listener);
 		GridBagConstraints gbccb2 = generateTextFieldGBC();
 		middlePanel.add(cbGodina, gbccb2);
-		
-		GridBagConstraints gbclProfesor = generateLabelGBC();
-		middlePanel.add(lProfesor, gbclProfesor);
-		
-		ArrayList<String> cbItems3 = Data.data.listaProfesora.getUniqueProfList();
-		@SuppressWarnings({ "unchecked", "rawtypes" })
-		ComboBox cbProfesor = new ComboBox(cbItems3.toArray());
-		cbProfesor.setName("cbProfesor");
-		cbProfesor.addItemListener(listener);
-		GridBagConstraints gbccb3 = generateTextFieldGBC();
-		middlePanel.add(cbProfesor, gbccb3);
 	}
-
 }

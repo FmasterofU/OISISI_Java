@@ -46,6 +46,7 @@ public class EditStudent extends Dialog{
 	private  EditStudent(String idx)
 	{
 		super("Izmeni studenta", "Potvrda", "Odustanak");
+		
 		old = getStudent(idx);
 		listener.setInitialData(old);
 		
@@ -230,9 +231,6 @@ public class EditStudent extends Dialog{
 		
 		god = old.getGodStudija();
 		String[] cbItems = {"I(prva)", "II(druga)", "III(treća)", "IV(četvrta)"};
-		//String first = getGodina(god);
-		//String[] others = getOthersGod(god);
-		//String[] cbItems = {first, others[0], others[1], others[2]};
 		@SuppressWarnings({ "unchecked", "rawtypes" })
 		ComboBox cbgod = new ComboBox(cbItems);
 		cbgod.setSelectedIndex(god.ordinal());

@@ -50,9 +50,18 @@ public class ListaPredmeta implements Serializable, IAbstractTableModel {
 		 return null;
 	 }
 	 
-	 public void editPredmet(String sifra, Predmet p) {
+	 public void changePredmet(String sifra, Predmet p) {
 		 deletePredmet(getPredmet(sifra));
 		 addPredmet(p);
+	 }
+	 
+	 public void editPredmet(String sifra, Predmet novi) {
+		 Predmet p = getPredmet(sifra);
+		 p.setNaziv(novi.getNaziv());
+		 p.setSemestar(novi.getSemestar());
+		 p.setGodinaStudija(novi.getGodinaStudija());
+		 p.setProfesor(novi.getProfesor());
+		 p.setStudenti(novi.getStudenti());
 	 }
 	 
 	 public void deletePredmet(String sifra) {

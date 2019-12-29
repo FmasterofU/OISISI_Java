@@ -20,6 +20,7 @@ import gui.view.modify.data.AddStudent;
 import gui.view.modify.data.DeletePredmet;
 import gui.view.modify.data.DeleteProfesor;
 import gui.view.modify.data.DeleteStudent;
+import gui.view.modify.data.EditPredmet;
 import gui.view.modify.data.EditStudent;
 
 public class ApstraktnaAkcija extends AbstractAction{
@@ -130,6 +131,8 @@ public class ApstraktnaAkcija extends AbstractAction{
 				case 1:
 					break;
 				case 2:
+					String sifra = ViewPredmeti.getInstance().getSelectedKey();
+					if(sifra!=null) EditPredmet.getInstance(sifra).setVisible(true);
 					break;
 			}
 		}

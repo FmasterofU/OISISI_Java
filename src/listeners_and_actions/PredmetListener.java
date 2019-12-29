@@ -9,11 +9,12 @@ import javax.swing.JComboBox;
 import javax.swing.JTextField;
 
 import gui.model.GodinaStudija;
+import gui.model.Predmet;
 import gui.model.Semestar;
 
 public class PredmetListener implements FocusListener, ItemListener {
 
-	private static Object[] data = new Object[5];
+	private static Object[] data = new Object[6];
 	
 	@Override
 	public void itemStateChanged(ItemEvent ie) {
@@ -23,14 +24,14 @@ public class PredmetListener implements FocusListener, ItemListener {
 			switch(cb.getName()) {
 				case "cbSemestar":
 					data[2] = cb.getSelectedItem();
-					if(((String) data[2]).contains("Zimski")) data[2]=Semestar.ZIMSKI;
+					if(((String) data[2]).equals(Semestar.ZIMSKI.name())) data[2]=Semestar.ZIMSKI;
 					else data[2]=Semestar.LJETNJI;
 					break;
 				case "cbGodina":
 					data[3] = cb.getSelectedItem();
-					if(((String) data[3]).contains("IV")) data[3]=GodinaStudija.IV;
-					else if(((String) data[3]).contains("III")) data[3]=GodinaStudija.III;
-					else if(((String) data[3]).contains("II")) data[3]=GodinaStudija.II;
+					if(data[3].equals(GodinaStudija.IV.name())) data[3]=GodinaStudija.IV;
+					else if(data[3].equals(GodinaStudija.III.name())) data[3]=GodinaStudija.III;
+					else if(data[3].equals(GodinaStudija.II.name())) data[3]=GodinaStudija.II;
 					else data[3]=GodinaStudija.I;
 					break;
 				case "cbProfesor":
@@ -59,6 +60,15 @@ public class PredmetListener implements FocusListener, ItemListener {
 		}		
 	}
 
+	public void setInitialData(Predmet p) {
+		data[0] = p.getSifra();
+		data[1] =  p.getNaziv();
+		data[2] =  p.getSemestar();
+		data[3] =  p.getGodinaStudija();
+		data[4] =  p.getProfesor();
+		data[5] =  p.getStudenti();
+	}
+	
 	public void clearData() {
 		for(int i=0; i < data.length; i++) data[i] = null;		
 	}
