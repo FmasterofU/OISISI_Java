@@ -138,7 +138,7 @@ public class ListaStudenata implements Serializable, IAbstractTableModel {
 	{
 		for(Student s : studenti)
 		{
-			if(s.getBrIndeksa() == brI)
+			if(s.getBrIndeksa().equals(brI))
 			{
 				this.studenti.remove(s);
 				break;
@@ -151,7 +151,7 @@ public class ListaStudenata implements Serializable, IAbstractTableModel {
 	{
 		for(Student s : studenti)
 		{
-			if(s.getBrIndeksa() == brI)
+			if(s.getBrIndeksa().equals(brI))
 			{
 				s.setIme(ime);
 				s.setPrezime(prezime);
@@ -172,7 +172,7 @@ public class ListaStudenata implements Serializable, IAbstractTableModel {
 	{
 		for(Student stud : studenti)
 		{
-			if(stud.getBrIndeksa() == brI)
+			if(stud.getBrIndeksa().equals(brI))
 			{
 				stud.setIme(s.getIme());
 				stud.setPrezime(s.getPrezime());

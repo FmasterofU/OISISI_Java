@@ -21,6 +21,7 @@ import gui.view.modify.data.DeletePredmet;
 import gui.view.modify.data.DeleteProfesor;
 import gui.view.modify.data.DeleteStudent;
 import gui.view.modify.data.EditPredmet;
+import gui.view.modify.data.EditProfesor;
 import gui.view.modify.data.EditStudent;
 
 public class ApstraktnaAkcija extends AbstractAction{
@@ -129,6 +130,8 @@ public class ApstraktnaAkcija extends AbstractAction{
 					if(idx != null)		EditStudent.getInstance(idx).setVisible(true);
 					break;
 				case 1:
+					String id = ViewProfesori.getInstance().getSelectedKey();
+					if(id != null)	EditProfesor.getInstance(id).setVisible(true);
 					break;
 				case 2:
 					String sifra = ViewPredmeti.getInstance().getSelectedKey();

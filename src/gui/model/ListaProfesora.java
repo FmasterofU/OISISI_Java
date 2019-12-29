@@ -6,9 +6,6 @@ import java.util.LinkedList;
 
 public class ListaProfesora implements Serializable, IAbstractTableModel {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 8001823155996613518L;
 	private LinkedList<Profesor> profesori;
 	private static ListaProfesora instance = null;
@@ -62,6 +59,26 @@ public class ListaProfesora implements Serializable, IAbstractTableModel {
 	 
 	 public void changeProfesor(int index, Profesor p) {
 		 profesori.set(index, p);
+	 }
+	 
+	 public void changeProfesor(String id, Profesor novi) {
+		 for(Profesor p : profesori)
+		 {
+			 if(p.getBrojLK().equals(id))
+			 {
+				 p.setIme(novi.getIme());
+				 p.setPrezime(novi.getPrezime());
+				 p.setDatumRodjenja(novi.getDatumRodjenja());
+				 p.setAdresaStanovanja(novi.getAdresaStanovanja());
+				 p.setTelefon(novi.getTelefon());
+				 p.seteMail(novi.geteMail());
+				 p.setAdresaKancelarije(novi.getAdresaKancelarije());
+				 p.setBrojLK(novi.getBrojLK());
+				 p.setTitula(novi.getTitula());
+				 p.setZvanje(novi.getZvanje());
+				 break;
+			 }
+		 }
 	 }
 	 
 	 public void deleteProfesor(Profesor p) {
@@ -131,5 +148,4 @@ public class ListaProfesora implements Serializable, IAbstractTableModel {
 				return true;
 		return false;
 	}
-
 }

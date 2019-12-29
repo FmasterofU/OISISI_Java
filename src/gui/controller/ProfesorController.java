@@ -21,6 +21,8 @@ public class ProfesorController {
 		 * update predmeti
 		 * refresh search tab if active
 		 */
+		Data.data.listaProfesora.changeProfesor(id, p);
+		ViewProfesori.getInstance().updateTable();
 	}
 	
 	public static void deleteProfesor(Profesor p)
@@ -34,5 +36,4 @@ public class ProfesorController {
 		Data.data.listaProfesora.deleteProfesor(p);
 		ViewProfesori.getInstance().updateTable();
 	}
-	
 }

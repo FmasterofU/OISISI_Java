@@ -16,7 +16,7 @@ public class DeleteProfesor extends JOptionPane{
 		String message = String.format("Da li želite obrisati profesora %s %s sa br. LK %s?", p.getIme(), p.getPrezime(), p.getBrojLK());
 		UIManager.put("OptionPane.yesButtonText", "Da");
 		UIManager.put("OptionPane.noButtonText", "Ne");
-		int type = JOptionPane.showConfirmDialog(MainWindow.getInstance(), message, "Brisanje predmeta", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+		int type = JOptionPane.showConfirmDialog(MainWindow.getInstance(), message, "Brisanje profesora", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
 		if(type == JOptionPane.YES_OPTION)
 			ProfesorController.deleteProfesor(p);
 	}

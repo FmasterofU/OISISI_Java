@@ -6,6 +6,7 @@ import java.awt.event.FocusListener;
 import javax.swing.JTextField;
 
 import gui.controller.CheckValidation;
+import gui.model.Profesor;
 
 public class ProfesorListener implements FocusListener{
 	
@@ -44,6 +45,20 @@ public class ProfesorListener implements FocusListener{
 		else if(txt.getName().trim().equals("tflk"))				data[7] = (txt.getText().trim());
 		else if(txt.getName().trim().equals("tftit"))				data[8] = (txt.getText().trim());
 		else if(txt.getName().trim().equals("tfzvanje"))		data[9] = (txt.getText().trim());
+	}
+	
+	public void setInitialData(Profesor p)
+	{
+		data[0] = p.getIme();
+		data[1] = p.getPrezime();
+		data[2] = p.getDatumRodjenja();
+		data[3] = p.getAdresaStanovanja();
+		data[4] = p.getTelefon();
+		data[5] = p.geteMail();
+		data[6] = p.getAdresaKancelarije();
+		data[7] = p.getBrojLK();
+		data[8] = p.getTitula();
+		data[9] = p.getZvanje();
 	}
 	
 	public String[] getData()

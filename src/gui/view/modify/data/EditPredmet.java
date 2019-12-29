@@ -42,7 +42,7 @@ public class EditPredmet extends Dialog {
 	}
 	
 	private EditPredmet(String sifra) {
-		super("Izmeni studenta", "Potvrda", "Odustanak");
+		super("Izmeni predmet", "Potvrda", "Odustanak");
 		setSize(400,300);
 		setLocationRelativeTo(MainWindow.getInstance());
 		current = Data.data.listaPredmeta.getPredmet(sifra);
@@ -74,7 +74,6 @@ public class EditPredmet extends Dialog {
 				{
 					@SuppressWarnings("unchecked")
 					Predmet novi = new Predmet((String)o[0], (String)o[1], (Semestar)o[2], (GodinaStudija)o[3], (Profesor)o[4], (ArrayList<Student>) o[5]);
-					System.out.println(o[0]);
 					PredmetController.editPredmet((String) o[0], novi);
 					instance.setVisible(false);
 					instance = null;
