@@ -17,9 +17,9 @@ import gui.controller.PredmetController;
 import gui.model.Data;
 import gui.model.GodinaStudija;
 import gui.model.Predmet;
-import gui.model.Profesor;
 import gui.model.Semestar;
 import gui.model.Student;
+import gui.view.MainWindow;
 import gui.view.modify.ComboBox;
 import gui.view.modify.Dialog;
 import gui.view.modify.IHighlight;
@@ -41,6 +41,7 @@ public class AddPredmet extends Dialog {
 	public AddPredmet() {
 		super("Dodavanje predmeta", "Potvrda", "Odustanak");
 		setSize(400,350);
+		setLocationRelativeTo(MainWindow.getInstance());
 		addWindowListener(new WindowAdapter() {
 			@Override
 			public void windowClosing(WindowEvent e) {
