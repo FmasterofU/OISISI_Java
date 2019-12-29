@@ -7,6 +7,7 @@ import java.awt.event.ItemListener;
 
 import javax.swing.JTextField;
 
+import gui.controller.CheckValidation;
 import gui.model.Student;
 
 public class StudentListener implements FocusListener, ItemListener{
@@ -20,10 +21,22 @@ public class StudentListener implements FocusListener, ItemListener{
 	public void focusLost(FocusEvent e) {
 		JTextField txt = (JTextField) e.getComponent();
 		
-		if(txt.getName().trim().equals("tfime"))					data[0] = (txt.getText().trim());
-		else if(txt.getName().trim().equals("tfprez"))			data[1] = (txt.getText().trim());	
+		if(txt.getName().trim().equals("tfime")) 
+		{
+			data[0] = (txt.getText().trim()); 
+			data[0] = CheckValidation.firstLetterToCapital(data[0]);
+		}
+		else if(txt.getName().trim().equals("tfprez")) 
+		{
+			data[1] = (txt.getText().trim());	
+			data[1] = CheckValidation.firstLetterToCapital(data[1]);
+		}
 		else if(txt.getName().trim().equals("tfdatr"))			data[2] = (txt.getText().trim());
-		else if(txt.getName().trim().equals("tfadr"))			data[3] = (txt.getText().trim());
+		else if(txt.getName().trim().equals("tfadr"))
+		{
+			data[3] = (txt.getText().trim());
+			data[3] = CheckValidation.firstLetterToCapital(data[3]);
+		}
 		else if(txt.getName().trim().equals("tftel"))			data[4] = (txt.getText().trim());
 		else if(txt.getName().trim().equals("tfmail"))			data[5] = (txt.getText().trim());
 		else if(txt.getName().trim().equals("tfindeks"))		data[6] = (txt.getText().toUpperCase().trim());

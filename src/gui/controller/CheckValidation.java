@@ -225,5 +225,20 @@ public class CheckValidation {
 			boolean[] ret = {checkName(data[0],0), checkName(data[1],0), checkDate(data[2]), checkAdress(data[3]), checkPhoneNumber(data[4]), checkMail(data[5]), checkAdress(data[6]), (checkLK(data[7]) && checkUniqueProfesorID(data[7])) || editable, checkTitula(data[8]), checkZvanje(data[9])};
 			return ret;
 		}
-
+		
+		public static String firstLetterToCapital(String s)
+		{
+			String[]	temp = s.split(" ");
+			String ret = "";
+			
+			for(int i = 0; i < temp.length; i++)
+			{
+				String a = temp[i].substring(0, 1).toUpperCase();
+				String b = temp[i].substring(1, temp[i].length()).toLowerCase();
+				temp[i] = a+b;
+				ret += temp[i];
+				if(i != temp.length - 1)	ret += " ";
+			}
+			return ret;
+		}
 }
