@@ -95,7 +95,7 @@ public class ListaStudenata implements Serializable, IAbstractTableModel {
 			case 3:
 				return s.getDatumRodjenja();
 			case 4:
-				return Byte.toString(s.getGodStudija());
+				return s.getGodStudija().name();
 			case 5:
 					return s.getFinansiranje().name();
 			case 6:
@@ -114,7 +114,7 @@ public class ListaStudenata implements Serializable, IAbstractTableModel {
 	}
 	
 	public void addStudent(String ime, String prezime, String datumRodjenja, String adresa, String telefon, String eMail,
-			String brIndeksa, String datumUpisa, byte godStudija, NacinFinansiranja finansiranje, double prosecnaOcena)
+			String brIndeksa, String datumUpisa, GodinaStudija godStudija, NacinFinansiranja finansiranje, double prosecnaOcena)
 	{
 		if(!indexExists(brIndeksa))
 			this.studenti.add(new Student(ime, prezime, datumRodjenja, adresa, telefon, eMail, brIndeksa, datumUpisa, godStudija, finansiranje, prosecnaOcena));
@@ -147,7 +147,7 @@ public class ListaStudenata implements Serializable, IAbstractTableModel {
 	}
 	
 	public void editStudent(String brI, String ime, String prezime, String datumRodjenja, String adresa, String telefon, String eMail,
-			String datumUpisa, byte godStudija, NacinFinansiranja finansiranje, double prosecnaOcena)
+			String datumUpisa, GodinaStudija godStudija, NacinFinansiranja finansiranje, double prosecnaOcena)
 	{
 		for(Student s : studenti)
 		{

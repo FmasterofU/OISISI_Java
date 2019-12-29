@@ -41,8 +41,7 @@ public class StudentListener implements FocusListener, ItemListener{
 		data[5] = s.geteMail();
 		data[6] = s.getBrIndeksa();
 		data[7] = s.getDatumUpisa();
-		Byte g = s.getGodStudija();
-		data[8] = g.toString();
+		data[8] = s.getGodStudija().name();
 		Double p = s.getProsecnaOcena();
 		data[9] = p.toString();
 	}
@@ -56,10 +55,10 @@ public class StudentListener implements FocusListener, ItemListener{
 	public void itemStateChanged(ItemEvent e) {
 		if (e.getStateChange() == ItemEvent.SELECTED) {
 			String temp = (String) e.getItem();
-			if(temp.contains("prva"))		data[8] = "1";
-			else if(temp.contains("druga"))		data[8] = "2";
-			else if(temp.contains("tre"))		data[8] = "3";
-			else		data[8] = "4";
+			if(temp.contains("prva"))		data[8] = "I";
+			else if(temp.contains("druga"))		data[8] = "II";
+			else if(temp.contains("tre"))		data[8] = "III";
+			else		data[8] = "IV";
 	       }
 	}
 

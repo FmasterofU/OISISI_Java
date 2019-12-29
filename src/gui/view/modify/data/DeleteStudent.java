@@ -22,8 +22,7 @@ public class DeleteStudent extends JOptionPane{
 			//String index = getIndex(idx);
 			if(!idx.equals(""))
 			{
-				String message = "Da li želite obrisati studenta sa indeksom ";
-				message += idx + "?";
+				String message = "Da li želite obrisati studenta sa indeksom " + idx + "?";
 				UIManager.put("OptionPane.yesButtonText", "Da");
 				UIManager.put("OptionPane.noButtonText", "Ne");
 				int type = JOptionPane.showConfirmDialog(MainWindow.getInstance(), message, "Brisanje studenta", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);

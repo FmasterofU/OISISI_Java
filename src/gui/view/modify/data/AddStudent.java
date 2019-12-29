@@ -13,6 +13,7 @@ import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import gui.controller.CheckValidation;
 import gui.controller.StudentController;
+import gui.model.GodinaStudija;
 import gui.model.NacinFinansiranja;
 import gui.model.Student;
 import gui.view.modify.ComboBox;
@@ -64,7 +65,8 @@ public class AddStudent extends Dialog {
 				if(check){
 					if(budget.isSelected())	nf = NacinFinansiranja.BUDŽET;
 					else		nf = NacinFinansiranja.SAMOFINANSIRANJE;
-					Student novi = new Student(s[0], s[1], s[2], s[3], s[4], s[5], s[6], s[7], Byte.parseByte(s[8]), nf, Double.parseDouble(s[9]));
+					GodinaStudija gs = getGodina(s[8]);
+					Student novi = new Student(s[0], s[1], s[2], s[3], s[4], s[5], s[6], s[7], gs, nf, Double.parseDouble(s[9]));
 					StudentController.getInstance().addStudent(novi);
 					instance.setVisible(false);
 					instance = null;
@@ -266,5 +268,14 @@ public class AddStudent extends Dialog {
 		
 		GridBagConstraints gbctfdatu = generateTextFieldGBC();
 		middlePanel.add(tfdatu, gbctfdatu);
+	}
+	
+	private GodinaStudija getGodina(String s)
+	{
+		if(s.contains("IV"))		return GodinaStudija.IV;
+		else if(s.contains("III"))		return GodinaStudija.III;
+		else if(s.contains("II"))		return GodinaStudija.II;
+		else if(s.contains("I"))	return GodinaStudija.I;
+		else return null;
 	}
 }

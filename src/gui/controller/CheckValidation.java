@@ -171,26 +171,14 @@ public class CheckValidation {
 			}
 		}
 		
-		@SuppressWarnings("unused")
 		public static boolean[] isStudentValid(String[] data, boolean editable)
 		{
 			if(data.length != 10)
 				return new boolean[2];
 			
-			boolean[] ret = {checkName(data[0],0), checkName(data[1],0), checkDate(data[2]), checkAdress(data[3]), checkPhoneNumber(data[4]), checkMail(data[5]), checkIndex(data[6]), checkDate(data[7]), true, checkProsek(data[9])};
-			if(editable)		ret[6] = true;
-			
-			byte g;
-			try
-			{
-				g = Byte.parseByte(data[8]);
-				return ret;
-			}
-			catch(Exception e)
-			{
-				ret[8] = false;
-				return ret;
-			}
+			boolean[] ret = {checkName(data[0],0), checkName(data[1],0), checkDate(data[2]), checkAdress(data[3]), checkPhoneNumber(data[4]), checkMail(data[5]), checkIndex(data[6]) || editable, checkDate(data[7]), false, checkProsek(data[9])};
+			if(!data[8].equals(""))	ret[8] = true;
+			return ret;
 		}
 
 		public static boolean[] isPredmetValid(Object[] o, boolean editable) {

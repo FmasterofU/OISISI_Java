@@ -14,6 +14,7 @@ import javax.swing.JTextField;
 import gui.controller.CheckValidation;
 import gui.controller.StudentController;
 import gui.model.Data;
+import gui.model.GodinaStudija;
 import gui.model.NacinFinansiranja;
 import gui.model.Student;
 import gui.view.modify.ComboBox;
@@ -31,7 +32,7 @@ public class EditStudent extends Dialog{
 	private StudentListener listener = new StudentListener();
 	Student old = null;
 	private String ime, prez, indeks, datr, adr, tel, mail, datu;
-	private byte god;
+	private GodinaStudija god;
 	private NacinFinansiranja n;
 	private Double pros;
 	
@@ -75,7 +76,8 @@ public class EditStudent extends Dialog{
 				{
 					if(budget.isSelected())	nf = NacinFinansiranja.BUDŽET;
 					else		nf = NacinFinansiranja.SAMOFINANSIRANJE;
-					Student novi = new Student(s[0], s[1], s[2], s[3], s[4], s[5], s[6], s[7], Byte.parseByte(s[8]), nf, Double.parseDouble(s[9]));
+					GodinaStudija gs = getGodina(s[8]);
+					Student novi = new Student(s[0], s[1], s[2], s[3], s[4], s[5], s[6], s[7], gs, nf, Double.parseDouble(s[9]));
 					StudentController.getInstance().editStudent(old.getBrIndeksa(), novi);
 					instance.setVisible(false);
 					instance = null;
@@ -233,7 +235,7 @@ public class EditStudent extends Dialog{
 		//String[] cbItems = {first, others[0], others[1], others[2]};
 		@SuppressWarnings({ "unchecked", "rawtypes" })
 		ComboBox cbgod = new ComboBox(cbItems);
-		cbgod.setSelectedIndex(god-1);
+		cbgod.setSelectedIndex(god.ordinal());
 		cbgod.addItemListener(listener);
 		GridBagConstraints gbccb = generateTextFieldGBC();
 		middlePanel.add(cbgod, gbccb);
@@ -299,42 +301,13 @@ public class EditStudent extends Dialog{
 		}
 		return null;
 	}
-	/*
-	private String getGodina(byte g)
-	{
-		if(g == 1)		return "I(prva)";
-		else if(g == 2)		return "II(druga)";
-		else if(g == 3)		return "III(treća)";
-		else return "IV(četvrta)";
-	}
 	
-	private String[] getOthersGod(byte g)
+	private GodinaStudija getGodina(String s)
 	{
-		String[] ret = {"", "", ""};
-		if(g == 1)	
-		{
-			ret[0] = "II(druga)";
-			ret[1] = "III(treća)";
-			ret[2] =  "IV(četvrta)";
-		}
-		else if(g == 2)
-		{
-			ret[0] = "I(prva)";
-			ret[1] = "III(treća)";
-			ret[2] =  "IV(četvrta)";
-		}
-		else if(g == 3)
-		{
-			ret[0] = "I(prva)";
-			ret[1] = "II(druga)";
-			ret[2] =  "IV(četvrta)";
-		}
-		else
-		{
-			ret[0] = "I(prva)";
-			ret[1] = "II(druga)";
-			ret[2] =  "III(treća)";
-		}
-		return ret;
-	}*/
+		if(s.contains("IV"))		return GodinaStudija.IV;
+		else if(s.contains("III"))		return GodinaStudija.III;
+		else if(s.contains("II"))		return GodinaStudija.II;
+		else if(s.contains("I"))	return GodinaStudija.I;
+		else return null;
+	}
 }
