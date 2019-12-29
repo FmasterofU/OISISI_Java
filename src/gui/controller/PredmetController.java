@@ -11,18 +11,6 @@ public class PredmetController {
 		ViewPredmeti.getInstance().updateTable();
 	}
 	
-	public static void izbrisiPredmet(String sifra)
-	{
-		Data.data.listaPredmeta.deletePredmet(sifra);
-		ViewPredmeti.getInstance().updateTable();
-	}
-	
-	public static void izbrisiPredmet(int idx)
-	{
-		Data.data.listaPredmeta.deletePredmet(idx);
-		ViewPredmeti.getInstance().updateTable();
-	}
-	
 	public static void izbrisiPredmet(Predmet p)
 	{
 		Data.data.listaPredmeta.deletePredmet(p);

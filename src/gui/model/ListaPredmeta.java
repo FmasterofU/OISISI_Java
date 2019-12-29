@@ -52,6 +52,8 @@ public class ListaPredmeta implements Serializable, IAbstractTableModel {
 		 return null;
 	 }
 	 
+	 /* TODO ukloniti zavisnost od indeksa u sledecim metodata (get i delete su vec uradjeni)
+	 
 	 public void changePredmet(int index, Predmet p) {
 		 predmeti.set(index, p);
 	 }
@@ -66,7 +68,7 @@ public class ListaPredmeta implements Serializable, IAbstractTableModel {
 				 predmeti.remove(p);
 				 return;
 			 }
-	 }
+	 }*/
 	 
 	 public void deletePredmet(Predmet p) {
 		 predmeti.remove(p);
