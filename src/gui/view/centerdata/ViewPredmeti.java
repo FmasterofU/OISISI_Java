@@ -8,7 +8,7 @@ public class ViewPredmeti extends ViewTableCenter {
 
 	private static ViewPredmeti instance = null;
 	private ThisTableModel<ListaPredmeta> model = null;
-	static final int KEY_COLLUMN = 0; //sifrapredmeta
+	static final int KEY_COLUMN = 0; //sifrapredmeta
 	
 	public static ViewPredmeti getInstance() {
 		if(instance==null) instance = new ViewPredmeti();
@@ -28,6 +28,6 @@ public class ViewPredmeti extends ViewTableCenter {
 	public String getSelectedKey() {
 		int row = table.getSelectedRow();
 		if(row==-1) return null;
-		return (String) table.getValueAt(table.getSelectedRow(), KEY_COLLUMN);
+		return (String) table.getValueAt(table.getSelectedRow(), KEY_COLUMN);
 	}
 }
