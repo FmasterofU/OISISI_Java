@@ -24,12 +24,24 @@ public class StudentController {
 	
 	public void deleteStudent(String indeks)
 	{
+		/*
+		 * TODO: 
+		 * delete from predmeti 
+		 * update predmeti 
+		 * refresh search tab if active
+		*/
 		Data.data.listaStudenata.deleteStudent(indeks);
 		ViewStudenti.getInstance().updateTable();
 	}
 	
 	public void editStudent(String indeks, Student s)
 	{
+		/*
+		 * TODO:
+		 * edit in predmeti
+		 * update predmeti
+		 * refresh search tab if active
+		 */
 		Data.data.listaStudenata.editStudent(indeks, s);
 		ViewStudenti.getInstance().updateTable();
 	}

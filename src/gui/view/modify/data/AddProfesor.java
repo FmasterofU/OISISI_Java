@@ -60,7 +60,7 @@ public class AddProfesor extends Dialog{
 					}
 				if(check){
 					Profesor novi = new Profesor(s[0], s[1], s[2], s[3], s[4], s[5], s[6], s[7], s[8], s[9]);
-					ProfesorController.addProfesora(novi);
+					ProfesorController.addProfesor(novi);
 					instance.setVisible(false);
 					instance = null;
 					listener.clearData();

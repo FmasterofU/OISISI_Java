@@ -11,20 +11,26 @@ public class PredmetController {
 		ViewPredmeti.getInstance().updateTable();
 	}
 	
-	public static void deletePredmet(String sifra)
-	{
-		Data.data.listaPredmeta.deletePredmet(sifra);
-		ViewPredmeti.getInstance().updateTable();
-	}
-	
 	public static void deletePredmet(Predmet p)
 	{
+		/*
+		 * TODO:
+		 * delete from profesori
+		 * update profesori
+		 * refresh search tab if active
+		 */
 		Data.data.listaPredmeta.deletePredmet(p);
 		ViewPredmeti.getInstance().updateTable();
 	}
 	
 	public static void editPredmet(String sifra, Predmet novi)
 	{
+		/*
+		 * TODO:
+		 * edit in profesori
+		 * update profesori
+		 * refresh search tab if active
+		 */
 		Data.data.listaPredmeta.editPredmet(sifra, novi);
 		ViewPredmeti.getInstance().updateTable();
 	}
