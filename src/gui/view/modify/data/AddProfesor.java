@@ -52,7 +52,7 @@ public class AddProfesor extends Dialog{
 			public void actionPerformed(ActionEvent e) {				
 				String[] s = listener.getData();
 				boolean check = true;
-				boolean[] result = CheckValidation.isProfesorValid(s);
+				boolean[] result = CheckValidation.isProfesorValid(s,false);
 				for(boolean b : result)
 					if(b==false) {
 						check=false;
@@ -211,7 +211,7 @@ public class AddProfesor extends Dialog{
 		{
 			@Override
 			public void maybeHighlight() {
-				setBorder(((CheckValidation.checkLK(this.getText())) ? IHighlight.defaultBorder : IHighlight.highlightBorder));
+				setBorder((((CheckValidation.checkLK(this.getText())) && CheckValidation.checkUniqueProfesorID(this.getText())) ? IHighlight.defaultBorder : IHighlight.highlightBorder));
 			}
 		};
 		tflk.setName("tflk");

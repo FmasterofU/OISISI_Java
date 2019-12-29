@@ -194,17 +194,16 @@ public class CheckValidation {
 		}
 
 		public static boolean[] isPredmetValid(Object[] o, boolean editable) {
-			boolean[] ret = new boolean[o.length];
-			ret[0] = checkName((String) o[0], 1) && checkUniquePredmetCode((String) o[0]);
-			ret[1] = checkName((String) o[1], 2) && checkUniquePredmetCode((String) o[1]);
-			ret[2] = o[2]!=null ? true : false;
-			ret[3] = o[3]!=null ? true : false;
-			ret[4] = o[4]!=null ? true : false;
+			boolean[] ret = { (checkName((String) o[0], 1) && checkUniquePredmetCode((String) o[0])) || editable, checkName((String) o[1], 2) && checkUniquePredmetCode((String) o[1]), o[2]!=null ? true : false, o[3]!=null ? true : false, o[4]!=null ? true : false };
 			return ret;
 		}
 
 		public static boolean checkUniquePredmetCode(String text) {
 			return !Data.data.listaPredmeta.predmetCodeExists(text);
+		}
+		
+		public static boolean checkUniqueProfesorID(String id) {
+			return !Data.data.listaProfesora.profesorIDExists(id);
 		}
 
 		public static boolean checkSemester(String text) {
@@ -230,12 +229,12 @@ public class CheckValidation {
 			return z.matches("[a-zA-Z]+");
 		}
 		
-		public static boolean[] isProfesorValid(String[] data)
+		public static boolean[] isProfesorValid(String[] data, boolean editable)
 		{
 			if(data.length != 10)
 				return new boolean[2];
 			
-			boolean[] ret = {checkName(data[0],0), checkName(data[1],0), checkDate(data[2]), checkAdress(data[3]), checkPhoneNumber(data[4]), checkMail(data[5]), checkAdress(data[6]), checkLK(data[7]), checkTitula(data[8]), checkZvanje(data[9])};
+			boolean[] ret = {checkName(data[0],0), checkName(data[1],0), checkDate(data[2]), checkAdress(data[3]), checkPhoneNumber(data[4]), checkMail(data[5]), checkAdress(data[6]), (checkLK(data[7]) && checkUniqueProfesorID(data[7])) || editable, checkTitula(data[8]), checkZvanje(data[9])};
 			return ret;
 		}
 

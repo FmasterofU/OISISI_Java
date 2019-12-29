@@ -125,4 +125,11 @@ public class ListaProfesora implements Serializable, IAbstractTableModel {
 		return ret;
 	}
 
+	public boolean profesorIDExists(String id) {
+		for(Profesor p : profesori)
+			if(p.getBrojLK().equals(id))
+				return true;
+		return false;
+	}
+
 }
