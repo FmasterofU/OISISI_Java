@@ -66,7 +66,8 @@ public class AddPredmet extends Dialog {
 					}
 				if(check)
 				{
-					Predmet novi = new Predmet((String)o[0], (String)o[1], (Semestar)o[2], (GodinaStudija)o[3], Data.data.listaProfesora.getProfesor(((String)o[4]).trim().split("PK")[1]), new ArrayList<Student>());
+					String[] splits = ((String)o[4]).trim().split("PK");
+					Predmet novi = new Predmet((String)o[0], (String)o[1], (Semestar)o[2], (GodinaStudija)o[3], Data.data.listaProfesora.getProfesor(splits[splits.length-1]), new ArrayList<Student>());
 					PredmetController.addPredmet(novi);
 					instance.setVisible(false);
 					instance = null;
