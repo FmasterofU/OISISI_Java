@@ -6,19 +6,16 @@ import gui.view.centerdata.ViewProfesori;
 
 public class ProfesorController {
 	
-	private static ProfesorController instance = null;
-	
-	public static ProfesorController getInstance()
-	{
-		if(instance == null)	instance = new ProfesorController();
-		return instance;
-	}
-	
-	private ProfesorController() {}
-	
-	public void dodajProfesora(Profesor p)
+	public static void addProfesora(Profesor p)
 	{
 		Data.data.listaProfesora.addProfesor(p);
 		ViewProfesori.getInstance().updateTable();
 	}
+	
+	public static void deleteProfesor(Profesor p)
+	{
+		Data.data.listaProfesora.deleteProfesor(p);
+		ViewProfesori.getInstance().updateTable();
+	}
+	
 }

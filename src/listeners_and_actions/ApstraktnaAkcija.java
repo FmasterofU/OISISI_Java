@@ -12,11 +12,13 @@ import com.sun.glass.events.KeyEvent;
 import gui.view.MainWindow;
 import gui.view.centerdata.CenterBox;
 import gui.view.centerdata.ViewPredmeti;
+import gui.view.centerdata.ViewProfesori;
 import gui.view.centerdata.ViewStudenti;
 import gui.view.modify.data.AddPredmet;
 import gui.view.modify.data.AddProfesor;
 import gui.view.modify.data.AddStudent;
 import gui.view.modify.data.DeletePredmet;
+import gui.view.modify.data.DeleteProfesor;
 import gui.view.modify.data.DeleteStudent;
 import gui.view.modify.data.EditStudent;
 
@@ -107,11 +109,13 @@ public class ApstraktnaAkcija extends AbstractAction{
 					String idx = ViewStudenti.getInstance().getSelectedKey();
 					if(idx != null)		DeleteStudent.getNew(idx).setVisible(true);
 					break;
-				case 1: break;
+				case 1: 
+					String id = ViewProfesori.getInstance().getSelectedKey();
+					if(id!=null) (new DeleteProfesor(id)).setVisible(true);
+					break;
 				case 2:
 					String sifra = ViewPredmeti.getInstance().getSelectedKey();
-					if(sifra==null) break;
-					(new DeletePredmet(sifra)).setVisible(true);
+					if(sifra!=null) (new DeletePredmet(sifra)).setVisible(true);
 					break;
 			}
 		

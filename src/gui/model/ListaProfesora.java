@@ -64,8 +64,8 @@ public class ListaProfesora implements Serializable, IAbstractTableModel {
 		 profesori.set(index, p);
 	 }
 	 
-	 public void deleteProfesor(int index) {
-		 profesori.remove(index);
+	 public void deleteProfesor(Profesor p) {
+		 profesori.remove(p);
 	 }
 	 
 	//
