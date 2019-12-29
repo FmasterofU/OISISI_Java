@@ -11,10 +11,12 @@ import com.sun.glass.events.KeyEvent;
 
 import gui.view.MainWindow;
 import gui.view.centerdata.CenterBox;
+import gui.view.centerdata.ViewPredmeti;
 import gui.view.centerdata.ViewStudenti;
 import gui.view.modify.data.AddPredmet;
 import gui.view.modify.data.AddProfesor;
 import gui.view.modify.data.AddStudent;
+import gui.view.modify.data.DeletePredmet;
 import gui.view.modify.data.DeleteStudent;
 import gui.view.modify.data.EditStudent;
 
@@ -85,24 +87,32 @@ public class ApstraktnaAkcija extends AbstractAction{
 	public void actionPerformed(ActionEvent arg0) {
 		if(name.equals("close")) 
 			MainWindow.exit();
+		
 		if(name.equals("new"))
-		{
-			if(CenterBox.getInstance().getSelectedIndex() == 0)
-				AddStudent.getInstance().setVisible(true);
-			else if(CenterBox.getInstance().getSelectedIndex() == 1)
-				AddProfesor.getInstance().setVisible(true);
-			else if(CenterBox.getInstance().getSelectedIndex() == 2)
-				AddPredmet.getInstance().setVisible(true);
-
-		}
-		if(name.equals("delete"))
-		{
-			if(CenterBox.getInstance().getSelectedIndex() == 0)
-			{
-				int idx = ViewStudenti.getInstance().getSelectedIndex();
-				if(idx != -1)		DeleteStudent.getNew(idx).setVisible(true);
+			switch(CenterBox.getInstance().getSelectedIndex()){
+				case 0:
+					AddStudent.getInstance().setVisible(true);
+					break;
+				case 1:
+					AddProfesor.getInstance().setVisible(true);
+					break;
+				case 2:
+					AddPredmet.getInstance().setVisible(true);
+					break;
 			}
-		}
+		
+		if(name.equals("delete"))
+			switch(CenterBox.getInstance().getSelectedIndex()) {
+				case 0:
+					int idx = ViewStudenti.getInstance().getSelectedIndex();
+					if(idx != -1)		DeleteStudent.getNew(idx).setVisible(true);
+					break;
+				case 1: break;
+				case 2:
+					(new DeletePredmet(ViewPredmeti.getInstance().getSelectedKey())).setVisible(true);
+					break;
+			}
+		
 		if(name.equals("edit"))
 		{
 			if(CenterBox.getInstance().getSelectedIndex() == 0)

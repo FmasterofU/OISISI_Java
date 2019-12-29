@@ -64,7 +64,7 @@ public class AddPredmet extends Dialog {
 				if(check)
 				{
 					Predmet novi = new Predmet((String)o[0], (String)o[1], (Byte)o[2], (Byte)o[3], (Profesor)o[4], new ArrayList<Student>());
-					PredmetController.getInstance().dodajPredmet(novi);
+					PredmetController.dodajPredmet(novi);
 					instance.setVisible(false);
 					instance = null;
 					listener.clearData();

@@ -1,7 +1,5 @@
 package gui.view.centerdata;
 
-import java.awt.Component;
-
 import gui.model.Data;
 import gui.model.ListaPredmeta;
 
@@ -10,7 +8,9 @@ public class ViewPredmeti extends ViewTableCenter {
 
 	private static ViewPredmeti instance = null;
 	private ThisTableModel<ListaPredmeta> model = null;
-	public static Component getInstance() {
+	static final int KEY_COLLUMN = 0; //sifrapredmeta
+	
+	public static ViewPredmeti getInstance() {
 		if(instance==null) instance = new ViewPredmeti();
 		return instance;
 	}
@@ -24,4 +24,8 @@ public class ViewPredmeti extends ViewTableCenter {
 		if(model != null) 
 			model.fireTableDataChanged();
 		}
+	
+	public String getSelectedKey() {
+		return (String) table.getValueAt(table.getSelectedRow(), KEY_COLLUMN);
+	}
 }

@@ -45,8 +45,11 @@ public class ListaPredmeta implements Serializable, IAbstractTableModel {
 	
 	// index==row gui
 	
-	 public void getPredmet(int index) {
-		 predmeti.get(index);
+	 public Predmet getPredmet(String sifra) {
+		 for(Predmet p : predmeti)
+			 if(p.getSifra().equals(sifra))
+				 return p;
+		 return null;
 	 }
 	 
 	 public void changePredmet(int index, Predmet p) {
@@ -57,6 +60,18 @@ public class ListaPredmeta implements Serializable, IAbstractTableModel {
 		 predmeti.remove(index);
 	 }
 
+	 public void deletePredmet(String sifra) {
+		 for(Predmet p : predmeti)
+			 if(p.getSifra().equals(sifra)) {
+				 predmeti.remove(p);
+				 return;
+			 }
+	 }
+	 
+	 public void deletePredmet(Predmet p) {
+		 predmeti.remove(p);
+	 }
+	 
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();

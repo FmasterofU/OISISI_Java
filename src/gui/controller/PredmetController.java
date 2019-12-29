@@ -6,17 +6,26 @@ import gui.view.centerdata.ViewPredmeti;
 
 public class PredmetController {
 
-	private static PredmetController instance = null;
-	
-	public static PredmetController getInstance()
-	{
-		if(instance == null)	instance = new PredmetController();
-		return instance;
-	}
-
-	public void dodajPredmet(Predmet novi) {
+	public static void dodajPredmet(Predmet novi) {
 		Data.data.listaPredmeta.addPredmet(novi);
-		((ViewPredmeti) ViewPredmeti.getInstance()).updateTable();
+		ViewPredmeti.getInstance().updateTable();
 	}
 	
+	public static void izbrisiPredmet(String sifra)
+	{
+		Data.data.listaPredmeta.deletePredmet(sifra);
+		ViewPredmeti.getInstance().updateTable();
+	}
+	
+	public static void izbrisiPredmet(int idx)
+	{
+		Data.data.listaPredmeta.deletePredmet(idx);
+		ViewPredmeti.getInstance().updateTable();
+	}
+	
+	public static void izbrisiPredmet(Predmet p)
+	{
+		Data.data.listaPredmeta.deletePredmet(p);
+		ViewPredmeti.getInstance().updateTable();
+	}
 }
