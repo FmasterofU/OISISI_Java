@@ -90,7 +90,7 @@ public class CheckValidation {
 			if(!checkIndexYear(index))
 				return false;
 			if(Data.data.listaStudenata.indexExists(index))		return false;
-			return index.matches("[a-zA-Z]{2}[0-9]{1,3}/[0-9]{4}");
+			return index.matches("[a-zA-Z]{2}[1-9][0-9]{0,2}/[0-9]{4}");
 		}
 		
 		public static boolean checkIndexYear(String index)
