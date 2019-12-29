@@ -45,6 +45,7 @@ class ViewTableCenter extends JPanel {
                 return c;
                 }
         });
+        table.getTableHeader().setReorderingAllowed(false);
         table.setRowSelectionAllowed(true);
 		table.setColumnSelectionAllowed(true);
 		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);

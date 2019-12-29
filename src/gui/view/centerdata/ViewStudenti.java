@@ -49,8 +49,8 @@ public class ViewStudenti extends ViewTableCenter {
 			
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				int col = table.columnAtPoint(e.getPoint());
-				System.out.println(col);
+				/*int col = table.columnAtPoint(e.getPoint());
+				System.out.println(col);*/
 				
 			}
 		});
