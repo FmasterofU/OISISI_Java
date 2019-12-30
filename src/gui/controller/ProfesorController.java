@@ -30,6 +30,7 @@ public class ProfesorController {
 		 * TODO:
 		 * refresh search tab if active
 		 */
+		//System.out.println(Data.data.listaPredmeta);
 		Data.data.listaPredmeta.deleteProfesorInList(p);
 		ViewPredmeti.getInstance().updateTable();
 		Data.data.listaProfesora.deleteProfesor(p);

@@ -105,7 +105,9 @@ public class ListaPredmeta implements Serializable, IAbstractTableModel {
 			case 3:
 				return p.getGodinaStudija();
 			case 4:
-				return p.getProfesor().getIme()+" "+p.getProfesor().getPrezime();
+				if (p.getProfesor() != null)
+					return p.getProfesor().getIme()+" "+p.getProfesor().getPrezime();
+				else	return "Niko ne predaje";
 			case 5:
 				return p.getStudenti();
 			default:
