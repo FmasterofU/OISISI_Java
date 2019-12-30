@@ -64,7 +64,7 @@ public class EditStudent extends Dialog{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {				
-				String[] s = listener.getData();
+				Object[] s = listener.getData();
 				NacinFinansiranja nf;
 				boolean check = true;
 				boolean[] result = CheckValidation.isStudentValid(s, true);
@@ -77,8 +77,8 @@ public class EditStudent extends Dialog{
 				{
 					if(budget.isSelected())	nf = NacinFinansiranja.BUDŽET;
 					else		nf = NacinFinansiranja.SAMOFINANSIRANJE;
-					GodinaStudija gs = getGodina(s[8]);
-					Student novi = new Student(s[0], s[1], s[2], s[3], s[4], s[5], s[6], s[7], gs, nf, Double.parseDouble(s[9]));
+					//GodinaStudija gs = getGodina(s[8]);
+					Student novi = new Student((String) s[0], (String) s[1], (String) s[2], (String) s[3], (String) s[4], (String) s[5], (String) s[6], (String) s[7], (GodinaStudija) s[8], nf, Double.parseDouble((String) s[9]));
 					StudentController.editStudent(old.getBrIndeksa(), novi);
 					instance.setVisible(false);
 					instance = null;
@@ -230,7 +230,7 @@ public class EditStudent extends Dialog{
 		middlePanel.add(lgod, gbclgod);
 		
 		god = old.getGodStudija();
-		String[] cbItems = {"I(prva)", "II(druga)", "III(treća)", "IV(četvrta)"};
+		String[] cbItems = {GodinaStudija.I.name(), GodinaStudija.II.name(), GodinaStudija.III.name(), GodinaStudija.IV.name()};
 		@SuppressWarnings({ "unchecked", "rawtypes" })
 		ComboBox cbgod = new ComboBox(cbItems);
 		cbgod.setSelectedIndex(god.ordinal());
@@ -300,6 +300,7 @@ public class EditStudent extends Dialog{
 		return null;
 	}
 	
+	@SuppressWarnings("unused")
 	private GodinaStudija getGodina(String s)
 	{
 		if(s.contains("IV"))		return GodinaStudija.IV;

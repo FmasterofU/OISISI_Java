@@ -53,7 +53,7 @@ public class AddStudent extends Dialog {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {				
-				String[] s = listener.getData();
+				Object[] s = listener.getData();
 				NacinFinansiranja nf;
 				boolean check = true;
 				boolean[] result = CheckValidation.isStudentValid(s, false);
@@ -65,8 +65,8 @@ public class AddStudent extends Dialog {
 				if(check){
 					if(budget.isSelected())	nf = NacinFinansiranja.BUDŽET;
 					else		nf = NacinFinansiranja.SAMOFINANSIRANJE;
-					GodinaStudija gs = getGodina(s[8]);
-					Student novi = new Student(s[0], s[1], s[2], s[3], s[4], s[5], s[6], s[7], gs, nf, Double.parseDouble(s[9]));
+					//GodinaStudija gs = getGodina(s[8]);
+					Student novi = new Student((String) s[0], (String) s[1], (String) s[2], (String) s[3], (String) s[4], (String) s[5], (String) s[6], (String) s[7], (GodinaStudija) s[8], nf, Double.parseDouble((String) s[9]));
 					StudentController.addStudent(novi);
 					instance.setVisible(false);
 					instance = null;
@@ -215,7 +215,7 @@ public class AddStudent extends Dialog {
 		GridBagConstraints gbclgod = generateLabelGBC();
 		middlePanel.add(lgod, gbclgod);
 		
-		String[] cbItems = {"I(prva)", "II(druga)", "III(treća)", "IV(četvrta)"};
+		String[] cbItems = {GodinaStudija.I.name(), GodinaStudija.II.name(), GodinaStudija.III.name(), GodinaStudija.IV.name()};
 		@SuppressWarnings({ "unchecked", "rawtypes" })
 		ComboBox cbgod = new ComboBox(cbItems);
 		cbgod.addItemListener(listener);
@@ -270,6 +270,7 @@ public class AddStudent extends Dialog {
 		middlePanel.add(tfdatu, gbctfdatu);
 	}
 	
+	@SuppressWarnings("unused")
 	private GodinaStudija getGodina(String s)
 	{
 		if(s.contains("IV"))		return GodinaStudija.IV;
