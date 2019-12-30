@@ -50,7 +50,7 @@ public class AddProfesor extends Dialog{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {				
-				String[] s = listener.getData();
+				Object[] s = listener.getData();
 				boolean check = true;
 				boolean[] result = CheckValidation.isProfesorValid(s,false);
 				for(boolean b : result)
@@ -59,7 +59,7 @@ public class AddProfesor extends Dialog{
 						break;
 					}
 				if(check){
-					Profesor novi = new Profesor(s[0], s[1], s[2], s[3], s[4], s[5], s[6], s[7], s[8], s[9]);
+					Profesor novi = new Profesor((String) s[0], (String) s[1], (String) s[2], (String) s[3], (String) s[4], (String) s[5], (String) s[6], (String) s[7], (String) s[8], (String) s[9]);
 					ProfesorController.addProfesor(novi);
 					instance.setVisible(false);
 					instance = null;

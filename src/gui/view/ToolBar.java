@@ -47,7 +47,6 @@ class ToolBar extends JPanel {
 		
 		JTextField tf = new JTextField(30);
 		Dimension d = this.getPreferredSize();
-		System.out.println(d);
 		tf.setSize(70, d.height*3/4);
 		tf.setMaximumSize(new Dimension(300, d.height*3/4));
 		tf.setMinimumSize(new Dimension(300, d.height*3/4));

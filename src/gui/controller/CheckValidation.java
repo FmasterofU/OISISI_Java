@@ -220,12 +220,14 @@ public class CheckValidation {
 			return z.matches("[a-zA-Z]+");
 		}
 		
-		public static boolean[] isProfesorValid(String[] data, boolean editable)
+		public static boolean[] isProfesorValid(Object[] data, boolean editable)
 		{
 			if(data.length != 10)
 				return new boolean[2];
+			for(Object o : data)
+				if(o == null)	return new boolean[2];
 			
-			boolean[] ret = {checkName(data[0],0), checkName(data[1],0), checkDate(data[2]), checkAdress(data[3]), checkPhoneNumber(data[4]), checkMail(data[5]), checkAdress(data[6]), (checkLK(data[7]) && checkUniqueProfesorID(data[7])) || editable, checkTitula(data[8]), checkZvanje(data[9])};
+			boolean[] ret = {checkName((String) data[0],0), checkName((String) data[1],0), checkDate((String) data[2]), checkAdress((String) data[3]), checkPhoneNumber((String) data[4]), checkMail((String) data[5]), checkAdress((String) data[6]), (checkLK((String) data[7]) && checkUniqueProfesorID((String) data[7])) || editable, checkTitula((String) data[8]), checkZvanje((String) data[9])};
 			return ret;
 		}
 		
