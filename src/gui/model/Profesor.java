@@ -177,4 +177,17 @@ public class Profesor implements Serializable {
 		builder.append("]");
 		return builder.toString();
 	}
+	
+	 public static void changeProfesor(Profesor p, Profesor novi) {
+		 p.setIme(novi.getIme());
+		 p.setPrezime(novi.getPrezime());
+		 p.setDatumRodjenja(novi.getDatumRodjenja());
+		 p.setAdresaStanovanja(novi.getAdresaStanovanja());
+		 p.setTelefon(novi.getTelefon());
+		 p.seteMail(novi.geteMail());
+		 p.setAdresaKancelarije(novi.getAdresaKancelarije());
+		 p.setTitula(novi.getTitula());
+		 p.setZvanje(novi.getZvanje());
+		 p.setPredajePredmete(novi.getPredajePredmete());
+	 }
 }

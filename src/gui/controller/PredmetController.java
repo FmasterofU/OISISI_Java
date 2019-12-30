@@ -3,6 +3,8 @@ package gui.controller;
 import gui.model.Data;
 import gui.model.Predmet;
 import gui.view.centerdata.ViewPredmeti;
+import gui.view.centerdata.ViewProfesori;
+import gui.view.centerdata.ViewStudenti;
 
 public class PredmetController {
 
@@ -15,10 +17,12 @@ public class PredmetController {
 	{
 		/*
 		 * TODO:
-		 * delete from profesori
-		 * update profesori
 		 * refresh search tab if active
 		 */
+		Data.data.listaStudenata.deletePredmetInList(p);
+		ViewStudenti.getInstance().updateTable();
+		Data.data.listaProfesora.deletePredmetInList(p);
+		ViewProfesori.getInstance().updateTable();
 		Data.data.listaPredmeta.deletePredmet(p);
 		ViewPredmeti.getInstance().updateTable();
 	}
@@ -27,10 +31,12 @@ public class PredmetController {
 	{
 		/*
 		 * TODO:
-		 * edit in profesori
-		 * update profesori
 		 * refresh search tab if active
 		 */
+		Data.data.listaStudenata.editPredmetInList(sifra,novi);
+		ViewStudenti.getInstance().updateTable();
+		Data.data.listaProfesora.editPredmetInList(sifra,novi);
+		ViewProfesori.getInstance().updateTable();
 		Data.data.listaPredmeta.editPredmet(sifra, novi);
 		ViewPredmeti.getInstance().updateTable();
 	}

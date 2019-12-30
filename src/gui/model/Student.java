@@ -204,4 +204,18 @@ public class Student implements Serializable{
 		builder.append("]");
 		return builder.toString();
 	}
+	
+	public static void editStudent(Student stud, Student s){
+		stud.setIme(s.getIme());
+		stud.setPrezime(s.getPrezime());
+		stud.setDatumRodjenja(s.getDatumRodjenja());
+		stud.setAdresa(s.getAdresa());
+		stud.setTelefon(s.getTelefon());
+		stud.seteMail(s.geteMail());
+		stud.setDatumUpisa(s.getDatumUpisa());
+		stud.setGodStudija(s.getGodStudija());
+		stud.setFinansiranje(s.getFinansiranje());
+		stud.setProsecnaOcena(s.getProsecnaOcena());
+		stud.setSlusaPredmete(s.getSlusaPredmete());
+	}
 }

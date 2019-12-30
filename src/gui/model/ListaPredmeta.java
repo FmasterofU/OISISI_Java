@@ -124,4 +124,30 @@ public class ListaPredmeta implements Serializable, IAbstractTableModel {
 				return true;
 		return false;
 	}
+
+	public void deleteStudentInList(String indeks) {
+		for(Predmet p : predmeti)
+			for(Student s : p.getStudenti())
+				if(s.getBrIndeksa().equals(indeks))
+					p.getStudenti().remove(s);
+	}
+
+	public void editStudentInList(String indeks, Student stud) {
+		for(Predmet p : predmeti)
+			for(Student s : p.getStudenti())
+				if(s.getBrIndeksa().equals(indeks))
+					Student.editStudent(s, stud);
+	}
+
+	public void deleteProfesorInList(Profesor p) {
+		for(Predmet pred : predmeti)
+			if(pred.getProfesor().getBrojLK().equals(p.getBrojLK()))
+				pred.setProfesor(null);
+	}
+
+	public void editProfesorInList(String id, Profesor p) {
+		for(Predmet pred : predmeti)
+			if(pred.getProfesor().getBrojLK().equals(id))
+				Profesor.changeProfesor(pred.getProfesor(), p);
+	}
 }

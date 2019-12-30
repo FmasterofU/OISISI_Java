@@ -111,4 +111,12 @@ public class Predmet implements Serializable{
 		builder.append("]");
 		return builder.toString();
 	}
+	
+	 public static void editPredmet(Predmet p, Predmet novi) {
+		 p.setNaziv(novi.getNaziv());
+		 p.setSemestar(novi.getSemestar());
+		 p.setGodinaStudija(novi.getGodinaStudija());
+		 p.setProfesor(novi.getProfesor());
+		 p.setStudenti(novi.getStudenti());
+	 }
 }

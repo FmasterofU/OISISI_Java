@@ -184,10 +184,12 @@ public class ListaStudenata implements Serializable, IAbstractTableModel {
 				stud.setGodStudija(s.getGodStudija());
 				stud.setFinansiranje(s.getFinansiranje());
 				stud.setProsecnaOcena(s.getProsecnaOcena());
+				stud.setSlusaPredmete(s.getSlusaPredmete());
 				break;
 			}
 		}
 	}
+
 
 	@Override
 	public String toString() {
@@ -200,5 +202,19 @@ public class ListaStudenata implements Serializable, IAbstractTableModel {
 		}
 		builder.append("]");
 		return builder.toString();
+	}
+
+	public void deletePredmetInList(Predmet p) {
+		for(Student s : studenti)
+			for(Predmet pred : s.getSlusaPredmete())
+				if(pred.getSifra().equals(p.getSifra()))
+					s.getSlusaPredmete().remove(p);
+	}
+
+	public void editPredmetInList(String sifra, Predmet novi) {
+		for(Student s : studenti)
+			for(Predmet p : s.getSlusaPredmete())
+				if(p.getSifra().equals(sifra))
+					Predmet.editPredmet(p, novi);
 	}
 }

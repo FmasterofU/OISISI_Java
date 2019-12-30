@@ -2,6 +2,7 @@ package gui.controller;
 
 import gui.model.Data;
 import gui.model.Student;
+import gui.view.centerdata.ViewPredmeti;
 import gui.view.centerdata.ViewStudenti;
 
 public class StudentController {
@@ -26,10 +27,10 @@ public class StudentController {
 	{
 		/*
 		 * TODO: 
-		 * delete from predmeti 
-		 * update predmeti 
 		 * refresh search tab if active
 		*/
+		Data.data.listaPredmeta.deleteStudentInList(indeks);
+		ViewPredmeti.getInstance().updateTable();
 		Data.data.listaStudenata.deleteStudent(indeks);
 		ViewStudenti.getInstance().updateTable();
 	}
@@ -37,11 +38,11 @@ public class StudentController {
 	public void editStudent(String indeks, Student s)
 	{
 		/*
-		 * TODO:
-		 * edit in predmeti
-		 * update predmeti
+		 * TODO: 
 		 * refresh search tab if active
 		 */
+		Data.data.listaPredmeta.editStudentInList(indeks,s);
+		ViewPredmeti.getInstance().updateTable();
 		Data.data.listaStudenata.editStudent(indeks, s);
 		ViewStudenti.getInstance().updateTable();
 	}

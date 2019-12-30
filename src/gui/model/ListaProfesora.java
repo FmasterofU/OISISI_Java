@@ -73,9 +73,9 @@ public class ListaProfesora implements Serializable, IAbstractTableModel {
 				 p.setTelefon(novi.getTelefon());
 				 p.seteMail(novi.geteMail());
 				 p.setAdresaKancelarije(novi.getAdresaKancelarije());
-				 p.setBrojLK(novi.getBrojLK());
 				 p.setTitula(novi.getTitula());
 				 p.setZvanje(novi.getZvanje());
+				 p.setPredajePredmete(novi.getPredajePredmete());
 				 break;
 			 }
 		 }
@@ -147,5 +147,19 @@ public class ListaProfesora implements Serializable, IAbstractTableModel {
 			if(p.getBrojLK().equals(id))
 				return true;
 		return false;
+	}
+
+	public void deletePredmetInList(Predmet p) {
+		for(Profesor prof : profesori)
+			for(Predmet pred : prof.getPredajePredmete())
+				if(pred.getSifra().equals(p.getSifra()))
+					prof.getPredajePredmete().remove(p);
+	}
+
+	public void editPredmetInList(String sifra, Predmet novi) {
+		for(Profesor prof : profesori)
+			for(Predmet pred : prof.getPredajePredmete())
+				if(pred.getSifra().equals(sifra))
+					Predmet.editPredmet(pred, novi);
 	}
 }
