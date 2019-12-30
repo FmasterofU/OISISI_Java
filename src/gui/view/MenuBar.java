@@ -1,5 +1,7 @@
 package gui.view;
 
+import java.awt.Color;
+
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 
@@ -43,6 +45,8 @@ public class MenuBar extends JMenuBar{
 		edit.add(aDelete);
 		help.add(aHelp);
 		help.add(aAbout);
+		
+		this.setBackground(new Color(165, 199, 245)); //light blue color picked to be same as inactive tab color
 		
 		this.add(file);
 		this.add(edit);

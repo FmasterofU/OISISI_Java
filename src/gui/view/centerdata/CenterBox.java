@@ -1,8 +1,10 @@
 package gui.view.centerdata;
 
+import java.awt.Color;
 import java.awt.Component;
 
 import javax.swing.JTabbedPane;
+import javax.swing.UIManager;
 
 @SuppressWarnings("serial")
 public class CenterBox extends JTabbedPane {
@@ -16,6 +18,7 @@ public class CenterBox extends JTabbedPane {
 		addTab("Studenti", ViewStudenti.getInstance());
 		addTab("Profesori", ViewProfesori.getInstance());
 		addTab("Predmeti", ViewPredmeti.getInstance());
+		this.setBackground(new Color(165, 199, 245)); //active tab color is new Color(165, 199, 245), and this is for other tabs
 	}
 	
 	@Override
