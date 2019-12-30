@@ -47,18 +47,12 @@ public class ListaProfesora implements Serializable, IAbstractTableModel {
 	public void addProfesor(Profesor profesor) {
 		profesori.add(profesor);
 	}
-	//TODO izmijeniti metode to narednog linijskog komentara da odgovaraju dogovoru
-	// index==row gui
 	
 	 public Profesor getProfesor(String lk) {
 		 for(Profesor p : profesori)
 			 if(p.getBrojLK().equals(lk))
 				 return p;
 		 return null;
-	 }
-	 
-	 public void changeProfesor(int index, Profesor p) {
-		 profesori.set(index, p);
 	 }
 	 
 	 public void changeProfesor(String id, Profesor novi) {
@@ -84,9 +78,6 @@ public class ListaProfesora implements Serializable, IAbstractTableModel {
 	 public void deleteProfesor(Profesor p) {
 		 profesori.remove(p);
 	 }
-	 
-	//
-	 
 	 
 	@Override
 	public int getColumnCount() {
@@ -152,8 +143,8 @@ public class ListaProfesora implements Serializable, IAbstractTableModel {
 	public void deletePredmetInList(Predmet p) {
 		for(Profesor prof : profesori)
 			for(Predmet pred : prof.getPredajePredmete())
-				if(pred.getSifra().equals(p.getSifra()))
-					prof.getPredajePredmete().remove(p);
+				if(pred.getSifra().equals(p.getSifra()));
+					//{System.out.println(prof.getPredajePredmete().size()); prof.getPredajePredmete().remove(p);}
 	}
 
 	public void editPredmetInList(String sifra, Predmet novi) {
@@ -161,5 +152,12 @@ public class ListaProfesora implements Serializable, IAbstractTableModel {
 			for(Predmet pred : prof.getPredajePredmete())
 				if(pred.getSifra().equals(sifra))
 					Predmet.editPredmet(pred, novi);
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("ListaProfesora [profesori=").append(profesori).append("]");
+		return builder.toString();
 	}
 }

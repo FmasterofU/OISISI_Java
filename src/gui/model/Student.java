@@ -190,7 +190,7 @@ public class Student implements Serializable{
 		builder.append(finansiranje);
 		builder.append(", prosečnaOcena=");
 		builder.append(prosecnaOcena);
-		builder.append(".\\n\\t\\tSluša predmete sa šiframa: ");
+		builder.append(".\n\t\tSluša predmete sa šiframa: ");
 		
 		if(slusaPredmete.isEmpty())		builder.append("Ne sluša niti jedan predmet! ");
 		else

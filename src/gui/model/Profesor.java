@@ -172,8 +172,19 @@ public class Profesor implements Serializable {
 		builder.append(titula);
 		builder.append(", zvanje=");
 		builder.append(zvanje);
-		builder.append(", predajePredmete=");
-		builder.append(predajePredmete);
+		//builder.append(", predajePredmete=");
+		//builder.append(predajePredmete);
+		builder.append(".\n\t\tPredaje predmete sa šiframa: ");
+		
+		if(predajePredmete.isEmpty())		builder.append("Ne predaje niti jedan predmet! ");
+		else
+		{
+			for(Predmet s : predajePredmete)
+			{
+				builder.append(s.getSifra());
+				builder.append(" ");
+			}
+		}
 		builder.append("]");
 		return builder.toString();
 	}

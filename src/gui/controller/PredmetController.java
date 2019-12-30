@@ -9,6 +9,9 @@ import gui.view.centerdata.ViewStudenti;
 public class PredmetController {
 
 	public static void addPredmet(Predmet novi) {
+		Data.data.listaProfesora.getProfesor(novi.getProfesor().getBrojLK()).getPredajePredmete().add(novi);
+		ViewProfesori.getInstance().updateTable();
+		//System.out.println(Data.data.listaProfesora);
 		Data.data.listaPredmeta.addPredmet(novi);
 		ViewPredmeti.getInstance().updateTable();
 	}
@@ -19,10 +22,13 @@ public class PredmetController {
 		 * TODO:
 		 * refresh search tab if active
 		 */
+		//System.out.println("delete predmet");
 		Data.data.listaStudenata.deletePredmetInList(p);
 		ViewStudenti.getInstance().updateTable();
+		//System.out.println(Data.data.listaStudenata);
 		Data.data.listaProfesora.deletePredmetInList(p);
 		ViewProfesori.getInstance().updateTable();
+		//System.out.println(Data.data.listaProfesora);
 		Data.data.listaPredmeta.deletePredmet(p);
 		ViewPredmeti.getInstance().updateTable();
 	}
