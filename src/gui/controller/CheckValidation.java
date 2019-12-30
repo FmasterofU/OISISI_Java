@@ -182,7 +182,7 @@ public class CheckValidation {
 		}
 
 		public static boolean[] isPredmetValid(Object[] o, boolean editable) {
-			boolean[] ret = { (checkName((String) o[0], 1) && checkUniquePredmetCode((String) o[0])) || editable, checkName((String) o[1], 2) && checkUniquePredmetCode((String) o[1]), o[2]!=null ? true : false, o[3]!=null ? true : false, o[4]!=null ? true : false };
+			boolean[] ret = { o[0]!=null ? (checkName((String) o[0], 1) && checkUniquePredmetCode((String) o[0])) : false || editable, o[1]!=null ? (checkName((String) o[1], 2) && checkUniquePredmetCode((String) o[1])) : false, o[2]!=null ? true : false, o[3]!=null ? true : false, o[4]!=null ? true : false };
 			return ret;
 		}
 

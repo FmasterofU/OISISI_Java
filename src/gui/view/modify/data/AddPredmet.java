@@ -76,8 +76,7 @@ public class AddPredmet extends Dialog {
 				}
 				else
 				{
-					UIManager.put("OptionPane.cancelButtonText", "Dobro");
-					JOptionPane.showConfirmDialog(instance, "Pogrešni podaci!", "Grеška", JOptionPane.OK_CANCEL_OPTION, JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showConfirmDialog(instance, "Uneseni su neispravni podaci!", "Grеška", JOptionPane.DEFAULT_OPTION, JOptionPane.ERROR_MESSAGE);
 				}
 			}
 		});
