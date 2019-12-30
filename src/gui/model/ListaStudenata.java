@@ -19,14 +19,15 @@ public class ListaStudenata implements Serializable, IAbstractTableModel {
 		kolone.add("Indeks");
 		kolone.add("Ime");
 		kolone.add("Prezime");
-		kolone.add("Datum rođenja");
-		kolone.add("Godina studija");
+		kolone.add("Rođen(a)");
+		kolone.add("G. st.");
 		kolone.add("Status");
 		kolone.add("Prosek");
 		kolone.add("Adresa");
 		kolone.add("Telefon");
 		kolone.add("Mail");
-		kolone.add("Datum upisa");
+		kolone.add("Upisan(a)");
+		kolone.add("Predmeti");
 	}
 	
 	protected static ListaStudenata getInstance()
@@ -108,6 +109,8 @@ public class ListaStudenata implements Serializable, IAbstractTableModel {
 				return s.geteMail();
 			case 10:
 				return s.getDatumUpisa();
+			case 11:
+				return s.getSlusaPredmete().toString();
 			default:
 				return null;
 		}
@@ -206,15 +209,17 @@ public class ListaStudenata implements Serializable, IAbstractTableModel {
 
 	public void deletePredmetInList(Predmet p) {
 		for(Student s : studenti)
-			for(Predmet pred : s.getSlusaPredmete())
-				if(pred.getSifra().equals(p.getSifra()))
-					s.getSlusaPredmete().remove(p);
+			if(s.getSlusaPredmete()!=null)
+				for(Predmet pred : s.getSlusaPredmete())
+					if(pred.getSifra().equals(p.getSifra()))
+						s.getSlusaPredmete().remove(p);
 	}
 
 	public void editPredmetInList(String sifra, Predmet novi) {
 		for(Student s : studenti)
-			for(Predmet p : s.getSlusaPredmete())
-				if(p.getSifra().equals(sifra))
-					Predmet.editPredmet(p, novi);
+			if(s.getSlusaPredmete()!=null)
+				for(Predmet p : s.getSlusaPredmete())
+					if(p.getSifra().equals(sifra))
+						Predmet.editPredmet(p, novi);
 	}
 }

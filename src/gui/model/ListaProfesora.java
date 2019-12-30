@@ -15,15 +15,15 @@ public class ListaProfesora implements Serializable, IAbstractTableModel {
 		kolone = new ArrayList<String>();
 		kolone.add("Ime");
 		kolone.add("Prezime");
-		kolone.add("Datum rođenja");
-		kolone.add("Adresa stanovanja");
+		kolone.add("Rođen(a)");
+		kolone.add("Adresa");
 		kolone.add("Telefon");
 		kolone.add("e-mail");
-		kolone.add("Kancelarija");
+		kolone.add("Kanc.");
 		kolone.add("Br. LK");
 		kolone.add("Titula");
 		kolone.add("Zvanje");
-		kolone.add("Predaje Predmete");
+		kolone.add("Predaje");
 	}
 	
 	private ListaProfesora() {
@@ -142,16 +142,18 @@ public class ListaProfesora implements Serializable, IAbstractTableModel {
 
 	public void deletePredmetInList(Predmet p) {
 		for(Profesor prof : profesori)
-			for(Predmet pred : prof.getPredajePredmete())
-				if(pred.getSifra().equals(p.getSifra()));
-					//{System.out.println(prof.getPredajePredmete().size()); prof.getPredajePredmete().remove(p);}
+			if(prof.getPredajePredmete()!=null)
+				for(Predmet pred : prof.getPredajePredmete())
+					if(pred.getSifra().equals(p.getSifra()))
+						prof.getPredajePredmete().remove(p);
 	}
 
 	public void editPredmetInList(String sifra, Predmet novi) {
 		for(Profesor prof : profesori)
-			for(Predmet pred : prof.getPredajePredmete())
-				if(pred.getSifra().equals(sifra))
-					Predmet.editPredmet(pred, novi);
+			if(prof.getPredajePredmete()!=null)
+				for(Predmet pred : prof.getPredajePredmete())
+					if(pred.getSifra().equals(sifra))
+						Predmet.editPredmet(pred, novi);
 	}
 
 	@Override

@@ -28,7 +28,7 @@ public class DeleteStudent extends JOptionPane{
 				int type = JOptionPane.showConfirmDialog(MainWindow.getInstance(), message, "Brisanje studenta", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
 				if(type == JOptionPane.YES_OPTION)
 				{
-					StudentController.getInstance().deleteStudent(idx);
+					StudentController.deleteStudent(idx);
 				}
 			}
 		}

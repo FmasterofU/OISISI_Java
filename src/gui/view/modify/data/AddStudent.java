@@ -67,7 +67,7 @@ public class AddStudent extends Dialog {
 					else		nf = NacinFinansiranja.SAMOFINANSIRANJE;
 					GodinaStudija gs = getGodina(s[8]);
 					Student novi = new Student(s[0], s[1], s[2], s[3], s[4], s[5], s[6], s[7], gs, nf, Double.parseDouble(s[9]));
-					StudentController.getInstance().addStudent(novi);
+					StudentController.addStudent(novi);
 					instance.setVisible(false);
 					instance = null;
 					listener.clearData();
