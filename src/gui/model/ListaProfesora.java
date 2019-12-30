@@ -47,7 +47,7 @@ public class ListaProfesora implements Serializable, IAbstractTableModel {
 	public void addProfesor(Profesor profesor) {
 		profesori.add(profesor);
 	}
-	
+
 	 public Profesor getProfesor(String lk) {
 		 for(Profesor p : profesori)
 			 if(p.getBrojLK().equals(lk))
