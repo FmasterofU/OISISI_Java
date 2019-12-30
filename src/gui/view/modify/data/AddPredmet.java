@@ -10,8 +10,6 @@ import java.util.ArrayList;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
-import javax.swing.UIManager;
-
 import gui.controller.CheckValidation;
 import gui.controller.PredmetController;
 import gui.model.Data;
@@ -148,7 +146,7 @@ public class AddPredmet extends Dialog {
 		GridBagConstraints gbclGodina = generateLabelGBC();
 		middlePanel.add(lGodina, gbclGodina);
 		
-		String[] cbItems2 = {GodinaStudija.I.name(), GodinaStudija.II.name(), GodinaStudija.III.name(), GodinaStudija.IV.name()}; //{"I (prva)", "II (druga)", "III (treća)", "IV (četvrta)"};
+		String[] cbItems2 = {GodinaStudija.I.name(), GodinaStudija.II.name(), GodinaStudija.III.name(), GodinaStudija.IV.name()};
 		@SuppressWarnings({ "unchecked", "rawtypes" })
 		ComboBox cbGodina = new ComboBox(cbItems2);
 		cbGodina.setName("cbGodina");
