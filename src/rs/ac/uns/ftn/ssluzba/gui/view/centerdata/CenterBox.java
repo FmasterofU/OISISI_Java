@@ -20,7 +20,7 @@ public class CenterBox extends JTabbedPane {
 		//this.setBackground(Color.WHITE);
 		addTab("Profesori", ViewProfesori.getInstance());
 		addTab("Predmeti", ViewPredmeti.getInstance());
-		this.setBackground(new Color(165, 199, 245)); //active tab color is new Color(165, 199, 245), and this is for other tabs
+		this.setBackground(new Color(165, 199, 245)); //active tab color is new Color(165, 199, 245) - color picked, and this is for other tabs and background
 	}
 	
 	@Override

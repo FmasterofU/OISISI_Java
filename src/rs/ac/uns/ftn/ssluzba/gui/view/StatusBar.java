@@ -1,6 +1,5 @@
 package rs.ac.uns.ftn.ssluzba.gui.view;
 
-import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.SimpleDateFormat;
@@ -11,6 +10,8 @@ import javax.swing.BoxLayout;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.Timer;
+
+import rs.ac.uns.ftn.ssluzba.gui.view.centerdata.CenterBox;
 
 @SuppressWarnings("serial")
 class StatusBar extends JPanel implements ActionListener{
@@ -34,7 +35,7 @@ class StatusBar extends JPanel implements ActionListener{
 		this.add(Box.createGlue());
 		this.add(date);
 		this.add(Box.createHorizontalStrut(10));
-		this.setBackground(Color.LIGHT_GRAY);
+		this.setBackground(CenterBox.getInstance().getBackground()); //light blue, same as inactive tab color in centerbox
 	    this.setSize(100, 100);
 	}
 	@Override

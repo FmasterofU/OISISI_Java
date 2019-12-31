@@ -1,13 +1,12 @@
 package rs.ac.uns.ftn.ssluzba.gui.view;
 
-import java.awt.Color;
-
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 
 import com.sun.glass.events.KeyEvent;
 
 import rs.ac.uns.ftn.ssluzba.gui.controller.listenersandactions.ThisAbstractAction;
+import rs.ac.uns.ftn.ssluzba.gui.view.centerdata.CenterBox;
 
 public class MenuBar extends JMenuBar{
 
@@ -46,7 +45,7 @@ public class MenuBar extends JMenuBar{
 		help.add(aHelp);
 		help.add(aAbout);
 		
-		this.setBackground(new Color(165, 199, 245)); //light blue color picked to be same as inactive tab color
+		this.setBackground(CenterBox.getInstance().getBackground()); //light blue, same as inactive tab color in centerbox
 		
 		this.add(file);
 		this.add(edit);
