@@ -13,6 +13,8 @@ import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import com.sun.glass.events.KeyEvent;
+
 import gui.view.MainWindow;
 
 @SuppressWarnings("serial")
@@ -28,7 +30,9 @@ public class Dialog extends JDialog {
 	public Dialog(String windowName, String acceptButtonName, String cancelButtonName) {
 		super(MainWindow.getInstance(), windowName, true);
 		acceptButton = new JButton(acceptButtonName);
+		acceptButton.setMnemonic(KeyEvent.VK_S);
 		cancelButton = new JButton(cancelButtonName);
+		cancelButton.setMnemonic(KeyEvent.VK_Q);
 		setSize(550, 550);
 		setLocationRelativeTo(MainWindow.getInstance());
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
