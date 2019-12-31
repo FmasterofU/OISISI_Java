@@ -5,6 +5,7 @@ import java.awt.event.InputEvent;
 
 import javax.swing.AbstractAction;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 import javax.swing.KeyStroke;
 
 import com.sun.glass.events.KeyEvent;
@@ -144,6 +145,9 @@ public class ThisAbstractAction extends AbstractAction{
 		}
 		if(name.equals("search")) {
 			System.out.println("TODO: Search");
+		}
+		if(name.equals("about")) {
+			JOptionPane.showConfirmDialog(MainWindow.getInstance(), "OISISI_Java - Studentska Služba\n~ Igor Šikuljak - igorsikuljak@uns.ac.rs\n~ Radoš Milićev - rados280698@yahoo.com", "About", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, new ImageIcon("Slike/about.png"));
 		}
 	}
 	
