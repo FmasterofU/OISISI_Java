@@ -32,16 +32,6 @@ public class MainWindow  extends JFrame {
 			public void windowClosing(WindowEvent we) {
 				MainWindow.exit();
 				}
-			@Override
-			public void windowOpened(WindowEvent e)
-			{
-				int i = 0;
-				for(i = 0; i < 100; i++)
-				{
-					JOptionPane.showMessageDialog(MainWindow.getInstance(), "Happy New Year");
-					i++;
-				}
-			}
 			});
 		JPanel defaultPanel = new JPanel();
 		//BoxLayout vBox = new BoxLayout(defaultPanel, BoxLayout.Y_AXIS);
