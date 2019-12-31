@@ -24,12 +24,12 @@ import gui.view.modify.data.EditPredmet;
 import gui.view.modify.data.EditProfesor;
 import gui.view.modify.data.EditStudent;
 
-public class ApstraktnaAkcija extends AbstractAction{
+public class ThisAbstractAction extends AbstractAction{
 
 	private static final long serialVersionUID = 4889011984599408652L;
 	private String name;
 	
-	public ApstraktnaAkcija(String s) {
+	public ThisAbstractAction(String s) {
 		String rez = s.trim();
 		rez = s.toLowerCase();
 		name = rez;
@@ -67,7 +67,10 @@ public class ApstraktnaAkcija extends AbstractAction{
 					putValue(ACCELERATOR_KEY, KeyStroke.getKeyStroke(KeyEvent.VK_D, InputEvent.CTRL_MASK));
 					break;
 				}
-				
+			case "search":
+				putValue(NAME, "Search");
+				putValue(SMALL_ICON, new ImageIcon("Slike/search-24.png"));
+				break;
 			case "help":
 				{
 					putValue(NAME, "Help");
@@ -138,6 +141,9 @@ public class ApstraktnaAkcija extends AbstractAction{
 					if(sifra!=null) EditPredmet.getInstance(sifra).setVisible(true);
 					break;
 			}
+		}
+		if(name.equals("search")) {
+			System.out.println("TODO: Search");
 		}
 	}
 	

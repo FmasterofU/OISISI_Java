@@ -9,7 +9,7 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-import listeners_and_actions.ApstraktnaAkcija;
+import listeners_and_actions.ThisAbstractAction;
 
 @SuppressWarnings("serial")
 class ToolBar extends JPanel {
@@ -26,21 +26,26 @@ class ToolBar extends JPanel {
 		BoxLayout box = new BoxLayout(this, BoxLayout.X_AXIS);
 		this.setLayout(box);
 		this.add(Box.createHorizontalStrut(10));
-		
-		JButton buttonAdd = new JButton(new ImageIcon("Slike/add-24.png"));
+
+		ThisAbstractAction actNew = new ThisAbstractAction("new");
+		JButton buttonAdd = new JButton(actNew);
 		buttonAdd.setBackground(Color.WHITE);
 		buttonAdd.setBorderPainted(false);
-		//ApstraktnaAkcija actNew = ApstraktnaAkcija()
+		buttonAdd.setIcon(new ImageIcon("Slike/add-24.png"));
 		this.add(buttonAdd);
 		
-		JButton buttonEdit = new JButton(new ImageIcon("Slike/edit-property-24.png"));
+		ThisAbstractAction actEdit = new ThisAbstractAction("edit");
+		JButton buttonEdit = new JButton(actEdit);
 		buttonEdit.setBackground(Color.WHITE);
 		buttonEdit.setBorderPainted(false);
+		buttonEdit.setIcon(new ImageIcon("Slike/edit-property-24.png"));
 		this.add(buttonEdit);
 		
-		JButton buttonDelete = new JButton(new ImageIcon("Slike/trash-24.png"));
+		ThisAbstractAction actDelete = new ThisAbstractAction("delete");
+		JButton buttonDelete = new JButton(actDelete);
 		buttonDelete.setBackground(Color.WHITE);
 		buttonDelete.setBorderPainted(false);
+		buttonDelete.setIcon(new ImageIcon("Slike/trash-24.png"));
 		this.add(buttonDelete);
 		
 		currentExpandedToolbarPanel.setMaximumSize(new Dimension());
@@ -55,14 +60,15 @@ class ToolBar extends JPanel {
 		tf.setMinimumSize(new Dimension(300, d.height*3/4));
 		this.add(tf);
 		
-		JButton buttonSearch = new JButton(new ImageIcon("Slike/search-24.png"));
+		ThisAbstractAction actSearch = new ThisAbstractAction("search");
+		JButton buttonSearch = new JButton(actSearch);
 		buttonSearch.setBackground(Color.WHITE);
 		buttonSearch.setBorderPainted(false);
+		//buttonSearch.setIcon(new ImageIcon("Slike/search-24.png"));
 		this.add(buttonSearch);
 		
 		this.add(Box.createHorizontalStrut(20));
 		this.setBackground(Color.WHITE);
-		//this.setSize(100,100);
 	}
 
 

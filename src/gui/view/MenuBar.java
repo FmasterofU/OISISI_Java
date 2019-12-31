@@ -7,7 +7,7 @@ import javax.swing.JMenuBar;
 
 import com.sun.glass.events.KeyEvent;
 
-import listeners_and_actions.ApstraktnaAkcija;
+import listeners_and_actions.ThisAbstractAction;
 
 public class MenuBar extends JMenuBar{
 
@@ -32,12 +32,12 @@ public class MenuBar extends JMenuBar{
 		edit.setMnemonic(KeyEvent.VK_E);
 		help.setMnemonic(KeyEvent.VK_H);
 		
-		ApstraktnaAkcija aNew = new ApstraktnaAkcija("new");
-		ApstraktnaAkcija aClose = new ApstraktnaAkcija("close");
-		ApstraktnaAkcija aEdit = new ApstraktnaAkcija("edit");
-		ApstraktnaAkcija aDelete = new ApstraktnaAkcija("delete");
-		ApstraktnaAkcija aHelp = new ApstraktnaAkcija("help");
-		ApstraktnaAkcija aAbout = new ApstraktnaAkcija("about");
+		ThisAbstractAction aNew = new ThisAbstractAction("new");
+		ThisAbstractAction aClose = new ThisAbstractAction("close");
+		ThisAbstractAction aEdit = new ThisAbstractAction("edit");
+		ThisAbstractAction aDelete = new ThisAbstractAction("delete");
+		ThisAbstractAction aHelp = new ThisAbstractAction("help");
+		ThisAbstractAction aAbout = new ThisAbstractAction("about");
 		
 		file.add(aNew);
 		file.add(aClose);
