@@ -1,8 +1,9 @@
 package gui.model;
 
-public interface IAbstractTableModel {
+public interface ITableModel {
 	public int getColumnCount();
 	public int getRowCount();
 	public Object getValueAt(int rowIndex, int columnIndex);
 	public String getColumnName(int col);
+	public boolean isEmpty();
 }

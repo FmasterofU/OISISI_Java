@@ -1,8 +1,5 @@
 package gui.view.centerdata;
 
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-
 import gui.model.Data;
 import gui.model.ListaStudenata;
 
@@ -10,7 +7,7 @@ public class ViewStudenti extends ViewTableCenter {
 	
 	private static final long serialVersionUID = -4008708277153917046L;
 	private static ViewStudenti instance = null;
-	private ThisTableModel<ListaStudenata> model = null;
+	private ThisTableModel<ListaStudenata> genModel = null;
 	static final int KEY_COLUMN = 0;
 	
 	public static ViewStudenti getInstance() {
@@ -18,9 +15,11 @@ public class ViewStudenti extends ViewTableCenter {
 		return instance;
 	}
 	private ViewStudenti() {
-		model = new ThisTableModel<ListaStudenata>(Data.data.listaStudenata);
-		table.setModel(model);
+		genModel = new ThisTableModel<ListaStudenata>(Data.data.listaStudenata);
+		table.setModel(genModel.getModel());
 		resizeColumnWidth();
+		table.setRowSorter(genModel.getSorter());
+		/*
 		table.getTableHeader().addMouseListener(new MouseListener() {
 			
 			@Override
@@ -52,13 +51,13 @@ public class ViewStudenti extends ViewTableCenter {
 				/*int col = table.columnAtPoint(e.getPoint());
 				System.out.println(col);*/
 				
-			}
-		});
+			//}
+		//});*/
 	}
 	
 	public void updateTable()
 	{
-		if(model != null)		model.fireTableDataChanged();
+		if(genModel.getModel() != null)		genModel.getModel().fireTableDataChanged();
 	}
 	
 	public String getSelectedKey()

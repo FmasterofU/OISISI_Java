@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.LinkedList;
 
-public class ListaProfesora implements Serializable, IAbstractTableModel {
+public class ListaProfesora implements Serializable, ITableModel {
 
 	private static final long serialVersionUID = 8001823155996613518L;
 	private LinkedList<Profesor> profesori;
@@ -161,5 +161,10 @@ public class ListaProfesora implements Serializable, IAbstractTableModel {
 		StringBuilder builder = new StringBuilder();
 		builder.append("ListaProfesora [profesori=").append(profesori).append("]");
 		return builder.toString();
+	}
+
+	@Override
+	public boolean isEmpty() {
+		return profesori.isEmpty();
 	}
 }

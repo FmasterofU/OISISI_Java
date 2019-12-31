@@ -7,7 +7,7 @@ import gui.model.ListaPredmeta;
 public class ViewPredmeti extends ViewTableCenter {
 
 	private static ViewPredmeti instance = null;
-	private ThisTableModel<ListaPredmeta> model = null;
+	private ThisTableModel<ListaPredmeta> genModel = null;
 	static final int KEY_COLUMN = 0; //sifrapredmeta
 	
 	public static ViewPredmeti getInstance() {
@@ -15,14 +15,15 @@ public class ViewPredmeti extends ViewTableCenter {
 		return instance;
 	}
 	private ViewPredmeti() {
-		model = new ThisTableModel<ListaPredmeta>(Data.data.listaPredmeta);
-		table.setModel(model);
+		genModel = new ThisTableModel<ListaPredmeta>(Data.data.listaPredmeta);
+		table.setModel(genModel.getModel());
 		resizeColumnWidth();
+		table.setRowSorter(genModel.getSorter());
 		}
 
 	public void updateTable(){
-		if(model != null) 
-			model.fireTableDataChanged();
+		if(genModel.getModel() != null) 
+			genModel.getModel().fireTableDataChanged();
 		}
 	
 	public String getSelectedKey() {

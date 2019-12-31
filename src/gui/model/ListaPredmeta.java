@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.LinkedList;
 
-public class ListaPredmeta implements Serializable, IAbstractTableModel {
+public class ListaPredmeta implements Serializable, ITableModel {
 
 	private static final long serialVersionUID = -8045180299982898373L;
 	private LinkedList<Predmet> predmeti;
@@ -153,5 +153,10 @@ public class ListaPredmeta implements Serializable, IAbstractTableModel {
 		for(Predmet pred : predmeti)
 			if(pred.getProfesor()!=null && pred.getProfesor().getBrojLK().equals(id))
 				Profesor.changeProfesor(pred.getProfesor(), p);
+	}
+
+	@Override
+	public boolean isEmpty() {
+		return predmeti.isEmpty();
 	}
 }

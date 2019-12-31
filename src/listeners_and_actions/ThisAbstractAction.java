@@ -34,60 +34,47 @@ public class ThisAbstractAction extends AbstractAction{
 		String rez = s.trim();
 		rez = s.toLowerCase();
 		name = rez;
-		switch(rez)
-		{
+		switch(rez){
 			case "new":
-				{
-					putValue(NAME, "New");
-					putValue(MNEMONIC_KEY, KeyEvent.VK_N);
-					putValue(SMALL_ICON, new ImageIcon("Slike/new.png"));
-					putValue(ACCELERATOR_KEY, KeyStroke.getKeyStroke(KeyEvent.VK_N, InputEvent.CTRL_MASK));
-					break;
-				}
+				putValue(NAME, "New");
+				putValue(MNEMONIC_KEY, KeyEvent.VK_N);
+				putValue(SMALL_ICON, new ImageIcon("Slike/new.png"));
+				putValue(ACCELERATOR_KEY, KeyStroke.getKeyStroke(KeyEvent.VK_N, InputEvent.CTRL_MASK));
+				break;
 			case "close":
-				{
-					putValue(NAME, "Close");
-					putValue(MNEMONIC_KEY, KeyEvent.VK_Q);
-					putValue(SMALL_ICON, new ImageIcon("Slike/close.png"));
-					putValue(ACCELERATOR_KEY, KeyStroke.getKeyStroke(KeyEvent.VK_Q, InputEvent.CTRL_MASK));
-					break;
-				}
+				putValue(NAME, "Close");
+				putValue(MNEMONIC_KEY, KeyEvent.VK_Q);
+				putValue(SMALL_ICON, new ImageIcon("Slike/close.png"));
+				putValue(ACCELERATOR_KEY, KeyStroke.getKeyStroke(KeyEvent.VK_Q, InputEvent.CTRL_MASK));
+				break;
 			case "edit":
-				{
-					putValue(NAME, "Edit");
-					putValue(MNEMONIC_KEY, KeyEvent.VK_E);
-					putValue(SMALL_ICON, new ImageIcon("Slike/edit.png"));
-					putValue(ACCELERATOR_KEY, KeyStroke.getKeyStroke(KeyEvent.VK_E, InputEvent.CTRL_MASK));
-					break;
-				}
+				putValue(NAME, "Edit");
+				putValue(MNEMONIC_KEY, KeyEvent.VK_E);
+				putValue(SMALL_ICON, new ImageIcon("Slike/edit.png"));
+				putValue(ACCELERATOR_KEY, KeyStroke.getKeyStroke(KeyEvent.VK_E, InputEvent.CTRL_MASK));
+				break;
 			case "delete":
-				{
-					putValue(NAME, "Delete");
-					putValue(MNEMONIC_KEY, KeyEvent.VK_D);
-					putValue(SMALL_ICON, new ImageIcon("Slike/delete.png"));
-					putValue(ACCELERATOR_KEY, KeyStroke.getKeyStroke(KeyEvent.VK_D, InputEvent.CTRL_MASK));
-					break;
-				}
+				putValue(NAME, "Delete");
+				putValue(MNEMONIC_KEY, KeyEvent.VK_D);
+				putValue(SMALL_ICON, new ImageIcon("Slike/delete.png"));
+				putValue(ACCELERATOR_KEY, KeyStroke.getKeyStroke(KeyEvent.VK_D, InputEvent.CTRL_MASK));
+				break;
 			case "search":
 				putValue(NAME, "Search");
 				putValue(SMALL_ICON, new ImageIcon("Slike/search-24.png"));
 				break;
 			case "help":
-				{
-					putValue(NAME, "Help");
-					putValue(MNEMONIC_KEY, KeyEvent.VK_H);
-					putValue(SMALL_ICON, new ImageIcon("Slike/help.png"));
-					putValue(ACCELERATOR_KEY, KeyStroke.getKeyStroke(KeyEvent.VK_H, InputEvent.CTRL_MASK));
-					break;
-				}
+				putValue(NAME, "Help");
+				putValue(MNEMONIC_KEY, KeyEvent.VK_H);
+				putValue(SMALL_ICON, new ImageIcon("Slike/help.png"));
+				putValue(ACCELERATOR_KEY, KeyStroke.getKeyStroke(KeyEvent.VK_H, InputEvent.CTRL_MASK));
+				break;
 			case "about":
-				{
-					putValue(NAME, "About");
-					putValue(MNEMONIC_KEY, KeyEvent.VK_I);
-					putValue(SMALL_ICON, new ImageIcon("Slike/about.png"));
-					putValue(ACCELERATOR_KEY, KeyStroke.getKeyStroke(KeyEvent.VK_I, InputEvent.CTRL_MASK));
-					break;
-				}
+				putValue(NAME, "About");
+				putValue(MNEMONIC_KEY, KeyEvent.VK_I);
+				putValue(SMALL_ICON, new ImageIcon("Slike/about.png"));
+				putValue(ACCELERATOR_KEY, KeyStroke.getKeyStroke(KeyEvent.VK_I, InputEvent.CTRL_MASK));
+				break;
 		}
 	}
 
@@ -95,8 +82,7 @@ public class ThisAbstractAction extends AbstractAction{
 	public void actionPerformed(ActionEvent arg0) {
 		if(name.equals("close")) 
 			MainWindow.exit();
-		
-		if(name.equals("new"))
+		else if(name.equals("new"))
 			switch(CenterBox.getInstance().getSelectedIndex()){
 				case 0:
 					AddStudent.getInstance().setVisible(true);
@@ -108,8 +94,7 @@ public class ThisAbstractAction extends AbstractAction{
 					AddPredmet.getInstance().setVisible(true);
 					break;
 			}
-		
-		if(name.equals("delete"))
+		else if(name.equals("delete"))
 			switch(CenterBox.getInstance().getSelectedIndex()) {
 				case 0:
 					String idx = ViewStudenti.getInstance().getSelectedKey();
@@ -124,11 +109,8 @@ public class ThisAbstractAction extends AbstractAction{
 					if(sifra!=null) (new DeletePredmet(sifra)).setVisible(true);
 					break;
 			}
-		
-		if(name.equals("edit"))
-		{
-			switch(CenterBox.getInstance().getSelectedIndex())
-			{
+		else if(name.equals("edit"))
+			switch(CenterBox.getInstance().getSelectedIndex()){
 				case 0:
 					String idx = ViewStudenti.getInstance().getSelectedKey();
 					if(idx != null)		EditStudent.getInstance(idx).setVisible(true);
@@ -142,16 +124,12 @@ public class ThisAbstractAction extends AbstractAction{
 					if(sifra!=null) EditPredmet.getInstance(sifra).setVisible(true);
 					break;
 			}
-		}
-		if(name.equals("search")) {
+		else if(name.equals("search"))
 			System.out.println("TODO: Search");
-		}
-		if(name.equals("help")) {
+		else if(name.equals("help"))
 			JOptionPane.showConfirmDialog(MainWindow.getInstance(), new MessageWithLink("See this link:<br><a href=\"https://github.com/FmasterofU/OISISI_Java/wiki\">Wiki</a><br>or contact the developers (mails in About section)."), "About", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, new ImageIcon("Slike/help.png"));
-		}
-		if(name.equals("about")) {
+		else if(name.equals("about"))
 			JOptionPane.showConfirmDialog(MainWindow.getInstance(), "OISISI_Java - Studentska Služba\n~ Igor Šikuljak - igorsikuljak@uns.ac.rs\n~ Radoš Milićev - rados280698@yahoo.com", "About", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, new ImageIcon("Slike/about.png"));
-		}
 	}
 	
 	public String getName() {

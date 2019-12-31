@@ -7,7 +7,7 @@ import javax.swing.JOptionPane;
 
 import gui.view.MainWindow;
 
-public class ListaStudenata implements Serializable, IAbstractTableModel {
+public class ListaStudenata implements Serializable, ITableModel {
 	
 	private static final long serialVersionUID = 3654331325580773015L;
 	private static ListaStudenata instance = null;
@@ -221,5 +221,10 @@ public class ListaStudenata implements Serializable, IAbstractTableModel {
 				for(Predmet p : s.getSlusaPredmete())
 					if(p.getSifra().equals(sifra))
 						Predmet.editPredmet(p, novi);
+	}
+
+	@Override
+	public boolean isEmpty() {
+		return studenti.isEmpty();
 	}
 }
