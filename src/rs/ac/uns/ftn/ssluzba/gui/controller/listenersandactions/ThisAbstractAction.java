@@ -128,9 +128,9 @@ public class ThisAbstractAction extends AbstractAction{
 		else if(name.equals("search"))
 			System.out.println("TODO: Search");
 		else if(name.equals("help"))
-			JOptionPane.showConfirmDialog(MainWindow.getInstance(), new MessageWithLink("See this link:<br><a href=\"https://fmasterofu.github.io/OISISI_Java/\">Wiki</a><br>or contact the developers (mails in About section)."), "About", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, new ImageIcon("Slike/help.png"));
+			JOptionPane.showConfirmDialog(MainWindow.getInstance(), new MessageWithLink("See this link:<br><a href=\"https://fmasterofu.github.io/OISISI_Java/\">HELP (Product page)</a><br>or contact the developers (mails in About section)."), "Help", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, new ImageIcon("Slike/help.png"));
 		else if(name.equals("about"))
-			JOptionPane.showConfirmDialog(MainWindow.getInstance(), "OISISI_Java - Studentska Služba\n~ Igor Šikuljak - igorsikuljak@uns.ac.rs\n~ Radoš Milićev - rados280698@yahoo.com", "About", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, new ImageIcon("Slike/about.png"));
+			JOptionPane.showConfirmDialog(MainWindow.getInstance(), "OISISI_Java - Studentska Služba v1.0.0\n~ Igor Šikuljak - RA117/2017 - igorsikuljak@uns.ac.rs\n~ Radoš Milićev - RA121/2017 - rados280698@yahoo.com", "About", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, new ImageIcon("Slike/about.png"));
 	}
 	
 	public String getName() {
