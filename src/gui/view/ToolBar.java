@@ -9,6 +9,8 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import listeners_and_actions.ApstraktnaAkcija;
+
 @SuppressWarnings("serial")
 class ToolBar extends JPanel {
 	
@@ -28,6 +30,7 @@ class ToolBar extends JPanel {
 		JButton buttonAdd = new JButton(new ImageIcon("Slike/add-24.png"));
 		buttonAdd.setBackground(Color.WHITE);
 		buttonAdd.setBorderPainted(false);
+		//ApstraktnaAkcija actNew = ApstraktnaAkcija()
 		this.add(buttonAdd);
 		
 		JButton buttonEdit = new JButton(new ImageIcon("Slike/edit-property-24.png"));
@@ -47,7 +50,6 @@ class ToolBar extends JPanel {
 		
 		JTextField tf = new JTextField(30);
 		Dimension d = this.getPreferredSize();
-		System.out.println(d);
 		tf.setSize(70, d.height*3/4);
 		tf.setMaximumSize(new Dimension(300, d.height*3/4));
 		tf.setMinimumSize(new Dimension(300, d.height*3/4));

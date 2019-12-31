@@ -23,6 +23,8 @@ class ViewTableCenter extends JPanel {
 	public ViewTableCenter() {
 		super();
 		setLayout(new BorderLayout());
+		this.setOpaque(true);
+		this.setBackground(Color.WHITE);
 		panel = new JPanel();
 		panel.setLayout(new GridLayout());
 		panel.setMaximumSize(this.getSize());

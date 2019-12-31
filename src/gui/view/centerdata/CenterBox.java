@@ -4,7 +4,6 @@ import java.awt.Color;
 import java.awt.Component;
 
 import javax.swing.JTabbedPane;
-import javax.swing.UIManager;
 
 @SuppressWarnings("serial")
 public class CenterBox extends JTabbedPane {
@@ -16,6 +15,9 @@ public class CenterBox extends JTabbedPane {
 	private CenterBox() {
 		super();
 		addTab("Studenti", ViewStudenti.getInstance());
+		this.setOpaque(true);
+		//this.setBackgroundAt(0, Color.WHITE);
+		//this.setBackground(Color.WHITE);
 		addTab("Profesori", ViewProfesori.getInstance());
 		addTab("Predmeti", ViewPredmeti.getInstance());
 		this.setBackground(new Color(165, 199, 245)); //active tab color is new Color(165, 199, 245), and this is for other tabs
