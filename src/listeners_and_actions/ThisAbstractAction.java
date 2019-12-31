@@ -146,6 +146,9 @@ public class ThisAbstractAction extends AbstractAction{
 		if(name.equals("search")) {
 			System.out.println("TODO: Search");
 		}
+		if(name.equals("help")) {
+			JOptionPane.showConfirmDialog(MainWindow.getInstance(), new MessageWithLink("See this link:<br><a href=\"https://github.com/FmasterofU/OISISI_Java/wiki\">Wiki</a><br>or contact the developers (mails in About section)."), "About", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, new ImageIcon("Slike/help.png"));
+		}
 		if(name.equals("about")) {
 			JOptionPane.showConfirmDialog(MainWindow.getInstance(), "OISISI_Java - Studentska Služba\n~ Igor Šikuljak - igorsikuljak@uns.ac.rs\n~ Radoš Milićev - rados280698@yahoo.com", "About", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, new ImageIcon("Slike/about.png"));
 		}
