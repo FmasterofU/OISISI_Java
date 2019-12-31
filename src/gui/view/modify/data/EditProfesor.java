@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
+import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
@@ -56,7 +57,7 @@ public class EditProfesor extends Dialog{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {				
-				String[] s = listener.getData();
+				Object[] s = listener.getData();
 				boolean check = true;
 				boolean[] result = CheckValidation.isProfesorValid(s, true);
 				for(boolean b : result)
@@ -65,14 +66,14 @@ public class EditProfesor extends Dialog{
 						break;
 					}
 				if(check){
-					Profesor novi = new Profesor(s[0], s[1], s[2], s[3], s[4], s[5], s[6], s[7], s[8], s[9]);
+					Profesor novi = new Profesor((String) s[0], (String) s[1], (String) s[2], (String) s[3], (String) s[4], (String) s[5], (String) s[6], (String) s[7], (String) s[8], (String) s[9]);
 					ProfesorController.editProfesor(old.getBrojLK(), novi);
 					instance.setVisible(false);
 					instance = null;
 					listener.clearData();
 					System.gc();
 				} else
-					JOptionPane.showConfirmDialog(instance, "Uneseni su neispravni podaci!", "Grеška", JOptionPane.DEFAULT_OPTION, JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showConfirmDialog(instance, "Uneseni su neispravni podaci!", "Grеška", JOptionPane.DEFAULT_OPTION, JOptionPane.ERROR_MESSAGE, new ImageIcon("Slike/error_message-32.png"));
 			}
 		});
 		
