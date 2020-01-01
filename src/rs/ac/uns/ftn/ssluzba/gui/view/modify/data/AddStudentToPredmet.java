@@ -13,6 +13,7 @@ import javax.swing.JOptionPane;
 
 import rs.ac.uns.ftn.ssluzba.gui.controller.CheckValidation;
 import rs.ac.uns.ftn.ssluzba.gui.controller.PredmetController;
+import rs.ac.uns.ftn.ssluzba.gui.controller.StudentController;
 import rs.ac.uns.ftn.ssluzba.gui.model.Data;
 import rs.ac.uns.ftn.ssluzba.gui.model.GodinaStudija;
 import rs.ac.uns.ftn.ssluzba.gui.model.Predmet;
@@ -23,25 +24,27 @@ import rs.ac.uns.ftn.ssluzba.gui.view.listenersandactions.PredmetListener;
 import rs.ac.uns.ftn.ssluzba.gui.view.modify.ComboBox;
 import rs.ac.uns.ftn.ssluzba.gui.view.modify.Dialog;
 
-@SuppressWarnings("serial")
-public class AddProfesorToPredmet extends Dialog {
-	
-	private static AddProfesorToPredmet instance = null;
+public class AddStudentToPredmet extends Dialog{
+
+	private static final long serialVersionUID = -964114898264833159L;
+	public static AddStudentToPredmet instance = null;
 	private PredmetListener listener = new PredmetListener();
-	Predmet current;
+	private Predmet old;
 	
-	public static AddProfesorToPredmet getInstance(String code) {
-		if(instance == null) instance = new AddProfesorToPredmet(code);
+	public static AddStudentToPredmet getInstance(String id)
+	{
+		if(instance == null)	instance = new AddStudentToPredmet(id);
 		return instance;
 	}
 	
-	private AddProfesorToPredmet(String code) {
-		super("Dodavanje profesora na predmet", "Potvrda", "Odustanak");
-		System.out.println("kurac2");
-		setSize(400,300);
+	private AddStudentToPredmet(String id)
+	{
+		super("Dodavanje studenta na predmet", "Potvrda", "Odustanak");
+		setSize(300,300);
 		setLocationRelativeTo(MainWindow.getInstance());
-		current = Data.data.listaPredmeta.getPredmet(code);
-		listener.setInitialData(current);
+		
+		old = Data.data.listaPredmeta.getPredmet(id);
+		listener.setInitialData(old);
 		
 		addWindowListener(new WindowAdapter() {
 			@Override
@@ -58,8 +61,12 @@ public class AddProfesorToPredmet extends Dialog {
 			@Override
 			public void actionPerformed(ActionEvent e) {				
 				Object[] o = listener.getData();
+				//for(Object oo : o)	System.out.println(oo);
+				//System.out.println("\n");
 				boolean check = true;
-				boolean[] result = CheckValidation.isPredmetValid(o, false, false);
+				boolean[] result = CheckValidation.isPredmetValid(o, true, true);
+				//for(boolean b : result)	System.out.println(b);
+				//System.out.println("\n");
 				for(boolean b : result)
 					if(b==false) {
 						check=false;
@@ -67,9 +74,13 @@ public class AddProfesorToPredmet extends Dialog {
 					}
 				if(check)
 				{
-					String[] splits = ((String)o[4]).trim().split("PK");
-					Predmet novi = new Predmet((String)o[0], (String)o[1], (Semestar)o[2], (GodinaStudija)o[3], Data.data.listaProfesora.getProfesor(splits[splits.length-1]), new ArrayList<Student>());
-					PredmetController.addPredmet(novi);
+					//String[] splits = ((String)o[4]).trim().split("PK");
+					Student newAdded = Data.data.listaStudenata.getStudentByKey((String) o[5]);
+					if(newAdded != null)		old.getStudenti().add(newAdded);
+					Predmet novi = new Predmet((String)o[0], (String)o[1], (Semestar)o[2], (GodinaStudija)o[3], old.getProfesor(), old.getStudenti());
+					//System.out.println(novi);
+					PredmetController.editPredmet(old.getSifra(), novi);
+					StudentController.addPredmetToStudent(newAdded.getBrIndeksa(), novi);
 					instance.setVisible(false);
 					instance = null;
 					listener.clearData();
@@ -92,20 +103,18 @@ public class AddProfesorToPredmet extends Dialog {
 				System.gc();
 			}
 		});
-
 		
-
-		JLabel lProfesor = new JLabel("Profesor:");
+		JLabel lStud = new JLabel("Student:");
 		
-		GridBagConstraints gbclProfesor = generateLabelGBC();
-		middlePanel.add(lProfesor, gbclProfesor);
+		GridBagConstraints gbclStud = generateLabelGBC();
+		middlePanel.add(lStud, gbclStud);
 		
-		ArrayList<String> cbItems3 = Data.data.listaProfesora.getUniqueProfList();
+		ArrayList<String> cb = Data.data.listaPredmeta.getStudentIndexesNotListeningPredmet(old);
 		@SuppressWarnings({ "unchecked", "rawtypes" })
-		ComboBox cbProfesor = new ComboBox(cbItems3.toArray());
-		cbProfesor.setName("cbProfesor");
-		cbProfesor.addItemListener(listener);
-		GridBagConstraints gbccb3 = generateTextFieldGBC();
-		middlePanel.add(cbProfesor, gbccb3);
+		ComboBox cbStud = new ComboBox(cb.toArray());
+		cbStud.setName("cbStud");
+		cbStud.addItemListener(listener);
+		GridBagConstraints gbccb = generateTextFieldGBC();
+		middlePanel.add(cbStud, gbccb);
 	}
 }

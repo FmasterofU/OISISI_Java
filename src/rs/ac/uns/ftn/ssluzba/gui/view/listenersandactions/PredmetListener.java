@@ -37,6 +37,9 @@ public class PredmetListener implements FocusListener, ItemListener {
 				case "cbProfesor":
 					data[4] = cb.getSelectedItem().toString();
 					break;
+				case "cbStud":
+					data[5] = cb.getSelectedItem().toString();
+					
 			}
 		}
 	}

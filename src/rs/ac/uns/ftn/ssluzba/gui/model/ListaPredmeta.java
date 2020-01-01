@@ -159,4 +159,15 @@ public class ListaPredmeta implements Serializable, ITableModel {
 	public boolean isEmpty() {
 		return predmeti.isEmpty();
 	}
+	
+	public ArrayList<String> getStudentIndexesNotListeningPredmet(Predmet p)
+	{
+		ArrayList<String> ret = Data.data.listaStudenata.getListOfStudentIndexes();
+		for(Student stud : p.getStudenti())
+		{
+			if(ret.contains(stud.getBrIndeksa()))
+				ret.remove(stud.getBrIndeksa());
+		}
+		return ret;
+	}
 }

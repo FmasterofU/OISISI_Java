@@ -110,7 +110,8 @@ public class ListaStudenata implements Serializable, ITableModel {
 			case 10:
 				return s.getDatumUpisa();
 			case 11:
-				return s.getSlusaPredmete().toString();
+				//return s.getSlusaPredmete().toString();
+				return getPredmetIDs(s);
 			default:
 				return null;
 		}
@@ -222,9 +223,44 @@ public class ListaStudenata implements Serializable, ITableModel {
 					if(p.getSifra().equals(sifra))
 						Predmet.editPredmet(p, novi);
 	}
+	
+	public void addPredmetToList(String idS, Predmet p)
+	{
+		for(Student s : studenti)
+			if(s.getBrIndeksa().equals(idS))
+				s.getSlusaPredmete().add(p);
+	}
 
 	@Override
 	public boolean isEmpty() {
 		return studenti.isEmpty();
+	}
+	
+	public ArrayList<String> getListOfStudentIndexes()
+	{
+		ArrayList<String> ret = new ArrayList<String>();
+		for(Student s : studenti)
+			ret.add(s.getBrIndeksa());
+		return ret;
+	}
+	
+	public Student getStudentByKey(String key)
+	{
+		for(Student s : studenti)
+			if(s.getBrIndeksa().equals(key))
+				return s;
+		return null;
+	}
+	
+	private String getPredmetIDs(Student s)
+	{
+		String ret = "";
+		if(!s.getSlusaPredmete().isEmpty())
+		{
+			for(Predmet p : s.getSlusaPredmete())
+				ret += p.getSifra() + ", ";
+		}
+		else	ret += "Ne sluša niti jedan predmet";
+		return ret;
 	}
 }
