@@ -59,7 +59,7 @@ public class AddProfesorToPredmet extends Dialog {
 			public void actionPerformed(ActionEvent e) {				
 				Object[] o = listener.getData();
 				boolean check = true;
-				boolean[] result = CheckValidation.isPredmetValid(o, false, false);
+				boolean[] result = CheckValidation.isPredmetValid(o, false);
 				for(boolean b : result)
 					if(b==false) {
 						check=false;

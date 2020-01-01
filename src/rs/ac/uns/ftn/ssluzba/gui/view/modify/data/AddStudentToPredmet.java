@@ -61,24 +61,20 @@ public class AddStudentToPredmet extends Dialog{
 			@Override
 			public void actionPerformed(ActionEvent e) {				
 				Object[] o = listener.getData();
-				//for(Object oo : o)	System.out.println(oo);
-				//System.out.println("\n");
 				boolean check = true;
-				boolean[] result = CheckValidation.isPredmetValid(o, true, true);
-				//for(boolean b : result)	System.out.println(b);
-				//System.out.println("\n");
-				for(boolean b : result)
-					if(b==false) {
+				boolean[] result = CheckValidation.isPredmetValid(o, true);
+				for(int i=0;i<6;i++) {
+					if(i == 4)	continue;	//not checking Profesor here
+					if(result[i]==false) {
 						check=false;
 						break;
 					}
+				}
 				if(check)
 				{
-					//String[] splits = ((String)o[4]).trim().split("PK");
 					Student newAdded = Data.data.listaStudenata.getStudentByKey((String) o[5]);
 					if(newAdded != null)		old.getStudenti().add(newAdded);
 					Predmet novi = new Predmet((String)o[0], (String)o[1], (Semestar)o[2], (GodinaStudija)o[3], old.getProfesor(), old.getStudenti());
-					//System.out.println(novi);
 					PredmetController.editPredmet(old.getSifra(), novi);
 					StudentController.addPredmetToStudent(newAdded.getBrIndeksa(), novi);
 					instance.setVisible(false);
@@ -87,9 +83,7 @@ public class AddStudentToPredmet extends Dialog{
 					System.gc();
 				}
 				else
-				{
 					JOptionPane.showConfirmDialog(instance, "Uneseni su neispravni podaci!", "Grеška", JOptionPane.DEFAULT_OPTION, JOptionPane.ERROR_MESSAGE, new ImageIcon("Slike/error_message-32.png"));
-				}
 			}
 		});
 		

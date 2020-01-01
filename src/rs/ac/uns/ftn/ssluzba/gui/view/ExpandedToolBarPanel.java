@@ -37,7 +37,7 @@ public class ExpandedToolBarPanel extends JPanel {
 		buttonRemProf.setText("Ukloni Prof.");
 		buttonRemProf.setBackground(Color.WHITE);
 		buttonRemProf.setBorderPainted(false);
-		buttonRemProf.setIcon(new ImageIcon("Slike/remove-reacher-24.png"));
+		buttonRemProf.setIcon(new ImageIcon("Slike/remove-teacher-24.png"));
 		this.add(buttonRemProf);
 		
 		ThisAbstractAction actAddStud = new ThisAbstractAction("addStud");

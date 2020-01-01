@@ -63,7 +63,7 @@ public class EditPredmet extends Dialog {
 			public void actionPerformed(ActionEvent e) {				
 				Object[] o = listener.getData();
 				boolean check = true;
-				boolean[] result = CheckValidation.isPredmetValid(o, true, false);
+				boolean[] result = CheckValidation.isPredmetValid(o, true);
 				for(int i=0;i<4;i++) // samo su o[0..3] obavezni za edit
 					if(result[i]==false) {
 						check=false;
