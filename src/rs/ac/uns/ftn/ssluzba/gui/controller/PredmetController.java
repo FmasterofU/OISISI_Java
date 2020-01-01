@@ -42,6 +42,7 @@ public class PredmetController {
 		}
 		else if(ma==ModelAction.DELETE_S) {
 			Data.data.listaStudenata.deletePredmetInList(novi, ma);
+			ViewStudenti.getInstance().updateTable();
 		}
 		if(ma==ModelAction.ADD_P || ma==ModelAction.DELETE_P) {
 			Data.data.listaProfesora.editPredmetInList(sifra,novi,ma);
