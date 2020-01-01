@@ -146,7 +146,7 @@ public class ListaProfesora implements Serializable, ITableModel {
 			if(prof.getPredajePredmete()!=null)
 				for(Predmet pred : prof.getPredajePredmete())
 					if(pred.getSifra().equals(p.getSifra()))
-						prof.getPredajePredmete().remove(p);
+						prof.getPredajePredmete().remove(pred);
 	}
 
 	public void editPredmetInList(String sifra, Predmet novi, ModelAction ma) {

@@ -22,17 +22,12 @@ public class PredmetController {
 		 * TODO:
 		 * refresh search tab if active
 		 */
-		//System.out.println(Data.data.listaProfesora);
-		//System.out.println("delete predmet");
 		Data.data.listaStudenata.deletePredmetInList(p,ma);
-		ViewStudenti.getInstance().updateTable();
-		//System.out.println(Data.data.listaStudenata);
 		Data.data.listaProfesora.deletePredmetInList(p,ma);
-		ViewProfesori.getInstance().updateTable();
-		//System.out.println(Data.data.listaProfesora);
 		Data.data.listaPredmeta.deletePredmet(p,ma);
+		ViewStudenti.getInstance().updateTable();
+		ViewProfesori.getInstance().updateTable();
 		ViewPredmeti.getInstance().updateTable();
-		//System.out.println(Data.data.listaProfesora);
 	}
 	
 	public static void editPredmet(String sifra, Predmet novi, ModelAction ma)
