@@ -133,8 +133,10 @@ public class ListaPredmeta implements Serializable, ITableModel {
 		for(Predmet p : predmeti)
 			if(p.getStudenti()!=null)
 				for(Student s : p.getStudenti())
-					if(s.getBrIndeksa().equals(indeks))
+					if(s.getBrIndeksa().equals(indeks)) {
 						p.getStudenti().remove(s);
+						break;
+					}
 	}
 
 	public void editStudentInList(String indeks, Student stud) {
@@ -169,6 +171,16 @@ public class ListaPredmeta implements Serializable, ITableModel {
 		{
 			if(ret.contains(stud.getBrIndeksa()))
 				ret.remove(stud.getBrIndeksa());
+		}
+		return ret;
+	}
+	
+	public ArrayList<String> getStudentIndexesListeningPredmet(Predmet p)
+	{
+		ArrayList<String> ret = new ArrayList<String>();
+		for(Student stud : p.getStudenti())
+		{
+			ret.add(stud.getBrIndeksa());
 		}
 		return ret;
 	}

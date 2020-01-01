@@ -47,6 +47,14 @@ public class ExpandedToolBarPanel extends JPanel {
 		buttonAddStud.setBorderPainted(false);
 		buttonAddStud.setIcon(new ImageIcon("Slike/student-male-24.png"));
 		this.add(buttonAddStud);
+		
+		ThisAbstractAction actDelStud = new ThisAbstractAction("remStud");
+		JButton buttonDelStud = new JButton(actDelStud);
+		buttonDelStud.setText("Ukloni Stud.");
+		buttonDelStud.setBackground(Color.WHITE);
+		buttonDelStud.setBorderPainted(false);
+		buttonDelStud.setIcon(new ImageIcon("Slike/delete-student-24.png"));
+		this.add(buttonDelStud);
 	}
 	
 }

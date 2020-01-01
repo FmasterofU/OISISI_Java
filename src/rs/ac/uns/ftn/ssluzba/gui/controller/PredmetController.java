@@ -36,9 +36,12 @@ public class PredmetController {
 		 * TODO:
 		 * refresh search tab if active
 		 */
-		if(ma==ModelAction.ADD_S || ma==ModelAction.DELETE_S) {
+		if(ma==ModelAction.ADD_S/* || ma==ModelAction.DELETE_S*/) {
 			Data.data.listaStudenata.editPredmetInList(sifra,novi,ma);
 			ViewStudenti.getInstance().updateTable();
+		}
+		else if(ma==ModelAction.DELETE_S) {
+			Data.data.listaStudenata.deletePredmetInList(novi, ma);
 		}
 		if(ma==ModelAction.ADD_P || ma==ModelAction.DELETE_P) {
 			Data.data.listaProfesora.editPredmetInList(sifra,novi,ma);

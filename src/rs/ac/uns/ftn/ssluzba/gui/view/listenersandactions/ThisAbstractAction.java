@@ -28,6 +28,7 @@ import rs.ac.uns.ftn.ssluzba.gui.view.modify.data.DeletePredmet;
 import rs.ac.uns.ftn.ssluzba.gui.view.modify.data.DeleteProfesor;
 import rs.ac.uns.ftn.ssluzba.gui.view.modify.data.DeleteProfesorFromPredmet;
 import rs.ac.uns.ftn.ssluzba.gui.view.modify.data.DeleteStudent;
+import rs.ac.uns.ftn.ssluzba.gui.view.modify.data.DeleteStudentFromPredmet;
 import rs.ac.uns.ftn.ssluzba.gui.view.modify.data.EditPredmet;
 import rs.ac.uns.ftn.ssluzba.gui.view.modify.data.EditProfesor;
 import rs.ac.uns.ftn.ssluzba.gui.view.modify.data.EditStudent;
@@ -146,6 +147,9 @@ public class ThisAbstractAction extends AbstractAction{
 		}else if(name.equals("addstud")) {
 			String id = ViewPredmeti.getInstance().getSelectedKey();
 			if(id != null)	AddStudentToPredmet.getInstance(id).setVisible(true);
+		}else if(name.equals("remstud")){
+			String id = ViewPredmeti.getInstance().getSelectedKey();
+			if(id != null && !Data.data.listaPredmeta.getPredmet(id).getStudenti().isEmpty())		DeleteStudentFromPredmet.getInstance(id).setVisible(true);
 		}else if(name.equals("search")) {
 			int pane = CenterBox.getInstance().getSelectedIndex();
 			if(CheckValidation.checkSearchQuery(ToolBar.getSearchQuery(),pane));
