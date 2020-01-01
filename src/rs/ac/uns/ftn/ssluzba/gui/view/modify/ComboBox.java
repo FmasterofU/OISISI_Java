@@ -1,5 +1,7 @@
 package rs.ac.uns.ftn.ssluzba.gui.view.modify;
 
+import java.awt.Color;
+
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JComboBox;
 
@@ -14,6 +16,7 @@ public class ComboBox<T> extends JComboBox<T> implements IHighlight {
 		super.setModel(new DefaultComboBoxModel<T>(o));
 		this.addItemListener(new HighlightListener<ComboBox<T>>(this));
 		super.setSelectedItem(null);
+		super.setBackground(Color.WHITE);
 	}
 	
 	@Override

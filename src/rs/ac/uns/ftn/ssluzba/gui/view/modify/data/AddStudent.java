@@ -1,5 +1,6 @@
 package rs.ac.uns.ftn.ssluzba.gui.view.modify.data;
 
+import java.awt.Color;
 import java.awt.GridBagConstraints;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -242,9 +243,11 @@ public class AddStudent extends Dialog {
 		
 		budget = new JRadioButton("Budžet");
 		budget.setName("Budžet");
+		budget.setBackground(Color.WHITE);
 		budget.setSelected(true);
 		samof = new JRadioButton("Samofinansiranje");
 		samof.setName("Samofinansiranje");
+		samof.setBackground(Color.WHITE);
 		ButtonGroup group = new ButtonGroup();
 		group.add(budget);
 		group.add(samof);

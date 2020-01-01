@@ -29,6 +29,10 @@ public class Dialog extends JDialog {
 	
 	public Dialog(String windowName, String acceptButtonName, String cancelButtonName) {
 		super(MainWindow.getInstance(), windowName, true);
+		this.setBackground(Color.WHITE);
+		middlePanel.setBackground(Color.WHITE);
+		buttonPanel.setBackground(Color.WHITE);
+		buttons.setBackground(Color.WHITE);
 		acceptButton = new JButton(acceptButtonName);
 		acceptButton.setMnemonic(KeyEvent.VK_S);
 		cancelButton = new JButton(cancelButtonName);

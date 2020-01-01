@@ -58,13 +58,12 @@ public class AddPredmet extends Dialog {
 				Object[] o = listener.getData();
 				boolean check = true;
 				boolean[] result = CheckValidation.isPredmetValid(o, false);
-				for(int i=0;i<4;i++)
+				for(int i=0;i<4;i++) // samo su o[0..4] obavezni za add
 					if(result[i]==false) {
 						check=false;
 						break;
 					}
-				if(check)
-				{
+				if(check){
 					//String[] splits = ((String)o[4]).trim().split("PK"); umjesto null dole je Data.data.listaProfesora.getProfesor(splits[splits.length-1])
 					Predmet novi = new Predmet((String)o[0], (String)o[1], (Semestar)o[2], (GodinaStudija)o[3], null, new ArrayList<Student>());
 					PredmetController.addPredmet(novi);
@@ -74,9 +73,7 @@ public class AddPredmet extends Dialog {
 					System.gc();
 				}
 				else
-				{
 					JOptionPane.showConfirmDialog(instance, "Uneseni su neispravni podaci!", "Grеška", JOptionPane.DEFAULT_OPTION, JOptionPane.ERROR_MESSAGE, new ImageIcon("Slike/error_message-32.png"));
-				}
 			}
 		});
 		
@@ -107,7 +104,6 @@ public class AddPredmet extends Dialog {
 			}
 		};
 		tfSifra.setName("tfSifra");
-		//tfime.setBackground(Color.WHITE);
 		tfSifra.addFocusListener(listener);
 		
 		GridBagConstraints gbctfSifra = generateTextFieldGBC();
@@ -124,7 +120,6 @@ public class AddPredmet extends Dialog {
 			}
 		};
 		tfNaziv.setName("tfNaziv");
-		//tfime.setBackground(Color.WHITE);
 		tfNaziv.addFocusListener(listener);
 		
 		GridBagConstraints gbctfNaziv = generateTextFieldGBC();
