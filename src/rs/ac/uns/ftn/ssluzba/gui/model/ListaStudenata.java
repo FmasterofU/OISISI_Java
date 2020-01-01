@@ -214,8 +214,10 @@ public class ListaStudenata implements Serializable, ITableModel {
 		for(Student s : studenti)
 			if(s.getSlusaPredmete()!=null)
 				for(Predmet pred : s.getSlusaPredmete())
-					if(pred.getSifra().equals(p.getSifra()))
+					if(pred.getSifra().equals(p.getSifra())) {
 						s.getSlusaPredmete().remove(pred);
+						break;
+					}
 	}
 
 	public void editPredmetInList(String sifra, Predmet novi, ModelAction ma) {
