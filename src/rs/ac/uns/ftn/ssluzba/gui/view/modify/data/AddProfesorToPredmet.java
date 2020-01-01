@@ -38,8 +38,8 @@ public class AddProfesorToPredmet extends Dialog {
 	
 	private AddProfesorToPredmet(String code) {
 		super("Dodavanje profesora na predmet", "Potvrda", "Odustanak");
-		setSize(400,300);
-		setLocationRelativeTo(MainWindow.getInstance());
+		super.setSize(400,200);
+		super.setLocationRelativeTo(MainWindow.getInstance());
 		current = Data.data.listaPredmeta.getPredmet(code);
 		listener.setInitialData(current);
 		

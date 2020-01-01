@@ -10,15 +10,17 @@ import rs.ac.uns.ftn.ssluzba.gui.model.Predmet;
 import rs.ac.uns.ftn.ssluzba.gui.view.MainWindow;
 
 @SuppressWarnings("serial")
-public class DeletePredmet extends JOptionPane {
-	
-	public DeletePredmet(String sifra) {
+public class DeleteProfesorFromPredmet extends JOptionPane{
+
+	public DeleteProfesorFromPredmet(String sifra) {
 		Predmet p = Data.data.listaPredmeta.getPredmet(sifra);
-		String message = String.format("Da li želite obrisati predmet %s sa šifrom %s?", p.getNaziv(), p.getSifra());
+		String message = String.format("Da li želite ukloniti profesora %s sa predmeta %s?", p.getProfesor().getIme()+ " "+ p.getProfesor().getPrezime()+" PK"+p.getProfesor().getBrojLK(), p.getNaziv());
 		UIManager.put("OptionPane.yesButtonText", "Da");
 		UIManager.put("OptionPane.noButtonText", "Ne");
 		int type = JOptionPane.showConfirmDialog(MainWindow.getInstance(), message, "Brisanje predmeta", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
-		if(type == JOptionPane.YES_OPTION)
-			PredmetController.deletePredmet(p,ModelAction.DELETE);
+		if(type == JOptionPane.YES_OPTION) {
+			Predmet novi = new Predmet(p.getSifra(), p.getNaziv(), p.getSemestar(), p.getGodinaStudija(), null, p.getStudenti());
+			PredmetController.editPredmet(sifra,novi,ModelAction.DELETE_P);
+		}
 	}
 }

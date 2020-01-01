@@ -15,6 +15,7 @@ import rs.ac.uns.ftn.ssluzba.gui.controller.CheckValidation;
 import rs.ac.uns.ftn.ssluzba.gui.controller.ProfesorController;
 import rs.ac.uns.ftn.ssluzba.gui.model.Data;
 import rs.ac.uns.ftn.ssluzba.gui.model.Profesor;
+import rs.ac.uns.ftn.ssluzba.gui.view.MainWindow;
 import rs.ac.uns.ftn.ssluzba.gui.view.listenersandactions.ProfesorListener;
 import rs.ac.uns.ftn.ssluzba.gui.view.modify.Dialog;
 import rs.ac.uns.ftn.ssluzba.gui.view.modify.IHighlight;
@@ -39,7 +40,8 @@ public class EditProfesor extends Dialog{
 	private EditProfesor(String lk)
 	{
 		super("Izmena profesora", "Potvrda", "Odustanak");
-		
+		super.setSize(550, 530);
+		super.setLocationRelativeTo(MainWindow.getInstance());
 		old = getProfesor(lk);
 		listener.setInitialData(old);
 		

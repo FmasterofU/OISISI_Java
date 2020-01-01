@@ -24,6 +24,7 @@ import rs.ac.uns.ftn.ssluzba.gui.view.modify.data.AddStudent;
 import rs.ac.uns.ftn.ssluzba.gui.view.modify.data.AddStudentToPredmet;
 import rs.ac.uns.ftn.ssluzba.gui.view.modify.data.DeletePredmet;
 import rs.ac.uns.ftn.ssluzba.gui.view.modify.data.DeleteProfesor;
+import rs.ac.uns.ftn.ssluzba.gui.view.modify.data.DeleteProfesorFromPredmet;
 import rs.ac.uns.ftn.ssluzba.gui.view.modify.data.DeleteStudent;
 import rs.ac.uns.ftn.ssluzba.gui.view.modify.data.EditPredmet;
 import rs.ac.uns.ftn.ssluzba.gui.view.modify.data.EditProfesor;
@@ -137,8 +138,10 @@ public class ThisAbstractAction extends AbstractAction{
 		else if(name.equals("addprof")) {
 			String sifra = ViewPredmeti.getInstance().getSelectedKey();
 			if(sifra!=null && Data.data.listaPredmeta.getPredmet(sifra).getProfesor()==null) AddProfesorToPredmet.getInstance(sifra).setVisible(true);
-		}// else if(name.equals(anObject))
-		else if(name.equals("addstud")) {
+		} else if(name.equals("remprof")) {
+			String sifra = ViewPredmeti.getInstance().getSelectedKey();
+			if(sifra!=null && Data.data.listaPredmeta.getPredmet(sifra).getProfesor()!=null) (new DeleteProfesorFromPredmet(sifra)).setVisible(true);
+		}else if(name.equals("addstud")) {
 			String id = ViewPredmeti.getInstance().getSelectedKey();
 			if(id != null)	AddStudentToPredmet.getInstance(id).setVisible(true);
 		}
