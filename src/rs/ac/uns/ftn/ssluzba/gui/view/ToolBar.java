@@ -9,7 +9,7 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-import rs.ac.uns.ftn.ssluzba.gui.controller.listenersandactions.ThisAbstractAction;
+import rs.ac.uns.ftn.ssluzba.gui.view.listenersandactions.ThisAbstractAction;
 
 @SuppressWarnings("serial")
 public class ToolBar extends JPanel {

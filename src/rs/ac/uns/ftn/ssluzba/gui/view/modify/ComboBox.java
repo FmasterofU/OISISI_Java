@@ -4,7 +4,7 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.JComboBox;
 
 import rs.ac.uns.ftn.ssluzba.gui.controller.CheckValidation;
-import rs.ac.uns.ftn.ssluzba.gui.controller.listenersandactions.HighlightListener;
+import rs.ac.uns.ftn.ssluzba.gui.view.listenersandactions.HighlightListener;
 
 @SuppressWarnings("serial")
 public class ComboBox<T> extends JComboBox<T> implements IHighlight {

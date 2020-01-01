@@ -15,10 +15,10 @@ import javax.swing.JTextField;
 
 import rs.ac.uns.ftn.ssluzba.gui.controller.CheckValidation;
 import rs.ac.uns.ftn.ssluzba.gui.controller.StudentController;
-import rs.ac.uns.ftn.ssluzba.gui.controller.listenersandactions.StudentListener;
 import rs.ac.uns.ftn.ssluzba.gui.model.GodinaStudija;
 import rs.ac.uns.ftn.ssluzba.gui.model.NacinFinansiranja;
 import rs.ac.uns.ftn.ssluzba.gui.model.Student;
+import rs.ac.uns.ftn.ssluzba.gui.view.listenersandactions.StudentListener;
 import rs.ac.uns.ftn.ssluzba.gui.view.modify.ComboBox;
 import rs.ac.uns.ftn.ssluzba.gui.view.modify.Dialog;
 import rs.ac.uns.ftn.ssluzba.gui.view.modify.IHighlight;

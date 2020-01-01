@@ -1,4 +1,4 @@
-package rs.ac.uns.ftn.ssluzba.gui.controller.listenersandactions;
+package rs.ac.uns.ftn.ssluzba.gui.view.listenersandactions;
 
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;

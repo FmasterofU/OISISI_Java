@@ -15,7 +15,6 @@ import javax.swing.UIManager;
 
 import rs.ac.uns.ftn.ssluzba.gui.controller.CheckValidation;
 import rs.ac.uns.ftn.ssluzba.gui.controller.PredmetController;
-import rs.ac.uns.ftn.ssluzba.gui.controller.listenersandactions.PredmetListener;
 import rs.ac.uns.ftn.ssluzba.gui.model.Data;
 import rs.ac.uns.ftn.ssluzba.gui.model.GodinaStudija;
 import rs.ac.uns.ftn.ssluzba.gui.model.Predmet;
@@ -23,6 +22,7 @@ import rs.ac.uns.ftn.ssluzba.gui.model.Profesor;
 import rs.ac.uns.ftn.ssluzba.gui.model.Semestar;
 import rs.ac.uns.ftn.ssluzba.gui.model.Student;
 import rs.ac.uns.ftn.ssluzba.gui.view.MainWindow;
+import rs.ac.uns.ftn.ssluzba.gui.view.listenersandactions.PredmetListener;
 import rs.ac.uns.ftn.ssluzba.gui.view.modify.ComboBox;
 import rs.ac.uns.ftn.ssluzba.gui.view.modify.Dialog;
 import rs.ac.uns.ftn.ssluzba.gui.view.modify.IHighlight;

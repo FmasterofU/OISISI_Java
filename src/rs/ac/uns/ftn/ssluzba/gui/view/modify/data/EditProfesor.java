@@ -13,9 +13,9 @@ import javax.swing.JTextField;
 
 import rs.ac.uns.ftn.ssluzba.gui.controller.CheckValidation;
 import rs.ac.uns.ftn.ssluzba.gui.controller.ProfesorController;
-import rs.ac.uns.ftn.ssluzba.gui.controller.listenersandactions.ProfesorListener;
 import rs.ac.uns.ftn.ssluzba.gui.model.Data;
 import rs.ac.uns.ftn.ssluzba.gui.model.Profesor;
+import rs.ac.uns.ftn.ssluzba.gui.view.listenersandactions.ProfesorListener;
 import rs.ac.uns.ftn.ssluzba.gui.view.modify.Dialog;
 import rs.ac.uns.ftn.ssluzba.gui.view.modify.IHighlight;
 import rs.ac.uns.ftn.ssluzba.gui.view.modify.MandatoryTextFieldLabel;
