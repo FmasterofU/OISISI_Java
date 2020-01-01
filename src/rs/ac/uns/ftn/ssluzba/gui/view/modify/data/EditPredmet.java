@@ -11,8 +11,6 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
-import javax.swing.UIManager;
-
 import rs.ac.uns.ftn.ssluzba.gui.controller.CheckValidation;
 import rs.ac.uns.ftn.ssluzba.gui.controller.PredmetController;
 import rs.ac.uns.ftn.ssluzba.gui.model.Data;
@@ -66,8 +64,8 @@ public class EditPredmet extends Dialog {
 				Object[] o = listener.getData();
 				boolean check = true;
 				boolean[] result = CheckValidation.isPredmetValid(o, true);
-				for(boolean b : result)
-					if(b==false) {
+				for(int i=0;i<4;i++) // samo su o[0..3] obavezni za edit
+					if(result[i]==false) {
 						check=false;
 						break;
 					}
@@ -82,10 +80,7 @@ public class EditPredmet extends Dialog {
 					System.gc();
 				}
 				else
-				{
-					UIManager.put("OptionPane.cancelButtonText", "Dobro");
-					JOptionPane.showConfirmDialog(instance, "Uneseni su neispravni podaci!", "Grеška", JOptionPane.OK_CANCEL_OPTION, JOptionPane.ERROR_MESSAGE, new ImageIcon("Slike/error_message-32.png"));
-				}
+					JOptionPane.showConfirmDialog(instance, "Uneseni su neispravni podaci!", "Grеška", JOptionPane.DEFAULT_OPTION, JOptionPane.ERROR_MESSAGE, new ImageIcon("Slike/error_message-32.png"));
 			}
 		});
 		
@@ -117,7 +112,6 @@ public class EditPredmet extends Dialog {
 		};
 		tfSifra.setName("tfSifra");
 		tfSifra.setEditable(false);
-		//tfime.setBackground(Color.WHITE);
 		tfSifra.addFocusListener(listener);
 		
 		GridBagConstraints gbctfSifra = generateTextFieldGBC();
@@ -134,7 +128,6 @@ public class EditPredmet extends Dialog {
 			}
 		};
 		tfNaziv.setName("tfNaziv");
-		//tfime.setBackground(Color.WHITE);
 		tfNaziv.addFocusListener(listener);
 		
 		GridBagConstraints gbctfNaziv = generateTextFieldGBC();
@@ -157,7 +150,7 @@ public class EditPredmet extends Dialog {
 		GridBagConstraints gbclGodina = generateLabelGBC();
 		middlePanel.add(lGodina, gbclGodina);
 		
-		String[] cbItems2 = {GodinaStudija.I.name(), GodinaStudija.II.name(), GodinaStudija.III.name(), GodinaStudija.IV.name()}; //{"I (prva)", "II (druga)", "III (treća)", "IV (četvrta)"};
+		String[] cbItems2 = {GodinaStudija.I.name(), GodinaStudija.II.name(), GodinaStudija.III.name(), GodinaStudija.IV.name()};
 		@SuppressWarnings({ "unchecked", "rawtypes" })
 		ComboBox cbGodina = new ComboBox(cbItems2);
 		cbGodina.setName("cbGodina");

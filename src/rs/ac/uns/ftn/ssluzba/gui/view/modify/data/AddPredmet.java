@@ -39,7 +39,7 @@ public class AddPredmet extends Dialog {
 	
 	private AddPredmet() {
 		super("Dodavanje predmeta", "Potvrda", "Odustanak");
-		setSize(400,350);
+		setSize(400,300);
 		setLocationRelativeTo(MainWindow.getInstance());
 		addWindowListener(new WindowAdapter() {
 			@Override
@@ -58,7 +58,7 @@ public class AddPredmet extends Dialog {
 				Object[] o = listener.getData();
 				boolean check = true;
 				boolean[] result = CheckValidation.isPredmetValid(o, false);
-				for(int i=0;i<4;i++) // samo su o[0..4] obavezni za add
+				for(int i=0;i<4;i++) // samo su o[0..3] obavezni za add
 					if(result[i]==false) {
 						check=false;
 						break;
