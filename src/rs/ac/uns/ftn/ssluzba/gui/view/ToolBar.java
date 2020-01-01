@@ -12,7 +12,7 @@ import javax.swing.JTextField;
 import rs.ac.uns.ftn.ssluzba.gui.controller.listenersandactions.ThisAbstractAction;
 
 @SuppressWarnings("serial")
-class ToolBar extends JPanel {
+public class ToolBar extends JPanel {
 	
 	private static ToolBar instance = null;
 	public static JPanel currentExpandedToolbarPanel = new JPanel();

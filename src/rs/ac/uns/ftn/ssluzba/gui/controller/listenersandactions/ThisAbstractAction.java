@@ -18,6 +18,7 @@ import rs.ac.uns.ftn.ssluzba.gui.view.centerdata.ViewProfesori;
 import rs.ac.uns.ftn.ssluzba.gui.view.centerdata.ViewStudenti;
 import rs.ac.uns.ftn.ssluzba.gui.view.modify.data.AddPredmet;
 import rs.ac.uns.ftn.ssluzba.gui.view.modify.data.AddProfesor;
+import rs.ac.uns.ftn.ssluzba.gui.view.modify.data.AddProfesorToPredmet;
 import rs.ac.uns.ftn.ssluzba.gui.view.modify.data.AddStudent;
 import rs.ac.uns.ftn.ssluzba.gui.view.modify.data.DeletePredmet;
 import rs.ac.uns.ftn.ssluzba.gui.view.modify.data.DeleteProfesor;
@@ -131,6 +132,10 @@ public class ThisAbstractAction extends AbstractAction{
 			JOptionPane.showConfirmDialog(MainWindow.getInstance(), new MessageWithLink("See this link:<br><a href=\"https://fmasterofu.github.io/OISISI_Java/\">HELP (Product page)</a><br>or contact the developers (mails in About section)."), "Help", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, new ImageIcon("Slike/help.png"));
 		else if(name.equals("about"))
 			JOptionPane.showConfirmDialog(MainWindow.getInstance(), "OISISI_Java - Studentska Služba v1.0.0\n~ Igor Šikuljak - RA117/2017 - igorsikuljak@uns.ac.rs\n~ Radoš Milićev - RA121/2017 - rados280698@yahoo.com", "About", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, new ImageIcon("Slike/about.png"));
+		else if(name.equals("addprof")) {
+			String sifra = ViewPredmeti.getInstance().getSelectedKey();
+			if(sifra!=null) AddProfesorToPredmet.getInstance(sifra).setVisible(true);
+		}
 	}
 	
 	public String getName() {

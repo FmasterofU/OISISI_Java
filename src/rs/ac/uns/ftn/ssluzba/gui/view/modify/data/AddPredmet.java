@@ -15,7 +15,6 @@ import javax.swing.JTextField;
 import rs.ac.uns.ftn.ssluzba.gui.controller.CheckValidation;
 import rs.ac.uns.ftn.ssluzba.gui.controller.PredmetController;
 import rs.ac.uns.ftn.ssluzba.gui.controller.listenersandactions.PredmetListener;
-import rs.ac.uns.ftn.ssluzba.gui.model.Data;
 import rs.ac.uns.ftn.ssluzba.gui.model.GodinaStudija;
 import rs.ac.uns.ftn.ssluzba.gui.model.Predmet;
 import rs.ac.uns.ftn.ssluzba.gui.model.Semestar;
@@ -38,7 +37,7 @@ public class AddPredmet extends Dialog {
 		return instance;
 	}
 	
-	public AddPredmet() {
+	private AddPredmet() {
 		super("Dodavanje predmeta", "Potvrda", "Odustanak");
 		setSize(400,350);
 		setLocationRelativeTo(MainWindow.getInstance());
@@ -59,15 +58,15 @@ public class AddPredmet extends Dialog {
 				Object[] o = listener.getData();
 				boolean check = true;
 				boolean[] result = CheckValidation.isPredmetValid(o, false);
-				for(boolean b : result)
-					if(b==false) {
+				for(int i=0;i<4;i++)
+					if(result[i]==false) {
 						check=false;
 						break;
 					}
 				if(check)
 				{
-					String[] splits = ((String)o[4]).trim().split("PK");
-					Predmet novi = new Predmet((String)o[0], (String)o[1], (Semestar)o[2], (GodinaStudija)o[3], Data.data.listaProfesora.getProfesor(splits[splits.length-1]), new ArrayList<Student>());
+					//String[] splits = ((String)o[4]).trim().split("PK"); umjesto null dole je Data.data.listaProfesora.getProfesor(splits[splits.length-1])
+					Predmet novi = new Predmet((String)o[0], (String)o[1], (Semestar)o[2], (GodinaStudija)o[3], null, new ArrayList<Student>());
 					PredmetController.addPredmet(novi);
 					instance.setVisible(false);
 					instance = null;
@@ -96,7 +95,6 @@ public class AddPredmet extends Dialog {
 		JLabel lNaziv = new MandatoryTextFieldLabel("Naziv:");
 		JLabel lSemestar = new JLabel("Semestar:");
 		JLabel lGodina = new JLabel("Godina:");
-		JLabel lProfesor = new JLabel("Profesor:");
 		
 
 		GridBagConstraints gbclSifra = generateLabelGBC();
@@ -156,16 +154,6 @@ public class AddPredmet extends Dialog {
 		GridBagConstraints gbccb2 = generateTextFieldGBC();
 		middlePanel.add(cbGodina, gbccb2);
 		
-		GridBagConstraints gbclProfesor = generateLabelGBC();
-		middlePanel.add(lProfesor, gbclProfesor);
-		
-		ArrayList<String> cbItems3 = Data.data.listaProfesora.getUniqueProfList();
-		@SuppressWarnings({ "unchecked", "rawtypes" })
-		ComboBox cbProfesor = new ComboBox(cbItems3.toArray());
-		cbProfesor.setName("cbProfesor");
-		cbProfesor.addItemListener(listener);
-		GridBagConstraints gbccb3 = generateTextFieldGBC();
-		middlePanel.add(cbProfesor, gbccb3);
 	}
 
 }
