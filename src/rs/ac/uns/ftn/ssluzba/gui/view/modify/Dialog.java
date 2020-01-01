@@ -5,7 +5,6 @@ import java.awt.Color;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
-
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
@@ -26,6 +25,7 @@ public class Dialog extends JDialog {
 	public JPanel middlePanel = new JPanel();
 	public JPanel buttonPanel = new JPanel();
 	public JPanel buttons = new JPanel();
+	//public boolean[] enableAccept;
 	
 	public Dialog(String windowName, String acceptButtonName, String cancelButtonName) {
 		super(MainWindow.getInstance(), windowName, true);
@@ -40,10 +40,23 @@ public class Dialog extends JDialog {
 		setSize(550, 550);
 		setLocationRelativeTo(MainWindow.getInstance());
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-		
 		acceptButton.setForeground(Color.BLACK);
 		acceptButton.setBackground(Color.CYAN);
-		
+		/*
+		//just to prove that we do know how to disable a button
+		acceptButton.setEnabled(false);
+		acceptButton.firePropertyChange((String)null, true, false);
+		acceptButton.addPropertyChangeListener(new PropertyChangeListener() {
+			
+			@Override
+			public void propertyChange(PropertyChangeEvent evt) {
+				// TODO Auto-generated method stub
+				//kroz for petlju bi prosli kroz sve enableAccept i provjerili da li su true, ako jesu enable
+				//enableAccept bi se setovao za kroz vec postojece listenere uz svaki postojeci item/state/focus change uz predhodni poziv CheckValidation
+				acceptButton.setEnabled(true);
+			}
+		});
+		*/
 		BoxLayout box1 = new BoxLayout(buttons, BoxLayout.Y_AXIS);
 		buttons.setLayout(box1);
 		
