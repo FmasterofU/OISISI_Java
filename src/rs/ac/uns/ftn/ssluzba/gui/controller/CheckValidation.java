@@ -246,4 +246,13 @@ public class CheckValidation {
 			}
 			return ret;
 		}
+
+		public static boolean checkSearchQuery(String searchQuery, int pane) {
+			switch(pane) {
+			case 0: 
+			case 1:
+			case 2:
+			default: return false;
+			}
+		}
 }

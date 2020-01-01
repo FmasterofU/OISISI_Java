@@ -10,9 +10,11 @@ import javax.swing.KeyStroke;
 
 import com.sun.glass.events.KeyEvent;
 
+import rs.ac.uns.ftn.ssluzba.gui.controller.CheckValidation;
 import rs.ac.uns.ftn.ssluzba.gui.model.Data;
 import rs.ac.uns.ftn.ssluzba.gui.view.MainWindow;
 import rs.ac.uns.ftn.ssluzba.gui.view.MessageWithLink;
+import rs.ac.uns.ftn.ssluzba.gui.view.ToolBar;
 import rs.ac.uns.ftn.ssluzba.gui.view.centerdata.CenterBox;
 import rs.ac.uns.ftn.ssluzba.gui.view.centerdata.ViewPredmeti;
 import rs.ac.uns.ftn.ssluzba.gui.view.centerdata.ViewProfesori;
@@ -144,6 +146,9 @@ public class ThisAbstractAction extends AbstractAction{
 		}else if(name.equals("addstud")) {
 			String id = ViewPredmeti.getInstance().getSelectedKey();
 			if(id != null)	AddStudentToPredmet.getInstance(id).setVisible(true);
+		}else if(name.equals("search")) {
+			int pane = CenterBox.getInstance().getSelectedIndex();
+			if(CheckValidation.checkSearchQuery(ToolBar.getSearchQuery(),pane));
 		}
 	}
 	

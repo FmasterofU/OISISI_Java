@@ -2,6 +2,11 @@ package rs.ac.uns.ftn.ssluzba.gui.view;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
@@ -16,6 +21,8 @@ public class ToolBar extends JPanel {
 	
 	private static ToolBar instance = null;
 	public static JPanel currentExpandedToolbarPanel = new JPanel();
+	private static String searchQuery = new String();
+	private static JTextField tf;
 	
 	public static ToolBar getInstance() {
 		if(instance==null) instance = new ToolBar();
@@ -53,23 +60,62 @@ public class ToolBar extends JPanel {
 		
 		this.add(Box.createGlue());
 		
-		JTextField tf = new JTextField(30);
-		Dimension d = this.getPreferredSize();
-		tf.setSize(70, d.height*3/4);
-		tf.setMaximumSize(new Dimension(300, d.height*3/4));
-		tf.setMinimumSize(new Dimension(300, d.height*3/4));
-		this.add(tf);
-		
+		///is added later, now just declared to be available for text field listener on enter key
 		ThisAbstractAction actSearch = new ThisAbstractAction("search");
 		JButton buttonSearch = new JButton(actSearch);
 		buttonSearch.setBackground(Color.WHITE);
 		buttonSearch.setBorderPainted(false);
 		//buttonSearch.setIcon(new ImageIcon("Slike/search-24.png"));
+		
+		tf = new JTextField(30);
+		Dimension d = this.getPreferredSize();
+		tf.setSize(70, d.height*3/4);
+		tf.setMaximumSize(new Dimension(300, d.height*3/4));
+		tf.setMinimumSize(new Dimension(300, d.height*3/4));
+		tf.addFocusListener(new FocusListener() {
+			
+			@Override
+			public void focusLost(FocusEvent e) {
+				searchQuery = ((JTextField)e.getComponent()).getText();
+			}
+			
+			@Override
+			public void focusGained(FocusEvent e) {
+				focusLost(e);				
+			}
+		});
+		tf.addKeyListener(new KeyListener() {
+			@Override
+			public void keyPressed(KeyEvent e) {
+				
+			}
+
+			@Override
+			public void keyReleased(KeyEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void keyTyped(KeyEvent e) {
+				if(e.getKeyCode()==KeyEvent.VK_ENTER)
+					buttonSearch.doClick();
+			}
+		});
+		this.add(tf);
+		
 		this.add(buttonSearch);
 		
 		this.add(Box.createHorizontalStrut(20));
 		this.setBackground(Color.WHITE);
 	}
 
+	public static String getSearchQuery() {
+		return searchQuery;
+	}
 
+	public static void resetSearch() {
+		tf.setText(null);
+		searchQuery = "";
+	}
 }

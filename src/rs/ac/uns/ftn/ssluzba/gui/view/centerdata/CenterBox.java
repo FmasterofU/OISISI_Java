@@ -8,13 +8,15 @@ import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
-
 import rs.ac.uns.ftn.ssluzba.gui.view.ExpandedToolBarPanel;
 import rs.ac.uns.ftn.ssluzba.gui.view.ToolBar;
 
 @SuppressWarnings("serial")
 public class CenterBox extends JTabbedPane {
+	
 	private static CenterBox instance = null;
+	private int lastSelectedIndex = -1;
+	
 	public static CenterBox getInstance() {
 		if(instance==null) instance = new CenterBox();
 		return instance;
@@ -27,13 +29,16 @@ public class CenterBox extends JTabbedPane {
 		//this.setBackground(Color.WHITE);
 		addTab("Profesori", ViewProfesori.getInstance());
 		addTab("Predmeti", ViewPredmeti.getInstance());
+		lastSelectedIndex = getSelectedIndex();
 		this.setBackground(new Color(165, 199, 245)); //active tab color is new Color(165, 199, 245) - color picked, and this is for other tabs and background
 		addChangeListener(new ChangeListener() {
 			
 			@Override
 			public void stateChanged(ChangeEvent e) {
+				CenterBox.reset(lastSelectedIndex);
+				lastSelectedIndex = ((JTabbedPane) e.getSource()).getSelectedIndex();
 				ToolBar.getInstance().remove(ToolBar.currentExpandedToolbarPanel);
-				switch(((JTabbedPane) e.getSource()).getSelectedIndex()) {
+				switch(lastSelectedIndex) {
 					case 2:
 						ToolBar.currentExpandedToolbarPanel = ExpandedToolBarPanel.getInstance();
 						break;
@@ -51,5 +56,21 @@ public class CenterBox extends JTabbedPane {
 	@Override
 	public void addTab(String title, Component component) {
 		addTab(title, null, component);
+	}
+	
+	public static void reset(int pane) {
+		switch(pane) {
+			case 0: ViewStudenti.getInstance().updateTable(); break;
+			case 1: ViewProfesori.getInstance().updateTable(); break;
+			case 2: ViewPredmeti.getInstance().updateTable(); break;
+			default:
+				ViewStudenti.getInstance().updateTable(); 
+				ViewProfesori.getInstance().updateTable(); 
+				ViewPredmeti.getInstance().updateTable(); 
+		}
+		ToolBar.resetSearch();
+	}
+	public int getLastSelectedIndex() {
+		return lastSelectedIndex;
 	}
 }
