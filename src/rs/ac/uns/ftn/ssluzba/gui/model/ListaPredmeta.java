@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.LinkedList;
 
+import rs.ac.uns.ftn.ssluzba.gui.controller.ModelAction;
+
 public class ListaPredmeta implements Serializable, ITableModel {
 
 	private static final long serialVersionUID = -8045180299982898373L;
@@ -49,12 +51,12 @@ public class ListaPredmeta implements Serializable, ITableModel {
 				 return p;
 		 return null;
 	 }
-	 
+	 /*
 	 public void changePredmet(String sifra, Predmet p) {
 		 deletePredmet(getPredmet(sifra));
 		 addPredmet(p);
 	 }
-	 
+	 */
 	 public void editPredmet(String sifra, Predmet novi) {
 		 Predmet p = getPredmet(sifra);
 		 p.setNaziv(novi.getNaziv());
@@ -68,7 +70,7 @@ public class ListaPredmeta implements Serializable, ITableModel {
 		 predmeti.remove(getPredmet(sifra));
 	 }
 	 
-	 public void deletePredmet(Predmet p) {
+	 public void deletePredmet(Predmet p, ModelAction ma) {
 		 predmeti.remove(p);
 	 }
 	 

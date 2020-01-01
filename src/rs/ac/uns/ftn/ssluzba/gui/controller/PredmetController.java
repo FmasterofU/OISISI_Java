@@ -16,7 +16,7 @@ public class PredmetController {
 		ViewPredmeti.getInstance().updateTable();
 	}
 	
-	public static void deletePredmet(Predmet p)
+	public static void deletePredmet(Predmet p, ModelAction ma)
 	{
 		/*
 		 * TODO:
@@ -24,27 +24,31 @@ public class PredmetController {
 		 */
 		//System.out.println(Data.data.listaProfesora);
 		//System.out.println("delete predmet");
-		Data.data.listaStudenata.deletePredmetInList(p);
+		Data.data.listaStudenata.deletePredmetInList(p,ma);
 		ViewStudenti.getInstance().updateTable();
 		//System.out.println(Data.data.listaStudenata);
-		Data.data.listaProfesora.deletePredmetInList(p);
+		Data.data.listaProfesora.deletePredmetInList(p,ma);
 		ViewProfesori.getInstance().updateTable();
 		//System.out.println(Data.data.listaProfesora);
-		Data.data.listaPredmeta.deletePredmet(p);
+		Data.data.listaPredmeta.deletePredmet(p,ma);
 		ViewPredmeti.getInstance().updateTable();
 		//System.out.println(Data.data.listaProfesora);
 	}
 	
-	public static void editPredmet(String sifra, Predmet novi)
+	public static void editPredmet(String sifra, Predmet novi, ModelAction ma)
 	{
 		/*
 		 * TODO:
 		 * refresh search tab if active
 		 */
-		Data.data.listaStudenata.editPredmetInList(sifra,novi);
-		ViewStudenti.getInstance().updateTable();
-		Data.data.listaProfesora.editPredmetInList(sifra,novi);
-		ViewProfesori.getInstance().updateTable();
+		if(ma==ModelAction.ADD_S || ma==ModelAction.DELETE_S) {
+			Data.data.listaStudenata.editPredmetInList(sifra,novi,ma);
+			ViewStudenti.getInstance().updateTable();
+		}
+		if(ma==ModelAction.ADD_P || ma==ModelAction.DELETE_P) {
+			Data.data.listaProfesora.editPredmetInList(sifra,novi,ma);
+			ViewProfesori.getInstance().updateTable();
+		}
 		Data.data.listaPredmeta.editPredmet(sifra, novi);
 		ViewPredmeti.getInstance().updateTable();
 	}

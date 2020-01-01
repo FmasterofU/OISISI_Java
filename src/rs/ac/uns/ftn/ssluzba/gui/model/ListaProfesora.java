@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.LinkedList;
 
+import rs.ac.uns.ftn.ssluzba.gui.controller.ModelAction;
+
 public class ListaProfesora implements Serializable, ITableModel {
 
 	private static final long serialVersionUID = 8001823155996613518L;
@@ -115,8 +117,7 @@ public class ListaProfesora implements Serializable, ITableModel {
 			case 9:
 				return p.getZvanje();
 			case 10:
-				//return p.getPredajePredmete();
-				return "Will be added";
+				return p.PredajePredmeteTableString();
 			default:
 				return null;
 		}
@@ -140,7 +141,7 @@ public class ListaProfesora implements Serializable, ITableModel {
 		return false;
 	}
 
-	public void deletePredmetInList(Predmet p) {
+	public void deletePredmetInList(Predmet p, ModelAction ma) {
 		for(Profesor prof : profesori)
 			if(prof.getPredajePredmete()!=null)
 				for(Predmet pred : prof.getPredajePredmete())
@@ -148,12 +149,11 @@ public class ListaProfesora implements Serializable, ITableModel {
 						prof.getPredajePredmete().remove(p);
 	}
 
-	public void editPredmetInList(String sifra, Predmet novi) {
+	public void editPredmetInList(String sifra, Predmet novi, ModelAction ma) {
 		for(Profesor prof : profesori)
-			if(prof.getPredajePredmete()!=null)
-				for(Predmet pred : prof.getPredajePredmete())
-					if(pred.getSifra().equals(sifra))
-						Predmet.editPredmet(pred, novi);
+			if(novi.getProfesor().getBrojLK().equals(prof.getBrojLK()))
+				if(ma==ModelAction.ADD_P) prof.getPredajePredmete().add(novi);
+				else if(ma==ModelAction.DELETE_P) prof.getPredajePredmete().remove(novi);
 	}
 
 	@Override

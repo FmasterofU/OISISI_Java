@@ -12,6 +12,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
 import rs.ac.uns.ftn.ssluzba.gui.controller.CheckValidation;
+import rs.ac.uns.ftn.ssluzba.gui.controller.ModelAction;
 import rs.ac.uns.ftn.ssluzba.gui.controller.PredmetController;
 import rs.ac.uns.ftn.ssluzba.gui.model.Data;
 import rs.ac.uns.ftn.ssluzba.gui.model.GodinaStudija;
@@ -37,7 +38,6 @@ public class AddProfesorToPredmet extends Dialog {
 	
 	private AddProfesorToPredmet(String code) {
 		super("Dodavanje profesora na predmet", "Potvrda", "Odustanak");
-		System.out.println("kurac2");
 		setSize(400,300);
 		setLocationRelativeTo(MainWindow.getInstance());
 		current = Data.data.listaPredmeta.getPredmet(code);
@@ -59,7 +59,7 @@ public class AddProfesorToPredmet extends Dialog {
 			public void actionPerformed(ActionEvent e) {				
 				Object[] o = listener.getData();
 				boolean check = true;
-				boolean[] result = CheckValidation.isPredmetValid(o, false);
+				boolean[] result = CheckValidation.isPredmetValid(o, true);
 				for(boolean b : result)
 					if(b==false) {
 						check=false;
@@ -69,7 +69,7 @@ public class AddProfesorToPredmet extends Dialog {
 				{
 					String[] splits = ((String)o[4]).trim().split("PK");
 					Predmet novi = new Predmet((String)o[0], (String)o[1], (Semestar)o[2], (GodinaStudija)o[3], Data.data.listaProfesora.getProfesor(splits[splits.length-1]), new ArrayList<Student>());
-					PredmetController.addPredmet(novi);
+					PredmetController.editPredmet((String)o[0],novi,ModelAction.ADD_P);
 					instance.setVisible(false);
 					instance = null;
 					listener.clearData();

@@ -12,8 +12,8 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
 import rs.ac.uns.ftn.ssluzba.gui.controller.CheckValidation;
+import rs.ac.uns.ftn.ssluzba.gui.controller.ModelAction;
 import rs.ac.uns.ftn.ssluzba.gui.controller.PredmetController;
-import rs.ac.uns.ftn.ssluzba.gui.controller.StudentController;
 import rs.ac.uns.ftn.ssluzba.gui.model.Data;
 import rs.ac.uns.ftn.ssluzba.gui.model.GodinaStudija;
 import rs.ac.uns.ftn.ssluzba.gui.model.Predmet;
@@ -75,8 +75,7 @@ public class AddStudentToPredmet extends Dialog{
 					Student newAdded = Data.data.listaStudenata.getStudentByKey((String) o[5]);
 					if(newAdded != null)		old.getStudenti().add(newAdded);
 					Predmet novi = new Predmet((String)o[0], (String)o[1], (Semestar)o[2], (GodinaStudija)o[3], old.getProfesor(), old.getStudenti());
-					PredmetController.editPredmet(old.getSifra(), novi);
-					StudentController.addPredmetToStudent(newAdded.getBrIndeksa(), novi);
+					PredmetController.editPredmet(old.getSifra(), novi, ModelAction.ADD_S);
 					instance.setVisible(false);
 					instance = null;
 					listener.clearData();

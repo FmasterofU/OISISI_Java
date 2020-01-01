@@ -218,4 +218,9 @@ public class Student implements Serializable{
 		stud.setProsecnaOcena(s.getProsecnaOcena());
 		stud.setSlusaPredmete(s.getSlusaPredmete());
 	}
+
+	@Override
+	public boolean equals(Object obj) {
+		return this.getBrIndeksa().equals(((Student)obj).getBrIndeksa());
+	}
 }

@@ -201,4 +201,20 @@ public class Profesor implements Serializable {
 		 p.setZvanje(novi.getZvanje());
 		 p.setPredajePredmete(novi.getPredajePredmete());
 	 }
+
+	public String PredajePredmeteTableString() {
+		StringBuilder builder = new StringBuilder();
+		for(Predmet p : predajePredmete) {
+			builder.append(p.getNaziv());
+			builder.append(", ");
+		}
+		if(builder.toString().endsWith(", ")) builder.setLength(builder.toString().length()-2);
+		else builder.append("Ne predaje predmete");
+		return builder.toString();
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		return this.getBrojLK().equals(((Profesor)obj).getBrojLK());
+	}
 }

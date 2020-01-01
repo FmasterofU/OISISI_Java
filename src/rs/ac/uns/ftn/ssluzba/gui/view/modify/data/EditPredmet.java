@@ -12,6 +12,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import rs.ac.uns.ftn.ssluzba.gui.controller.CheckValidation;
+import rs.ac.uns.ftn.ssluzba.gui.controller.ModelAction;
 import rs.ac.uns.ftn.ssluzba.gui.controller.PredmetController;
 import rs.ac.uns.ftn.ssluzba.gui.model.Data;
 import rs.ac.uns.ftn.ssluzba.gui.model.GodinaStudija;
@@ -73,7 +74,7 @@ public class EditPredmet extends Dialog {
 				{
 					@SuppressWarnings("unchecked")
 					Predmet novi = new Predmet((String)o[0], (String)o[1], (Semestar)o[2], (GodinaStudija)o[3], (Profesor)o[4], (ArrayList<Student>) o[5]);
-					PredmetController.editPredmet((String) o[0], novi);
+					PredmetController.editPredmet((String) o[0], novi, ModelAction.BASIC_EDIT);
 					instance.setVisible(false);
 					instance = null;
 					listener.clearData();

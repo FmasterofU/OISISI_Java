@@ -2,9 +2,12 @@ package rs.ac.uns.ftn.ssluzba.gui.model;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 import javax.swing.JOptionPane;
 
+import rs.ac.uns.ftn.ssluzba.gui.controller.ModelAction;
 import rs.ac.uns.ftn.ssluzba.gui.view.MainWindow;
 
 public class ListaStudenata implements Serializable, ITableModel {
@@ -208,7 +211,7 @@ public class ListaStudenata implements Serializable, ITableModel {
 		return builder.toString();
 	}
 
-	public void deletePredmetInList(Predmet p) {
+	public void deletePredmetInList(Predmet p, ModelAction ma) {
 		for(Student s : studenti)
 			if(s.getSlusaPredmete()!=null)
 				for(Predmet pred : s.getSlusaPredmete())
@@ -216,19 +219,12 @@ public class ListaStudenata implements Serializable, ITableModel {
 						s.getSlusaPredmete().remove(p);
 	}
 
-	public void editPredmetInList(String sifra, Predmet novi) {
+	public void editPredmetInList(String sifra, Predmet novi, ModelAction ma) {
+		List<Student> stud = novi.getStudenti();
 		for(Student s : studenti)
-			if(s.getSlusaPredmete()!=null)
-				for(Predmet p : s.getSlusaPredmete())
-					if(p.getSifra().equals(sifra))
-						Predmet.editPredmet(p, novi);
-	}
-	
-	public void addPredmetToList(String idS, Predmet p)
-	{
-		for(Student s : studenti)
-			if(s.getBrIndeksa().equals(idS))
-				s.getSlusaPredmete().add(p);
+			if(stud.contains(s))
+				if(ma==ModelAction.ADD_S) s.getSlusaPredmete().add(novi);
+				else if(ma==ModelAction.DELETE_S) s.getSlusaPredmete().remove(novi);
 	}
 
 	@Override

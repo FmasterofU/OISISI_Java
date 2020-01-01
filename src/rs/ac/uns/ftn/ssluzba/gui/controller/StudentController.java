@@ -1,7 +1,6 @@
 package rs.ac.uns.ftn.ssluzba.gui.controller;
 
 import rs.ac.uns.ftn.ssluzba.gui.model.Data;
-import rs.ac.uns.ftn.ssluzba.gui.model.Predmet;
 import rs.ac.uns.ftn.ssluzba.gui.model.Student;
 import rs.ac.uns.ftn.ssluzba.gui.view.centerdata.ViewPredmeti;
 import rs.ac.uns.ftn.ssluzba.gui.view.centerdata.ViewStudenti;
@@ -37,11 +36,4 @@ public class StudentController {
 		Data.data.listaStudenata.editStudent(indeks, s);
 		ViewStudenti.getInstance().updateTable();
 	}
-	
-	public static void addPredmetToStudent(String idS, Predmet p)
-	{
-		Data.data.listaStudenata.addPredmetToList(idS, p);
-		ViewStudenti.getInstance().updateTable();
-	}
-
 }

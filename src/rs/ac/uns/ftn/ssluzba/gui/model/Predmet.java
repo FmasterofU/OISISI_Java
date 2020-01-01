@@ -119,4 +119,10 @@ public class Predmet implements Serializable{
 		 p.setProfesor(novi.getProfesor());
 		 p.setStudenti(novi.getStudenti());
 	 }
+
+	@Override
+	public boolean equals(Object obj) {
+		// TODO Auto-generated method stub
+		return this.getSifra().equals(((Predmet)obj).getSifra());
+	}
 }

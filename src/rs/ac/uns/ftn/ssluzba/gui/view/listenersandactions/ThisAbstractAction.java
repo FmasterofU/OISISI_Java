@@ -10,6 +10,7 @@ import javax.swing.KeyStroke;
 
 import com.sun.glass.events.KeyEvent;
 
+import rs.ac.uns.ftn.ssluzba.gui.model.Data;
 import rs.ac.uns.ftn.ssluzba.gui.view.MainWindow;
 import rs.ac.uns.ftn.ssluzba.gui.view.MessageWithLink;
 import rs.ac.uns.ftn.ssluzba.gui.view.centerdata.CenterBox;
@@ -135,8 +136,8 @@ public class ThisAbstractAction extends AbstractAction{
 			JOptionPane.showConfirmDialog(MainWindow.getInstance(), "OISISI_Java - Studentska Služba v1.0.0\n~ Igor Šikuljak - RA117/2017 - igorsikuljak@uns.ac.rs\n~ Radoš Milićev - RA121/2017 - rados280698@yahoo.com", "About", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, new ImageIcon("Slike/about.png"));
 		else if(name.equals("addprof")) {
 			String sifra = ViewPredmeti.getInstance().getSelectedKey();
-			if(sifra!=null) AddProfesorToPredmet.getInstance(sifra).setVisible(true);
-		}
+			if(sifra!=null && Data.data.listaPredmeta.getPredmet(sifra).getProfesor()==null) AddProfesorToPredmet.getInstance(sifra).setVisible(true);
+		}// else if(name.equals(anObject))
 		else if(name.equals("addstud")) {
 			String id = ViewPredmeti.getInstance().getSelectedKey();
 			if(id != null)	AddStudentToPredmet.getInstance(id).setVisible(true);
