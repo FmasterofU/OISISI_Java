@@ -45,7 +45,7 @@ public class ExpandedToolBarPanel extends JPanel {
 		buttonAddStud.setText("Dodaj Stud.");
 		buttonAddStud.setBackground(Color.WHITE);
 		buttonAddStud.setBorderPainted(false);
-		buttonAddStud.setIcon(new ImageIcon("Slike/add-student-24.png"));
+		buttonAddStud.setIcon(new ImageIcon("Slike/student-male-24.png"));
 		this.add(buttonAddStud);
 	}
 	
