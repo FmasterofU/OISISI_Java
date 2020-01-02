@@ -11,7 +11,6 @@ import rs.ac.uns.ftn.ssluzba.gui.view.MainWindow;
 public class ListaStudenata implements Serializable, ITableModel {
 	
 	private static final long serialVersionUID = 3654331325580773015L;
-	private static ListaStudenata instance = null;
 	private ArrayList<Student> studenti;
 	private static ArrayList<String> kolone;
 	
@@ -30,19 +29,18 @@ public class ListaStudenata implements Serializable, ITableModel {
 		kolone.add("Upisan(a)");
 		kolone.add("Predmeti");
 	}
+
 	
-	protected static ListaStudenata getInstance()
-	{
-		Data.checkStackTrace();
-		if(instance == null)
-			instance = new ListaStudenata();
-		return instance;
-	}
-	
-	private ListaStudenata()
+	public ListaStudenata()
 	{
 		this.studenti = new ArrayList<Student>();
 		this.studenti.add(new Student());
+	}
+	
+	public ListaStudenata(ListaStudenata ls) {
+		this.studenti = new ArrayList<Student>();
+		for(Student s : ls.studenti)
+			studenti.add(s);
 	}
 	
 	public boolean indexExists(String index)

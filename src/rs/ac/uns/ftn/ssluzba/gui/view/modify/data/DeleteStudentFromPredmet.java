@@ -12,10 +12,10 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
 import rs.ac.uns.ftn.ssluzba.gui.controller.CheckValidation;
+import rs.ac.uns.ftn.ssluzba.gui.controller.Data;
 import rs.ac.uns.ftn.ssluzba.gui.controller.ModelAction;
 import rs.ac.uns.ftn.ssluzba.gui.controller.PredmetController;
 import rs.ac.uns.ftn.ssluzba.gui.controller.listenersandactions.PredmetListener;
-import rs.ac.uns.ftn.ssluzba.gui.model.Data;
 import rs.ac.uns.ftn.ssluzba.gui.model.GodinaStudija;
 import rs.ac.uns.ftn.ssluzba.gui.model.Predmet;
 import rs.ac.uns.ftn.ssluzba.gui.model.Semestar;
@@ -41,7 +41,7 @@ public class DeleteStudentFromPredmet extends Dialog{
 	{
 		super("Brisanje studenta sa predmeta", "Potvrda", "Odustanak");
 		
-		old = Data.data.listaPredmeta.getPredmet(id);
+		old = Data.getListaPredmeta().getPredmet(id);
 		setSize(300,300);
 		setLocationRelativeTo(MainWindow.getInstance());
 		listener.setInitialData(old);
@@ -81,7 +81,7 @@ public class DeleteStudentFromPredmet extends Dialog{
 						if(!spl.equals((String) o[6]))
 								ret += spl + " ";
 					}
-					ArrayList<Student> studenti = Data.data.listaPredmeta.getStudents(ret);
+					ArrayList<Student> studenti = Data.getListaPredmeta().getStudents(ret);
 					Predmet novi = new Predmet((String)o[0], (String)o[1], (Semestar)o[2], (GodinaStudija)o[3], old.getProfesor(), studenti);
 					PredmetController.editPredmet(old.getSifra(), novi, ModelAction.DELETE_S);
 					instance.setVisible(false);
@@ -110,7 +110,7 @@ public class DeleteStudentFromPredmet extends Dialog{
 		GridBagConstraints gbclStud = generateLabelGBC();
 		middlePanel.add(lStud, gbclStud);
 		
-		ArrayList<String> cb = Data.data.listaPredmeta.getStudentIndexesListeningPredmet(old);
+		ArrayList<String> cb = Data.getListaPredmeta().getStudentIndexesListeningPredmet(old);
 		@SuppressWarnings({ "unchecked", "rawtypes" })
 		ComboBox cbStud = new ComboBox(cb.toArray());
 		cbStud.setName("cbStud");

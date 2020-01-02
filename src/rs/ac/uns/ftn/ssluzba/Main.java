@@ -1,6 +1,6 @@
 package rs.ac.uns.ftn.ssluzba;
 
-import rs.ac.uns.ftn.ssluzba.gui.model.Data;
+import rs.ac.uns.ftn.ssluzba.gui.controller.Data;
 import rs.ac.uns.ftn.ssluzba.gui.model.GodinaStudija;
 import rs.ac.uns.ftn.ssluzba.gui.model.Predmet;
 import rs.ac.uns.ftn.ssluzba.gui.model.Profesor;

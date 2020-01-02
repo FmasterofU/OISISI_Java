@@ -1,6 +1,6 @@
 package rs.ac.uns.ftn.ssluzba.gui.view.centerdata;
 
-import rs.ac.uns.ftn.ssluzba.gui.model.Data;
+import rs.ac.uns.ftn.ssluzba.gui.controller.Data;
 import rs.ac.uns.ftn.ssluzba.gui.model.ListaProfesora;
 
 @SuppressWarnings("serial")
@@ -17,7 +17,7 @@ public class ViewProfesori extends ViewTableCenter {
 		return instance;
 	}
 	private ViewProfesori() {
-		model = new ThisTableModel<ListaProfesora>(Data.data.listaProfesora);
+		model = new ThisTableModel<ListaProfesora>(Data.getListaProfesora());
 		table.setModel(model);
 		resizeColumnWidth();
 		table.setRowSorter(model.getSorter());

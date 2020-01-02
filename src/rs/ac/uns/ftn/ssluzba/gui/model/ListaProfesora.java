@@ -4,13 +4,13 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.LinkedList;
 
+import rs.ac.uns.ftn.ssluzba.gui.controller.Data;
 import rs.ac.uns.ftn.ssluzba.gui.controller.ModelAction;
 
 public class ListaProfesora implements Serializable, ITableModel {
 
 	private static final long serialVersionUID = 8001823155996613518L;
 	private LinkedList<Profesor> profesori;
-	private static ListaProfesora instance = null;
 	private static ArrayList<String> kolone;
 	
 	static {
@@ -28,14 +28,14 @@ public class ListaProfesora implements Serializable, ITableModel {
 		kolone.add("Predaje");
 	}
 	
-	private ListaProfesora() {
+	public ListaProfesora() {
 		this.profesori = new LinkedList<Profesor>();
 	}
 	
-	protected static ListaProfesora getInstance() {
-		Data.checkStackTrace();
-		if(instance==null) instance = new ListaProfesora();
-		return instance;
+	public ListaProfesora(ListaProfesora lp) {
+		this.profesori = new LinkedList<Profesor>();
+		for(Profesor p : lp.profesori)
+			profesori.add(p);
 	}
 	
 	public LinkedList<Profesor> getProfesori() {
@@ -157,7 +157,7 @@ public class ListaProfesora implements Serializable, ITableModel {
 				if(novi.getProfesor().getBrojLK().equals(prof.getBrojLK()))
 					prof.getPredajePredmete().add(novi);
 			} else if(ma==ModelAction.DELETE_P)
-				if(Data.data.listaPredmeta.getPredmet(sifra).getProfesor().getBrojLK().equals(prof.getBrojLK()))
+				if(Data.getListaPredmeta().getPredmet(sifra).getProfesor().getBrojLK().equals(prof.getBrojLK()))
 					prof.getPredajePredmete().remove(novi);
 	}
 

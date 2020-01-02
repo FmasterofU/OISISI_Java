@@ -1,6 +1,6 @@
 package rs.ac.uns.ftn.ssluzba.gui.view.centerdata;
 
-import rs.ac.uns.ftn.ssluzba.gui.model.Data;
+import rs.ac.uns.ftn.ssluzba.gui.controller.Data;
 import rs.ac.uns.ftn.ssluzba.gui.model.ListaPredmeta;
 
 @SuppressWarnings("serial")
@@ -18,7 +18,7 @@ public class ViewPredmeti extends ViewTableCenter {
 		return instance;
 	}
 	private ViewPredmeti() {
-		model = new ThisTableModel<ListaPredmeta>(Data.data.listaPredmeta) {
+		model = new ThisTableModel<ListaPredmeta>(Data.getListaPredmeta()) {
 			@Override
 			public Class<?> getColumnClass(int columnIndex){
 				if(columnIndex!=STUDENTI_BUTTON_COLUMN) return super.getColumnClass(columnIndex);

@@ -1,6 +1,6 @@
 package rs.ac.uns.ftn.ssluzba.gui.view.centerdata;
 
-import rs.ac.uns.ftn.ssluzba.gui.model.Data;
+import rs.ac.uns.ftn.ssluzba.gui.controller.Data;
 import rs.ac.uns.ftn.ssluzba.gui.model.ListaStudenata;
 
 public class ViewStudenti extends ViewTableCenter {
@@ -17,7 +17,7 @@ public class ViewStudenti extends ViewTableCenter {
 		return instance;
 	}
 	private ViewStudenti() {
-		model = new ThisTableModel<ListaStudenata>(Data.data.listaStudenata);
+		model = new ThisTableModel<ListaStudenata>(Data.getListaStudenata());
 		table.setModel(model);
 		resizeColumnWidth();
 		table.setRowSorter(model.getSorter());

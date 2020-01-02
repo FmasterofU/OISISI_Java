@@ -1,4 +1,4 @@
-package rs.ac.uns.ftn.ssluzba.gui.view;
+package rs.ac.uns.ftn.ssluzba.gui.view.modify;
 
 import java.awt.Desktop;
 import javax.swing.JEditorPane;

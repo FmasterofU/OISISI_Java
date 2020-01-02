@@ -14,9 +14,9 @@ import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 
 import rs.ac.uns.ftn.ssluzba.gui.controller.CheckValidation;
+import rs.ac.uns.ftn.ssluzba.gui.controller.Data;
 import rs.ac.uns.ftn.ssluzba.gui.controller.StudentController;
 import rs.ac.uns.ftn.ssluzba.gui.controller.listenersandactions.StudentListener;
-import rs.ac.uns.ftn.ssluzba.gui.model.Data;
 import rs.ac.uns.ftn.ssluzba.gui.model.GodinaStudija;
 import rs.ac.uns.ftn.ssluzba.gui.model.NacinFinansiranja;
 import rs.ac.uns.ftn.ssluzba.gui.model.Student;
@@ -294,7 +294,7 @@ public class EditStudent extends Dialog{
 	
 	private Student getStudent(String i)
 	{
-		for(Student s: Data.data.listaStudenata.getStudenti())
+		for(Student s: Data.getListaStudenata().getStudenti())
 		{
 			if(i.equals(s.getBrIndeksa()))
 				return s;

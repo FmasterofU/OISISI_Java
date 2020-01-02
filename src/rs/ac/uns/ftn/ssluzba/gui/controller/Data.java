@@ -1,4 +1,4 @@
-package rs.ac.uns.ftn.ssluzba.gui.model;
+package rs.ac.uns.ftn.ssluzba.gui.controller;
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -7,13 +7,17 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 
+import rs.ac.uns.ftn.ssluzba.gui.model.ListaPredmeta;
+import rs.ac.uns.ftn.ssluzba.gui.model.ListaProfesora;
+import rs.ac.uns.ftn.ssluzba.gui.model.ListaStudenata;
+
 public class Data implements Serializable {
 
 	private static final long serialVersionUID = -3785262540558754322L;
-	public ListaPredmeta listaPredmeta = null;
-	public ListaStudenata listaStudenata = null;
-	public ListaProfesora listaProfesora = null;
-	public static Data data = null;
+	private static ListaPredmeta listaPredmeta = null;
+	private static ListaStudenata listaStudenata = null;
+	private static ListaProfesora listaProfesora = null;
+	private static Data data = null;
 	
 	public static void init() {
 		if(Data.data == null) {
@@ -28,9 +32,9 @@ public class Data implements Serializable {
 	}
 	
 	private Data() {
-		this.listaPredmeta = ListaPredmeta.getInstance();
-		this.listaStudenata = ListaStudenata.getInstance();
-		this.listaProfesora = ListaProfesora.getInstance();
+		Data.listaPredmeta = new ListaPredmeta();
+		Data.listaStudenata = new ListaStudenata();
+		Data.listaProfesora = new ListaProfesora();
 	}
 
 	private static void serialize() {
@@ -65,5 +69,17 @@ public class Data implements Serializable {
 			System.out.flush();
 			throw new RuntimeException("Nije dozvoljeno pozivati getInstance metode kod listi izvan konstruktora persistence.Data klase!");
 		}
+	}
+
+	public static ListaPredmeta getListaPredmeta() {
+		return listaPredmeta;
+	}
+
+	public static ListaStudenata getListaStudenata() {
+		return listaStudenata;
+	}
+
+	public static ListaProfesora getListaProfesora() {
+		return listaProfesora;
 	}
 }

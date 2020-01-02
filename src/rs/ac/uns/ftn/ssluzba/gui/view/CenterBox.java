@@ -1,4 +1,4 @@
-package rs.ac.uns.ftn.ssluzba.gui.view.centerdata;
+package rs.ac.uns.ftn.ssluzba.gui.view;
 
 import java.awt.Color;
 import java.awt.Component;
@@ -8,8 +8,10 @@ import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
-import rs.ac.uns.ftn.ssluzba.gui.view.ExpandedToolBarPanel;
-import rs.ac.uns.ftn.ssluzba.gui.view.ToolBar;
+
+import rs.ac.uns.ftn.ssluzba.gui.view.centerdata.ViewPredmeti;
+import rs.ac.uns.ftn.ssluzba.gui.view.centerdata.ViewProfesori;
+import rs.ac.uns.ftn.ssluzba.gui.view.centerdata.ViewStudenti;
 
 @SuppressWarnings("serial")
 public class CenterBox extends JTabbedPane {

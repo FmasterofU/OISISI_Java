@@ -11,10 +11,10 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import rs.ac.uns.ftn.ssluzba.gui.controller.CheckValidation;
+import rs.ac.uns.ftn.ssluzba.gui.controller.Data;
 import rs.ac.uns.ftn.ssluzba.gui.controller.ModelAction;
 import rs.ac.uns.ftn.ssluzba.gui.controller.PredmetController;
 import rs.ac.uns.ftn.ssluzba.gui.controller.listenersandactions.PredmetListener;
-import rs.ac.uns.ftn.ssluzba.gui.model.Data;
 import rs.ac.uns.ftn.ssluzba.gui.model.GodinaStudija;
 import rs.ac.uns.ftn.ssluzba.gui.model.Predmet;
 import rs.ac.uns.ftn.ssluzba.gui.model.Profesor;
@@ -43,7 +43,7 @@ public class EditPredmet extends Dialog {
 		super("Izmeni predmet", "Potvrda", "Odustanak");
 		setSize(400,300);
 		setLocationRelativeTo(MainWindow.getInstance());
-		current = Data.data.listaPredmeta.getPredmet(sifra);
+		current = Data.getListaPredmeta().getPredmet(sifra);
 		listener.setInitialData(current);
 		
 		addWindowListener(new WindowAdapter() {
@@ -70,7 +70,7 @@ public class EditPredmet extends Dialog {
 					}
 				if(check)
 				{
-					Predmet novi = new Predmet((String)o[0], (String)o[1], (Semestar)o[2], (GodinaStudija)o[3], (Profesor)o[4], Data.data.listaPredmeta.getStudents((String) o[5]));
+					Predmet novi = new Predmet((String)o[0], (String)o[1], (Semestar)o[2], (GodinaStudija)o[3], (Profesor)o[4], Data.getListaPredmeta().getStudents((String) o[5]));
 					PredmetController.editPredmet((String) o[0], novi, ModelAction.BASIC_EDIT);
 					instance.setVisible(false);
 					instance = null;

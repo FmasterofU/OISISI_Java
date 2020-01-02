@@ -12,9 +12,9 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 import rs.ac.uns.ftn.ssluzba.gui.controller.CheckValidation;
+import rs.ac.uns.ftn.ssluzba.gui.controller.Data;
 import rs.ac.uns.ftn.ssluzba.gui.controller.ProfesorController;
 import rs.ac.uns.ftn.ssluzba.gui.controller.listenersandactions.ProfesorListener;
-import rs.ac.uns.ftn.ssluzba.gui.model.Data;
 import rs.ac.uns.ftn.ssluzba.gui.model.Profesor;
 import rs.ac.uns.ftn.ssluzba.gui.view.MainWindow;
 import rs.ac.uns.ftn.ssluzba.gui.view.modify.Dialog;
@@ -269,7 +269,7 @@ public class EditProfesor extends Dialog{
 	
 	private Profesor getProfesor(String lk)
 	{
-		for(Profesor p: Data.data.listaProfesora.getProfesori())
+		for(Profesor p: Data.getListaProfesora().getProfesori())
 		{
 			if(lk.equals(p.getBrojLK()))
 				return p;

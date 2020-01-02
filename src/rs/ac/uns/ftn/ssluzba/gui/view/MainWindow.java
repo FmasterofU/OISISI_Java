@@ -11,8 +11,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.UIManager;
 
-import rs.ac.uns.ftn.ssluzba.gui.model.Data;
-import rs.ac.uns.ftn.ssluzba.gui.view.centerdata.CenterBox;
+import rs.ac.uns.ftn.ssluzba.gui.controller.Data;
 
 @SuppressWarnings("serial")
 public class MainWindow  extends JFrame {

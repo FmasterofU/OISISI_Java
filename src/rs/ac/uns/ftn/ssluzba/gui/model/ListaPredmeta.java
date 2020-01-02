@@ -4,13 +4,13 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.LinkedList;
 
+import rs.ac.uns.ftn.ssluzba.gui.controller.Data;
 import rs.ac.uns.ftn.ssluzba.gui.controller.ModelAction;
 
 public class ListaPredmeta implements Serializable, ITableModel {
 
 	private static final long serialVersionUID = -8045180299982898373L;
 	private LinkedList<Predmet> predmeti;
-	private static ListaPredmeta instance = null;
 	private static ArrayList<String> kolone;
 	
 	static {
@@ -23,14 +23,14 @@ public class ListaPredmeta implements Serializable, ITableModel {
 		kolone.add("Studenti");
 	}
 	
-	private ListaPredmeta() {
+	public ListaPredmeta() {
 		this.setPredmeti(new LinkedList<Predmet>());
 	}
 	
-	protected static ListaPredmeta getInstance() {
-		Data.checkStackTrace();
-		if(instance==null) instance = new ListaPredmeta();
-		return instance;
+	public ListaPredmeta(ListaPredmeta lp) {
+		this.predmeti = new LinkedList<Predmet>();
+		for(Predmet p : lp.predmeti)
+			predmeti.add(p);
 	}
 
 	public LinkedList<Predmet> getPredmeti() {
@@ -167,7 +167,7 @@ public class ListaPredmeta implements Serializable, ITableModel {
 	
 	public ArrayList<String> getStudentIndexesNotListeningPredmet(Predmet p)
 	{
-		ArrayList<String> ret = Data.data.listaStudenata.getListOfStudentIndexes(p.getGodinaStudija());
+		ArrayList<String> ret = Data.getListaStudenata().getListOfStudentIndexes(p.getGodinaStudija());
 		for(Student stud : p.getStudenti())
 		{
 			if(ret.contains(stud.getBrIndeksa()) || (stud.getGodStudija() != p.getGodinaStudija()))
@@ -193,7 +193,7 @@ public class ListaPredmeta implements Serializable, ITableModel {
 		{
 			String[] splits = s.split(" ");
 			for(String spl : splits)
-				ret.add(Data.data.listaStudenata.getStudentByKey(spl));
+				ret.add(Data.getListaStudenata().getStudentByKey(spl));
 		}
 		return ret;
 	}

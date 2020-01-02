@@ -1,6 +1,5 @@
 package rs.ac.uns.ftn.ssluzba.gui.controller;
 
-import rs.ac.uns.ftn.ssluzba.gui.model.Data;
 import rs.ac.uns.ftn.ssluzba.gui.model.Student;
 import rs.ac.uns.ftn.ssluzba.gui.view.centerdata.ViewPredmeti;
 import rs.ac.uns.ftn.ssluzba.gui.view.centerdata.ViewStudenti;
@@ -9,7 +8,7 @@ public class StudentController {
 	
 	public static void addStudent(Student s)
 	{
-		Data.data.listaStudenata.addStudent(s);
+		Data.getListaStudenata().addStudent(s);
 		ViewStudenti.getInstance().updateTable();
 	}
 	
@@ -19,9 +18,9 @@ public class StudentController {
 		 * TODO: 
 		 * refresh search tab if active
 		*/
-		Data.data.listaPredmeta.deleteStudentInList(indeks);
+		Data.getListaPredmeta().deleteStudentInList(indeks);
 		ViewPredmeti.getInstance().updateTable();
-		Data.data.listaStudenata.deleteStudent(indeks);
+		Data.getListaStudenata().deleteStudent(indeks);
 		ViewStudenti.getInstance().updateTable();
 	}
 	
@@ -31,9 +30,9 @@ public class StudentController {
 		 * TODO: 
 		 * refresh search tab if active
 		 */
-		Data.data.listaPredmeta.editStudentInList(indeks,s);
+		Data.getListaPredmeta().editStudentInList(indeks,s);
 		ViewPredmeti.getInstance().updateTable();
-		Data.data.listaStudenata.editStudent(indeks, s);
+		Data.getListaStudenata().editStudent(indeks, s);
 		ViewStudenti.getInstance().updateTable();
 	}
 }

@@ -1,7 +1,7 @@
 package rs.ac.uns.ftn.ssluzba.gui.controller;
 
 import java.util.ArrayList;
-import rs.ac.uns.ftn.ssluzba.gui.model.Data;
+
 import rs.ac.uns.ftn.ssluzba.gui.view.centerdata.ViewStudenti;
 
 public class CheckValidation {
@@ -91,7 +91,7 @@ public class CheckValidation {
 			index = index.trim().toUpperCase();
 			if(!checkIndexYear(index))
 				return false;
-			if(Data.data.listaStudenata.indexExists(index))		return false;
+			if(Data.getListaStudenata().indexExists(index))		return false;
 			return index.matches("[a-zA-Z]{2}[1-9][0-9]{0,2}/[0-9]{4}");
 		}
 		
@@ -192,11 +192,11 @@ public class CheckValidation {
 		}
 
 		public static boolean checkUniquePredmetCode(String text) {
-			return !Data.data.listaPredmeta.predmetCodeExists(text);
+			return !Data.getListaPredmeta().predmetCodeExists(text);
 		}
 		
 		public static boolean checkUniqueProfesorID(String id) {
-			return !Data.data.listaProfesora.profesorIDExists(id);
+			return !Data.getListaProfesora().profesorIDExists(id);
 		}
 
 		public static boolean checkSemester(String text) {

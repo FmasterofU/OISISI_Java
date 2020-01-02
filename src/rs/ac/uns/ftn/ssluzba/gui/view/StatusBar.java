@@ -11,8 +11,6 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
-import rs.ac.uns.ftn.ssluzba.gui.view.centerdata.CenterBox;
-
 @SuppressWarnings("serial")
 class StatusBar extends JPanel implements ActionListener{
 	private static StatusBar instance = null;

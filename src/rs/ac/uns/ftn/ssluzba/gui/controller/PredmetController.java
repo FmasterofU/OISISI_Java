@@ -1,6 +1,5 @@
 package rs.ac.uns.ftn.ssluzba.gui.controller;
 
-import rs.ac.uns.ftn.ssluzba.gui.model.Data;
 import rs.ac.uns.ftn.ssluzba.gui.model.Predmet;
 import rs.ac.uns.ftn.ssluzba.gui.view.centerdata.ViewPredmeti;
 import rs.ac.uns.ftn.ssluzba.gui.view.centerdata.ViewProfesori;
@@ -12,7 +11,7 @@ public class PredmetController {
 		//Data.data.listaProfesora.getProfesor(novi.getProfesor().getBrojLK()).getPredajePredmete().add(novi);
 		//ViewProfesori.getInstance().updateTable();
 		//System.out.println(Data.data.listaProfesora);
-		Data.data.listaPredmeta.addPredmet(novi);
+		Data.getListaPredmeta().addPredmet(novi);
 		ViewPredmeti.getInstance().updateTable();
 	}
 	
@@ -22,9 +21,9 @@ public class PredmetController {
 		 * TODO:
 		 * refresh search tab if active
 		 */
-		Data.data.listaStudenata.deletePredmetInList(p,ma);
-		Data.data.listaProfesora.deletePredmetInList(p,ma);
-		Data.data.listaPredmeta.deletePredmet(p,ma);
+		Data.getListaStudenata().deletePredmetInList(p,ma);
+		Data.getListaProfesora().deletePredmetInList(p,ma);
+		Data.getListaPredmeta().deletePredmet(p,ma);
 		ViewStudenti.getInstance().updateTable();
 		ViewProfesori.getInstance().updateTable();
 		ViewPredmeti.getInstance().updateTable();
@@ -37,18 +36,18 @@ public class PredmetController {
 		 * refresh search tab if active
 		 */
 		if(ma==ModelAction.ADD_S/* || ma==ModelAction.DELETE_S*/) {
-			Data.data.listaStudenata.editPredmetInList(sifra,novi,ma);
+			Data.getListaStudenata().editPredmetInList(sifra,novi,ma);
 			ViewStudenti.getInstance().updateTable();
 		}
 		else if(ma==ModelAction.DELETE_S) {
-			Data.data.listaStudenata.deletePredmetInList(novi, ma);
+			Data.getListaStudenata().deletePredmetInList(novi, ma);
 			ViewStudenti.getInstance().updateTable();
 		}
 		if(ma==ModelAction.ADD_P || ma==ModelAction.DELETE_P) {
-			Data.data.listaProfesora.editPredmetInList(sifra,novi,ma);
+			Data.getListaProfesora().editPredmetInList(sifra,novi,ma);
 			ViewProfesori.getInstance().updateTable();
 		}
-		Data.data.listaPredmeta.editPredmet(sifra, novi);
+		Data.getListaPredmeta().editPredmet(sifra, novi);
 		ViewPredmeti.getInstance().updateTable();
 	}
 }

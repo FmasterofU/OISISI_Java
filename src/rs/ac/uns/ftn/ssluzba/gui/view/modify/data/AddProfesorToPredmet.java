@@ -12,10 +12,10 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
 import rs.ac.uns.ftn.ssluzba.gui.controller.CheckValidation;
+import rs.ac.uns.ftn.ssluzba.gui.controller.Data;
 import rs.ac.uns.ftn.ssluzba.gui.controller.ModelAction;
 import rs.ac.uns.ftn.ssluzba.gui.controller.PredmetController;
 import rs.ac.uns.ftn.ssluzba.gui.controller.listenersandactions.PredmetListener;
-import rs.ac.uns.ftn.ssluzba.gui.model.Data;
 import rs.ac.uns.ftn.ssluzba.gui.model.GodinaStudija;
 import rs.ac.uns.ftn.ssluzba.gui.model.Predmet;
 import rs.ac.uns.ftn.ssluzba.gui.model.Semestar;
@@ -39,7 +39,7 @@ public class AddProfesorToPredmet extends Dialog {
 		super("Dodavanje profesora na predmet", "Potvrda", "Odustanak");
 		super.setSize(400,200);
 		super.setLocationRelativeTo(MainWindow.getInstance());
-		current = Data.data.listaPredmeta.getPredmet(code);
+		current = Data.getListaPredmeta().getPredmet(code);
 		listener.setInitialData(current);
 		
 		addWindowListener(new WindowAdapter() {
@@ -74,7 +74,7 @@ public class AddProfesorToPredmet extends Dialog {
 				if(check)
 				{
 					String[] splits = ((String)o[4]).trim().split("PK");
-					Predmet novi = new Predmet((String)o[0], (String)o[1], (Semestar)o[2], (GodinaStudija)o[3], Data.data.listaProfesora.getProfesor(splits[splits.length-1]), current.getStudenti());
+					Predmet novi = new Predmet((String)o[0], (String)o[1], (Semestar)o[2], (GodinaStudija)o[3], Data.getListaProfesora().getProfesor(splits[splits.length-1]), current.getStudenti());
 					PredmetController.editPredmet((String)o[0],novi,ModelAction.ADD_P);
 					instance.setVisible(false);
 					instance = null;
@@ -106,7 +106,7 @@ public class AddProfesorToPredmet extends Dialog {
 		GridBagConstraints gbclProfesor = generateLabelGBC();
 		middlePanel.add(lProfesor, gbclProfesor);
 		
-		ArrayList<String> cbItems3 = Data.data.listaProfesora.getUniqueProfList();
+		ArrayList<String> cbItems3 = Data.getListaProfesora().getUniqueProfList();
 		@SuppressWarnings({ "unchecked", "rawtypes" })
 		ComboBox cbProfesor = new ComboBox(cbItems3.toArray());
 		cbProfesor.setName("cbProfesor");
