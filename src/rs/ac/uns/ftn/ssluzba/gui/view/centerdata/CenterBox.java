@@ -36,6 +36,7 @@ public class CenterBox extends JTabbedPane {
 			@Override
 			public void stateChanged(ChangeEvent e) {
 				CenterBox.reset(lastSelectedIndex);
+				ToolBar.resetSearch();
 				lastSelectedIndex = ((JTabbedPane) e.getSource()).getSelectedIndex();
 				ToolBar.getInstance().remove(ToolBar.currentExpandedToolbarPanel);
 				switch(lastSelectedIndex) {
@@ -60,16 +61,31 @@ public class CenterBox extends JTabbedPane {
 	
 	public static void reset(int pane) {
 		switch(pane) {
-			case 0: ViewStudenti.getInstance().updateTable(); break;
-			case 1: ViewProfesori.getInstance().updateTable(); break;
-			case 2: ViewPredmeti.getInstance().updateTable(); break;
+			case 0: 
+				if(ViewStudenti.inSearchMode) {
+					ViewStudenti.getInstance().updateTable();
+					ViewStudenti.inSearchMode=false;
+				}
+				break;
+			case 1: 
+				if(ViewProfesori.inSearchMode) {
+					ViewProfesori.getInstance().updateTable();
+					ViewProfesori.inSearchMode=false;
+				}
+				break;
+			case 2: 
+				if(ViewPredmeti.inSearchMode) {
+					ViewPredmeti.getInstance().updateTable();
+					ViewPredmeti.inSearchMode=false;
+				}
+				break;
 			default:
 				ViewStudenti.getInstance().updateTable(); 
 				ViewProfesori.getInstance().updateTable(); 
 				ViewPredmeti.getInstance().updateTable(); 
 		}
-		ToolBar.resetSearch();
 	}
+	
 	public int getLastSelectedIndex() {
 		return lastSelectedIndex;
 	}

@@ -15,7 +15,11 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import rs.ac.uns.ftn.ssluzba.gui.controller.CheckValidation;
+import rs.ac.uns.ftn.ssluzba.gui.view.centerdata.CenterBox;
 import rs.ac.uns.ftn.ssluzba.gui.view.listenersandactions.ThisAbstractAction;
+import rs.ac.uns.ftn.ssluzba.gui.view.modify.IHighlight;
+import rs.ac.uns.ftn.ssluzba.gui.view.modify.TextField;
 
 @SuppressWarnings("serial")
 public class ToolBar extends JPanel {
@@ -23,7 +27,7 @@ public class ToolBar extends JPanel {
 	private static ToolBar instance = null;
 	public static JPanel currentExpandedToolbarPanel = new JPanel();
 	private static String searchQuery = new String();
-	private static JTextField tf;
+	private static TextField tf;
 	
 	public static ToolBar getInstance() {
 		if(instance==null) instance = new ToolBar();
@@ -68,13 +72,24 @@ public class ToolBar extends JPanel {
 		buttonSearch.setBorderPainted(false);
 		buttonSearch.setIcon(new ImageIcon("Slike/search-32.png"));
 		
-		tf = new JTextField(30);
+		tf = new TextField(30) {
+			@Override
+			public void maybeHighlight() {
+				setBorder(((this.isEmpty() || CheckValidation.checkSearchQuery(this.getText(),CenterBox.getInstance().getSelectedIndex())) ? IHighlight.defaultBorder : IHighlight.highlightBorder));
+			}
+			
+			public boolean isEmpty() {
+				if(this.getText().isEmpty()) {
+					CenterBox.reset(CenterBox.getInstance().getSelectedIndex());
+					return true;
+				}else return false;
+			}
+		};
 		Dimension d = this.getPreferredSize();
 		tf.setSize(70, d.height*3/4);
 		tf.setMaximumSize(new Dimension(300, d.height*3/4));
 		tf.setMinimumSize(new Dimension(300, d.height*3/4));
-		System.out.println(d.height*3/4+" "+tf.getFont().getSize());
-		tf.setFont(new Font(tf.getFont().getFamily(), tf.getFont().getStyle(), tf.getFont().getSize()+2));
+		tf.setFont(new Font(tf.getFont().getFamily(), tf.getFont().getStyle(), tf.getFont().getSize()+2)); //adding 2 when pictures are 32px
 		tf.addFocusListener(new FocusListener() {
 			
 			@Override
@@ -88,22 +103,19 @@ public class ToolBar extends JPanel {
 			}
 		});
 		tf.addKeyListener(new KeyListener() {
+			
 			@Override
-			public void keyPressed(KeyEvent e) {
-				
-			}
-
+			public void keyPressed(KeyEvent e) {}
+			
 			@Override
 			public void keyReleased(KeyEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
-
-			@Override
-			public void keyTyped(KeyEvent e) {
-				if(e.getKeyCode()==KeyEvent.VK_ENTER)
+				if(e.getKeyCode()==KeyEvent.VK_ENTER) {
 					buttonSearch.doClick();
+				}
 			}
+			
+			@Override
+			public void keyTyped(KeyEvent e) {}
 		});
 		this.add(tf);
 		

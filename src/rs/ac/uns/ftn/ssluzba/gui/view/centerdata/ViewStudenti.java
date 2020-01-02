@@ -9,6 +9,7 @@ public class ViewStudenti extends ViewTableCenter {
 	private static ViewStudenti instance = null;
 	private ThisTableModel<ListaStudenata> model = null;
 	static final int KEY_COLUMN = 0;
+	public static boolean inSearchMode = false;
 	
 	public static ViewStudenti getInstance() {
 		if(instance == null)	instance = new ViewStudenti();

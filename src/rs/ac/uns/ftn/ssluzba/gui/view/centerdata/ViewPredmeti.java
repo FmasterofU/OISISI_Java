@@ -10,6 +10,7 @@ public class ViewPredmeti extends ViewTableCenter {
 	private ThisTableModel<ListaPredmeta> model = null;
 	static final int KEY_COLUMN = 0; //sifra predmeta
 	static final int STUDENTI_BUTTON_COLUMN = 5; // kolona studenti
+	public static boolean inSearchMode = false;
 	
 	public static ViewPredmeti getInstance() {
 		if(instance==null) instance = new ViewPredmeti();
