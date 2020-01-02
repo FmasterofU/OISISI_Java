@@ -2,7 +2,6 @@ package rs.ac.uns.ftn.ssluzba.gui.model;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.List;
 
 import javax.swing.JOptionPane;
 
@@ -113,7 +112,7 @@ public class ListaStudenata implements Serializable, ITableModel {
 				return s.getDatumUpisa();
 			case 11:
 				//return s.getSlusaPredmete().toString();
-				return getPredmetIDs(s);
+				return s.slusaPredmeteString();
 			default:
 				return null;
 		}
@@ -211,20 +210,39 @@ public class ListaStudenata implements Serializable, ITableModel {
 	}
 
 	public void deletePredmetInList(Predmet p, ModelAction ma) {
-		for(Student s : studenti)
-			if(s.getSlusaPredmete()!=null)
-				for(Predmet pred : s.getSlusaPredmete())
-					if(pred.getSifra().equals(p.getSifra())) {
-						s.getSlusaPredmete().remove(pred);
-						break;
+		if(ma == ModelAction.DELETE_S)
+		{
+			for(Student s : studenti)
+				for(Student other : p.getStudenti())
+					if(!s.equals(other))
+					{
+						if(s.getSlusaPredmete()!=null)
+							for(Predmet pred : s.getSlusaPredmete())
+								if(pred.getSifra().equals(p.getSifra())) {
+									s.getSlusaPredmete().remove(pred);
+									break;
+								}
 					}
+		}
+		else {
+			for(Student s : studenti)
+				if(s.getSlusaPredmete()!=null)
+					for(Predmet pred : s.getSlusaPredmete())
+						if(pred.getSifra().equals(p.getSifra())) {
+							s.getSlusaPredmete().remove(pred);
+							break;
+						}
+		}
 	}
 
 	public void editPredmetInList(String sifra, Predmet novi, ModelAction ma) {
-		List<Student> stud = novi.getStudenti();
+		ArrayList<Student> stud = novi.getStudenti();
 		for(Student s : studenti)
 			if(stud.contains(s))
-				if(ma==ModelAction.ADD_S) s.getSlusaPredmete().add(novi);
+				if(ma==ModelAction.ADD_S) {
+					if(!s.getSlusaPredmete().contains(novi))
+						s.getSlusaPredmete().add(novi);
+				}
 				else if(ma==ModelAction.DELETE_S) s.getSlusaPredmete().remove(novi);
 	}
 
@@ -241,6 +259,15 @@ public class ListaStudenata implements Serializable, ITableModel {
 		return ret;
 	}
 	
+	public ArrayList<String> getListOfStudentIndexes(GodinaStudija god)
+	{
+		ArrayList<String> ret = new ArrayList<String>();
+		for(Student s : studenti)
+			if(s.getGodStudija() == god)
+				ret.add(s.getBrIndeksa());
+		return ret;
+	}
+	
 	public Student getStudentByKey(String key)
 	{
 		for(Student s : studenti)
@@ -249,15 +276,15 @@ public class ListaStudenata implements Serializable, ITableModel {
 		return null;
 	}
 	
-	private String getPredmetIDs(Student s)
-	{
-		String ret = "";
-		if(!s.getSlusaPredmete().isEmpty())
-		{
-			for(Predmet p : s.getSlusaPredmete())
-				ret += p.getSifra() + ", ";
-		}
-		else	ret += "Ne sluša niti jedan predmet";
-		return ret;
-	}
+//	private String getPredmetIDs(Student s)
+//	{
+//		String ret = "";
+//		if(!s.getSlusaPredmete().isEmpty())
+//		{
+//			for(Predmet p : s.getSlusaPredmete())
+//				ret += p.getSifra() + ", ";
+//		}
+//		else	ret += "Ne sluša niti jedan predmet";
+//		return ret;
+//	}
 }

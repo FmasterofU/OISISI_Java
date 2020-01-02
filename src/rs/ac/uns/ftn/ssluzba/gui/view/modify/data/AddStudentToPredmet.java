@@ -62,6 +62,7 @@ public class AddStudentToPredmet extends Dialog{
 			public void actionPerformed(ActionEvent e) {				
 				Object[] o = listener.getData();
 				boolean check = true;
+				if(o[6] == null)	check = false;
 				boolean[] result = CheckValidation.isPredmetValid(o, true);
 				for(int i=0;i<6;i++) {
 					if(i == 4)	continue;	//not checking Profesor here
@@ -72,9 +73,12 @@ public class AddStudentToPredmet extends Dialog{
 				}
 				if(check)
 				{
-					Student newAdded = Data.data.listaStudenata.getStudentByKey((String) o[5]);
-					if(newAdded != null)		old.getStudenti().add(newAdded);
-					Predmet novi = new Predmet((String)o[0], (String)o[1], (Semestar)o[2], (GodinaStudija)o[3], old.getProfesor(), old.getStudenti());
+					String temp = (String) o[5];
+					temp += (String) o[6];
+					ArrayList<Student> studenti = Data.data.listaPredmeta.getStudents(temp);
+//					Student newAdded = Data.data.listaStudenata.getStudentByKey((String) o[5]);
+//					if(newAdded != null)		old.getStudenti().add(newAdded);
+					Predmet novi = new Predmet((String)o[0], (String)o[1], (Semestar)o[2], (GodinaStudija)o[3], old.getProfesor(), studenti);
 					PredmetController.editPredmet(old.getSifra(), novi, ModelAction.ADD_S);
 					instance.setVisible(false);
 					instance = null;

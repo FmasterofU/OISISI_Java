@@ -59,11 +59,18 @@ public class AddProfesorToPredmet extends Dialog {
 				Object[] o = listener.getData();
 				boolean check = true;
 				boolean[] result = CheckValidation.isPredmetValid(o, true);
-				for(boolean b : result)
-					if(b==false) {
+				for(int i=0;i<6;i++) {
+					if(i == 5)	continue;	//not checking Student here
+					if(result[i]==false) {
 						check=false;
 						break;
 					}
+				}
+//				for(boolean b : result)
+//					if(b==false) {
+//						check=false;
+//						break;
+//					}
 				if(check)
 				{
 					String[] splits = ((String)o[4]).trim().split("PK");

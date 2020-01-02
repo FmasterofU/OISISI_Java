@@ -62,6 +62,7 @@ public class DeleteStudentFromPredmet extends Dialog{
 			public void actionPerformed(ActionEvent e) {				
 				Object[] o = listener.getData();
 				boolean check = true;
+				if(o[6] == null)	check = false;
 				boolean[] result = CheckValidation.isPredmetValid(o, true);
 				for(int i=0;i<6;i++) {
 					if(i == 4)	continue;	//not checking Profesor here
@@ -72,9 +73,16 @@ public class DeleteStudentFromPredmet extends Dialog{
 				}
 				if(check)
 				{
-					Student deleting = Data.data.listaStudenata.getStudentByKey((String) o[5]);
-					if(deleting != null)		old.getStudenti().remove(deleting);
-					Predmet novi = new Predmet((String)o[0], (String)o[1], (Semestar)o[2], (GodinaStudija)o[3], old.getProfesor(), old.getStudenti());
+//					Student deleting = Data.data.listaStudenata.getStudentByKey((String) o[5]);
+//					if(deleting != null)		old.getStudenti().remove(deleting);
+					String temp = (String) o[5], ret = "";
+					String[] splits = temp.split(" ");
+					for(String spl : splits) {
+						if(!spl.equals((String) o[6]))
+								ret += spl + " ";
+					}
+					ArrayList<Student> studenti = Data.data.listaPredmeta.getStudents(ret);
+					Predmet novi = new Predmet((String)o[0], (String)o[1], (Semestar)o[2], (GodinaStudija)o[3], old.getProfesor(), studenti);
 					PredmetController.editPredmet(old.getSifra(), novi, ModelAction.DELETE_S);
 					instance.setVisible(false);
 					instance = null;

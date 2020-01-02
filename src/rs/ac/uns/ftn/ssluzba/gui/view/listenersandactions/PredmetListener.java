@@ -11,14 +11,16 @@ import javax.swing.JTextField;
 import rs.ac.uns.ftn.ssluzba.gui.model.GodinaStudija;
 import rs.ac.uns.ftn.ssluzba.gui.model.Predmet;
 import rs.ac.uns.ftn.ssluzba.gui.model.Semestar;
+import rs.ac.uns.ftn.ssluzba.gui.model.Student;
 
 public class PredmetListener implements FocusListener, ItemListener {
 
-	private static Object[] data = new Object[6];
+	private static Object[] data = new Object[7];
 	
 	@Override
 	public void itemStateChanged(ItemEvent ie) {
 		if(ie.getStateChange()==ItemEvent.SELECTED) {
+			data[6] = true;
 			@SuppressWarnings("rawtypes")
 			JComboBox cb = (JComboBox) ie.getSource();
 			switch(cb.getName()) {
@@ -38,7 +40,10 @@ public class PredmetListener implements FocusListener, ItemListener {
 					data[4] = cb.getSelectedItem().toString();
 					break;
 				case "cbStud":
-					data[5] = cb.getSelectedItem().toString();
+					data[6] = cb.getSelectedItem().toString();
+//					if(data[5] != null)
+//						data[5] = data[5] += cb.getSelectedItem().toString();
+//					else	data[5] = cb.getSelectedItem().toString();
 					
 			}
 		}
@@ -69,7 +74,12 @@ public class PredmetListener implements FocusListener, ItemListener {
 		data[2] =  p.getSemestar();
 		data[3] =  p.getGodinaStudija();
 		data[4] =  p.getProfesor();
-		data[5] =  p.getStudenti();
+		//data[5] =  p.getStudenti();
+		data[5] = "";
+		if(!p.getStudenti().isEmpty())
+			for(Student s : p.getStudenti())
+				data[5] += s.getBrIndeksa() + " ";
+		data[6] = null;
 	}
 	
 	public void clearData() {

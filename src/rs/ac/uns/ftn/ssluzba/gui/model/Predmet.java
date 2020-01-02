@@ -125,4 +125,15 @@ public class Predmet implements Serializable{
 		// TODO Auto-generated method stub
 		return this.getSifra().equals(((Predmet)obj).getSifra());
 	}
+	
+	public String haveStudentsString() {
+		StringBuilder builder = new StringBuilder();
+		for(Student s : studenti) {
+			builder.append(s.getBrIndeksa());
+			builder.append(", ");
+		}
+		if(builder.toString().endsWith(", ")) builder.setLength(builder.toString().length()-2);
+		else builder.append("Nema studenata");
+		return builder.toString();
+	}
 }

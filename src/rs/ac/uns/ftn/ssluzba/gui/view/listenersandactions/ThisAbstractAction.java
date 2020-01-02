@@ -147,7 +147,7 @@ public class ThisAbstractAction extends AbstractAction{
 			if(sifra!=null && Data.data.listaPredmeta.getPredmet(sifra).getProfesor()!=null) (new DeleteProfesorFromPredmet(sifra)).setVisible(true);
 		}else if(name.equals("addstud")) {
 			String id = ViewPredmeti.getInstance().getSelectedKey();
-			if(id != null)	AddStudentToPredmet.getInstance(id).setVisible(true);
+			if(id != null && !Data.data.listaPredmeta.getStudentIndexesNotListeningPredmet(Data.data.listaPredmeta.getPredmet(id)).isEmpty())		AddStudentToPredmet.getInstance(id).setVisible(true);
 		}else if(name.equals("remstud")){
 			String id = ViewPredmeti.getInstance().getSelectedKey();
 			if(id != null && !Data.data.listaPredmeta.getPredmet(id).getStudenti().isEmpty())		DeleteStudentFromPredmet.getInstance(id).setVisible(true);

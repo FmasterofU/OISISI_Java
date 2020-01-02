@@ -5,7 +5,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
@@ -19,7 +18,6 @@ import rs.ac.uns.ftn.ssluzba.gui.model.GodinaStudija;
 import rs.ac.uns.ftn.ssluzba.gui.model.Predmet;
 import rs.ac.uns.ftn.ssluzba.gui.model.Profesor;
 import rs.ac.uns.ftn.ssluzba.gui.model.Semestar;
-import rs.ac.uns.ftn.ssluzba.gui.model.Student;
 import rs.ac.uns.ftn.ssluzba.gui.view.MainWindow;
 import rs.ac.uns.ftn.ssluzba.gui.view.listenersandactions.PredmetListener;
 import rs.ac.uns.ftn.ssluzba.gui.view.modify.ComboBox;
@@ -72,8 +70,7 @@ public class EditPredmet extends Dialog {
 					}
 				if(check)
 				{
-					@SuppressWarnings("unchecked")
-					Predmet novi = new Predmet((String)o[0], (String)o[1], (Semestar)o[2], (GodinaStudija)o[3], (Profesor)o[4], (ArrayList<Student>) o[5]);
+					Predmet novi = new Predmet((String)o[0], (String)o[1], (Semestar)o[2], (GodinaStudija)o[3], (Profesor)o[4], Data.data.listaPredmeta.getStudents((String) o[5]));
 					PredmetController.editPredmet((String) o[0], novi, ModelAction.BASIC_EDIT);
 					instance.setVisible(false);
 					instance = null;

@@ -111,7 +111,8 @@ public class ListaPredmeta implements Serializable, ITableModel {
 					return p.getProfesor().getIme()+" "+p.getProfesor().getPrezime();
 				else	return "Niko ne predaje";
 			case 5:
-				return p.getStudenti();
+				//return p.getStudenti();
+				return p.haveStudentsString();
 			default:
 				return null;
 		}
@@ -166,10 +167,10 @@ public class ListaPredmeta implements Serializable, ITableModel {
 	
 	public ArrayList<String> getStudentIndexesNotListeningPredmet(Predmet p)
 	{
-		ArrayList<String> ret = Data.data.listaStudenata.getListOfStudentIndexes();
+		ArrayList<String> ret = Data.data.listaStudenata.getListOfStudentIndexes(p.getGodinaStudija());
 		for(Student stud : p.getStudenti())
 		{
-			if(ret.contains(stud.getBrIndeksa()))
+			if(ret.contains(stud.getBrIndeksa()) || (stud.getGodStudija() != p.getGodinaStudija()))
 				ret.remove(stud.getBrIndeksa());
 		}
 		return ret;
@@ -181,6 +182,18 @@ public class ListaPredmeta implements Serializable, ITableModel {
 		for(Student stud : p.getStudenti())
 		{
 			ret.add(stud.getBrIndeksa());
+		}
+		return ret;
+	}
+	
+	public ArrayList<Student> getStudents(String s)
+	{
+		ArrayList<Student> ret = new ArrayList<Student>();
+		if(s != "")
+		{
+			String[] splits = s.split(" ");
+			for(String spl : splits)
+				ret.add(Data.data.listaStudenata.getStudentByKey(spl));
 		}
 		return ret;
 	}

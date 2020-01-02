@@ -223,4 +223,15 @@ public class Student implements Serializable{
 	public boolean equals(Object obj) {
 		return this.getBrIndeksa().equals(((Student)obj).getBrIndeksa());
 	}
+	
+	public String slusaPredmeteString() {
+		StringBuilder builder = new StringBuilder();
+		for(Predmet p : slusaPredmete) {
+			builder.append(p.getSifra());
+			builder.append(", ");
+		}
+		if(builder.toString().endsWith(", ")) builder.setLength(builder.toString().length()-2);
+		else builder.append("Ne sluša niti jedan predmet");
+		return builder.toString();
+	}
 }
