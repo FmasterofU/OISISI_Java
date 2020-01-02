@@ -14,9 +14,9 @@ import rs.ac.uns.ftn.ssluzba.gui.model.ListaStudenata;
 public class Data implements Serializable {
 
 	private static final long serialVersionUID = -3785262540558754322L;
-	private static ListaPredmeta listaPredmeta = null;
-	private static ListaStudenata listaStudenata = null;
-	private static ListaProfesora listaProfesora = null;
+	private ListaPredmeta listaPredmeta = null;
+	private ListaStudenata listaStudenata = null;
+	private ListaProfesora listaProfesora = null;
 	private static Data data = null;
 	
 	public static void init() {
@@ -32,9 +32,9 @@ public class Data implements Serializable {
 	}
 	
 	private Data() {
-		Data.listaPredmeta = new ListaPredmeta();
-		Data.listaStudenata = new ListaStudenata();
-		Data.listaProfesora = new ListaProfesora();
+		this.listaPredmeta = new ListaPredmeta();
+		this.listaStudenata = new ListaStudenata();
+		this.listaProfesora = new ListaProfesora();
 	}
 
 	private static void serialize() {
@@ -72,14 +72,14 @@ public class Data implements Serializable {
 	}
 
 	public static ListaPredmeta getListaPredmeta() {
-		return listaPredmeta;
+		return data.listaPredmeta;
 	}
 
 	public static ListaStudenata getListaStudenata() {
-		return listaStudenata;
+		return data.listaStudenata;
 	}
 
 	public static ListaProfesora getListaProfesora() {
-		return listaProfesora;
+		return data.listaProfesora;
 	}
 }
