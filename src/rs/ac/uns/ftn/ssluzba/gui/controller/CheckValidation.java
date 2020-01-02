@@ -248,10 +248,11 @@ public class CheckValidation {
 		}
 
 		public static boolean checkSearchQuery(String searchQuery, int pane) {
+			if(searchQuery.isEmpty()) return false;
 			switch(pane) {
-			case 0: 
-			case 1:
-			case 2:
+			case 0: searchQuery.matches("(ime:[^;]+;)?(prezime:[^;]+;)?(indeks:[^;]+;)?(email:[^;]+;)?");
+			case 1: searchQuery.matches("(ime:[^;]+;)?(prezime:[^;]+;)?(email:[^;]+;)?(brlk:[^;]+;)?");
+			case 2: searchQuery.matches("(sifra:[^;]+;)?(naziv:[^;]+;)?(semestar:[^;]+;)?(godina:[^;]+;)?");
 			default: return false;
 			}
 		}

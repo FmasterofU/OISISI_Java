@@ -132,9 +132,10 @@ public class ThisAbstractAction extends AbstractAction{
 					if(sifra!=null) EditPredmet.getInstance(sifra).setVisible(true);
 					break;
 			}
-		else if(name.equals("search"))
-			System.out.println("TODO: Search");
-		else if(name.equals("help"))
+		else if(name.equals("search")){
+			int pane = CenterBox.getInstance().getSelectedIndex();
+			if(CheckValidation.checkSearchQuery(ToolBar.getSearchQuery(),pane))System.out.println("true");
+		}else if(name.equals("help"))
 			JOptionPane.showConfirmDialog(MainWindow.getInstance(), new MessageWithLink("See this link:<br><a href=\"https://fmasterofu.github.io/OISISI_Java/\">HELP (Product page)</a><br>or contact the developers (mails in About section)."), "Help", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, new ImageIcon("Slike/help.png"));
 		else if(name.equals("about"))
 			JOptionPane.showConfirmDialog(MainWindow.getInstance(), "OISISI_Java - Studentska Služba v1.0.0\n~ Igor Šikuljak - RA117/2017 - igorsikuljak@uns.ac.rs\n~ Radoš Milićev - RA121/2017 - rados280698@yahoo.com", "About", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, new ImageIcon("Slike/about.png"));
@@ -150,9 +151,6 @@ public class ThisAbstractAction extends AbstractAction{
 		}else if(name.equals("remstud")){
 			String id = ViewPredmeti.getInstance().getSelectedKey();
 			if(id != null && !Data.data.listaPredmeta.getPredmet(id).getStudenti().isEmpty())		DeleteStudentFromPredmet.getInstance(id).setVisible(true);
-		}else if(name.equals("search")) {
-			int pane = CenterBox.getInstance().getSelectedIndex();
-			if(CheckValidation.checkSearchQuery(ToolBar.getSearchQuery(),pane));
 		}
 	}
 	
