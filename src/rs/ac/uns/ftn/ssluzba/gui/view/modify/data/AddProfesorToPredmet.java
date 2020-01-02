@@ -18,7 +18,6 @@ import rs.ac.uns.ftn.ssluzba.gui.model.Data;
 import rs.ac.uns.ftn.ssluzba.gui.model.GodinaStudija;
 import rs.ac.uns.ftn.ssluzba.gui.model.Predmet;
 import rs.ac.uns.ftn.ssluzba.gui.model.Semestar;
-import rs.ac.uns.ftn.ssluzba.gui.model.Student;
 import rs.ac.uns.ftn.ssluzba.gui.view.MainWindow;
 import rs.ac.uns.ftn.ssluzba.gui.view.listenersandactions.PredmetListener;
 import rs.ac.uns.ftn.ssluzba.gui.view.modify.ComboBox;
@@ -68,7 +67,7 @@ public class AddProfesorToPredmet extends Dialog {
 				if(check)
 				{
 					String[] splits = ((String)o[4]).trim().split("PK");
-					Predmet novi = new Predmet((String)o[0], (String)o[1], (Semestar)o[2], (GodinaStudija)o[3], Data.data.listaProfesora.getProfesor(splits[splits.length-1]), new ArrayList<Student>());
+					Predmet novi = new Predmet((String)o[0], (String)o[1], (Semestar)o[2], (GodinaStudija)o[3], Data.data.listaProfesora.getProfesor(splits[splits.length-1]), current.getStudenti());
 					PredmetController.editPredmet((String)o[0],novi,ModelAction.ADD_P);
 					instance.setVisible(false);
 					instance = null;
