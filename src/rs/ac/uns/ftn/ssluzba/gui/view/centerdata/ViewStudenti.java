@@ -7,7 +7,7 @@ public class ViewStudenti extends ViewTableCenter {
 	
 	private static final long serialVersionUID = -4008708277153917046L;
 	private static ViewStudenti instance = null;
-	private ThisTableModel<ListaStudenata> genModel = null;
+	private ThisTableModel<ListaStudenata> model = null;
 	static final int KEY_COLUMN = 0;
 	
 	public static ViewStudenti getInstance() {
@@ -15,10 +15,10 @@ public class ViewStudenti extends ViewTableCenter {
 		return instance;
 	}
 	private ViewStudenti() {
-		genModel = new ThisTableModel<ListaStudenata>(Data.data.listaStudenata);
-		table.setModel(genModel.getModel());
+		model = new ThisTableModel<ListaStudenata>(Data.data.listaStudenata);
+		table.setModel(model);
 		resizeColumnWidth();
-		table.setRowSorter(genModel.getSorter());
+		table.setRowSorter(model.getSorter());
 		/*
 		table.getTableHeader().addMouseListener(new MouseListener() {
 			
@@ -57,7 +57,7 @@ public class ViewStudenti extends ViewTableCenter {
 	
 	public void updateTable()
 	{
-		if(genModel.getModel() != null)		genModel.getModel().fireTableDataChanged();
+		if(model != null)		model.fireTableDataChanged();
 	}
 	
 	public String getSelectedKey()

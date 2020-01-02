@@ -7,23 +7,41 @@ import rs.ac.uns.ftn.ssluzba.gui.model.ListaPredmeta;
 public class ViewPredmeti extends ViewTableCenter {
 
 	private static ViewPredmeti instance = null;
-	private ThisTableModel<ListaPredmeta> genModel = null;
-	static final int KEY_COLUMN = 0; //sifrapredmeta
+	private ThisTableModel<ListaPredmeta> model = null;
+	static final int KEY_COLUMN = 0; //sifra predmeta
+	static final int STUDENTI_BUTTON_COLUMN = 5; // kolona studenti
 	
 	public static ViewPredmeti getInstance() {
 		if(instance==null) instance = new ViewPredmeti();
 		return instance;
 	}
 	private ViewPredmeti() {
-		genModel = new ThisTableModel<ListaPredmeta>(Data.data.listaPredmeta);
-		table.setModel(genModel.getModel());
+		model = new ThisTableModel<ListaPredmeta>(Data.data.listaPredmeta) {
+			@Override
+			public Class<?> getColumnClass(int columnIndex){
+				if(columnIndex!=STUDENTI_BUTTON_COLUMN) return super.getColumnClass(columnIndex);
+				else {
+					//TODO -> just return JButton.class;
+					return super.getColumnClass(columnIndex);
+				}
+			}
+			@Override
+			public Object getValueAt(int rowIndex, int columnIndex) {
+				if(columnIndex!=STUDENTI_BUTTON_COLUMN) return super.getValueAt(rowIndex, columnIndex);
+				else {
+					//TODO -> return appropriate JButton
+					return super.getValueAt(rowIndex, columnIndex);
+				}
+			}
+		};
+		table.setModel(model);
 		resizeColumnWidth();
-		table.setRowSorter(genModel.getSorter());
+		table.setRowSorter(model.getSorter());
 		}
 
 	public void updateTable(){
-		if(genModel.getModel() != null) 
-			genModel.getModel().fireTableDataChanged();
+		if(model != null) 
+			model.fireTableDataChanged();
 		}
 	
 	public String getSelectedKey() {

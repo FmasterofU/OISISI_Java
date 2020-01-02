@@ -7,7 +7,7 @@ import rs.ac.uns.ftn.ssluzba.gui.model.ListaProfesora;
 public class ViewProfesori extends ViewTableCenter {
 	
 	private static ViewProfesori instance = null;
-	private ThisTableModel<ListaProfesora> genModel = null;
+	private ThisTableModel<ListaProfesora> model = null;
 	static final int KEY_COLUMN = 7; //kolona licne karte
 	
 	public static ViewProfesori getInstance() {
@@ -15,15 +15,15 @@ public class ViewProfesori extends ViewTableCenter {
 		return instance;
 	}
 	private ViewProfesori() {
-		genModel = new ThisTableModel<ListaProfesora>(Data.data.listaProfesora);
-		table.setModel(genModel.getModel());
+		model = new ThisTableModel<ListaProfesora>(Data.data.listaProfesora);
+		table.setModel(model);
 		resizeColumnWidth();
-		table.setRowSorter(genModel.getSorter());
+		table.setRowSorter(model.getSorter());
 	}
 
 	public void updateTable(){
-		if(genModel.getModel() != null) 
-			genModel.getModel().fireTableDataChanged();
+		if(model != null) 
+			model.fireTableDataChanged();
 	}
 	
 	public String getSelectedKey() {
