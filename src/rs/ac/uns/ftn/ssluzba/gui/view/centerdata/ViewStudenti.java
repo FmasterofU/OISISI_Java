@@ -8,8 +8,9 @@ public class ViewStudenti extends ViewTableCenter {
 	private static final long serialVersionUID = -4008708277153917046L;
 	private static ViewStudenti instance = null;
 	private ThisTableModel<ListaStudenata> model = null;
-	static final int KEY_COLUMN = 0;
+	public static final int KEY_COLUMN = 0;
 	public static boolean inSearchMode = false;
+	public static final int[] SEARCH_COLUMNS = {1, 2, 0, 9};
 	
 	public static ViewStudenti getInstance() {
 		if(instance == null)	instance = new ViewStudenti();
@@ -54,6 +55,15 @@ public class ViewStudenti extends ViewTableCenter {
 				
 			//}
 		//});*/
+		/*System.out.println(model.getRowCount());
+		System.out.println(model.getDataVector());
+		model.removeRow(2);
+		System.out.println(model.getDataVector());
+		model.fireTableDataChanged();
+		System.out.println(model.getRowCount());
+		table.repaint();
+		table.setModel(model);
+		table.revalidate();*/
 	}
 	
 	public void updateTable()

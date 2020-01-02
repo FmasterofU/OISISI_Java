@@ -8,8 +8,9 @@ public class ViewProfesori extends ViewTableCenter {
 	
 	private static ViewProfesori instance = null;
 	private ThisTableModel<ListaProfesora> model = null;
-	static final int KEY_COLUMN = 7; //kolona licne karte
+	public static final int KEY_COLUMN = 7; //kolona licne karte
 	public static boolean inSearchMode = false;
+	public static final int[] SEARCH_COLUMNS = {0, 1, 5, 7};
 	
 	public static ViewProfesori getInstance() {
 		if(instance==null) instance = new ViewProfesori();

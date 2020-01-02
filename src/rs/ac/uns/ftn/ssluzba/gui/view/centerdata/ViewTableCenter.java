@@ -12,6 +12,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableColumnModel;
 
@@ -76,5 +77,36 @@ class ViewTableCenter extends JPanel {
 	        
 	    }
 	    table.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
+	}
+	
+	public void search(int[] indexes, String[] criteria) {
+		((DefaultTableModel) table.getModel()).removeRow(0);;
+		/*for(int  i : indexes) System.out.println(i);
+		System.out.flush();
+		for(String s : criteria) System.out.println(s);
+		int rowNum=table.getRowCount();
+		int cellCheckNum=0;
+		for(int i : indexes) 
+			if(cellCheckNum<i)
+				cellCheckNum=i;
+		System.out.println(cellCheckNum);
+		for(int i=0;i<rowNum;i++) {
+			boolean check = false;
+			for(int j=0;j<cellCheckNum;j++) {
+				if(criteria[j].isEmpty()) continue;
+				String s= (String)table.getValueAt(i, j);
+				System.out.println("@"+s+j);
+				if(((String)table.getValueAt(i, j)).equals(criteria[j])==false) {
+					System.out.println("unutra");
+					check=false;
+					break;
+				}else check=true;
+				System.out.println("@"+j+" "+check);
+			}
+			System.out.println("@"+check);
+			if(check) {
+				System.out.println(((DefaultTableModel)table.getModel()).getRowCount());
+				((DefaultTableModel) table.getModel()).removeRow(i);}
+		}*/
 	}
 }

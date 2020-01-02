@@ -134,7 +134,23 @@ public class ThisAbstractAction extends AbstractAction{
 			}
 		else if(name.equals("search")){
 			int pane = CenterBox.getInstance().getSelectedIndex();
-			if(CheckValidation.checkSearchQuery(ToolBar.getSearchQuery(),pane))System.out.println("true");
+			if(CheckValidation.checkSearchQuery(ToolBar.getSearchQuery(),pane)){
+				CenterBox.reset(pane);
+				switch(pane) {
+					case 0:
+						ViewStudenti.inSearchMode=true;
+						ViewStudenti.getInstance().search(ViewStudenti.SEARCH_COLUMNS,CheckValidation.tokenizeSearchQuery(ToolBar.getSearchQuery(),pane));
+						break;
+					case 1:
+						ViewProfesori.inSearchMode=false;
+						ViewProfesori.getInstance().search(ViewProfesori.SEARCH_COLUMNS,CheckValidation.tokenizeSearchQuery(ToolBar.getSearchQuery(),pane));
+						break;
+					case 2:
+						ViewPredmeti.inSearchMode=true;
+						ViewPredmeti.getInstance().search(ViewPredmeti.SEARCH_COLUMNS,CheckValidation.tokenizeSearchQuery(ToolBar.getSearchQuery(),pane));
+						break;
+				}
+			}
 		}else if(name.equals("help"))
 			JOptionPane.showConfirmDialog(MainWindow.getInstance(), new MessageWithLink("See this link:<br><a href=\"https://fmasterofu.github.io/OISISI_Java/\">HELP (Product page)</a><br>or contact the developers (mails in About section)."), "Help", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, new ImageIcon("Slike/help.png"));
 		else if(name.equals("about"))

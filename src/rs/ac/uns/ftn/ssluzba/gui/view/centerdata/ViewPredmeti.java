@@ -11,6 +11,7 @@ public class ViewPredmeti extends ViewTableCenter {
 	static final int KEY_COLUMN = 0; //sifra predmeta
 	static final int STUDENTI_BUTTON_COLUMN = 5; // kolona studenti
 	public static boolean inSearchMode = false;
+	public static final int[] SEARCH_COLUMNS = {0, 1, 2, 3};
 	
 	public static ViewPredmeti getInstance() {
 		if(instance==null) instance = new ViewPredmeti();

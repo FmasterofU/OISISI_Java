@@ -1,6 +1,8 @@
 package rs.ac.uns.ftn.ssluzba.gui.controller;
 
+import java.util.ArrayList;
 import rs.ac.uns.ftn.ssluzba.gui.model.Data;
+import rs.ac.uns.ftn.ssluzba.gui.view.centerdata.ViewStudenti;
 
 public class CheckValidation {
 	
@@ -255,5 +257,28 @@ public class CheckValidation {
 			case 2: return searchQuery.matches("(sifra:[^;]+;)?(naziv:[^;]+;)?(semestar:[^;]+;)?(godina:[^;]+;)?");
 			default: return false;
 			}
+		}
+		
+		public static String[] tokenizeSearchQuery(String query, int pane) {
+			ArrayList<String> ret = new ArrayList<String>();
+			for(int i=0;i<20;i++) ret.add(new String());
+			for(String parameter : query.split(";")) {
+				String[] searchStrings = parameter.split(":");
+				//for(String s : searchStrings)
+					System.out.println("@"+searchStrings[1]);
+				switch(pane) {
+					case 0:
+						if(searchStrings[0].equals("ime")) {
+							String s= searchStrings[1];
+							ret.set(ViewStudenti.SEARCH_COLUMNS[0], s);
+						}
+						else if(searchStrings[0].equals("prezime")) ret.set(ViewStudenti.SEARCH_COLUMNS[1], searchStrings[1]);
+						else if(searchStrings[0].equals("indeks")) ret.set(ViewStudenti.SEARCH_COLUMNS[2], searchStrings[1]);
+						else if(searchStrings[0].equals("brlk")) ret.set(ViewStudenti.SEARCH_COLUMNS[3], searchStrings[1]);
+						break;
+				}
+			}
+			String[] a = {""};
+			return ret.toArray(a);
 		}
 }
