@@ -110,6 +110,7 @@ public class ToolBar extends JPanel {
 			@Override
 			public void keyReleased(KeyEvent e) {
 				if(e.getKeyCode()==KeyEvent.VK_ENTER) {
+					searchQuery = tf.getText();
 					buttonSearch.doClick();
 				}
 			}
