@@ -213,16 +213,25 @@ public class ListaStudenata implements Serializable, ITableModel {
 		if(ma == ModelAction.DELETE_S)
 		{
 			for(Student s : studenti)
-				for(Student other : p.getStudenti())
-					if(!s.equals(other))
-					{
-						if(s.getSlusaPredmete()!=null)
-							for(Predmet pred : s.getSlusaPredmete())
-								if(pred.getSifra().equals(p.getSifra())) {
-									s.getSlusaPredmete().remove(pred);
-									break;
-								}
-					}
+				if(!p.getStudenti().contains(s))
+					if(s.getSlusaPredmete() != null)
+						for(Predmet pred : s.getSlusaPredmete())
+							if(pred.getSifra().equals(p.getSifra()))
+							{
+								s.getSlusaPredmete().remove(pred);
+								break;
+							}
+//				for(Student other : p.getStudenti())
+//					if(!s.equals(other))
+//					{
+//						if(s.getSlusaPredmete()!=null)
+//							for(Predmet pred : s.getSlusaPredmete())
+//								if(pred.getSifra().equals(p.getSifra())) {
+//									//System.out.println("s " + s + "other " + other);
+//									s.getSlusaPredmete().remove(pred);
+//									break;
+//								}
+//					}
 		}
 		else {
 			for(Student s : studenti)
