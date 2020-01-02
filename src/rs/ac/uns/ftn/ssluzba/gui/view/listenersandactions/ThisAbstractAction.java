@@ -69,7 +69,7 @@ public class ThisAbstractAction extends AbstractAction{
 				break;
 			case "search":
 				putValue(NAME, "Search");
-				putValue(SMALL_ICON, new ImageIcon("Slike/search-24.png"));
+				//putValue(SMALL_ICON, new ImageIcon("Slike/search-24.png"));
 				break;
 			case "help":
 				putValue(NAME, "Help");

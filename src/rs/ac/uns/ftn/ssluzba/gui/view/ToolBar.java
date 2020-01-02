@@ -2,6 +2,7 @@ package rs.ac.uns.ftn.ssluzba.gui.view;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 import java.awt.event.KeyEvent;
@@ -38,21 +39,21 @@ public class ToolBar extends JPanel {
 		JButton buttonAdd = new JButton(actNew);
 		buttonAdd.setBackground(Color.WHITE);
 		buttonAdd.setBorderPainted(false);
-		buttonAdd.setIcon(new ImageIcon("Slike/add-24.png"));
+		buttonAdd.setIcon(new ImageIcon("Slike/add-property-32.png"));
 		this.add(buttonAdd);
 		
 		ThisAbstractAction actEdit = new ThisAbstractAction("edit");
 		JButton buttonEdit = new JButton(actEdit);
 		buttonEdit.setBackground(Color.WHITE);
 		buttonEdit.setBorderPainted(false);
-		buttonEdit.setIcon(new ImageIcon("Slike/edit-property-24.png"));
+		buttonEdit.setIcon(new ImageIcon("Slike/edit-property-32.png"));
 		this.add(buttonEdit);
 		
 		ThisAbstractAction actDelete = new ThisAbstractAction("delete");
 		JButton buttonDelete = new JButton(actDelete);
 		buttonDelete.setBackground(Color.WHITE);
 		buttonDelete.setBorderPainted(false);
-		buttonDelete.setIcon(new ImageIcon("Slike/trash-24.png"));
+		buttonDelete.setIcon(new ImageIcon("Slike/remove-property-32.png"));
 		this.add(buttonDelete);
 		
 		currentExpandedToolbarPanel.setMaximumSize(new Dimension());
@@ -65,13 +66,15 @@ public class ToolBar extends JPanel {
 		JButton buttonSearch = new JButton(actSearch);
 		buttonSearch.setBackground(Color.WHITE);
 		buttonSearch.setBorderPainted(false);
-		//buttonSearch.setIcon(new ImageIcon("Slike/search-24.png"));
+		buttonSearch.setIcon(new ImageIcon("Slike/search-32.png"));
 		
 		tf = new JTextField(30);
 		Dimension d = this.getPreferredSize();
 		tf.setSize(70, d.height*3/4);
 		tf.setMaximumSize(new Dimension(300, d.height*3/4));
 		tf.setMinimumSize(new Dimension(300, d.height*3/4));
+		System.out.println(d.height*3/4+" "+tf.getFont().getSize());
+		tf.setFont(new Font(tf.getFont().getFamily(), tf.getFont().getStyle(), tf.getFont().getSize()+2));
 		tf.addFocusListener(new FocusListener() {
 			
 			@Override

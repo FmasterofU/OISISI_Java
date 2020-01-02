@@ -26,34 +26,34 @@ public class ExpandedToolBarPanel extends JPanel {
 		
 		ThisAbstractAction actAddProf = new ThisAbstractAction("addProf");
 		JButton buttonAddProf = new JButton(actAddProf);
-		buttonAddProf.setText("Dodaj Prof.");
+		buttonAddProf.setText("Add Prof.");
 		buttonAddProf.setBackground(Color.WHITE);
 		buttonAddProf.setBorderPainted(false);
-		buttonAddProf.setIcon(new ImageIcon("Slike/add-teacher-24.png"));
+		buttonAddProf.setIcon(new ImageIcon("Slike/add-teacher-32.png"));
 		this.add(buttonAddProf);
 		
 		ThisAbstractAction actRemProf = new ThisAbstractAction("remProf");
 		JButton buttonRemProf = new JButton(actRemProf);
-		buttonRemProf.setText("Ukloni Prof.");
+		buttonRemProf.setText("Remove Prof.");
 		buttonRemProf.setBackground(Color.WHITE);
 		buttonRemProf.setBorderPainted(false);
-		buttonRemProf.setIcon(new ImageIcon("Slike/remove-teacher-24.png"));
+		buttonRemProf.setIcon(new ImageIcon("Slike/remove-teacher-32.png"));
 		this.add(buttonRemProf);
 		
 		ThisAbstractAction actAddStud = new ThisAbstractAction("addStud");
 		JButton buttonAddStud = new JButton(actAddStud);
-		buttonAddStud.setText("Dodaj Stud.");
+		buttonAddStud.setText("Add Stud.");
 		buttonAddStud.setBackground(Color.WHITE);
 		buttonAddStud.setBorderPainted(false);
-		buttonAddStud.setIcon(new ImageIcon("Slike/student-male-24.png"));
+		buttonAddStud.setIcon(new ImageIcon("Slike/add-student-32.png"));
 		this.add(buttonAddStud);
 		
 		ThisAbstractAction actDelStud = new ThisAbstractAction("remStud");
 		JButton buttonDelStud = new JButton(actDelStud);
-		buttonDelStud.setText("Ukloni Stud.");
+		buttonDelStud.setText("Remove Stud.");
 		buttonDelStud.setBackground(Color.WHITE);
 		buttonDelStud.setBorderPainted(false);
-		buttonDelStud.setIcon(new ImageIcon("Slike/delete-student-24.png"));
+		buttonDelStud.setIcon(new ImageIcon("Slike/delete-student-32.png"));
 		this.add(buttonDelStud);
 	}
 	
