@@ -7,7 +7,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
-import rs.ac.uns.ftn.ssluzba.gui.view.listenersandactions.ThisAbstractAction;
+import rs.ac.uns.ftn.ssluzba.gui.controller.listenersandactions.ThisAbstractAction;
 
 @SuppressWarnings("serial")
 public class ExpandedToolBarPanel extends JPanel {

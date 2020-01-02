@@ -16,8 +16,8 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import rs.ac.uns.ftn.ssluzba.gui.controller.CheckValidation;
+import rs.ac.uns.ftn.ssluzba.gui.controller.listenersandactions.ThisAbstractAction;
 import rs.ac.uns.ftn.ssluzba.gui.view.centerdata.CenterBox;
-import rs.ac.uns.ftn.ssluzba.gui.view.listenersandactions.ThisAbstractAction;
 import rs.ac.uns.ftn.ssluzba.gui.view.modify.IHighlight;
 import rs.ac.uns.ftn.ssluzba.gui.view.modify.TextField;
 

@@ -5,8 +5,8 @@ import javax.swing.JMenuBar;
 
 import com.sun.glass.events.KeyEvent;
 
+import rs.ac.uns.ftn.ssluzba.gui.controller.listenersandactions.ThisAbstractAction;
 import rs.ac.uns.ftn.ssluzba.gui.view.centerdata.CenterBox;
-import rs.ac.uns.ftn.ssluzba.gui.view.listenersandactions.ThisAbstractAction;
 
 public class MenuBar extends JMenuBar{
 

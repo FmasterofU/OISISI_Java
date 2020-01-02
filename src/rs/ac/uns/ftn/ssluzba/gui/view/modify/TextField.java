@@ -2,7 +2,7 @@ package rs.ac.uns.ftn.ssluzba.gui.view.modify;
 
 import javax.swing.JTextField;
 
-import rs.ac.uns.ftn.ssluzba.gui.view.listenersandactions.HighlightListener;
+import rs.ac.uns.ftn.ssluzba.gui.controller.listenersandactions.HighlightListener;
 
 @SuppressWarnings("serial")
 public abstract class TextField extends JTextField implements IHighlight {

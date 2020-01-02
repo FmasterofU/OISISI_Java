@@ -1,4 +1,4 @@
-package rs.ac.uns.ftn.ssluzba.gui.view.listenersandactions;
+package rs.ac.uns.ftn.ssluzba.gui.controller.listenersandactions;
 
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
