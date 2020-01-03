@@ -76,6 +76,8 @@ public class ThisAbstractAction extends AbstractAction{
 			case "search":
 				putValue(NAME, "Search");
 				//putValue(SMALL_ICON, new ImageIcon("Slike/search-24.png"));
+				putValue(MNEMONIC_KEY, KeyEvent.VK_S);
+				putValue(ACCELERATOR_KEY, KeyStroke.getKeyStroke(KeyEvent.VK_S, InputEvent.ALT_DOWN_MASK));
 				break;
 			case "help":
 				putValue(NAME, "Help");

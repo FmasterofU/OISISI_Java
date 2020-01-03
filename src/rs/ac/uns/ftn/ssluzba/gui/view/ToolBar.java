@@ -43,6 +43,7 @@ public class ToolBar extends JPanel {
 
 		ThisAbstractAction actNew = new ThisAbstractAction("new");
 		JButton buttonAdd = new JButton(actNew);
+		buttonAdd.setToolTipText("Dodaj");
 		buttonAdd.setBackground(Color.WHITE);
 		buttonAdd.setBorderPainted(false);
 		buttonAdd.setIcon(new ImageIcon("Slike/add-property-32.png"));
@@ -50,6 +51,7 @@ public class ToolBar extends JPanel {
 		
 		ThisAbstractAction actEdit = new ThisAbstractAction("edit");
 		JButton buttonEdit = new JButton(actEdit);
+		buttonEdit.setToolTipText("Izmijeni");
 		buttonEdit.setBackground(Color.WHITE);
 		buttonEdit.setBorderPainted(false);
 		buttonEdit.setIcon(new ImageIcon("Slike/edit-property-32.png"));
@@ -57,6 +59,7 @@ public class ToolBar extends JPanel {
 		
 		ThisAbstractAction actDelete = new ThisAbstractAction("delete");
 		JButton buttonDelete = new JButton(actDelete);
+		buttonDelete.setToolTipText("Ukloni");
 		buttonDelete.setBackground(Color.WHITE);
 		buttonDelete.setBorderPainted(false);
 		buttonDelete.setIcon(new ImageIcon("Slike/remove-property-32.png"));
@@ -70,6 +73,7 @@ public class ToolBar extends JPanel {
 		///is added later, now just declared to be available for text field listener on enter key
 		ThisAbstractAction actSearch = new ThisAbstractAction("search");
 		buttonSearch = new JButton(actSearch);
+		buttonSearch.setToolTipText("Pretra\u017ei");
 		buttonSearch.setBackground(Color.WHITE);
 		buttonSearch.setBorderPainted(false);
 		buttonSearch.setIcon(new ImageIcon("Slike/search-32.png"));
