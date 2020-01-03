@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.LinkedList;
 
+import rs.ac.uns.ftn.ssluzba.gui.controller.CheckValidation;
 import rs.ac.uns.ftn.ssluzba.gui.controller.Data;
 import rs.ac.uns.ftn.ssluzba.gui.controller.ModelAction;
 
@@ -199,7 +200,13 @@ public class ListaPredmeta implements Serializable, ITableModel {
 	}
 
 	public ListaPredmeta mutableSearch(String searchQuery) {
-		// TODO Auto-generated method stub
+		String[][] magic = CheckValidation.tokenizeSearchQuery(searchQuery, 1);
+		for(Predmet pred : this.predmeti) 
+			for(int i=0;i<magic[1].length;i++)
+				if(!((String)pred.get(kolone.indexOf(magic[0][i]))).equals(magic[1][i])){
+					this.predmeti.remove(pred);
+					break;
+				}
 		return this;
 	}
 }

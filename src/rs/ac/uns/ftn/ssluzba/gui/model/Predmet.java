@@ -136,4 +136,24 @@ public class Predmet implements Serializable{
 		else builder.append("Nema studenata");
 		return builder.toString();
 	}
+	
+	public Object get(int index) {
+		switch(index) 
+		{
+			case 0:
+				return getSifra();
+			case 1:
+				return getNaziv();
+			case 2:
+				return getSemestar();
+			case 3:
+				return getGodinaStudija();
+			case 4:
+				return getProfesor();
+			case 5:
+				return getStudenti();
+			default:
+				return null;
+		}
+	}
 }
