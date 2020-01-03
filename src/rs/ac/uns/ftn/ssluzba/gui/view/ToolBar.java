@@ -17,6 +17,8 @@ import javax.swing.JTextField;
 
 import rs.ac.uns.ftn.ssluzba.gui.controller.CheckValidation;
 import rs.ac.uns.ftn.ssluzba.gui.controller.listenersandactions.ThisAbstractAction;
+import rs.ac.uns.ftn.ssluzba.gui.view.centerdata.ViewPredmeti;
+import rs.ac.uns.ftn.ssluzba.gui.view.centerdata.ViewSearch;
 import rs.ac.uns.ftn.ssluzba.gui.view.modify.IHighlight;
 import rs.ac.uns.ftn.ssluzba.gui.view.modify.TextField;
 
@@ -27,6 +29,7 @@ public class ToolBar extends JPanel {
 	public static JPanel currentExpandedToolbarPanel = new JPanel();
 	private static String searchQuery = new String();
 	private static TextField tf;
+	private static JButton buttonSearch;
 	
 	public static ToolBar getInstance() {
 		if(instance==null) instance = new ToolBar();
@@ -66,7 +69,7 @@ public class ToolBar extends JPanel {
 		
 		///is added later, now just declared to be available for text field listener on enter key
 		ThisAbstractAction actSearch = new ThisAbstractAction("search");
-		JButton buttonSearch = new JButton(actSearch);
+		buttonSearch = new JButton(actSearch);
 		buttonSearch.setBackground(Color.WHITE);
 		buttonSearch.setBorderPainted(false);
 		buttonSearch.setIcon(new ImageIcon("Slike/search-32.png"));
@@ -74,15 +77,15 @@ public class ToolBar extends JPanel {
 		tf = new TextField(30) {
 			@Override
 			public void maybeHighlight() {
-				setBorder(((this.isEmpty() || CheckValidation.checkSearchQuery(this.getText(),CenterBox.getInstance().getSelectedIndex())) ? IHighlight.defaultBorder : IHighlight.highlightBorder));
+				setBorder(((this.getText().isEmpty() || CheckValidation.checkSearchQuery(this.getText(),CenterBox.getInstance().getSelectedIndex())) ? IHighlight.defaultBorder : IHighlight.highlightBorder));
 			}
-			
+			/*
 			public boolean isEmpty() {
 				if(this.getText().isEmpty()) {
 					CenterBox.reset(CenterBox.getInstance().getSelectedIndex());
 					return true;
 				}else return false;
-			}
+			}*/
 		};
 		Dimension d = this.getPreferredSize();
 		tf.setSize(70, d.height*3/4);
@@ -133,5 +136,30 @@ public class ToolBar extends JPanel {
 	public static void resetSearch() {
 		tf.setText(null);
 		searchQuery = "";
+	}
+
+	public static void dynamicChange(int selectedCenterBoxTab) {
+		if(!ViewSearch.updateInProgress) ToolBar.resetSearch();
+		ToolBar.getInstance().remove(ToolBar.currentExpandedToolbarPanel);
+		switch(selectedCenterBoxTab) {
+			case 2:
+				ToolBar.currentExpandedToolbarPanel = ExpandedToolBarPanel.getInstance();
+				break;
+			case 3:
+				if(ViewPredmeti.inSearchMode==true) {
+					ToolBar.currentExpandedToolbarPanel = ExpandedToolBarPanel.getInstance();
+					break;
+				}
+			default:
+				ToolBar.currentExpandedToolbarPanel = new JPanel();
+				ToolBar.currentExpandedToolbarPanel.setMaximumSize(new Dimension());
+		}
+		ToolBar.getInstance().add(ToolBar.currentExpandedToolbarPanel, 4);
+		ToolBar.getInstance().validate();
+		ToolBar.getInstance().repaint();
+	}
+
+	public void reSearch() {
+		buttonSearch.doClick();
 	}
 }

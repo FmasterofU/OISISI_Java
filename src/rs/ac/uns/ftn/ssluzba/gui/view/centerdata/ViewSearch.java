@@ -12,32 +12,40 @@ import rs.ac.uns.ftn.ssluzba.gui.view.ToolBar;
 public class ViewSearch extends ViewTableCenter {
 
 	private static ViewSearch instance = null;
-	private static int rootTab = -1;
+	private int rootTab = -1;
 	private int KEY_COLUMN; //sifra
+	public static boolean updateInProgress = false;
 	
 	public static ViewSearch getInstance(int tab, int key) {
 		if(instance==null) instance = new ViewSearch(tab,key);
 		return instance;
 	}
 	
-	public static ViewSearch instanceExists() {
+	public static ViewSearch instanceIfExists() {
 		return instance;
 	}
 	
 	public static int getRootTab() {
-		return rootTab;
+		if(instance==null) return -1;
+		return instance.rootTab;
 	}
 	
 	public static void removeInstance() {
+		int tab = CenterBox.getInstance().getSelectedIndex();
+		int rootTab = getRootTab();
 		CenterBox.getInstance().remove(instance);
+		ViewStudenti.inSearchMode=false;
+		ViewProfesori.inSearchMode=false;
+		ViewPredmeti.inSearchMode=false;
 		instance=null;
-		rootTab=-1;
 		CenterBox.redraw();
+		if(tab==3) CenterBox.getInstance().setSelectedIndex(rootTab);
 	}
 	
 	private ViewSearch(int tab, int key) {
 		rootTab=tab;
 		KEY_COLUMN=key;
+		updateInProgress = false;
 		switch(tab) {
 			case 0:
 				table.setModel(new ThisTableModel<ListaStudenata>(getNewModelStudent()));
@@ -58,15 +66,20 @@ public class ViewSearch extends ViewTableCenter {
 		CenterBox.redraw();
 	}
 	
-	public void updateTable(){
+	/*public void updateTable(){
 		if(table.getModel() != null) 
 			((ThisTableModel<?>)table.getModel()).fireTableDataChanged();
-		}
+		}*/
 	
 	public String getSelectedKey() {
 		int row = table.getSelectedRow();
 		if(row==-1) return null;
 		return (String) table.getValueAt(table.getSelectedRow(), KEY_COLUMN);
+	}
+	
+	public void updateTable() {
+		updateInProgress = true;
+		ToolBar.getInstance().reSearch();
 	}
 	
 	private ListaStudenata getNewModelStudent()

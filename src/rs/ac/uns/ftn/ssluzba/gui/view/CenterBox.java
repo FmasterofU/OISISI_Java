@@ -2,9 +2,6 @@ package rs.ac.uns.ftn.ssluzba.gui.view;
 
 import java.awt.Color;
 import java.awt.Component;
-import java.awt.Dimension;
-
-import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
@@ -18,7 +15,6 @@ import rs.ac.uns.ftn.ssluzba.gui.view.centerdata.ViewStudenti;
 public class CenterBox extends JTabbedPane {
 	
 	private static CenterBox instance = null;
-	private int lastSelectedIndex = -1;
 	
 	public static CenterBox getInstance() {
 		if(instance==null) instance = new CenterBox();
@@ -32,32 +28,15 @@ public class CenterBox extends JTabbedPane {
 		//this.setBackground(Color.WHITE);
 		addTab("Profesori", ViewProfesori.getInstance());
 		addTab("Predmeti", ViewPredmeti.getInstance());
-		lastSelectedIndex = getSelectedIndex();
 		this.setBackground(new Color(165, 199, 245)); //active tab color is new Color(165, 199, 245) - color picked, and this is for other tabs and background
 		addChangeListener(new ChangeListener() {
 			
 			@Override
 			public void stateChanged(ChangeEvent e) {
-				CenterBox.reset(lastSelectedIndex);
-				ToolBar.resetSearch();
-				lastSelectedIndex = ((JTabbedPane) e.getSource()).getSelectedIndex();
-				ToolBar.getInstance().remove(ToolBar.currentExpandedToolbarPanel);
-				switch(lastSelectedIndex) {
-					case 2:
-						ToolBar.currentExpandedToolbarPanel = ExpandedToolBarPanel.getInstance();
-						break;
-					case 3:
-						if(ViewSearch.getRootTab()==2) {
-							ToolBar.currentExpandedToolbarPanel = ExpandedToolBarPanel.getInstance();
-							break;
-						}
-					default:
-						ToolBar.currentExpandedToolbarPanel = new JPanel();
-						ToolBar.currentExpandedToolbarPanel.setMaximumSize(new Dimension());
-				}
-				ToolBar.getInstance().add(ToolBar.currentExpandedToolbarPanel, 4);
-				ToolBar.getInstance().validate();
-				ToolBar.getInstance().repaint();
+				if(((JTabbedPane) e.getSource()).getSelectedIndex()!=3) 
+					ToolBar.dynamicChange(((JTabbedPane) e.getSource()).getSelectedIndex());
+				if(((JTabbedPane) e.getSource()).getSelectedIndex()!=3 && ViewSearch.instanceIfExists()!=null)
+					ViewSearch.removeInstance();
 			}
 		});
 	}
@@ -66,42 +45,9 @@ public class CenterBox extends JTabbedPane {
 	public void addTab(String title, Component component) {
 		addTab(title, null, component);
 	}
-	
-	public static void reset(int pane) {
-		switch(pane) {
-			case 0: 
-				if(ViewStudenti.inSearchMode) {
-					ViewStudenti.getInstance().updateTable();
-					ViewStudenti.inSearchMode=false;
-				}
-				break;
-			case 1: 
-				if(ViewProfesori.inSearchMode) {
-					ViewProfesori.getInstance().updateTable();
-					ViewProfesori.inSearchMode=false;
-				}
-				break;
-			case 2: 
-				if(ViewPredmeti.inSearchMode) {
-					ViewPredmeti.getInstance().updateTable();
-					ViewPredmeti.inSearchMode=false;
-				}
-				break;
-			case 3:
-				ViewSearch.removeInstance();
-			default:
-				ViewStudenti.getInstance().updateTable(); 
-				ViewProfesori.getInstance().updateTable(); 
-				ViewPredmeti.getInstance().updateTable(); 
-		}
-	}
-	
+
 	public static void redraw() {
 		instance.revalidate();
 		instance.repaint();
-	}
-	
-	public int getLastSelectedIndex() {
-		return lastSelectedIndex;
 	}
 }

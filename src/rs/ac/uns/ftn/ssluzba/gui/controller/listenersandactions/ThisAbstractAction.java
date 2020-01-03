@@ -115,7 +115,7 @@ public class ThisAbstractAction extends AbstractAction{
 							break;
 					}
 			}
-		else if(name.equals("delete"))
+		else if(name.equals("delete")) 
 			switch(CenterBox.getInstance().getSelectedIndex()) {
 				case 0:
 					String idx = ViewStudenti.getInstance().getSelectedKey();
@@ -132,15 +132,15 @@ public class ThisAbstractAction extends AbstractAction{
 				case 3:
 					switch(ViewSearch.getRootTab()) {
 						case 0:
-							String idx1 = ViewSearch.instanceExists().getSelectedKey();
+							String idx1 = ViewSearch.instanceIfExists().getSelectedKey();
 							if(idx1 != null)		DeleteStudent.getNew(idx1).setVisible(true);
 							break;
 						case 1: 
-							String id1 = ViewSearch.instanceExists().getSelectedKey();
+							String id1 = ViewSearch.instanceIfExists().getSelectedKey();
 							if(id1!=null) (new DeleteProfesor(id1)).setVisible(true);
 							break;
 						case 2:
-							String sifra1 = ViewSearch.instanceExists().getSelectedKey();
+							String sifra1 = ViewSearch.instanceIfExists().getSelectedKey();
 							if(sifra1!=null) (new DeletePredmet(sifra1)).setVisible(true);
 							break;
 					}
@@ -162,57 +162,40 @@ public class ThisAbstractAction extends AbstractAction{
 				case 3:
 					switch(ViewSearch.getRootTab()){
 					case 0:
-						String idx1 = ViewSearch.instanceExists().getSelectedKey();
+						String idx1 = ViewSearch.instanceIfExists().getSelectedKey();
 						if(idx1 != null)		EditStudent.getInstance(idx1).setVisible(true);
 						break;
 					case 1:
-						String id1 = ViewSearch.instanceExists().getSelectedKey();
+						String id1 = ViewSearch.instanceIfExists().getSelectedKey();
 						if(id1 != null)	EditProfesor.getInstance(id1).setVisible(true);
 						break;
 					case 2:
-						String sifra1 = ViewSearch.instanceExists().getSelectedKey();
+						String sifra1 = ViewSearch.instanceIfExists().getSelectedKey();
 						if(sifra1!=null) EditPredmet.getInstance(sifra1).setVisible(true);
 						break;
 					}
 			}
 		else if(name.equals("search")){
-			//ViewSearch.getInstance(0, 0);
+			if(ViewSearch.instanceIfExists()!=null) ViewSearch.removeInstance();
 			int pane = CenterBox.getInstance().getSelectedIndex();
 			if(CheckValidation.checkSearchQuery(ToolBar.getSearchQuery(),pane))
 			{
-				CenterBox.reset(pane);
 				switch(pane)
 				{
 					case 0:
+						ViewStudenti.inSearchMode=true;
 						ViewSearch.getInstance(0, ViewStudenti.getKeyColumn());
 						break;
 					case 1:
+						ViewProfesori.inSearchMode=true;
 						ViewSearch.getInstance(1, ViewProfesori.getKeyColumn());
 						break;
 					case 2:
+						ViewPredmeti.inSearchMode=true;
 						ViewSearch.getInstance(2, ViewPredmeti.getKeyColumn());
 						break;
 				}
 			}
-			//TODO
-			/*int pane = CenterBox.getInstance().getSelectedIndex();
-			if(CheckValidation.checkSearchQuery(ToolBar.getSearchQuery(),pane)){
-				CenterBox.reset(pane);
-				switch(pane) {
-					case 0:
-						ViewStudenti.inSearchMode=true;
-						ViewStudenti.getInstance().search(ViewStudenti.SEARCH_COLUMNS,CheckValidation.tokenizeSearchQuery(ToolBar.getSearchQuery(),pane));
-						break;
-					case 1:
-						ViewProfesori.inSearchMode=false;
-						ViewProfesori.getInstance().search(ViewProfesori.SEARCH_COLUMNS,CheckValidation.tokenizeSearchQuery(ToolBar.getSearchQuery(),pane));
-						break;
-					case 2:
-						ViewPredmeti.inSearchMode=true;
-						ViewPredmeti.getInstance().search(ViewPredmeti.SEARCH_COLUMNS,CheckValidation.tokenizeSearchQuery(ToolBar.getSearchQuery(),pane));
-						break;
-				}
-			}*/
 		}else if(name.equals("help"))
 			JOptionPane.showConfirmDialog(MainWindow.getInstance(), new MessageWithLink("See this link:<br><a href=\"https://fmasterofu.github.io/OISISI_Java/\">HELP (Product page)</a><br>or contact the developers (mails in About section)."), "Help", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, new ImageIcon("Slike/help.png"));
 		else if(name.equals("about"))
@@ -220,22 +203,22 @@ public class ThisAbstractAction extends AbstractAction{
 		else if(name.equals("addprof")) {
 			String sifra;
 			if(ViewSearch.getRootTab()==-1) sifra = ViewPredmeti.getInstance().getSelectedKey();
-			else sifra = ViewSearch.instanceExists().getSelectedKey();
+			else sifra = ViewSearch.instanceIfExists().getSelectedKey();
 			if(sifra!=null && Data.getListaPredmeta().getPredmet(sifra).getProfesor()==null) AddProfesorToPredmet.getInstance(sifra).setVisible(true);
 		} else if(name.equals("remprof")) {
 			String sifra;
 			if(ViewSearch.getRootTab()==-1) sifra = ViewPredmeti.getInstance().getSelectedKey();
-			else sifra = ViewSearch.instanceExists().getSelectedKey();
+			else sifra = ViewSearch.instanceIfExists().getSelectedKey();
 			if(sifra!=null && Data.getListaPredmeta().getPredmet(sifra).getProfesor()!=null) (new DeleteProfesorFromPredmet(sifra)).setVisible(true);
 		}else if(name.equals("addstud")) {
 			String id;
 			if(ViewSearch.getRootTab()==-1) id = ViewPredmeti.getInstance().getSelectedKey();
-			else id = ViewSearch.instanceExists().getSelectedKey();
+			else id = ViewSearch.instanceIfExists().getSelectedKey();
 			if(id != null && !Data.getListaPredmeta().getStudentIndexesNotListeningPredmet(Data.getListaPredmeta().getPredmet(id)).isEmpty())		AddStudentToPredmet.getInstance(id).setVisible(true);
 		}else if(name.equals("remstud")){
 			String id;
 			if(ViewSearch.getRootTab()==-1) id = ViewPredmeti.getInstance().getSelectedKey();
-			else id = ViewSearch.instanceExists().getSelectedKey();
+			else id = ViewSearch.instanceIfExists().getSelectedKey();
 			if(id != null && !Data.getListaPredmeta().getPredmet(id).getStudenti().isEmpty())		DeleteStudentFromPredmet.getInstance(id).setVisible(true);
 		}
 	}

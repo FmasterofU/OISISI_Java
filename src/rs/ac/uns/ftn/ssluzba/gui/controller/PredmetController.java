@@ -3,38 +3,30 @@ package rs.ac.uns.ftn.ssluzba.gui.controller;
 import rs.ac.uns.ftn.ssluzba.gui.model.Predmet;
 import rs.ac.uns.ftn.ssluzba.gui.view.centerdata.ViewPredmeti;
 import rs.ac.uns.ftn.ssluzba.gui.view.centerdata.ViewProfesori;
+import rs.ac.uns.ftn.ssluzba.gui.view.centerdata.ViewSearch;
 import rs.ac.uns.ftn.ssluzba.gui.view.centerdata.ViewStudenti;
 
 public class PredmetController {
 
 	public static void addPredmet(Predmet novi) {
-		//Data.data.listaProfesora.getProfesor(novi.getProfesor().getBrojLK()).getPredajePredmete().add(novi);
-		//ViewProfesori.getInstance().updateTable();
-		//System.out.println(Data.data.listaProfesora);
 		Data.getListaPredmeta().addPredmet(novi);
 		ViewPredmeti.getInstance().updateTable();
+		if(ViewSearch.instanceIfExists()!=null)
+			ViewSearch.instanceIfExists().updateTable();
 	}
 	
-	public static void deletePredmet(Predmet p, ModelAction ma)
-	{
-		/*
-		 * TODO:
-		 * refresh search tab if active
-		 */
+	public static void deletePredmet(Predmet p, ModelAction ma){
 		Data.getListaStudenata().deletePredmetInList(p,ma);
-		Data.getListaProfesora().deletePredmetInList(p,ma);
-		Data.getListaPredmeta().deletePredmet(p,ma);
 		ViewStudenti.getInstance().updateTable();
+		Data.getListaProfesora().deletePredmetInList(p,ma);
 		ViewProfesori.getInstance().updateTable();
+		Data.getListaPredmeta().deletePredmet(p,ma);
 		ViewPredmeti.getInstance().updateTable();
+		if(ViewSearch.instanceIfExists()!=null)
+			ViewSearch.instanceIfExists().updateTable();
 	}
 	
-	public static void editPredmet(String sifra, Predmet novi, ModelAction ma)
-	{
-		/*
-		 * TODO:
-		 * refresh search tab if active
-		 */
+	public static void editPredmet(String sifra, Predmet novi, ModelAction ma){
 		if(ma==ModelAction.ADD_S/* || ma==ModelAction.DELETE_S*/) {
 			Data.getListaStudenata().editPredmetInList(sifra,novi,ma);
 			ViewStudenti.getInstance().updateTable();
@@ -49,5 +41,7 @@ public class PredmetController {
 		}
 		Data.getListaPredmeta().editPredmet(sifra, novi);
 		ViewPredmeti.getInstance().updateTable();
+		if(ViewSearch.instanceIfExists()!=null)
+			ViewSearch.instanceIfExists().updateTable();
 	}
 }
