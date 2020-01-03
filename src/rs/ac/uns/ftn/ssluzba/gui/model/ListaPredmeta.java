@@ -11,7 +11,7 @@ public class ListaPredmeta implements Serializable, ITableModel {
 
 	private static final long serialVersionUID = -8045180299982898373L;
 	private LinkedList<Predmet> predmeti;
-	private static ArrayList<String> kolone;
+	public static ArrayList<String> kolone;
 	
 	static {
 		kolone = new ArrayList<String>();

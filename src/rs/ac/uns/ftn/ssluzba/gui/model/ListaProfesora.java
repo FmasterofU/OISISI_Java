@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.LinkedList;
 
+import rs.ac.uns.ftn.ssluzba.gui.controller.CheckValidation;
 import rs.ac.uns.ftn.ssluzba.gui.controller.Data;
 import rs.ac.uns.ftn.ssluzba.gui.controller.ModelAction;
 
@@ -11,7 +12,7 @@ public class ListaProfesora implements Serializable, ITableModel {
 
 	private static final long serialVersionUID = 8001823155996613518L;
 	private LinkedList<Profesor> profesori;
-	private static ArrayList<String> kolone;
+	public static ArrayList<String> kolone;
 	
 	static {
 		kolone = new ArrayList<String>();
@@ -122,7 +123,7 @@ public class ListaProfesora implements Serializable, ITableModel {
 				return null;
 		}
 	}
-
+	
 	@Override
 	public String getColumnName(int col) {
 		return kolone.get(col);
@@ -174,7 +175,21 @@ public class ListaProfesora implements Serializable, ITableModel {
 	}
 
 	public ListaProfesora mutableSearch(String searchQuery) {
-		// TODO Auto-generated method stub
+		String[][] magic = CheckValidation.tokenizeSearchQuery(searchQuery, 1);
+		System.out.println(magic[0]);
+		System.out.println(magic[1]);
+		for(int i=0;i<magic.length;i++)
+			for(int j=0;j<magic[0].length;j++)
+				System.out.println(magic[i][j]);
+		System.out.println("kurac");
+		System.out.flush();
+		for(Profesor prof : this.profesori) {
+			for(int i=0;i<magic[1].length;i++)
+				if(!((String)prof.get(kolone.indexOf(magic[0][i]))).equals(magic[1][i])) {
+					this.profesori.remove(prof);
+					break;
+				}
+			}
 		return this;
 	}
 }

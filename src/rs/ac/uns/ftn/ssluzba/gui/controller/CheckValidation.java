@@ -2,6 +2,11 @@ package rs.ac.uns.ftn.ssluzba.gui.controller;
 
 import java.util.ArrayList;
 
+import rs.ac.uns.ftn.ssluzba.gui.model.ListaPredmeta;
+import rs.ac.uns.ftn.ssluzba.gui.model.ListaProfesora;
+import rs.ac.uns.ftn.ssluzba.gui.model.ListaStudenata;
+import rs.ac.uns.ftn.ssluzba.gui.view.centerdata.ViewPredmeti;
+import rs.ac.uns.ftn.ssluzba.gui.view.centerdata.ViewProfesori;
 import rs.ac.uns.ftn.ssluzba.gui.view.centerdata.ViewStudenti;
 
 public class CheckValidation {
@@ -259,26 +264,48 @@ public class CheckValidation {
 			}
 		}
 		
-		public static String[] tokenizeSearchQuery(String query, int pane) {
-			ArrayList<String> ret = new ArrayList<String>();
-			for(int i=0;i<20;i++) ret.add(new String());
+		public static String[][] tokenizeSearchQuery(String query, int pane) {
+			ArrayList<String> retColName = new ArrayList<String>();
+			ArrayList<String> retQVal = new ArrayList<String>();
 			for(String parameter : query.split(";")) {
-				String[] searchStrings = parameter.split(":");
-				//for(String s : searchStrings)
-					System.out.println("@"+searchStrings[1]);
-				switch(pane) {
-					case 0:
-						if(searchStrings[0].equals("ime")) {
-							String s= searchStrings[1];
-							ret.set(ViewStudenti.SEARCH_COLUMNS[0], s);
-						}
-						else if(searchStrings[0].equals("prezime")) ret.set(ViewStudenti.SEARCH_COLUMNS[1], searchStrings[1]);
-						else if(searchStrings[0].equals("indeks")) ret.set(ViewStudenti.SEARCH_COLUMNS[2], searchStrings[1]);
-						else if(searchStrings[0].equals("brlk")) ret.set(ViewStudenti.SEARCH_COLUMNS[3], searchStrings[1]);
+				String[] tokens = parameter.split(":");
+				switch(tokens[0]) {
+					case "ime": 
+						if(pane==0) retColName.add(ListaStudenata.kolone.get(ViewStudenti.SEARCH_COLUMNS[0]));
+						else if(pane==1) retColName.add(ListaProfesora.kolone.get(ViewProfesori.SEARCH_COLUMNS[0]));
+						break;
+					case "sifra":
+						retColName.add(ListaPredmeta.kolone.get(ViewPredmeti.SEARCH_COLUMNS[0]));
+						break;
+					case "prezime":
+						if(pane==0) retColName.add(ListaStudenata.kolone.get(ViewStudenti.SEARCH_COLUMNS[1]));
+						else if(pane==1) retColName.add(ListaProfesora.kolone.get(ViewProfesori.SEARCH_COLUMNS[1]));
+						break;
+					case "naziv":
+							retColName.add(ListaPredmeta.kolone.get(ViewPredmeti.SEARCH_COLUMNS[1]));
+							break;
+					case "indeks":
+						retColName.add(ListaStudenata.kolone.get(ViewStudenti.SEARCH_COLUMNS[2]));
+						break;
+					case "email":
+						if(pane==0) retColName.add(ListaStudenata.kolone.get(ViewStudenti.SEARCH_COLUMNS[3]));
+						else if(pane==1) retColName.add(ListaProfesora.kolone.get(ViewProfesori.SEARCH_COLUMNS[2]));
+						break;
+					case "brlk":
+						retColName.add(ListaProfesora.kolone.get(ViewProfesori.SEARCH_COLUMNS[3]));
+						break;
+					case "semestar":
+						retColName.add(ListaPredmeta.kolone.get(ViewPredmeti.SEARCH_COLUMNS[2]));
+						break;
+					case "godina":
+						retColName.add(ListaPredmeta.kolone.get(ViewPredmeti.SEARCH_COLUMNS[3]));
 						break;
 				}
+				retQVal.add(tokens[1]);
 			}
-			String[] a = {""};
-			return ret.toArray(a);
+			String[] a= {""};
+			String[] b= {""};
+			String[][] ret = new String[][] {retColName.toArray(a), retQVal.toArray(b)};
+			return ret;
 		}
 }

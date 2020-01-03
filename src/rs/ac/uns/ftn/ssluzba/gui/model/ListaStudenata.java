@@ -12,7 +12,7 @@ public class ListaStudenata implements Serializable, ITableModel {
 	
 	private static final long serialVersionUID = 3654331325580773015L;
 	private ArrayList<Student> studenti;
-	private static ArrayList<String> kolone;
+	public static ArrayList<String> kolone;
 	
 	static {
 		kolone = new ArrayList<String>();

@@ -217,4 +217,34 @@ public class Profesor implements Serializable {
 	public boolean equals(Object obj) {
 		return this.getBrojLK().equals(((Profesor)obj).getBrojLK());
 	}
+	
+	public Object get(int index) {
+		switch(index)
+		{
+			case 0: 
+				return getIme();
+			case 1:
+				return getPrezime();
+			case 2:
+				return getDatumRodjenja();
+			case 3:
+				return getAdresaStanovanja();
+			case 4:
+				return getTelefon();
+			case 5:
+				return geteMail();
+			case 6:
+				return getAdresaKancelarije();
+			case 7:
+				return getBrojLK();
+			case 8:
+				return getTitula();
+			case 9:
+				return getZvanje();
+			case 10:
+				return PredajePredmeteTableString();
+			default:
+				return null;
+		}
+	}
 }
