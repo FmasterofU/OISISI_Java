@@ -231,6 +231,7 @@ public class ThisAbstractAction extends AbstractAction{
 			else sifra = ViewSearch.instanceIfExists().getSelectedKey();
 			if(sifra!=null && Data.getListaPredmeta().getPredmet(sifra).getProfesor()!=null) (new DeleteProfesorFromPredmet(sifra)).setVisible(true);
 			else if(sifra==null)	new InvalidAction("Niste izabrali predmet sa kojeg \u017eelite ukloniti profesora!");
+			else new InvalidAction("Predmet koji ste izabrali nema raspore\u0111enog profesora!");
 		}else if(name.equals("addstud")) {
 			String id;
 			if(ViewSearch.getRootTab()==-1) id = ViewPredmeti.getInstance().getSelectedKey();
