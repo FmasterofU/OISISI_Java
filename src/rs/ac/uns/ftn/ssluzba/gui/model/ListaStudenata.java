@@ -34,7 +34,6 @@ public class ListaStudenata implements Serializable, ITableModel {
 	public ListaStudenata()
 	{
 		this.studenti = new ArrayList<Student>();
-		this.studenti.add(new Student());
 	}
 	
 	public ListaStudenata(ListaStudenata ls) {

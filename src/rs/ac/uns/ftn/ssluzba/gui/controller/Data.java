@@ -18,7 +18,12 @@ public class Data implements Serializable {
 	private ListaStudenata listaStudenata = null;
 	private ListaProfesora listaProfesora = null;
 	private static Data data = null;
-	
+	public static String location = "StudentskaSluzba.data";
+
+	/**
+	 * Initialize system
+	 * Deserializes data from location stored in static field location, which, if not otherwise set, by default is StudentskaSluzba.data.
+	 */
 	public static void init() {
 		if(Data.data == null) {
 			Data.data = new Data();
@@ -27,10 +32,14 @@ public class Data implements Serializable {
 		System.gc();
 	}
 
+	/**
+	 * Prepares system for proper exit
+	 * Serializes data to location specified in static field location.
+	 */
 	public static void close() {
 		serialize();
 	}
-	
+
 	private Data() {
 		this.listaPredmeta = new ListaPredmeta();
 		this.listaStudenata = new ListaStudenata();
@@ -39,28 +48,31 @@ public class Data implements Serializable {
 
 	private static void serialize() {
 		try {
-	         ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("StudentskaSluzba.data"));
-	         out.writeObject(Data.data);
-	         out.close();
-	      } catch (IOException i) {
-	         i.printStackTrace();
-	      } catch (Exception e) {
-	    	  e.printStackTrace();
-	      }
+			ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(location));
+			out.writeObject(Data.data);
+			out.close();
+		} catch (IOException i) {
+			i.printStackTrace();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
-	
+
 	private static void deserialize() {
 		try {
-	         ObjectInputStream in = new ObjectInputStream(new FileInputStream("StudentskaSluzba.data"));
-	         Data.data = (Data) in.readObject();
-	         in.close();
-	      } catch (IOException i) {
-	        // i.printStackTrace();
-	      } catch (Exception e) {
-	    	 e.printStackTrace();
-		  }
+			ObjectInputStream in = new ObjectInputStream(new FileInputStream(location));
+			Data.data = (Data) in.readObject();
+			in.close();
+		} catch (IOException i) {
+			i.printStackTrace();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
-	
+
+	/**
+	 * Do not use this method
+	 */
 	public static void checkStackTrace() {
 		StackTraceElement[] stackTraceDataClassCallingCheck = Thread.currentThread().getStackTrace();
 		if(!stackTraceDataClassCallingCheck[3].getMethodName().equals("<init>") || !stackTraceDataClassCallingCheck[3].getClassName().equals(Data.class.getCanonicalName())) {
