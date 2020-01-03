@@ -37,6 +37,7 @@ import rs.ac.uns.ftn.ssluzba.gui.view.modify.data.DeleteStudentFromPredmet;
 import rs.ac.uns.ftn.ssluzba.gui.view.modify.data.EditPredmet;
 import rs.ac.uns.ftn.ssluzba.gui.view.modify.data.EditProfesor;
 import rs.ac.uns.ftn.ssluzba.gui.view.modify.data.EditStudent;
+import rs.ac.uns.ftn.ssluzba.gui.view.modify.data.InvalidAction;
 
 public class ThisAbstractAction extends AbstractAction{
 
@@ -124,28 +125,34 @@ public class ThisAbstractAction extends AbstractAction{
 				case 0:
 					String idx = ViewStudenti.getInstance().getSelectedKey();
 					if(idx != null)		DeleteStudent.getNew(idx).setVisible(true);
+					else new InvalidAction("Niste izabrali studenta za brisanje!");
 					break;
 				case 1: 
 					String id = ViewProfesori.getInstance().getSelectedKey();
 					if(id!=null) (new DeleteProfesor(id)).setVisible(true);
+					else new InvalidAction("Niste izabrali profesora za brisanje!");
 					break;
 				case 2:
 					String sifra = ViewPredmeti.getInstance().getSelectedKey();
 					if(sifra!=null) (new DeletePredmet(sifra)).setVisible(true);
+					else new InvalidAction("Niste izabrali predmet za brisanje!");
 					break;
 				case 3:
 					switch(ViewSearch.getRootTab()) {
 						case 0:
 							String idx1 = ViewSearch.instanceIfExists().getSelectedKey();
 							if(idx1 != null)		DeleteStudent.getNew(idx1).setVisible(true);
+							else new InvalidAction("Niste izabrali studenta za brisanje!");
 							break;
 						case 1: 
 							String id1 = ViewSearch.instanceIfExists().getSelectedKey();
 							if(id1!=null) (new DeleteProfesor(id1)).setVisible(true);
+							else new InvalidAction("Niste izabrali profesora za brisanje!");
 							break;
 						case 2:
 							String sifra1 = ViewSearch.instanceIfExists().getSelectedKey();
 							if(sifra1!=null) (new DeletePredmet(sifra1)).setVisible(true);
+							else new InvalidAction("Niste izabrali predmet za brisanje!");
 							break;
 					}
 			}
@@ -154,28 +161,34 @@ public class ThisAbstractAction extends AbstractAction{
 				case 0:
 					String idx = ViewStudenti.getInstance().getSelectedKey();
 					if(idx != null)		EditStudent.getInstance(idx).setVisible(true);
+					else new InvalidAction("Niste izabrali studenta za izmenu!");
 					break;
 				case 1:
 					String id = ViewProfesori.getInstance().getSelectedKey();
 					if(id != null)	EditProfesor.getInstance(id).setVisible(true);
+					else new InvalidAction("Niste izabrali profesora za izmenu!");
 					break;
 				case 2:
 					String sifra = ViewPredmeti.getInstance().getSelectedKey();
 					if(sifra!=null) EditPredmet.getInstance(sifra).setVisible(true);
+					else new InvalidAction("Niste izabrali predmet za izmenu!");
 					break;
 				case 3:
 					switch(ViewSearch.getRootTab()){
 					case 0:
 						String idx1 = ViewSearch.instanceIfExists().getSelectedKey();
 						if(idx1 != null)		EditStudent.getInstance(idx1).setVisible(true);
+						else new InvalidAction("Niste izabrali studenta za izmenu!");
 						break;
 					case 1:
 						String id1 = ViewSearch.instanceIfExists().getSelectedKey();
 						if(id1 != null)	EditProfesor.getInstance(id1).setVisible(true);
+						else new InvalidAction("Niste izabrali profesora za izmenu!");
 						break;
 					case 2:
 						String sifra1 = ViewSearch.instanceIfExists().getSelectedKey();
 						if(sifra1!=null) EditPredmet.getInstance(sifra1).setVisible(true);
+						else new InvalidAction("Niste izabrali predmet za izmenu!");
 						break;
 					}
 			}
@@ -209,23 +222,27 @@ public class ThisAbstractAction extends AbstractAction{
 			if(ViewSearch.getRootTab()==-1) sifra = ViewPredmeti.getInstance().getSelectedKey();
 			else sifra = ViewSearch.instanceIfExists().getSelectedKey();
 			if(sifra!=null && Data.getListaPredmeta().getPredmet(sifra).getProfesor()==null) AddProfesorToPredmet.getInstance(sifra).setVisible(true);
+			else if(sifra==null)	new InvalidAction("Niste izabrali predmet kojem želite dodeliti profesora!");
 		} else if(name.equals("remprof")) {
 			String sifra;
 			if(ViewSearch.getRootTab()==-1) sifra = ViewPredmeti.getInstance().getSelectedKey();
 			else sifra = ViewSearch.instanceIfExists().getSelectedKey();
 			if(sifra!=null && Data.getListaPredmeta().getPredmet(sifra).getProfesor()!=null) (new DeleteProfesorFromPredmet(sifra)).setVisible(true);
+			else if(sifra==null)	new InvalidAction("Niste izabrali predmet sa kojeg želite ukloniti profesora!");
 		}else if(name.equals("addstud")) {
 			String id;
 			if(ViewSearch.getRootTab()==-1) id = ViewPredmeti.getInstance().getSelectedKey();
 			else id = ViewSearch.instanceIfExists().getSelectedKey();
-			if(Data.getListaPredmeta().getStudentIndexesNotListeningPredmet(Data.getListaPredmeta().getPredmet(id)).isEmpty() && id != null)		AddStudentToPredmet.error(id);
+			if(id != null && Data.getListaPredmeta().getStudentIndexesNotListeningPredmet(Data.getListaPredmeta().getPredmet(id)).isEmpty())		AddStudentToPredmet.error(id);
 			else if(id != null /*&& !Data.getListaPredmeta().getStudentIndexesNotListeningPredmet(Data.getListaPredmeta().getPredmet(id)).isEmpty()*/)		AddStudentToPredmet.getInstance(id).setVisible(true);
+			else if(id==null)	new InvalidAction("Niste izabrali predmet kojem želite dodati studenta!");
 		}else if(name.equals("remstud")){
 			String id;
 			if(ViewSearch.getRootTab()==-1) id = ViewPredmeti.getInstance().getSelectedKey();
 			else id = ViewSearch.instanceIfExists().getSelectedKey();
-			if(Data.getListaPredmeta().getPredmet(id).getStudenti().isEmpty())		DeleteStudentFromPredmet.error(id);
+			if(id != null && Data.getListaPredmeta().getPredmet(id).getStudenti().isEmpty())		DeleteStudentFromPredmet.error(id);
 			else if(id != null/* && !Data.getListaPredmeta().getPredmet(id).getStudenti().isEmpty()*/)		DeleteStudentFromPredmet.getInstance(id).setVisible(true);
+			else if(id==null)	new InvalidAction("Niste izabrali predmet sa kojeg želite ukloniti studenta!");
 		}
 	}
 	
