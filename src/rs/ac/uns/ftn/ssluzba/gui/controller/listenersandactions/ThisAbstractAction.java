@@ -17,6 +17,7 @@ import rs.ac.uns.ftn.ssluzba.gui.view.MainWindow;
 import rs.ac.uns.ftn.ssluzba.gui.view.ToolBar;
 import rs.ac.uns.ftn.ssluzba.gui.view.centerdata.ViewPredmeti;
 import rs.ac.uns.ftn.ssluzba.gui.view.centerdata.ViewProfesori;
+import rs.ac.uns.ftn.ssluzba.gui.view.centerdata.ViewSearch;
 import rs.ac.uns.ftn.ssluzba.gui.view.centerdata.ViewStudenti;
 import rs.ac.uns.ftn.ssluzba.gui.view.modify.MessageWithLink;
 import rs.ac.uns.ftn.ssluzba.gui.view.modify.data.AddPredmet;
@@ -101,6 +102,18 @@ public class ThisAbstractAction extends AbstractAction{
 				case 2:
 					AddPredmet.getInstance().setVisible(true);
 					break;
+				case 3:
+					switch(ViewSearch.getRootTab()){
+						case 0:
+							AddStudent.getInstance().setVisible(true);
+							break;
+						case 1:
+							AddProfesor.getInstance().setVisible(true);
+							break;
+						case 2:
+							AddPredmet.getInstance().setVisible(true);
+							break;
+					}
 			}
 		else if(name.equals("delete"))
 			switch(CenterBox.getInstance().getSelectedIndex()) {
@@ -116,6 +129,21 @@ public class ThisAbstractAction extends AbstractAction{
 					String sifra = ViewPredmeti.getInstance().getSelectedKey();
 					if(sifra!=null) (new DeletePredmet(sifra)).setVisible(true);
 					break;
+				case 3:
+					switch(ViewSearch.getRootTab()) {
+						case 0:
+							String idx1 = ViewSearch.instanceExists().getSelectedKey();
+							if(idx1 != null)		DeleteStudent.getNew(idx1).setVisible(true);
+							break;
+						case 1: 
+							String id1 = ViewSearch.instanceExists().getSelectedKey();
+							if(id1!=null) (new DeleteProfesor(id1)).setVisible(true);
+							break;
+						case 2:
+							String sifra1 = ViewSearch.instanceExists().getSelectedKey();
+							if(sifra1!=null) (new DeletePredmet(sifra1)).setVisible(true);
+							break;
+					}
 			}
 		else if(name.equals("edit"))
 			switch(CenterBox.getInstance().getSelectedIndex()){
@@ -131,9 +159,26 @@ public class ThisAbstractAction extends AbstractAction{
 					String sifra = ViewPredmeti.getInstance().getSelectedKey();
 					if(sifra!=null) EditPredmet.getInstance(sifra).setVisible(true);
 					break;
+				case 3:
+					switch(ViewSearch.getRootTab()){
+					case 0:
+						String idx1 = ViewSearch.instanceExists().getSelectedKey();
+						if(idx1 != null)		EditStudent.getInstance(idx1).setVisible(true);
+						break;
+					case 1:
+						String id1 = ViewSearch.instanceExists().getSelectedKey();
+						if(id1 != null)	EditProfesor.getInstance(id1).setVisible(true);
+						break;
+					case 2:
+						String sifra1 = ViewSearch.instanceExists().getSelectedKey();
+						if(sifra1!=null) EditPredmet.getInstance(sifra1).setVisible(true);
+						break;
+					}
 			}
 		else if(name.equals("search")){
-			int pane = CenterBox.getInstance().getSelectedIndex();
+			ViewSearch.getInstance(0, 0);
+			//TODO
+			/*int pane = CenterBox.getInstance().getSelectedIndex();
 			if(CheckValidation.checkSearchQuery(ToolBar.getSearchQuery(),pane)){
 				CenterBox.reset(pane);
 				switch(pane) {
@@ -150,22 +195,30 @@ public class ThisAbstractAction extends AbstractAction{
 						ViewPredmeti.getInstance().search(ViewPredmeti.SEARCH_COLUMNS,CheckValidation.tokenizeSearchQuery(ToolBar.getSearchQuery(),pane));
 						break;
 				}
-			}
+			}*/
 		}else if(name.equals("help"))
 			JOptionPane.showConfirmDialog(MainWindow.getInstance(), new MessageWithLink("See this link:<br><a href=\"https://fmasterofu.github.io/OISISI_Java/\">HELP (Product page)</a><br>or contact the developers (mails in About section)."), "Help", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, new ImageIcon("Slike/help.png"));
 		else if(name.equals("about"))
 			JOptionPane.showConfirmDialog(MainWindow.getInstance(), "OISISI_Java - Studentska Služba v1.0.0\n~ Igor Šikuljak - RA117/2017 - igorsikuljak@uns.ac.rs\n~ Radoš Milićev - RA121/2017 - rados280698@yahoo.com", "About", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, new ImageIcon("Slike/about.png"));
 		else if(name.equals("addprof")) {
-			String sifra = ViewPredmeti.getInstance().getSelectedKey();
+			String sifra;
+			if(ViewSearch.getRootTab()==-1) sifra = ViewPredmeti.getInstance().getSelectedKey();
+			else sifra = ViewSearch.instanceExists().getSelectedKey();
 			if(sifra!=null && Data.getListaPredmeta().getPredmet(sifra).getProfesor()==null) AddProfesorToPredmet.getInstance(sifra).setVisible(true);
 		} else if(name.equals("remprof")) {
-			String sifra = ViewPredmeti.getInstance().getSelectedKey();
+			String sifra;
+			if(ViewSearch.getRootTab()==-1) sifra = ViewPredmeti.getInstance().getSelectedKey();
+			else sifra = ViewSearch.instanceExists().getSelectedKey();
 			if(sifra!=null && Data.getListaPredmeta().getPredmet(sifra).getProfesor()!=null) (new DeleteProfesorFromPredmet(sifra)).setVisible(true);
 		}else if(name.equals("addstud")) {
-			String id = ViewPredmeti.getInstance().getSelectedKey();
+			String id;
+			if(ViewSearch.getRootTab()==-1) id = ViewPredmeti.getInstance().getSelectedKey();
+			else id = ViewSearch.instanceExists().getSelectedKey();
 			if(id != null && !Data.getListaPredmeta().getStudentIndexesNotListeningPredmet(Data.getListaPredmeta().getPredmet(id)).isEmpty())		AddStudentToPredmet.getInstance(id).setVisible(true);
 		}else if(name.equals("remstud")){
-			String id = ViewPredmeti.getInstance().getSelectedKey();
+			String id;
+			if(ViewSearch.getRootTab()==-1) id = ViewPredmeti.getInstance().getSelectedKey();
+			else id = ViewSearch.instanceExists().getSelectedKey();
 			if(id != null && !Data.getListaPredmeta().getPredmet(id).getStudenti().isEmpty())		DeleteStudentFromPredmet.getInstance(id).setVisible(true);
 		}
 	}

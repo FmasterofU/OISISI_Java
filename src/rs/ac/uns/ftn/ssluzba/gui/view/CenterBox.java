@@ -11,6 +11,7 @@ import javax.swing.event.ChangeListener;
 
 import rs.ac.uns.ftn.ssluzba.gui.view.centerdata.ViewPredmeti;
 import rs.ac.uns.ftn.ssluzba.gui.view.centerdata.ViewProfesori;
+import rs.ac.uns.ftn.ssluzba.gui.view.centerdata.ViewSearch;
 import rs.ac.uns.ftn.ssluzba.gui.view.centerdata.ViewStudenti;
 
 @SuppressWarnings("serial")
@@ -45,6 +46,11 @@ public class CenterBox extends JTabbedPane {
 					case 2:
 						ToolBar.currentExpandedToolbarPanel = ExpandedToolBarPanel.getInstance();
 						break;
+					case 3:
+						if(ViewSearch.getRootTab()==2) {
+							ToolBar.currentExpandedToolbarPanel = ExpandedToolBarPanel.getInstance();
+							break;
+						}
 					default:
 						ToolBar.currentExpandedToolbarPanel = new JPanel();
 						ToolBar.currentExpandedToolbarPanel.setMaximumSize(new Dimension());
@@ -81,11 +87,18 @@ public class CenterBox extends JTabbedPane {
 					ViewPredmeti.inSearchMode=false;
 				}
 				break;
+			case 3:
+				ViewSearch.removeInstance();
 			default:
 				ViewStudenti.getInstance().updateTable(); 
 				ViewProfesori.getInstance().updateTable(); 
 				ViewPredmeti.getInstance().updateTable(); 
 		}
+	}
+	
+	public static void redraw() {
+		instance.revalidate();
+		instance.repaint();
 	}
 	
 	public int getLastSelectedIndex() {
