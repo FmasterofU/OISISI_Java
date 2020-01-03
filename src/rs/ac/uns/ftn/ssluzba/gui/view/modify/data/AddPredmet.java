@@ -73,7 +73,7 @@ public class AddPredmet extends Dialog {
 					System.gc();
 				}
 				else
-					JOptionPane.showConfirmDialog(instance, "Uneseni su neispravni podaci!", "Grеška", JOptionPane.DEFAULT_OPTION, JOptionPane.ERROR_MESSAGE, new ImageIcon("Slike/error_message-32.png"));
+					JOptionPane.showConfirmDialog(instance, "Uneseni su neispravni podaci!", "Grе\u0161ka", JOptionPane.DEFAULT_OPTION, JOptionPane.ERROR_MESSAGE, new ImageIcon("Slike/error_message-32.png"));
 			}
 		});
 		
@@ -88,7 +88,7 @@ public class AddPredmet extends Dialog {
 			}
 		});
 		
-		JLabel lSifra = new MandatoryTextFieldLabel("Šifra:");
+		JLabel lSifra = new MandatoryTextFieldLabel("\u0160ifra:");
 		JLabel lNaziv = new MandatoryTextFieldLabel("Naziv:");
 		JLabel lSemestar = new JLabel("Semestar:");
 		JLabel lGodina = new JLabel("Godina:");

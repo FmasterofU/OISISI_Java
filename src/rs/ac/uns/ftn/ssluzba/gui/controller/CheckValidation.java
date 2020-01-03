@@ -21,9 +21,9 @@ public class CheckValidation {
 			 */
 			name=name.trim();
 			switch(mode) {
-			case 0: return name.matches("[a-zA-ZšđčćžŠĐČĆŽ ]+");
+			case 0: return name.matches("[a-zA-Z\u0161\u0111\u010d\u0107\u017e\u0160\u0110\u010c\u0106\u017d ]+");
 			case 1: return name.matches("[a-zA-Z0-9\\-\\.]+");
-			case 2: return name.matches("[a-zA-ZšđčćžŠĐČĆŽ 1-9]+");
+			case 2: return name.matches("[a-zA-Z\u0161\u0111\u010d\u0107\u017e\u0160\u0110\u010c\u0106\u017d 1-9]+");
 			default: return false;
 			}
 		}

@@ -56,15 +56,15 @@ public class Student implements Serializable{
 	public Student() {
 		super();
 		this.ime = "Pera";
-		this.prezime = "Perić";
+		this.prezime = "Peri\u0107";
 		this.datumRodjenja = "01.01.1950.";
-		this.adresa = "Bulevar Oslobođenja 1, Novi Sad";
+		this.adresa = "Bulevar Oslobo\u0111enja 1, Novi Sad";
 		this.telefon = "060/111-111";
 		this.eMail = "pera.peric@gmail.com";
 		this.brIndeksa = "BR1/2000";
 		this.datumUpisa = "01.10.2000.";
 		this.godStudija = GodinaStudija.I;
-		this.finansiranje = NacinFinansiranja.BUDŽET;
+		this.finansiranje = NacinFinansiranja.BUD\u017dET;
 		this.prosecnaOcena = 5.0;
 		this.slusaPredmete = new ArrayList<Predmet>();
 	}
@@ -172,7 +172,7 @@ public class Student implements Serializable{
 		builder.append(ime);
 		builder.append(", prezime=");
 		builder.append(prezime);
-		builder.append(", datumRođenja=");
+		builder.append(", datumRo\u0111enja=");
 		builder.append(datumRodjenja);
 		builder.append(", adresa=");
 		builder.append(adresa);
@@ -188,11 +188,11 @@ public class Student implements Serializable{
 		builder.append(godStudija);
 		builder.append(", finansiranje=");
 		builder.append(finansiranje);
-		builder.append(", prosečnaOcena=");
+		builder.append(", prose\u010dnaOcena=");
 		builder.append(prosecnaOcena);
-		builder.append(".\n\t\tSluša predmete sa šiframa: ");
+		builder.append(".\n\t\tSlu\u0161a predmete sa \u0161iframa: ");
 		
-		if(slusaPredmete.isEmpty())		builder.append("Ne sluša niti jedan predmet! ");
+		if(slusaPredmete.isEmpty())		builder.append("Ne slu\u0161a niti jedan predmet! ");
 		else
 		{
 			for(Predmet s : slusaPredmete)
@@ -231,7 +231,7 @@ public class Student implements Serializable{
 			builder.append(", ");
 		}
 		if(builder.toString().endsWith(", ")) builder.setLength(builder.toString().length()-2);
-		else builder.append("Ne sluša niti jedan predmet");
+		else builder.append("Ne slu\u0161a niti jedan predmet");
 		return builder.toString();
 	}
 }

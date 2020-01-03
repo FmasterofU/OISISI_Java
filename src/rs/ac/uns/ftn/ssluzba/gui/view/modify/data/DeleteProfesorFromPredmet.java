@@ -14,7 +14,7 @@ public class DeleteProfesorFromPredmet extends JOptionPane{
 
 	public DeleteProfesorFromPredmet(String sifra) {
 		Predmet p = Data.getListaPredmeta().getPredmet(sifra);
-		String message = String.format("Da li želite ukloniti profesora %s sa predmeta %s?", p.getProfesor().getIme()+ " "+ p.getProfesor().getPrezime()+" PK"+p.getProfesor().getBrojLK(), p.getNaziv());
+		String message = String.format("Da li \u017eelite ukloniti profesora %s sa predmeta %s?", p.getProfesor().getIme()+ " "+ p.getProfesor().getPrezime()+" PK"+p.getProfesor().getBrojLK(), p.getNaziv());
 		UIManager.put("OptionPane.yesButtonText", "Da");
 		UIManager.put("OptionPane.noButtonText", "Ne");
 		int type = JOptionPane.showConfirmDialog(MainWindow.getInstance(), message, "Brisanje predmeta", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);

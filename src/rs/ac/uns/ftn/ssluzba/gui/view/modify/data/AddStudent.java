@@ -66,7 +66,7 @@ public class AddStudent extends Dialog {
 						break;
 					}
 				if(check){
-					if(budget.isSelected())	nf = NacinFinansiranja.BUDŽET;
+					if(budget.isSelected())	nf = NacinFinansiranja.BUD\u017dET;
 					else		nf = NacinFinansiranja.SAMOFINANSIRANJE;
 					//GodinaStudija gs = getGodina(s[8]);
 					Student novi = new Student((String) s[0], (String) s[1], (String) s[2], (String) s[3], (String) s[4], (String) s[5], (String) s[6], (String) s[7], (GodinaStudija) s[8], nf, Double.parseDouble((String) s[9]));
@@ -76,7 +76,7 @@ public class AddStudent extends Dialog {
 					listener.clearData();
 					System.gc();
 				} else
-					JOptionPane.showConfirmDialog(instance, "Uneseni su neispravni podaci!", "Grеška", JOptionPane.DEFAULT_OPTION, JOptionPane.ERROR_MESSAGE, new ImageIcon("Slike/error_message-32.png"));
+					JOptionPane.showConfirmDialog(instance, "Uneseni su neispravni podaci!", "Grе\u0161ka", JOptionPane.DEFAULT_OPTION, JOptionPane.ERROR_MESSAGE, new ImageIcon("Slike/error_message-32.png"));
 			}
 		});
 		
@@ -94,7 +94,7 @@ public class AddStudent extends Dialog {
 		JLabel lime = new MandatoryTextFieldLabel("Ime:");
 		JLabel lprez = new MandatoryTextFieldLabel("Prezime:");
 		JLabel lindeks = new MandatoryTextFieldLabel("Indeks:");
-		JLabel ldatr = new MandatoryTextFieldLabel("Datum rođenja:");
+		JLabel ldatr = new MandatoryTextFieldLabel("Datum ro\u0111enja:");
 		JLabel ladr = new MandatoryTextFieldLabel("Adresa:");
 		JLabel ltel = new MandatoryTextFieldLabel("Broj telefona:");
 		JLabel lmail = new MandatoryTextFieldLabel("eMail:");
@@ -241,8 +241,8 @@ public class AddStudent extends Dialog {
 		GridBagConstraints gbctfpros = generateTextFieldGBC();
 		middlePanel.add(tfpros, gbctfpros);
 		
-		budget = new JRadioButton("Budžet");
-		budget.setName("Budžet");
+		budget = new JRadioButton("Bud\u017eet");
+		budget.setName("Bud\u017eet");
 		budget.setBackground(Color.WHITE);
 		budget.setSelected(true);
 		samof = new JRadioButton("Samofinansiranje");

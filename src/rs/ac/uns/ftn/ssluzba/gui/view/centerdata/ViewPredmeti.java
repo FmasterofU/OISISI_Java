@@ -71,13 +71,13 @@ public class ViewPredmeti extends ViewTableCenter {
 				if(columnIndex!=STUDENTI_BUTTON_COLUMN) return super.getValueAt(rowIndex, columnIndex);
 				else {
 					//return super.getValueAt(rowIndex, columnIndex);
-					JButton button = new JButton("Prikaži");
+					JButton button = new JButton("Prika\u017ei");
 					button.addActionListener(new ActionListener() {
                         public void actionPerformed(ActionEvent arg0) {
                         	String id = getSelectedKey();
                         	if(id != null && Data.getListaPredmeta().getPredmet(id).getStudenti().isEmpty())		DeleteStudentFromPredmet.error(id);
                 			else if(id != null)		DeleteStudentFromPredmet.getInstance(id).setVisible(true);
-                			else if(id==null)	new InvalidAction("Niste izabrali predmet sa kojeg želite ukloniti studenta!");
+                			else if(id==null)	new InvalidAction("Niste izabrali predmet sa kojeg \u017eelite ukloniti studenta!");
                         }
                     });
 					return button;

@@ -67,7 +67,7 @@ public class AddProfesor extends Dialog{
 					listener.clearData();
 					System.gc();
 				} else
-					JOptionPane.showConfirmDialog(instance, "Uneseni su neispravni podaci!", "Grеška", JOptionPane.DEFAULT_OPTION, JOptionPane.ERROR_MESSAGE, new ImageIcon("Slike/error_message-32.png"));
+					JOptionPane.showConfirmDialog(instance, "Uneseni su neispravni podaci!", "Grе\u0161ka", JOptionPane.DEFAULT_OPTION, JOptionPane.ERROR_MESSAGE, new ImageIcon("Slike/error_message-32.png"));
 			}
 		});
 		
@@ -84,12 +84,12 @@ public class AddProfesor extends Dialog{
 		
 		JLabel lime = new MandatoryTextFieldLabel("Ime:");
 		JLabel lprez = new MandatoryTextFieldLabel("Prezime:");
-		JLabel ldatr = new MandatoryTextFieldLabel("Datum rođenja:");
+		JLabel ldatr = new MandatoryTextFieldLabel("Datum ro\u0111enja:");
 		JLabel ladrs = new MandatoryTextFieldLabel("Adresa stanovanja:");
 		JLabel ltel = new MandatoryTextFieldLabel("Broj telefona:");
 		JLabel lmail = new MandatoryTextFieldLabel("eMail:");
 		JLabel ladrk = new MandatoryTextFieldLabel("Adresa kancelarije:");
-		JLabel llk = new MandatoryTextFieldLabel("Broj lične karte:");
+		JLabel llk = new MandatoryTextFieldLabel("Broj li\u010dne karte:");
 		JLabel ltit = new MandatoryTextFieldLabel("Titula:");
 		JLabel lzvanje = new MandatoryTextFieldLabel("Zvanje:");
 		

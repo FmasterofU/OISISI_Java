@@ -16,7 +16,7 @@ public class ListaPredmeta implements Serializable, ITableModel {
 	
 	static {
 		kolone = new ArrayList<String>();
-		kolone.add("Šifra");
+		kolone.add("\u0160ifra");
 		kolone.add("Naziv");
 		kolone.add("Semestar");
 		kolone.add("Godina");

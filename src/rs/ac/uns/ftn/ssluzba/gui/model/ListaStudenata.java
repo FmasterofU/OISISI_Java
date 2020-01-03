@@ -19,7 +19,7 @@ public class ListaStudenata implements Serializable, ITableModel {
 		kolone.add("Indeks");
 		kolone.add("Ime");
 		kolone.add("Prezime");
-		kolone.add("Rođen(a)");
+		kolone.add("Ro\u0111en(a)");
 		kolone.add("God. st.");
 		kolone.add("Status");
 		kolone.add("Prosek");
@@ -122,7 +122,7 @@ public class ListaStudenata implements Serializable, ITableModel {
 			this.studenti.add(new Student(ime, prezime, datumRodjenja, adresa, telefon, eMail, brIndeksa, datumUpisa, godStudija, finansiranje, prosecnaOcena));
 		else
 		{
-			JOptionPane.showConfirmDialog(MainWindow.getInstance(), "Student sa unetim indeksom već postoji!", "Grеška", JOptionPane.DEFAULT_OPTION, JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showConfirmDialog(MainWindow.getInstance(), "Student sa unetim indeksom ve\u0107 postoji!", "Grе\u0161ka", JOptionPane.DEFAULT_OPTION, JOptionPane.ERROR_MESSAGE);
 		}	
 	}
 	
@@ -132,7 +132,7 @@ public class ListaStudenata implements Serializable, ITableModel {
 			this.studenti.add(s);
 		else
 		{
-			JOptionPane.showConfirmDialog(MainWindow.getInstance(), "Student sa unetim indeksom već postoji!", "Grеška", JOptionPane.DEFAULT_OPTION, JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showConfirmDialog(MainWindow.getInstance(), "Student sa unetim indeksom ve\u0107 postoji!", "Grе\u0161ka", JOptionPane.DEFAULT_OPTION, JOptionPane.ERROR_MESSAGE);
 		}	
 	}
 	
@@ -320,7 +320,7 @@ public class ListaStudenata implements Serializable, ITableModel {
 //			for(Predmet p : s.getSlusaPredmete())
 //				ret += p.getSifra() + ", ";
 //		}
-//		else	ret += "Ne sluša niti jedan predmet";
+//		else	ret += "Ne slu\u0161a niti jedan predmet";
 //		return ret;
 //	}
 }

@@ -16,9 +16,9 @@ public class Profesor implements Serializable {
 	public Profesor() {
 		super();
 		this.ime = "Marko";
-		this.prezime = "Marković";
+		this.prezime = "Markovi\u0107";
 		this.datumRodjenja = "01.01.1970.";
-		this.adresaStanovanja = "Bulevar Oslobođenja 1";
+		this.adresaStanovanja = "Bulevar Oslobo\u0111enja 1";
 		this.telefon = "021/000-000";
 		this.eMail = "marko@uns.ac.rs";
 		this.adresaKancelarije = "A1";
@@ -174,7 +174,7 @@ public class Profesor implements Serializable {
 		builder.append(zvanje);
 		//builder.append(", predajePredmete=");
 		//builder.append(predajePredmete);
-		builder.append(".\n\t\tPredaje predmete sa šiframa: ");
+		builder.append(".\n\t\tPredaje predmete sa \u0161iframa: ");
 		
 		if(predajePredmete.isEmpty())		builder.append("Ne predaje niti jedan predmet! ");
 		else

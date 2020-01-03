@@ -22,7 +22,7 @@ class StatusBar extends JPanel implements ActionListener{
 	SimpleDateFormat dateFormat = new SimpleDateFormat( "E  HH:mm:ss  dd.MM.yyyy." );
 	private StatusBar() 
 	{
-		JLabel name = new JLabel("Studentska Služba");
+		JLabel name = new JLabel("Studentska Slu\u017eba");
 	    date = new JLabel(dateFormat.format(new GregorianCalendar().getTime()));
 	    Timer timer = new Timer(1000, this);
 	    timer.start();

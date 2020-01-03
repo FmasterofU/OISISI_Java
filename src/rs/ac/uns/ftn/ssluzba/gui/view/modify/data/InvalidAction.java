@@ -11,6 +11,6 @@ public class InvalidAction extends JOptionPane{
 	
 	public InvalidAction(String error)
 	{
-		JOptionPane.showConfirmDialog(MainWindow.getInstance(), error, "Grеška", JOptionPane.DEFAULT_OPTION, JOptionPane.ERROR_MESSAGE, new ImageIcon("Slike/error_message-32.png"));
+		JOptionPane.showConfirmDialog(MainWindow.getInstance(), error, "Grе\u0161ka", JOptionPane.DEFAULT_OPTION, JOptionPane.ERROR_MESSAGE, new ImageIcon("Slike/error_message-32.png"));
 	}
 }

@@ -18,7 +18,7 @@ public class ListaProfesora implements Serializable, ITableModel {
 		kolone = new ArrayList<String>();
 		kolone.add("Ime");
 		kolone.add("Prezime");
-		kolone.add("Rođen(a)");
+		kolone.add("Ro\u0111en(a)");
 		kolone.add("Adresa");
 		kolone.add("Telefon");
 		kolone.add("e-mail");

@@ -13,7 +13,7 @@ public class DeleteProfesor extends JOptionPane{
 
 	public DeleteProfesor(String id) {
 		Profesor p = Data.getListaProfesora().getProfesor(id);
-		String message = String.format("Da li želite obrisati profesora %s %s sa br. LK %s?", p.getIme(), p.getPrezime(), p.getBrojLK());
+		String message = String.format("Da li \u017eelite obrisati profesora %s %s sa br. LK %s?", p.getIme(), p.getPrezime(), p.getBrojLK());
 		UIManager.put("OptionPane.yesButtonText", "Da");
 		UIManager.put("OptionPane.noButtonText", "Ne");
 		int type = JOptionPane.showConfirmDialog(MainWindow.getInstance(), message, "Brisanje profesora", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
