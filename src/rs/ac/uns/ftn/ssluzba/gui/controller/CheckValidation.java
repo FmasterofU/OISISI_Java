@@ -1,6 +1,8 @@
 package rs.ac.uns.ftn.ssluzba.gui.controller;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.GregorianCalendar;
 
 import rs.ac.uns.ftn.ssluzba.gui.model.ListaPredmeta;
 import rs.ac.uns.ftn.ssluzba.gui.model.ListaProfesora;
@@ -10,6 +12,18 @@ import rs.ac.uns.ftn.ssluzba.gui.view.centerdata.ViewProfesori;
 import rs.ac.uns.ftn.ssluzba.gui.view.centerdata.ViewStudenti;
 
 public class CheckValidation {
+	
+	private static int todayDay, todayMonth, todayYear;
+	static {
+		if(getTodayDay() != -1 && getTodayMonth() != -1 &&	getTodayYear() != -1)
+		{
+			todayDay = getTodayDay();
+			todayMonth = getTodayMonth();
+			todayYear = getTodayYear();
+		}
+		else
+			todayDay = todayMonth = todayYear = 0;
+	}
 	
 		public static boolean checkName(String name, int mode)
 		{
@@ -31,6 +45,8 @@ public class CheckValidation {
 		public static boolean checkDate(String date)
 		{
 			//dd.mm.yyyy.
+			if(todayDay == 0 && todayMonth == 0 && todayYear == 0)
+				return false;
 			
 			date = date.trim();
 			if(date.length() != 11)
@@ -74,9 +90,13 @@ public class CheckValidation {
 				return false;
 			String godina = date.substring(6, 10);
 			int god;
-			if((god = Integer.parseInt(godina)) > 2019)
+			if((god = Integer.parseInt(godina)) > todayYear)
 				return false;
 			if(god < 1930)
+				return false;
+			if(god == todayYear && m > todayMonth)
+				return false;
+			if(god == todayYear && m == todayMonth && d > todayDay)
 				return false;
 			
 			if(m==2 && d > 29)
@@ -97,7 +117,7 @@ public class CheckValidation {
 			if(!checkIndexYear(index))
 				return false;
 			if(Data.getListaStudenata().indexExists(index))		return false;
-			return index.matches("[a-zA-Z]{2}[1-9][0-9]{0,2}/[0-9]{4}");
+			return index.matches("[a-zA-Z\u0161\u0111\u010d\u0107\u017e\u0160\u0110\u010c\u0106\u017d]{2}[1-9][0-9]{0,2}/[0-9]{4}");
 		}
 		
 		public static boolean checkIndexYear(String index)
@@ -110,8 +130,11 @@ public class CheckValidation {
 			}
 			try
 			{
+				SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy");
+				String y = dateFormat.format(new GregorianCalendar().getTime());
+				Double now = Double.parseDouble(y);
 				year = Double.parseDouble(s);
-				if(year <= 2019)
+				if(year <= now)
 					return true;
 				return false;
 			}
@@ -307,5 +330,44 @@ public class CheckValidation {
 			String[] b= {""};
 			String[][] ret = new String[][] {retColName.toArray(a), retQVal.toArray(b)};
 			return ret;
+		}
+		
+		public static int getTodayDay()
+		{
+			SimpleDateFormat dateFormat = new SimpleDateFormat("dd");
+			String day = dateFormat.format(new GregorianCalendar().getTime());
+			int ret;
+			try {
+				ret = Integer.parseInt(day);
+				return ret;
+			}catch(Exception e) {
+				return -1;
+			}
+		}
+		
+		public static int getTodayMonth()
+		{
+			SimpleDateFormat dateFormat = new SimpleDateFormat("MM");
+			String month = dateFormat.format(new GregorianCalendar().getTime());
+			int ret;
+			try {
+				ret = Integer.parseInt(month);
+				return ret;
+			}catch(Exception e) {
+				return -1;
+			}
+		}
+		
+		public static int getTodayYear()
+		{
+			SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy");
+			String year = dateFormat.format(new GregorianCalendar().getTime());
+			int ret;
+			try {
+				ret = Integer.parseInt(year);
+				return ret;
+			}catch(Exception e) {
+				return -1;
+			}
 		}
 }
