@@ -80,7 +80,7 @@ public class EditStudent extends Dialog{
 					if(budget.isSelected())	nf = NacinFinansiranja.BUDŽET;
 					else		nf = NacinFinansiranja.SAMOFINANSIRANJE;
 					//GodinaStudija gs = getGodina(s[8]);
-					Student novi = new Student((String) s[0], (String) s[1], (String) s[2], (String) s[3], (String) s[4], (String) s[5], (String) s[6], (String) s[7], (GodinaStudija) s[8], nf, Double.parseDouble((String) s[9]));
+					Student novi = new Student((String) s[0], (String) s[1], (String) s[2], (String) s[3], (String) s[4], (String) s[5], (String) s[6], (String) s[7], (GodinaStudija) s[8], nf, Double.parseDouble((String) s[9]), old.getSlusaPredmete());
 					StudentController.editStudent(old.getBrIndeksa(), novi);
 					instance.setVisible(false);
 					instance = null;

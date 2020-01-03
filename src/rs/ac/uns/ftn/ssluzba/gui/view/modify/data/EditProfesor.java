@@ -68,7 +68,7 @@ public class EditProfesor extends Dialog{
 						break;
 					}
 				if(check){
-					Profesor novi = new Profesor((String) s[0], (String) s[1], (String) s[2], (String) s[3], (String) s[4], (String) s[5], (String) s[6], (String) s[7], (String) s[8], (String) s[9]);
+					Profesor novi = new Profesor((String) s[0], (String) s[1], (String) s[2], (String) s[3], (String) s[4], (String) s[5], (String) s[6], (String) s[7], (String) s[8], (String) s[9], old.getPredajePredmete());
 					ProfesorController.editProfesor(old.getBrojLK(), novi);
 					instance.setVisible(false);
 					instance = null;
