@@ -12,9 +12,13 @@ import com.sun.glass.events.KeyEvent;
 
 import rs.ac.uns.ftn.ssluzba.gui.controller.CheckValidation;
 import rs.ac.uns.ftn.ssluzba.gui.controller.Data;
+import rs.ac.uns.ftn.ssluzba.gui.model.ListaPredmeta;
+import rs.ac.uns.ftn.ssluzba.gui.model.ListaProfesora;
+import rs.ac.uns.ftn.ssluzba.gui.model.ListaStudenata;
 import rs.ac.uns.ftn.ssluzba.gui.view.CenterBox;
 import rs.ac.uns.ftn.ssluzba.gui.view.MainWindow;
 import rs.ac.uns.ftn.ssluzba.gui.view.ToolBar;
+import rs.ac.uns.ftn.ssluzba.gui.view.centerdata.ThisTableModel;
 import rs.ac.uns.ftn.ssluzba.gui.view.centerdata.ViewPredmeti;
 import rs.ac.uns.ftn.ssluzba.gui.view.centerdata.ViewProfesori;
 import rs.ac.uns.ftn.ssluzba.gui.view.centerdata.ViewSearch;
@@ -184,15 +188,15 @@ public class ThisAbstractAction extends AbstractAction{
 				{
 					case 0:
 						ViewStudenti.inSearchMode=true;
-						ViewSearch.getInstance(0, ViewStudenti.getKeyColumn());
+						ViewSearch.getInstance(0, ViewStudenti.getKeyColumn(), new ThisTableModel<ListaStudenata>((new ListaStudenata(Data.getListaStudenata())).mutableSearch(ToolBar.getSearchQuery())));
 						break;
 					case 1:
 						ViewProfesori.inSearchMode=true;
-						ViewSearch.getInstance(1, ViewProfesori.getKeyColumn());
+						ViewSearch.getInstance(1, ViewProfesori.getKeyColumn(), new ThisTableModel<ListaProfesora>((new ListaProfesora(Data.getListaProfesora())).mutableSearch(ToolBar.getSearchQuery())));
 						break;
 					case 2:
 						ViewPredmeti.inSearchMode=true;
-						ViewSearch.getInstance(2, ViewPredmeti.getKeyColumn());
+						ViewSearch.getInstance(2, ViewPredmeti.getKeyColumn(), new ThisTableModel<ListaPredmeta>((new ListaPredmeta(Data.getListaPredmeta())).mutableSearch(ToolBar.getSearchQuery())));
 						break;
 				}
 			}

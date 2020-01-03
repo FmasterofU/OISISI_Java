@@ -283,6 +283,36 @@ public class ListaStudenata implements Serializable, ITableModel {
 		return null;
 	}
 	
+	public ListaStudenata mutableSearch(String searchQuery) {
+		boolean check[] = new boolean[this.getStudenti().size()];
+		String name = "", surname = "", index = "", mail = "";
+		for(String splits : searchQuery.split(";"))
+		{
+			String parts[] = splits.split(":");
+			if(parts[0].equals("ime"))
+				name = parts[1];
+			else if(parts[0].equals("prezime"))
+				surname = parts[1];
+			else if(parts[0].equals("indeks"))
+				index = parts[1];
+			else if(parts[0].equals("email"))
+				mail = parts[1];
+		}
+		int i = 0;
+		for(Student s : this.getStudenti())
+		{
+			if(s.getIme().equals((name != "") ? name : s.getIme()) && s.getPrezime().equals((surname != "") ? surname : s.getPrezime()) &&
+				s.getBrIndeksa().equals((index != "") ? index : s.getBrIndeksa()) && s.geteMail().equals((mail != "") ? mail : s.geteMail()))
+				check[i] = true;
+			i++;
+		}
+		
+		for(i = check.length - 1; i >= 0; i--)
+			if(!check[i])
+				this.getStudenti().remove(i);
+		return this;
+	}
+	
 //	private String getPredmetIDs(Student s)
 //	{
 //		String ret = "";

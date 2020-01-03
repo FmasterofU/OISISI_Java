@@ -7,7 +7,7 @@ import javax.swing.table.TableRowSorter;
 import rs.ac.uns.ftn.ssluzba.gui.model.ITableModel;
 
 @SuppressWarnings("serial")
-class ThisTableModel<T extends ITableModel> extends DefaultTableModel {
+public class ThisTableModel<T extends ITableModel> extends DefaultTableModel {
 	
 	protected T o;
 	

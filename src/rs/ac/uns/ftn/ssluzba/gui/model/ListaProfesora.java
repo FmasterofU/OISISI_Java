@@ -172,4 +172,9 @@ public class ListaProfesora implements Serializable, ITableModel {
 	public boolean isEmpty() {
 		return profesori.isEmpty();
 	}
+
+	public ListaProfesora mutableSearch(String searchQuery) {
+		// TODO Auto-generated method stub
+		return this;
+	}
 }

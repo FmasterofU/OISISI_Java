@@ -197,4 +197,9 @@ public class ListaPredmeta implements Serializable, ITableModel {
 		}
 		return ret;
 	}
+
+	public ListaPredmeta mutableSearch(String searchQuery) {
+		// TODO Auto-generated method stub
+		return this;
+	}
 }
