@@ -37,6 +37,13 @@ public class AddStudentToPredmet extends Dialog{
 		return instance;
 	}
 	
+	public static void error(String id)
+	{
+		Predmet p = Data.getListaPredmeta().getPredmet(id);
+		String message = "Ne postoje studenti sa " + p.getGodinaStudija().name() + " godine koji ne slušaju ovaj predmet!";
+		JOptionPane.showConfirmDialog(MainWindow.getInstance(), message, "Grеška", JOptionPane.DEFAULT_OPTION, JOptionPane.ERROR_MESSAGE, new ImageIcon("Slike/error_message-32.png"));
+	}
+	
 	private AddStudentToPredmet(String id)
 	{
 		super("Dodavanje studenta na predmet", "Potvrda", "Odustanak");

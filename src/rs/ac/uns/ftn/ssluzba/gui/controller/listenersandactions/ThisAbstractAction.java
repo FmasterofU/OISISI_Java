@@ -218,12 +218,14 @@ public class ThisAbstractAction extends AbstractAction{
 			String id;
 			if(ViewSearch.getRootTab()==-1) id = ViewPredmeti.getInstance().getSelectedKey();
 			else id = ViewSearch.instanceIfExists().getSelectedKey();
-			if(id != null && !Data.getListaPredmeta().getStudentIndexesNotListeningPredmet(Data.getListaPredmeta().getPredmet(id)).isEmpty())		AddStudentToPredmet.getInstance(id).setVisible(true);
+			if(Data.getListaPredmeta().getStudentIndexesNotListeningPredmet(Data.getListaPredmeta().getPredmet(id)).isEmpty() && id != null)		AddStudentToPredmet.error(id);
+			else if(id != null /*&& !Data.getListaPredmeta().getStudentIndexesNotListeningPredmet(Data.getListaPredmeta().getPredmet(id)).isEmpty()*/)		AddStudentToPredmet.getInstance(id).setVisible(true);
 		}else if(name.equals("remstud")){
 			String id;
 			if(ViewSearch.getRootTab()==-1) id = ViewPredmeti.getInstance().getSelectedKey();
 			else id = ViewSearch.instanceIfExists().getSelectedKey();
-			if(id != null && !Data.getListaPredmeta().getPredmet(id).getStudenti().isEmpty())		DeleteStudentFromPredmet.getInstance(id).setVisible(true);
+			if(Data.getListaPredmeta().getPredmet(id).getStudenti().isEmpty())		DeleteStudentFromPredmet.error(id);
+			else if(id != null/* && !Data.getListaPredmeta().getPredmet(id).getStudenti().isEmpty()*/)		DeleteStudentFromPredmet.getInstance(id).setVisible(true);
 		}
 	}
 	

@@ -37,6 +37,13 @@ public class DeleteStudentFromPredmet extends Dialog{
 		return instance;
 	}
 	
+	public static void error(String id)
+	{
+		//Predmet p = Data.getListaPredmeta().getPredmet(id);
+		String message = "Ne postoje studenti koji slušaju ovaj predmet!";
+		JOptionPane.showConfirmDialog(MainWindow.getInstance(), message, "Grеška", JOptionPane.DEFAULT_OPTION, JOptionPane.ERROR_MESSAGE, new ImageIcon("Slike/error_message-32.png"));
+	}
+	
 	private DeleteStudentFromPredmet(String id)
 	{
 		super("Brisanje studenta sa predmeta", "Potvrda", "Odustanak");
