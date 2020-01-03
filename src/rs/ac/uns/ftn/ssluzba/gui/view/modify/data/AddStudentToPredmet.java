@@ -47,8 +47,8 @@ public class AddStudentToPredmet extends Dialog{
 	private AddStudentToPredmet(String id)
 	{
 		super("Dodavanje studenta na predmet", "Potvrda", "Odustanak");
-		setSize(300,300);
-		setLocationRelativeTo(MainWindow.getInstance());
+		super.setSize(300,200);
+		super.setLocationRelativeTo(MainWindow.getInstance());
 		
 		old = Data.getListaPredmeta().getPredmet(id);
 		listener.setInitialData(old);

@@ -49,8 +49,8 @@ public class DeleteStudentFromPredmet extends Dialog{
 		super("Brisanje studenta sa predmeta", "Potvrda", "Odustanak");
 		
 		old = Data.getListaPredmeta().getPredmet(id);
-		setSize(300,300);
-		setLocationRelativeTo(MainWindow.getInstance());
+		super.setSize(300,200);
+		super.setLocationRelativeTo(MainWindow.getInstance());
 		listener.setInitialData(old);
 		
 		addWindowListener(new WindowAdapter() {
