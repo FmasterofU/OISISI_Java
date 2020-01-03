@@ -176,7 +176,24 @@ public class ThisAbstractAction extends AbstractAction{
 					}
 			}
 		else if(name.equals("search")){
-			ViewSearch.getInstance(0, 0);
+			//ViewSearch.getInstance(0, 0);
+			int pane = CenterBox.getInstance().getSelectedIndex();
+			if(CheckValidation.checkSearchQuery(ToolBar.getSearchQuery(),pane))
+			{
+				CenterBox.reset(pane);
+				switch(pane)
+				{
+					case 0:
+						ViewSearch.getInstance(0, ViewStudenti.getKeyColumn());
+						break;
+					case 1:
+						ViewSearch.getInstance(1, ViewProfesori.getKeyColumn());
+						break;
+					case 2:
+						ViewSearch.getInstance(2, ViewPredmeti.getKeyColumn());
+						break;
+				}
+			}
 			//TODO
 			/*int pane = CenterBox.getInstance().getSelectedIndex();
 			if(CheckValidation.checkSearchQuery(ToolBar.getSearchQuery(),pane)){

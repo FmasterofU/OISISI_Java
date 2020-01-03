@@ -8,7 +8,7 @@ public class ViewStudenti extends ViewTableCenter {
 	private static final long serialVersionUID = -4008708277153917046L;
 	private static ViewStudenti instance = null;
 	private ThisTableModel<ListaStudenata> model = null;
-	public static final int KEY_COLUMN = 0;
+	private static final int KEY_COLUMN = 0;
 	public static boolean inSearchMode = false;
 	public static final int[] SEARCH_COLUMNS = {1, 2, 0, 9};
 	
@@ -76,5 +76,9 @@ public class ViewStudenti extends ViewTableCenter {
 		int row = table.getSelectedRow(); 
 		if(row == -1)	return null;
 		return (String) table.getValueAt(row, KEY_COLUMN);
+	}
+	
+	public static int getKeyColumn(){
+		return KEY_COLUMN;
 	}
 }

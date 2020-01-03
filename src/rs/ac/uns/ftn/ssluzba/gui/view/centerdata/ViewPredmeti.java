@@ -1,6 +1,5 @@
 package rs.ac.uns.ftn.ssluzba.gui.view.centerdata;
 
-import java.awt.Color;
 import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -20,7 +19,7 @@ public class ViewPredmeti extends ViewTableCenter {
 
 	private static ViewPredmeti instance = null;
 	private ThisTableModel<ListaPredmeta> model = null;
-	static final int KEY_COLUMN = 0; //sifra predmeta
+	private static final int KEY_COLUMN = 0; //sifra predmeta
 	static final int STUDENTI_BUTTON_COLUMN = 5; // kolona studenti
 	public static boolean inSearchMode = false;
 	public static final int[] SEARCH_COLUMNS = {0, 1, 2, 3};
@@ -99,5 +98,9 @@ public class ViewPredmeti extends ViewTableCenter {
 		int row = table.getSelectedRow();
 		if(row==-1) return null;
 		return (String) table.getValueAt(table.getSelectedRow(), KEY_COLUMN);
+	}
+	
+	public static int getKeyColumn(){
+		return KEY_COLUMN;
 	}
 }
