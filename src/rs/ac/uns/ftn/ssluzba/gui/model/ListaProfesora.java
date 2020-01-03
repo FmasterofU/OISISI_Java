@@ -176,7 +176,8 @@ public class ListaProfesora implements Serializable, ITableModel {
 
 	public ListaProfesora mutableSearch(String searchQuery) {
 		String[][] magic = CheckValidation.tokenizeSearchQuery(searchQuery, 1);
-		for(Profesor prof : this.profesori) 
+		Profesor[] p = {new Profesor()};
+		for(Profesor prof : this.profesori.toArray(p)) 
 			for(int i=0;i<magic[1].length;i++)
 				if(!((String)prof.get(kolone.indexOf(magic[0][i]))).equals(magic[1][i])) {
 					this.profesori.remove(prof);

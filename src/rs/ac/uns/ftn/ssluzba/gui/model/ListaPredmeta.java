@@ -201,7 +201,8 @@ public class ListaPredmeta implements Serializable, ITableModel {
 
 	public ListaPredmeta mutableSearch(String searchQuery) {
 		String[][] magic = CheckValidation.tokenizeSearchQuery(searchQuery, 1);
-		for(Predmet pred : this.predmeti) 
+		Predmet[] p = {new Predmet()};
+		for(Predmet pred : this.predmeti.toArray(p)) 
 			for(int i=0;i<magic[1].length;i++)
 				if(!((String)pred.get(kolone.indexOf(magic[0][i]))).equals(magic[1][i])){
 					this.predmeti.remove(pred);
