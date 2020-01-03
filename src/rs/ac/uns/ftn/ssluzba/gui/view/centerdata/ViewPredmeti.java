@@ -13,6 +13,7 @@ import javax.swing.table.TableCellRenderer;
 import rs.ac.uns.ftn.ssluzba.gui.controller.Data;
 import rs.ac.uns.ftn.ssluzba.gui.model.ListaPredmeta;
 import rs.ac.uns.ftn.ssluzba.gui.view.modify.data.DeleteStudentFromPredmet;
+import rs.ac.uns.ftn.ssluzba.gui.view.modify.data.InvalidAction;
 
 @SuppressWarnings("serial")
 public class ViewPredmeti extends ViewTableCenter {
@@ -74,7 +75,9 @@ public class ViewPredmeti extends ViewTableCenter {
 					button.addActionListener(new ActionListener() {
                         public void actionPerformed(ActionEvent arg0) {
                         	String id = getSelectedKey();
-                        	if(id != null && !Data.getListaPredmeta().getPredmet(id).getStudenti().isEmpty())		DeleteStudentFromPredmet.getInstance(id).setVisible(true);
+                        	if(id != null && Data.getListaPredmeta().getPredmet(id).getStudenti().isEmpty())		DeleteStudentFromPredmet.error(id);
+                			else if(id != null)		DeleteStudentFromPredmet.getInstance(id).setVisible(true);
+                			else if(id==null)	new InvalidAction("Niste izabrali predmet sa kojeg želite ukloniti studenta!");
                         }
                     });
 					return button;
