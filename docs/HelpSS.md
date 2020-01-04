@@ -3,7 +3,7 @@
 
 # HotKeys
 
-- New `CTRL+N`
+- New ```CTRL+N```
 - Close `CTRL+Q`
 - Edit `CTRL+E`
 - Delete `CRTL+D`
@@ -19,7 +19,7 @@
 
 # Valid Field inputs (RegEx definition follows)
 
-- Name, Surname `[a-zA-ZŠĐČĆŽšđčćž ]+`
+- Name, Surname ```[a-zA-ZŠĐČĆŽšđčćž ]+```
 
 
 
