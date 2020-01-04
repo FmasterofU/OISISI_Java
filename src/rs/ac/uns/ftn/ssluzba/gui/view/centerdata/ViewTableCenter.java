@@ -1,6 +1,5 @@
 package rs.ac.uns.ftn.ssluzba.gui.view.centerdata;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Font;
@@ -17,12 +16,12 @@ import javax.swing.table.TableColumnModel;
 
 /**
  * @author fmaster rammba
- * @implNote Concrete Table class in our use case, extending {@link JPanel} containing {@link JScrollPane} with {@link BorderLayout} containing {@link JPanel} with {@link GridLayout} containing {@link JTable}.
+ * @implNote Concrete Table class in our use case, extending {@link JPanel} with {@link GridLayout} containing {@link JTable}.
  */
 @SuppressWarnings("serial")
 class ViewTableCenter extends JPanel {
 	
-	protected JPanel panel;
+	//protected JPanel panel;
 	protected JTable table;
 	
 	/**
@@ -31,12 +30,8 @@ class ViewTableCenter extends JPanel {
 	 */
 	public ViewTableCenter() {
 		super();
-		setLayout(new BorderLayout());
-		this.setOpaque(true);
-		this.setBackground(Color.WHITE);
-		panel = new JPanel();
-		panel.setLayout(new GridLayout());
-		panel.setMaximumSize(this.getSize());
+		this.setLayout(new GridLayout());
+		this.setMaximumSize(this.getSize());
         table = new JTable() {
         	@Override
         	public Component prepareRenderer(TableCellRenderer renderer, int row, int column) {
@@ -60,24 +55,22 @@ class ViewTableCenter extends JPanel {
         table.setRowSelectionAllowed(true);
 		table.setColumnSelectionAllowed(true);
 		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		table.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
+		//table.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
 		table.getTableHeader().setFont(new Font("Dialog", Font.PLAIN, 13));
 		//table.getTableHeader().setPreferredSize(new Dimension(CenterBox.getInstance().getWidth(), table.getTableHeader().getSize().height+table.getTableHeader().getFont().getSize()-12)); //12 default font size
 		table.setFont(new Font("Dialog", Font.PLAIN, 13));
 		table.setRowHeight(table.getRowHeight()+table.getFont().getSize()-12); //12 default font size
-        //JScrollPane tableContainer = new JScrollPane(table);
-        //panel.add(tableContainer);
-        panel.add(table);
-        add(new JScrollPane(this.panel), BorderLayout.CENTER);
+        JScrollPane tableContainer = new JScrollPane(table);
+        this.add(tableContainer);
 	}
 	
 	/**
-	 * @deprecated now by default using setAutoResizeMode set to AUTO_RESIZE_ALL_COLUMNS from {@link JTable}
+	 * @implNote still testing this feature
 	 */
 	public void resizeColumnWidth() {
 	    final TableColumnModel columnModel = table.getColumnModel();
 	    for (int column=0; column<table.getColumnCount(); column++) {
-	        int width=15; // Min width 30 back then
+	        int width=20; // Min width 30 back then
 	        for (int row=0; row<table.getRowCount(); row++) {
 	            TableCellRenderer renderer = table.getCellRenderer(row, column);
 	            Component comp = table.prepareRenderer(renderer, row, column);

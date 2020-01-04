@@ -19,7 +19,7 @@ public class ViewProfesori extends ViewTableCenter {
 	private ViewProfesori() {
 		model = new ThisTableModel<ListaProfesora>(Data.getListaProfesora());
 		table.setModel(model);
-		//resizeColumnWidth();
+		resizeColumnWidth();
 		table.setRowSorter(model.getSorter());
 	}
 

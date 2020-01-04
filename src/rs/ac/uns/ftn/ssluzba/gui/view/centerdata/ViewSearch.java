@@ -110,6 +110,7 @@ public class ViewSearch extends ViewTableCenter {
 			
 			TableCellRenderer buttonRenderer = new JTableButtonRenderer();
 			table.setModel(model);
+			resizeColumnWidth();
 			table.getColumn("Studenti").setCellRenderer(buttonRenderer);
 			table.addMouseListener(new JTableButtonMouseListener(table));
 		}

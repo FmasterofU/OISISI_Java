@@ -39,7 +39,7 @@ public class ToolBar extends JPanel {
 	private ToolBar() {
 		BoxLayout box = new BoxLayout(this, BoxLayout.X_AXIS);
 		this.setLayout(box);
-		this.add(Box.createHorizontalStrut(10));
+		this.add(Box.createHorizontalStrut(5));
 
 		ThisAbstractAction actNew = new ThisAbstractAction("new");
 		JButton buttonAdd = new JButton(actNew);

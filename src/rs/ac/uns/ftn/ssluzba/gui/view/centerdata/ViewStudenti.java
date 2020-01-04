@@ -19,7 +19,7 @@ public class ViewStudenti extends ViewTableCenter {
 	private ViewStudenti() {
 		model = new ThisTableModel<ListaStudenata>(Data.getListaStudenata());
 		table.setModel(model);
-		//resizeColumnWidth();
+		resizeColumnWidth();
 		table.setRowSorter(model.getSorter());
 		/*
 		table.getTableHeader().addMouseListener(new MouseListener() {
