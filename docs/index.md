@@ -10,7 +10,7 @@ This is a site for an application developed by Radoš Milićev and Igor Šikulja
 
 [Documentation](https://fmasterofu.github.io/OISISI_Java/doc/index.html)
 
-[Product License](LICENSE.copy)
+[Product License](LICENSE.md)
 
 
 # Our GitHub Accounts:
