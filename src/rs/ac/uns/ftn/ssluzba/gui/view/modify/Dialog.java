@@ -18,7 +18,7 @@ import rs.ac.uns.ftn.ssluzba.gui.view.MainWindow;
 
 /**
  * @author rammba fmaster
- * @implNote Concrete Dialog class four our use case, extending {@link JDialog}
+ * @implNote Concrete Dialog class for our use case, extending {@link JDialog}
  */
 @SuppressWarnings("serial")
 public class Dialog extends JDialog {

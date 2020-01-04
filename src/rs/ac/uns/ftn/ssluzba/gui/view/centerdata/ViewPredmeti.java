@@ -88,7 +88,7 @@ public class ViewPredmeti extends ViewTableCenter {
 		table.setModel(model);
 		table.getColumn("Studenti").setCellRenderer(buttonRenderer);
 		table.addMouseListener(new JTableButtonMouseListener(table));
-		resizeColumnWidth();
+		//resizeColumnWidth();
 		table.setRowSorter(model.getSorter());
 		}
 

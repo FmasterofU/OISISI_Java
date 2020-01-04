@@ -12,16 +12,23 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableCellRenderer;
-import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableColumnModel;
 
+/**
+ * @author fmaster rammba
+ * @implNote Concrete Table class in our use case, extending {@link JPanel} containing {@link JScrollPane} with {@link BorderLayout} containing {@link JPanel} with {@link GridLayout} containing {@link JTable}.
+ */
 @SuppressWarnings("serial")
 class ViewTableCenter extends JPanel {
 	
 	protected JPanel panel;
 	protected JTable table;
 	
+	/**
+	 * Sets up everything written in Implementation Node of this class
+	 * @see ViewTableCenter
+	 */
 	public ViewTableCenter() {
 		super();
 		setLayout(new BorderLayout());
@@ -53,6 +60,7 @@ class ViewTableCenter extends JPanel {
         table.setRowSelectionAllowed(true);
 		table.setColumnSelectionAllowed(true);
 		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		table.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
 		table.getTableHeader().setFont(new Font("Dialog", Font.PLAIN, 13));
 		//table.getTableHeader().setPreferredSize(new Dimension(CenterBox.getInstance().getWidth(), table.getTableHeader().getSize().height+table.getTableHeader().getFont().getSize()-12)); //12 default font size
 		table.setFont(new Font("Dialog", Font.PLAIN, 13));
@@ -62,10 +70,13 @@ class ViewTableCenter extends JPanel {
         add(new JScrollPane(this.panel), BorderLayout.CENTER);
 	}
 	
+	/**
+	 * @deprecated now by default using setAutoResizeMode set to AUTO_RESIZE_ALL_COLUMNS from {@link JTable}
+	 */
 	public void resizeColumnWidth() {
 	    final TableColumnModel columnModel = table.getColumnModel();
 	    for (int column=0; column<table.getColumnCount(); column++) {
-	        int width=10; // Min width 30 back then
+	        int width=15; // Min width 30 back then
 	        for (int row=0; row<table.getRowCount(); row++) {
 	            TableCellRenderer renderer = table.getCellRenderer(row, column);
 	            Component comp = table.prepareRenderer(renderer, row, column);
@@ -76,37 +87,6 @@ class ViewTableCenter extends JPanel {
 	        columnModel.getColumn(column).setPreferredWidth(width);
 	        
 	    }
-	    table.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
 	}
-	
-	public void search(int[] indexes, String[] criteria) {
-		((DefaultTableModel) table.getModel()).removeRow(0);;
-		/*for(int  i : indexes) System.out.println(i);
-		System.out.flush();
-		for(String s : criteria) System.out.println(s);
-		int rowNum=table.getRowCount();
-		int cellCheckNum=0;
-		for(int i : indexes) 
-			if(cellCheckNum<i)
-				cellCheckNum=i;
-		System.out.println(cellCheckNum);
-		for(int i=0;i<rowNum;i++) {
-			boolean check = false;
-			for(int j=0;j<cellCheckNum;j++) {
-				if(criteria[j].isEmpty()) continue;
-				String s= (String)table.getValueAt(i, j);
-				System.out.println("@"+s+j);
-				if(((String)table.getValueAt(i, j)).equals(criteria[j])==false) {
-					System.out.println("unutra");
-					check=false;
-					break;
-				}else check=true;
-				System.out.println("@"+j+" "+check);
-			}
-			System.out.println("@"+check);
-			if(check) {
-				System.out.println(((DefaultTableModel)table.getModel()).getRowCount());
-				((DefaultTableModel) table.getModel()).removeRow(i);}
-		}*/
-	}
+
 }
