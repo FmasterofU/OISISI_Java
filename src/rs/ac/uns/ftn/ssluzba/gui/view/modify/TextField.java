@@ -22,6 +22,7 @@ public abstract class TextField extends JTextField implements IHighlight {
 	
 	/**
 	 * Construct, delegate, setup Highlighter
+	 * @param i - passed to {@link JTextField} constructor 
 	 */
 	public TextField(int i) {
 		super(i);
@@ -30,6 +31,7 @@ public abstract class TextField extends JTextField implements IHighlight {
 	
 	/**
 	 * Construct, delegate, setup Highlighter
+	 * @param i - passed to {@link JTextField} constructor 
 	 */
 	public TextField(String i) {
 		super(i);

@@ -11,7 +11,7 @@ import rs.ac.uns.ftn.ssluzba.gui.view.modify.IHighlight;
 /**
  * @author fmaster
  * @implNote Listener class for highlighting
- * @param <T> extending {@link IHighlight} interface
+ * @param T extending {@link IHighlight} interface
  */
 public class HighlightListener<T extends IHighlight> implements DocumentListener, ItemListener {
 

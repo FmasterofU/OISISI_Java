@@ -11,6 +11,7 @@ import rs.ac.uns.ftn.ssluzba.gui.view.centerdata.ViewPredmeti;
 import rs.ac.uns.ftn.ssluzba.gui.view.centerdata.ViewProfesori;
 import rs.ac.uns.ftn.ssluzba.gui.view.centerdata.ViewStudenti;
 import rs.ac.uns.ftn.ssluzba.gui.view.modify.ComboBox;
+import rs.ac.uns.ftn.ssluzba.gui.view.modify.TextField;
 
 /**
  * @author rammmba fmaster
@@ -238,7 +239,7 @@ public class CheckValidation {
 
 	/**
 	 * for {@link ComboBox} highlighting
-	 * @param selectedItem
+	 * @param selectedItem selected item in ComboBox
 	 * @return iSelected (isNotNull)
 	 */
 	public static boolean checkSelection(Object selectedItem) {
@@ -281,9 +282,15 @@ public class CheckValidation {
 		return ret;
 	}
 
-	public static boolean checkSearchQuery(String searchQuery, int pane) {
+	/**
+	 * @author fmaster
+	 * @param searchQuery - input from Search {@link TextField}
+	 * @param tab - in tab (0 - Student/1 - Professor/2 -Subject)
+	 * @return isValid
+	 */
+	public static boolean checkSearchQuery(String searchQuery, int tab) {
 		if(searchQuery.isEmpty()) return false;
-		switch(pane) {
+		switch(tab) {
 		case 0: return searchQuery.matches("(ime:[^;:]+;)?(prezime:[^;:]+;)?(indeks:[^;:]+;)?(email:[^;:]+;)?"); 
 		case 1: return searchQuery.matches("(ime:[^;:]+;)?(prezime:[^;:]+;)?(email:[^;:]+;)?(brlk:[^;:]+;)?");
 		case 2: return searchQuery.matches("(sifra:[^;:]+;)?(naziv:[^;:]+;)?(semestar:[^;:]+;)?(godina:[^;:]+;)?");
@@ -293,7 +300,7 @@ public class CheckValidation {
 
 	/**
 	 * @author fmaster
-	 * @param query
+	 * @param query - query String validated by checkSearchQuery(String searchQuery, int tab)
 	 * @param tab - search in tab (0 - Student/1 - Professor/2 -Subject)
 	 * @return - String Matrix - first row are column names, second are requested values for corresponding column (by name)
 	 */

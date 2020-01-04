@@ -13,7 +13,7 @@ import rs.ac.uns.ftn.ssluzba.gui.controller.listenersandactions.HighlightListene
  * @implNote Generalized Highlightable ComboBox
  * implements {@link IHighlight}
  * extends {@link JComboBox}
- * @param <T> - data type
+ * @param T - data type
  */
 @SuppressWarnings("serial")
 public class ComboBox<T> extends JComboBox<T> implements IHighlight {

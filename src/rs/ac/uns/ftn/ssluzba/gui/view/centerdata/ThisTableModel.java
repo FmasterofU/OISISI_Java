@@ -10,7 +10,7 @@ import rs.ac.uns.ftn.ssluzba.gui.model.ITableModel;
 
 /**
  * @author fmaster
- * @param <T> - model type (list type)
+ * @param T - model type (list type)
  * @implNote Generalized {@link DefaultTableModel} for models implementing {@link ITableModel}
  * <h1>KNOWN ISSUE</h1>
  * <p>Since the overridden methods getColumnCount() and getRowCount() return 0 the first time they are called in super constructor, it seems that the size of internal {@link Vector} in {@link DefaultTableModel} never resets to values !=0 which causes problems with any functions that try to directly modify Table Model, such as removeRow(int row) method from {@link DefaultTableModel}. The tried fix in constructor of this class doesn't work. Good Luck!</p>
@@ -37,8 +37,8 @@ public class ThisTableModel<T extends ITableModel> extends DefaultTableModel {
 	}
 	
 	/**
-	 * Overridden method from {@link DefaultTableModel} to work with {@link ThisTableModel} field <T> o
-	 * <h1>CAUSES PROBLEM - see ThisTableModel<h1>
+	 * @implNote Overridden method from {@link DefaultTableModel} to work with {@link ThisTableModel} field {@literal <T>} o
+	 * <h1>CAUSES PROBLEM - see ThisTableModel</h1>
 	 * @see ThisTableModel
 	 */
 	@Override
@@ -48,8 +48,8 @@ public class ThisTableModel<T extends ITableModel> extends DefaultTableModel {
 	}
 
 	/**
-	 * Overridden method from {@link DefaultTableModel} to work with {@link ThisTableModel} field <T> o
-	 * <h1>CAUSES PROBLEM - see ThisTableModel<h1>
+	 * @implNote Overridden method from {@link DefaultTableModel} to work with {@link ThisTableModel} field {@literal <T>} o
+	 * <h1>CAUSES PROBLEM - see ThisTableModel</h1>
 	 * @see ThisTableModel
 	 */
 	@Override
@@ -59,7 +59,7 @@ public class ThisTableModel<T extends ITableModel> extends DefaultTableModel {
 	}
 
 	/**
-	 * Overridden method from {@link DefaultTableModel} to work with {@link ThisTableModel} field <T> o
+	 * Overridden method from {@link DefaultTableModel} to work with {@link ThisTableModel} field {@literal <T>} o
 	 */
 	@Override
 	public Object getValueAt(int rowIndex, int columnIndex) {
@@ -67,7 +67,7 @@ public class ThisTableModel<T extends ITableModel> extends DefaultTableModel {
 	}
 	
 	/**
-	 * Overridden method from {@link DefaultTableModel} to work with {@link ThisTableModel} field <T> o
+	 * Overridden method from {@link DefaultTableModel} to work with {@link ThisTableModel} field {@literal <T>} o
 	 */
 	@Override
 	public boolean isCellEditable(int rowIndex, int columnIndex){
@@ -75,7 +75,7 @@ public class ThisTableModel<T extends ITableModel> extends DefaultTableModel {
 	}
 
 	/**
-	 * Overridden method from {@link DefaultTableModel} to work with {@link ThisTableModel} field <T> o
+	 * Overridden method from {@link DefaultTableModel} to work with {@link ThisTableModel} field {@literal <T>} o
 	 */
 	@Override
 	public String getColumnName(int col) {
@@ -83,7 +83,7 @@ public class ThisTableModel<T extends ITableModel> extends DefaultTableModel {
 	}
 
 	/**
-	 * Overridden method from {@link DefaultTableModel} to work with {@link ThisTableModel} field <T> o
+	 * Overridden method from {@link DefaultTableModel} to work with {@link ThisTableModel} field {@literal <T>} o
 	 */
 	@Override
 	public Class<?> getColumnClass(int columnIndex) {
