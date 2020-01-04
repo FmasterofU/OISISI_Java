@@ -1,13 +1,19 @@
 package rs.ac.uns.ftn.ssluzba.gui.model;
 
+import java.awt.TextField;
 import java.io.Serializable;
 import java.util.ArrayList;
 
 import javax.swing.JOptionPane;
 
+import com.sun.org.apache.xml.internal.security.keys.content.KeyValue;
+
 import rs.ac.uns.ftn.ssluzba.gui.controller.ModelAction;
 import rs.ac.uns.ftn.ssluzba.gui.view.MainWindow;
 
+/**
+ * list of all data for {@link Student}
+ */
 public class ListaStudenata implements Serializable, ITableModel {
 	
 	private static final long serialVersionUID = 3654331325580773015L;
@@ -42,6 +48,10 @@ public class ListaStudenata implements Serializable, ITableModel {
 			studenti.add(s);
 	}
 	
+	/**
+	 * @param index - potentially keyValue for {@link Student} (index)
+	 * @return - true if {@link Student} with index exists
+	 */
 	public boolean indexExists(String index)
 	{
 		for(Student s : studenti)
@@ -136,6 +146,10 @@ public class ListaStudenata implements Serializable, ITableModel {
 		}	
 	}
 	
+	/**
+	 * deletes {@link Student} with keyValue from {@link ListaStudenata}
+	 * @param brI - {@link KeyValue} for {@link Student}
+	 */
 	public void deleteStudent(String brI)
 	{
 		for(Student s : studenti)
@@ -206,6 +220,11 @@ public class ListaStudenata implements Serializable, ITableModel {
 		return builder.toString();
 	}
 
+	/**
+	 * deletes {@link Predmet} p from {@link ListaStudenata}
+	 * @param p - deleting {@link Predmet}
+	 * @param ma - Action from view to model
+	 */
 	public void deletePredmetInList(Predmet p, ModelAction ma) {
 		if(ma == ModelAction.DELETE_S)
 		{
@@ -241,6 +260,11 @@ public class ListaStudenata implements Serializable, ITableModel {
 		}
 	}
 
+	/**
+	 * @param sifra - keyValue for editing {@link Student}
+	 * @param novi - new {@link Student} that will override old
+	 * @param ma - Action from view to model
+	 */
 	public void editPredmetInList(String sifra, Predmet novi, ModelAction ma) {
 		ArrayList<Student> stud = novi.getStudenti();
 		for(Student s : studenti)
@@ -257,6 +281,9 @@ public class ListaStudenata implements Serializable, ITableModel {
 		return studenti.isEmpty();
 	}
 	
+	/**
+	 * @return - {@link ArrayList} of keyValues for all {@link Student}s
+	 */
 	public ArrayList<String> getListOfStudentIndexes()
 	{
 		ArrayList<String> ret = new ArrayList<String>();
@@ -265,6 +292,10 @@ public class ListaStudenata implements Serializable, ITableModel {
 		return ret;
 	}
 	
+	/**
+	 * @param god - year on faculty
+	 * @return - {@link ArrayList} of keyValues for all {@link Student}s on god
+	 */
 	public ArrayList<String> getListOfStudentIndexes(GodinaStudija god)
 	{
 		ArrayList<String> ret = new ArrayList<String>();
@@ -274,6 +305,10 @@ public class ListaStudenata implements Serializable, ITableModel {
 		return ret;
 	}
 	
+	/**
+	 * @param key - potentially keyValue for {@link Student}
+	 * @return - {@link Student} with keyValue key or null
+	 */
 	public Student getStudentByKey(String key)
 	{
 		for(Student s : studenti)
@@ -282,6 +317,10 @@ public class ListaStudenata implements Serializable, ITableModel {
 		return null;
 	}
 	
+	/**
+	 * @param searchQuery - input from Search {@link TextField}
+	 * @return - {@link ListaStudenata} with {@link Student}s who fulfills data in search
+	 */
 	public ListaStudenata mutableSearch(String searchQuery) {
 		boolean check[] = new boolean[this.getStudenti().size()];
 		String name = "", surname = "", index = "", mail = "";

@@ -11,7 +11,6 @@ import rs.ac.uns.ftn.ssluzba.gui.controller.ModelAction;
 
 /**
  *		list of all data for {@link Predmet}
- *
  */
 public class ListaPredmeta implements Serializable, ITableModel {
 
@@ -51,7 +50,11 @@ public class ListaPredmeta implements Serializable, ITableModel {
 		predmeti.add(predmet);
 	}
 	
-	 public Predmet getPredmet(String sifra) {
+	 /**
+	 * @param sifra - keyValue for searching {@link Predmet}
+	 * @return - {@link Predmet} with sifra or null
+	 */
+	public Predmet getPredmet(String sifra) {
 		 for(Predmet p : predmeti)
 			 if(p.getSifra().equals(sifra))
 				 return p;
@@ -247,7 +250,7 @@ public class ListaPredmeta implements Serializable, ITableModel {
 
 	/**
 	 * @param searchQuery - input from Search {@link TextField}
-	 * @return
+	 * @return {@link ListaPredmeta} with {@link Predmet}s which fulfills data in search
 	 */
 	public ListaPredmeta mutableSearch(String searchQuery) {
 		String[][] magic = CheckValidation.tokenizeSearchQuery(searchQuery, 1);

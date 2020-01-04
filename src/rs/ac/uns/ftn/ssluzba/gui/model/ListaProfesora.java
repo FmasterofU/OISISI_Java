@@ -1,5 +1,6 @@
 package rs.ac.uns.ftn.ssluzba.gui.model;
 
+import java.awt.TextField;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -8,6 +9,9 @@ import rs.ac.uns.ftn.ssluzba.gui.controller.CheckValidation;
 import rs.ac.uns.ftn.ssluzba.gui.controller.Data;
 import rs.ac.uns.ftn.ssluzba.gui.controller.ModelAction;
 
+/**
+ * list of all data for {@link Profesor}
+ */
 public class ListaProfesora implements Serializable, ITableModel {
 
 	private static final long serialVersionUID = 8001823155996613518L;
@@ -51,14 +55,22 @@ public class ListaProfesora implements Serializable, ITableModel {
 		profesori.add(profesor);
 	}
 
-	 public Profesor getProfesor(String lk) {
+	 /**
+	 * @param lk - keyValue for {@link Profesor} (ID card)
+	 * @return - {@link Profesor} with lk or null
+	 */
+	public Profesor getProfesor(String lk) {
 		 for(Profesor p : profesori)
 			 if(p.getBrojLK().equals(lk))
 				 return p;
 		 return null;
 	 }
 	 
-	 public void changeProfesor(String id, Profesor novi) {
+	 /**
+	 * @param id - keyValue for editing {@link Profesor}
+	 * @param novi - new {@link Profesor} that overrides old
+	 */
+	public void changeProfesor(String id, Profesor novi) {
 		 for(Profesor p : profesori)
 		 {
 			 if(p.getBrojLK().equals(id))
@@ -129,12 +141,19 @@ public class ListaProfesora implements Serializable, ITableModel {
 		return kolone.get(col);
 	}
 
+	/**
+	 * @return - {@link ArrayList} with unique {@link Profesor} keyValues
+	 */
 	public ArrayList<String> getUniqueProfList() {
 		ArrayList<String> ret = new ArrayList<String>();
 		for(Profesor p : profesori) ret.add(p.getIme()+ " "+ p.getPrezime()+" PK"+p.getBrojLK().toString()); 
 		return ret;
 	}
 
+	/**
+	 * @param id - potentially {@link Profesor} keyValue
+	 * @return - true if {@link Profesor} with id exists
+	 */
 	public boolean profesorIDExists(String id) {
 		for(Profesor p : profesori)
 			if(p.getBrojLK().equals(id))
@@ -142,6 +161,11 @@ public class ListaProfesora implements Serializable, ITableModel {
 		return false;
 	}
 
+	/**
+	 * deletes {@link Predmet} p from {@link ListaProfesora}
+	 * @param p - deleting {@link Predmet}
+	 * @param ma - Action from view to model
+	 */
 	public void deletePredmetInList(Predmet p, ModelAction ma) {
 		for(Profesor prof : profesori)
 			if(prof.getPredajePredmete()!=null)
@@ -152,6 +176,11 @@ public class ListaProfesora implements Serializable, ITableModel {
 					}
 	}
 
+	/**
+	 * @param sifra - keyValue for {@link Predmet}
+	 * @param novi - editing {@link Predmet}
+	 * @param ma - Action from view to model
+	 */
 	public void editPredmetInList(String sifra, Predmet novi, ModelAction ma) {
 		for(Profesor prof : profesori)
 			if(ma==ModelAction.ADD_P) {
@@ -174,6 +203,10 @@ public class ListaProfesora implements Serializable, ITableModel {
 		return profesori.isEmpty();
 	}
 
+	/**
+	 * @param searchQuery - input from Search {@link TextField}
+	 * @return - {@link ListaPredmeta} with {@link Profesor}s who fulfills data in search
+	 */
 	public ListaProfesora mutableSearch(String searchQuery) {
 		String[][] magic = CheckValidation.tokenizeSearchQuery(searchQuery, 1);
 		Profesor[] p = {new Profesor()};
