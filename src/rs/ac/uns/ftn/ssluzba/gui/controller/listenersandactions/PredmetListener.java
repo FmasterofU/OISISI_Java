@@ -15,8 +15,7 @@ import rs.ac.uns.ftn.ssluzba.gui.model.Student;
 import rs.ac.uns.ftn.ssluzba.gui.view.modify.data.EditPredmet;
 
 /**
- * 	getting input data from {@link Predmet}
- *
+ * 	getting input data for {@link Predmet} from dialogs
  */
 public class PredmetListener implements FocusListener, ItemListener {
 
@@ -71,7 +70,7 @@ public class PredmetListener implements FocusListener, ItemListener {
 	}
 
 	/**
-	 * @param p - {@link Predmet} whose data using in {@link EditPredmet}
+	 * @param p {@link Predmet} whose data using in {@link EditPredmet}
 	 */
 	public void setInitialData(Predmet p) {
 		data[0] = p.getSifra();
@@ -88,14 +87,14 @@ public class PredmetListener implements FocusListener, ItemListener {
 	}
 	
 	/**
-	 * 	clears all data after closing dialog
+	 * clears all data after closing dialog
 	 */
 	public void clearData() {
 		for(int i=0; i < data.length; i++) data[i] = null;		
 	}
 
 	/**
-	 * @return - Object array of data for {@link Predmet}
+	 * @return Object array of data for {@link Predmet}
 	 */
 	public Object[] getData() {
 		return data;

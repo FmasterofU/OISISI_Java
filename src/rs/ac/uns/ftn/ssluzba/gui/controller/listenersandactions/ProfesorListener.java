@@ -9,6 +9,9 @@ import rs.ac.uns.ftn.ssluzba.gui.controller.CheckValidation;
 import rs.ac.uns.ftn.ssluzba.gui.model.Profesor;
 import rs.ac.uns.ftn.ssluzba.gui.view.modify.data.EditProfesor;
 
+/**
+ * getting input data for {@link Profesor} from dialogs
+ */
 public class ProfesorListener implements FocusListener{
 	
 	Object data[] = new Object[10];
@@ -49,7 +52,7 @@ public class ProfesorListener implements FocusListener{
 	}
 	
 	/**
-	 * @param p - {@link Profesor} whose data using in {@link EditProfesor}
+	 * @param p {@link Profesor} whose data using in {@link EditProfesor}
 	 */
 	public void setInitialData(Profesor p)
 	{
@@ -66,7 +69,7 @@ public class ProfesorListener implements FocusListener{
 	}
 	
 	/**
-	 * @return - Object array of data for {@link Profesor}
+	 * @return Object array of data for {@link Profesor}
 	 */
 	public Object[] getData()
 	{
@@ -74,7 +77,7 @@ public class ProfesorListener implements FocusListener{
 	}
 	
 	/**
-	 * 	clears all data after closing dialog
+	 * clears all data after closing dialog
 	 */
 	public void clearData()
 	{

@@ -13,9 +13,11 @@ import rs.ac.uns.ftn.ssluzba.gui.model.GodinaStudija;
 import rs.ac.uns.ftn.ssluzba.gui.model.Student;
 import rs.ac.uns.ftn.ssluzba.gui.view.modify.data.EditStudent;
 
+/**
+ * getting input data for {@link Student} from dialogs
+ */
 public class StudentListener implements FocusListener, ItemListener{
 	
-	//private static String data[] = {"", "", "", "", "", "", "", "", "", ""};
 	private static Object data[] = new Object[10];
 
 	@Override
@@ -29,20 +31,17 @@ public class StudentListener implements FocusListener, ItemListener{
 		{
 			data[0] = txt.getText().trim();
 			if(((String)data[0]).length() != 0)	data[0] = CheckValidation.firstLetterToCapital((String)data[0]);
-//			if(data[0].length() != 0)	data[0] = CheckValidation.firstLetterToCapital(data[0]);
 		}
 		else if(txt.getName().trim().equals("tfprez")) 
 		{
 			data[1] = txt.getText().trim();
 			if(((String)data[1]).length() != 0)	data[1] = CheckValidation.firstLetterToCapital((String)data[1]);
-//			if(data[1].length() != 0)	data[1] = CheckValidation.firstLetterToCapital(data[1]);
 		}
 		else if(txt.getName().trim().equals("tfdatr"))			data[2] = txt.getText().trim();
 		else if(txt.getName().trim().equals("tfadr"))
 		{
 			data[3] = txt.getText().trim();
 			if(((String)data[3]).length() != 0)	data[3] = CheckValidation.firstLetterToCapital((String)data[3]);
-//			if(data[3].length() != 0)	data[3] = CheckValidation.firstLetterToCapital(data[3]);
 		}
 		else if(txt.getName().trim().equals("tftel"))			data[4] = txt.getText().trim();
 		else if(txt.getName().trim().equals("tfmail"))			data[5] = txt.getText().trim();
@@ -52,7 +51,7 @@ public class StudentListener implements FocusListener, ItemListener{
 	}
 	
 	/**
-	 * @param s - {@link Student} whose data using in {@link EditStudent}
+	 * @param s {@link Student} whose data using in {@link EditStudent}
 	 */
 	public void setInitialData(Student s)
 	{
@@ -83,7 +82,7 @@ public class StudentListener implements FocusListener, ItemListener{
 	}
 
 	/**
-	 * @return - Object array of all data for {@link Student}
+	 * @return Object array of all data for {@link Student}
 	 */
 	public Object[] getData()
 	{

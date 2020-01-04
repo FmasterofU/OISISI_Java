@@ -50,7 +50,7 @@ public class ThisAbstractAction extends AbstractAction{
 	
 	/**
 	 * gives mnemonics, icons and names to {@link Component}s
-	 * @param s - name of {@link Component} in application
+	 * @param s name of {@link Component} in application
 	 */
 	public ThisAbstractAction(String s) {
 		String rez = s.trim();
@@ -245,14 +245,14 @@ public class ThisAbstractAction extends AbstractAction{
 			if(ViewSearch.getRootTab()==-1) id = ViewPredmeti.getInstance().getSelectedKey();
 			else id = ViewSearch.instanceIfExists().getSelectedKey();
 			if(id != null && Data.getListaPredmeta().getStudentIndexesNotListeningPredmet(Data.getListaPredmeta().getPredmet(id)).isEmpty())		AddStudentToPredmet.error(id);
-			else if(id != null /*&& !Data.getListaPredmeta().getStudentIndexesNotListeningPredmet(Data.getListaPredmeta().getPredmet(id)).isEmpty()*/)		AddStudentToPredmet.getInstance(id).setVisible(true);
+			else if(id != null)		AddStudentToPredmet.getInstance(id).setVisible(true);
 			else if(id==null)	new InvalidAction("Niste izabrali predmet kojem \u017eelite dodati studenta!");
 		}else if(name.equals("remstud")){
 			String id;
 			if(ViewSearch.getRootTab()==-1) id = ViewPredmeti.getInstance().getSelectedKey();
 			else id = ViewSearch.instanceIfExists().getSelectedKey();
 			if(id != null && Data.getListaPredmeta().getPredmet(id).getStudenti().isEmpty())		DeleteStudentFromPredmet.error(id);
-			else if(id != null/* && !Data.getListaPredmeta().getPredmet(id).getStudenti().isEmpty()*/)		DeleteStudentFromPredmet.getInstance(id).setVisible(true);
+			else if(id != null)		DeleteStudentFromPredmet.getInstance(id).setVisible(true);
 			else if(id==null)	new InvalidAction("Niste izabrali predmet sa kojeg \u017eelite ukloniti studenta!");
 		}
 	}

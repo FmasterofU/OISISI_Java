@@ -12,7 +12,7 @@ import rs.ac.uns.ftn.ssluzba.gui.view.centerdata.ViewSearch;
 public class ProfesorController {
 
 	/**
-	 * @param p - new Professor to be added to Model
+	 * @param p new Professor to be added to Model
 	 */
 	public static void addProfesor(Profesor p){
 		Data.getListaProfesora().addProfesor(p);
@@ -22,8 +22,8 @@ public class ProfesorController {
 	}
 
 	/**
-	 * @param id - key value of the Professor to be edited in Model
-	 * @param p - new Professor with updated data in it 
+	 * @param id key value of the Professor to be edited in Model
+	 * @param p new Professor with updated data in it 
 	 */
 	public static void editProfesor(String id, Profesor p) {
 		Data.getListaPredmeta().editProfesorInList(id,p);
@@ -35,7 +35,7 @@ public class ProfesorController {
 	}
 
 	/**
-	 * @param p - Professor to be deleted from Model
+	 * @param p Professor to be deleted from Model
 	 */
 	public static void deleteProfesor(Profesor p){
 		Data.getListaPredmeta().deleteProfesorInList(p);

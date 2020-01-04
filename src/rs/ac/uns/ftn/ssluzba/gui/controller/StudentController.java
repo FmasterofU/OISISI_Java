@@ -12,7 +12,7 @@ import rs.ac.uns.ftn.ssluzba.gui.view.centerdata.ViewStudenti;
 public class StudentController {
 
 	/**
-	 * @param s - new Student to be added to Model
+	 * @param s new Student to be added to Model
 	 */
 	public static void addStudent(Student s){
 		Data.getListaStudenata().addStudent(s);
@@ -22,7 +22,7 @@ public class StudentController {
 	}
 
 	/**
-	 * @param indeks - key value of the Student to be deleted from Model
+	 * @param indeks key value of the Student to be deleted from Model
 	 */
 	public static void deleteStudent(String indeks){
 		Data.getListaPredmeta().deleteStudentInList(indeks);
@@ -34,8 +34,8 @@ public class StudentController {
 	}
 
 	/**
-	 * @param indeks - key value of the Student to be edited in Model
-	 * @param s - new Student with updated data in it
+	 * @param indeks key value of the Student to be edited in Model
+	 * @param s new Student with updated data in it
 	 */
 	public static void editStudent(String indeks, Student s){
 		Data.getListaPredmeta().editStudentInList(indeks,s);
