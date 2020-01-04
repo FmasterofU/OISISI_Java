@@ -5,12 +5,18 @@ import javax.swing.JOptionPane;
 
 import rs.ac.uns.ftn.ssluzba.gui.view.MainWindow;
 
-public class InvalidAction extends JOptionPane{
-
-	private static final long serialVersionUID = 3282106550141237408L;
+/**
+ * @author rammba
+ * @implNote Option pane (extends {@link JOptionPane}) displayed when user tries to start an invalid operation at that point in time
+ */
+@SuppressWarnings("serial")
+public class InvalidAction extends JOptionPane {
 	
-	public InvalidAction(String error)
-	{
+	/**
+	 * @param error - error message to be displayed
+	 * @see InvalidAction
+	 */
+	public InvalidAction(String error){
 		JOptionPane.showConfirmDialog(MainWindow.getInstance(), error, "Grе\u0161ka", JOptionPane.DEFAULT_OPTION, JOptionPane.ERROR_MESSAGE, new ImageIcon("Slike/error_message-32.png"));
 	}
 }
