@@ -65,8 +65,9 @@ class ViewTableCenter extends JPanel {
 		//table.getTableHeader().setPreferredSize(new Dimension(CenterBox.getInstance().getWidth(), table.getTableHeader().getSize().height+table.getTableHeader().getFont().getSize()-12)); //12 default font size
 		table.setFont(new Font("Dialog", Font.PLAIN, 13));
 		table.setRowHeight(table.getRowHeight()+table.getFont().getSize()-12); //12 default font size
-        JScrollPane tableContainer = new JScrollPane(table);
-        panel.add(tableContainer);
+        //JScrollPane tableContainer = new JScrollPane(table);
+        //panel.add(tableContainer);
+        panel.add(table);
         add(new JScrollPane(this.panel), BorderLayout.CENTER);
 	}
 	
@@ -85,8 +86,6 @@ class ViewTableCenter extends JPanel {
 	        if(width>300)
 	            width=300;
 	        columnModel.getColumn(column).setPreferredWidth(width);
-	        
 	    }
 	}
-
 }
