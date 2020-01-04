@@ -56,8 +56,8 @@ public class ListaProfesora implements Serializable, ITableModel {
 	}
 
 	 /**
-	 * @param lk - keyValue for {@link Profesor} (ID card)
-	 * @return - {@link Profesor} with lk or null
+	 * @param lk keyValue for {@link Profesor} (ID card)
+	 * @return {@link Profesor} with lk or null
 	 */
 	public Profesor getProfesor(String lk) {
 		 for(Profesor p : profesori)
@@ -67,8 +67,8 @@ public class ListaProfesora implements Serializable, ITableModel {
 	 }
 	 
 	 /**
-	 * @param id - keyValue for editing {@link Profesor}
-	 * @param novi - new {@link Profesor} that overrides old
+	 * @param id keyValue for editing {@link Profesor}
+	 * @param novi new {@link Profesor} that overrides old
 	 */
 	public void changeProfesor(String id, Profesor novi) {
 		 for(Profesor p : profesori)
@@ -142,7 +142,7 @@ public class ListaProfesora implements Serializable, ITableModel {
 	}
 
 	/**
-	 * @return - {@link ArrayList} with unique {@link Profesor} keyValues
+	 * @return {@link ArrayList} with unique {@link Profesor} keyValues
 	 */
 	public ArrayList<String> getUniqueProfList() {
 		ArrayList<String> ret = new ArrayList<String>();
@@ -151,8 +151,8 @@ public class ListaProfesora implements Serializable, ITableModel {
 	}
 
 	/**
-	 * @param id - potentially {@link Profesor} keyValue
-	 * @return - true if {@link Profesor} with id exists
+	 * @param id potentially {@link Profesor} keyValue
+	 * @return true if {@link Profesor} with id exists
 	 */
 	public boolean profesorIDExists(String id) {
 		for(Profesor p : profesori)
@@ -163,8 +163,8 @@ public class ListaProfesora implements Serializable, ITableModel {
 
 	/**
 	 * deletes {@link Predmet} p from {@link ListaProfesora}
-	 * @param p - deleting {@link Predmet}
-	 * @param ma - Action from view to model
+	 * @param p deleting {@link Predmet}
+	 * @param ma Action from view to model
 	 */
 	public void deletePredmetInList(Predmet p, ModelAction ma) {
 		for(Profesor prof : profesori)
@@ -177,9 +177,9 @@ public class ListaProfesora implements Serializable, ITableModel {
 	}
 
 	/**
-	 * @param sifra - keyValue for {@link Predmet}
-	 * @param novi - editing {@link Predmet}
-	 * @param ma - Action from view to model
+	 * @param sifra keyValue for {@link Predmet}
+	 * @param novi editing {@link Predmet}
+	 * @param ma Action from view to model
 	 */
 	public void editPredmetInList(String sifra, Predmet novi, ModelAction ma) {
 		for(Profesor prof : profesori)
@@ -204,8 +204,8 @@ public class ListaProfesora implements Serializable, ITableModel {
 	}
 
 	/**
-	 * @param searchQuery - input from Search {@link TextField}
-	 * @return - {@link ListaPredmeta} with {@link Profesor}s who fulfills data in search
+	 * @param searchQuery input from Search {@link TextField}
+	 * @return {@link ListaPredmeta} with {@link Profesor}s who fulfills data in search
 	 */
 	public ListaProfesora mutableSearch(String searchQuery) {
 		String[][] magic = CheckValidation.tokenizeSearchQuery(searchQuery, 1);

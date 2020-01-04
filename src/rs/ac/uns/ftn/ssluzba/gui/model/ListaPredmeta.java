@@ -51,8 +51,8 @@ public class ListaPredmeta implements Serializable, ITableModel {
 	}
 	
 	 /**
-	 * @param sifra - keyValue for searching {@link Predmet}
-	 * @return - {@link Predmet} with sifra or null
+	 * @param sifra keyValue for searching {@link Predmet}
+	 * @return {@link Predmet} with sifra or null
 	 */
 	public Predmet getPredmet(String sifra) {
 		 for(Predmet p : predmeti)
@@ -67,8 +67,8 @@ public class ListaPredmeta implements Serializable, ITableModel {
 	 }
 	 */
 	 /**
-	 * @param sifra - keyValue for {@link Predmet}
-	 * @param novi - new {@link Predmet} that will override old
+	 * @param sifra keyValue for {@link Predmet}
+	 * @param novi new {@link Predmet} that will override old
 	 */
 	public void editPredmet(String sifra, Predmet novi) {
 		 Predmet p = getPredmet(sifra);
@@ -81,7 +81,7 @@ public class ListaPredmeta implements Serializable, ITableModel {
 	 
 	 /**
 	 *		deletes {@link Predmet} with keyValue sifra 
-	 * @param sifra - keyValue for deleting {@link Predmet}
+	 * @param sifra keyValue for deleting {@link Predmet}
 	 */
 	public void deletePredmet(String sifra) {
 		 predmeti.remove(getPredmet(sifra));
@@ -141,8 +141,8 @@ public class ListaPredmeta implements Serializable, ITableModel {
 	}
 
 	/**
-	 * @param text - potentially keyValue
-	 * @return - false if {@link Predmet} with text does not exists
+	 * @param text potentially keyValue
+	 * @return false if {@link Predmet} with text does not exists
 	 */
 	public boolean predmetCodeExists(String text) {
 		for(Predmet p : predmeti)
@@ -153,7 +153,7 @@ public class ListaPredmeta implements Serializable, ITableModel {
 
 	/**
 	 *  deletes {@link Student} with indeks from {@link ListaPredmeta}
-	 * @param indeks - keyValue for deleting {@link Student}
+	 * @param indeks keyValue for deleting {@link Student}
 	 */
 	public void deleteStudentInList(String indeks) {
 		for(Predmet p : predmeti)
@@ -167,8 +167,8 @@ public class ListaPredmeta implements Serializable, ITableModel {
 
 	/**
 	 *
-	 * @param indeks - keyValue for editing {@link Student}
-	 * @param stud - updated {@link Student}
+	 * @param indeks keyValue for editing {@link Student}
+	 * @param stud updated {@link Student}
 	 */
 	public void editStudentInList(String indeks, Student stud) {
 		for(Predmet p : predmeti)
@@ -180,7 +180,7 @@ public class ListaPredmeta implements Serializable, ITableModel {
 
 	/**
 	 * 	deletes p from {@link ListaPredmeta}
-	 * @param p - deleting {@link Profesor}
+	 * @param p deleting {@link Profesor}
 	 */
 	public void deleteProfesorInList(Profesor p) {
 		for(Predmet pred : predmeti)
@@ -189,8 +189,8 @@ public class ListaPredmeta implements Serializable, ITableModel {
 	}
 
 	/**
-	 * @param id - keyValue for editing {@link Profesor}
-	 * @param p - updated {@link Profesor}
+	 * @param id keyValue for editing {@link Profesor}
+	 * @param p updated {@link Profesor}
 	 */
 	public void editProfesorInList(String id, Profesor p) {
 		for(Predmet pred : predmeti)
@@ -204,8 +204,8 @@ public class ListaPredmeta implements Serializable, ITableModel {
 	}
 	
 	/**
-	 * @param p - input {@link Predmet}
-	 * @return - {@link ArrayList} with {@link Student} keyValues who are on the same year as {@link Predmet} p and not listening p
+	 * @param p input {@link Predmet}
+	 * @return {@link ArrayList} with {@link Student} keyValues who are on the same year as {@link Predmet} p and not listening p
 	 */
 	public ArrayList<String> getStudentIndexesNotListeningPredmet(Predmet p)
 	{
@@ -219,8 +219,8 @@ public class ListaPredmeta implements Serializable, ITableModel {
 	}
 	
 	/**
-	 * @param p - input {@link Predmet}
-	 * @return - {@link ArrayList} with {@link Student} keyValues who are listening {@link Predmet} p
+	 * @param p input {@link Predmet}
+	 * @return {@link ArrayList} with {@link Student} keyValues who are listening {@link Predmet} p
 	 */
 	public ArrayList<String> getStudentIndexesListeningPredmet(Predmet p)
 	{
@@ -233,8 +233,8 @@ public class ListaPredmeta implements Serializable, ITableModel {
 	}
 	
 	/**
-	 * @param s - String of {@link Student} keyValues separated with spaceCharacter
-	 * @return - {@link ArrayList} of {@link Student}s with keyValues in {@link String} s
+	 * @param s String of {@link Student} keyValues separated with spaceCharacter
+	 * @return {@link ArrayList} of {@link Student}s with keyValues in {@link String} s
 	 */
 	public ArrayList<Student> getStudents(String s)
 	{
@@ -249,7 +249,7 @@ public class ListaPredmeta implements Serializable, ITableModel {
 	}
 
 	/**
-	 * @param searchQuery - input from Search {@link TextField}
+	 * @param searchQuery input from Search {@link TextField}
 	 * @return {@link ListaPredmeta} with {@link Predmet}s which fulfills data in search
 	 */
 	public ListaPredmeta mutableSearch(String searchQuery) {

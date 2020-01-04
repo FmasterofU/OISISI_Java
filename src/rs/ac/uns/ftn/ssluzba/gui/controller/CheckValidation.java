@@ -34,7 +34,7 @@ public class CheckValidation {
 	}
 
 	/**
-	 * @param name - data to be validated
+	 * @param name data to be validated
 	 * @param mode - 
 	 * 					0 - Imena/Prezimena
 	 * 					1 - Sifre
@@ -52,8 +52,8 @@ public class CheckValidation {
 	}
 
 	/**
-	 * @param date - String with Date of format dd.MM.YYYY.
-	 * @return - isValid date in Calendar
+	 * @param date String with Date of format dd.MM.YYYY.
+	 * @return isValid date in Calendar
 	 */
 	public static boolean checkDate(String date) {
 		if(todayDay == 0 && todayMonth == 0 && todayYear == 0)
@@ -121,7 +121,7 @@ public class CheckValidation {
 	}
 
 	/**
-	 * @param index - String ssX/YYYY or ssXX/YYYY or ssXXX/YYYY
+	 * @param index String ssX/YYYY or ssXX/YYYY or ssXXX/YYYY
 	 * @return isValid Student index
 	 */
 	public static boolean checkIndex(String index) {
@@ -136,8 +136,8 @@ public class CheckValidation {
 
 
 	/**
-	 * @param index - Student index
-	 * @return - true if index year is valid
+	 * @param index Student index
+	 * @return true if index year is valid
 	 */
 	public static boolean checkIndexYear(String index) {
 		String s = "0";
@@ -158,8 +158,8 @@ public class CheckValidation {
 	}
 
 	/**
-	 * @param mail - String mail
-	 * @return - isValid mail format
+	 * @param mail String mail
+	 * @return isValid mail format
 	 */
 	public static boolean checkMail(String mail) {
 		mail = mail.trim();
@@ -167,8 +167,8 @@ public class CheckValidation {
 	}
 
 	/**
-	 * @param prosek - Student GPA?
-	 * @return - isValid GPA
+	 * @param prosek Student GPA?
+	 * @return isValid GPA
 	 */
 	public static boolean checkProsek(String prosek) {
 		prosek = prosek.trim();
@@ -176,7 +176,7 @@ public class CheckValidation {
 	}
 
 	/**
-	 * @param num - phone number
+	 * @param num phone number
 	 * 	0nn/nnn-nnn or 0nn/nnn-nnnn or 0nn/nnn-nnnnn for domestic numbers and 
 	 * 	+MMMnn/nnn-nnn or +MMMnn/nnn-nnnn or +MMMnn/nnn-nnnnn for foreign numbers
 	 * @return - isValid number
@@ -198,8 +198,8 @@ public class CheckValidation {
 	}
 
 	/**
-	 * @param god - year
-	 * @return - is god leap year
+	 * @param god year
+	 * @return is god leap year
 	 */
 	public static boolean isLeapYear(int god) {
 		if((god % 4 == 0) && (god % 100 != 0))
@@ -211,8 +211,8 @@ public class CheckValidation {
 	}
 
 	/**
-	 * @param mes - month
-	 * @return - true if mes has 31 days
+	 * @param mes month
+	 * @return true if mes has 31 days
 	 */
 	public static boolean doesHave31Days(int mes) {
 		switch(mes){
@@ -230,9 +230,9 @@ public class CheckValidation {
 	}
 
 	/**
-	 * @param data - input data for {@link Student}
-	 * @param editable - true if editing data for {@link Student}
-	 * @return - boolean array for validity of all input data
+	 * @param data input data for {@link Student}
+	 * @param editable true if editing data for {@link Student}
+	 * @return boolean array for validity of all input data
 	 */
 	public static boolean[] isStudentValid(Object[] data, boolean editable) {
 		if(data.length != 10)
@@ -247,9 +247,9 @@ public class CheckValidation {
 	}
 
 	/**
-	 * @param o - input data for {@link Predmet}
-	 * @param editable - true if editing data for {@link Predmet}
-	 * @return - boolean array for validity of all input data
+	 * @param o input data for {@link Predmet}
+	 * @param editable true if editing data for {@link Predmet}
+	 * @return boolean array for validity of all input data
 	 */
 	public static boolean[] isPredmetValid(Object[] o, boolean editable) {
 		boolean[] ret = { (o[0]!=null ? (checkName((String) o[0], 1) && checkUniquePredmetCode((String) o[0])) : false) || editable, o[1]!=null ? (checkName((String) o[1], 2) && checkUniquePredmetCode((String) o[1])) : false, o[2]!=null ? true : false, o[3]!=null ? true : false, o[4]!=null ? true : false, o[5] != null ? true : false};
@@ -257,16 +257,16 @@ public class CheckValidation {
 	}
 
 	/**
-	 * @param text - {@link Predmet} key for check
-	 * @return - true if text does not exists as keyValue in {@link Predmet}
+	 * @param text {@link Predmet} key for check
+	 * @return true if text does not exists as keyValue in {@link Predmet}
 	 */
 	public static boolean checkUniquePredmetCode(String text) {
 		return !Data.getListaPredmeta().predmetCodeExists(text);
 	}
 
 	/**
-	 * @param id - {@link Profesor} key for check
-	 * @return - true if id does not exists as keyValue in {@link Profesor}
+	 * @param id {@link Profesor} key for check
+	 * @return true if id does not exists as keyValue in {@link Profesor}
 	 */
 	public static boolean checkUniqueProfesorID(String id) {
 		return !Data.getListaProfesora().profesorIDExists(id);
@@ -286,8 +286,8 @@ public class CheckValidation {
 	}
 
 	/**
-	 * @param lk - IDcard(keyValue for {@link Profesor})
-	 * @return - isValid lk
+	 * @param lk IDcard(keyValue for {@link Profesor})
+	 * @return isValid lk
 	 */
 	public static boolean checkLK(String lk) {
 		return lk.matches("[0-9]{9}");
@@ -302,9 +302,9 @@ public class CheckValidation {
 	}
 
 	/**
-	 * @param data - input data for {@link Profesor}
-	 * @param editable - true if editing data for {@link Profesor}
-	 * @return - boolean array for validity of all input data
+	 * @param data input data for {@link Profesor}
+	 * @param editable true if editing data for {@link Profesor}
+	 * @return boolean array for validity of all input data
 	 */
 	public static boolean[] isProfesorValid(Object[] data, boolean editable) {
 		if(data.length != 10)
@@ -317,8 +317,8 @@ public class CheckValidation {
 	}
 
 	/**
-	 * @param s - input String
-	 * @return - same String with first upper and others lower characters
+	 * @param s input String
+	 * @return same String with first upper and others lower characters
 	 */
 	public static String firstLetterToCapital(String s) {
 		String[]	temp = s.split(" ");
@@ -336,9 +336,9 @@ public class CheckValidation {
 
 	/**
 	 * @author fmaster
-	 * @param searchQuery - input from Search {@link TextField}
-	 * @param tab - in tab (0 - Student/1 - Professor/2 -Subject)
-	 * @return isValid
+	 * @param searchQuery input from Search {@link TextField}
+	 * @param tab in tab (0 - Student/1 - Professor/2 -Subject)
+	 * @return isValid search input for active tab
 	 */
 	public static boolean checkSearchQuery(String searchQuery, int tab) {
 		if(searchQuery.isEmpty()) return false;
@@ -352,9 +352,9 @@ public class CheckValidation {
 
 	/**
 	 * @author fmaster
-	 * @param query - query String validated by checkSearchQuery(String searchQuery, int tab)
-	 * @param tab - search in tab (0 - Student/1 - Professor/2 -Subject)
-	 * @return - String Matrix - first row are column names, second are requested values for corresponding column (by name)
+	 * @param query query String validated by checkSearchQuery(String searchQuery, int tab)
+	 * @param tab search in tab (0 - Student/1 - Professor/2 -Subject)
+	 * @return String Matrix - first row are column names, second are requested values for corresponding column (by name)
 	 */
 	public static String[][] tokenizeSearchQuery(String query, int tab) {
 		ArrayList<String> retColName = new ArrayList<String>();
@@ -402,7 +402,7 @@ public class CheckValidation {
 	}
 
 	/**
-	 * @return - day in month in this moment
+	 * @return day in month in this moment
 	 */
 	public static int getTodayDay() {
 		SimpleDateFormat dateFormat = new SimpleDateFormat("dd");
@@ -417,7 +417,7 @@ public class CheckValidation {
 	}
 
 	/**
-	 * @return - month in year in this moment
+	 * @return month in year in this moment
 	 */
 	public static int getTodayMonth() {
 		SimpleDateFormat dateFormat = new SimpleDateFormat("MM");
@@ -432,7 +432,7 @@ public class CheckValidation {
 	}
 
 	/**
-	 * @return - year in this moment
+	 * @return year in this moment
 	 */
 	public static int getTodayYear() {
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy");

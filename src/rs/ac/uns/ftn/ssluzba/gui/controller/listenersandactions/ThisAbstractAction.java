@@ -40,14 +40,17 @@ import rs.ac.uns.ftn.ssluzba.gui.view.modify.data.EditProfesor;
 import rs.ac.uns.ftn.ssluzba.gui.view.modify.data.EditStudent;
 import rs.ac.uns.ftn.ssluzba.gui.view.modify.data.InvalidAction;
 
+/**
+ * this class is literally brain of our app
+ */
 public class ThisAbstractAction extends AbstractAction{
 
 	private static final long serialVersionUID = 4889011984599408652L;
 	private String name;
 	
 	/**
-	 * 	puts mnemonics, pictures and similar things for {@link Component}
-	 * @param s - name of {@link Component} in program
+	 * gives mnemonics, icons and names to {@link Component}s
+	 * @param s - name of {@link Component} in application
 	 */
 	public ThisAbstractAction(String s) {
 		String rez = s.trim();

@@ -49,8 +49,8 @@ public class ListaStudenata implements Serializable, ITableModel {
 	}
 	
 	/**
-	 * @param index - potentially keyValue for {@link Student} (index)
-	 * @return - true if {@link Student} with index exists
+	 * @param index potentially keyValue for {@link Student} (index)
+	 * @return true if {@link Student} with index exists
 	 */
 	public boolean indexExists(String index)
 	{
@@ -148,7 +148,7 @@ public class ListaStudenata implements Serializable, ITableModel {
 	
 	/**
 	 * deletes {@link Student} with keyValue from {@link ListaStudenata}
-	 * @param brI - {@link KeyValue} for {@link Student}
+	 * @param brI {@link KeyValue} for {@link Student}
 	 */
 	public void deleteStudent(String brI)
 	{
@@ -222,8 +222,8 @@ public class ListaStudenata implements Serializable, ITableModel {
 
 	/**
 	 * deletes {@link Predmet} p from {@link ListaStudenata}
-	 * @param p - deleting {@link Predmet}
-	 * @param ma - Action from view to model
+	 * @param p deleting {@link Predmet}
+	 * @param ma Action from view to model
 	 */
 	public void deletePredmetInList(Predmet p, ModelAction ma) {
 		if(ma == ModelAction.DELETE_S)
@@ -261,9 +261,9 @@ public class ListaStudenata implements Serializable, ITableModel {
 	}
 
 	/**
-	 * @param sifra - keyValue for editing {@link Student}
-	 * @param novi - new {@link Student} that will override old
-	 * @param ma - Action from view to model
+	 * @param sifra keyValue for editing {@link Student}
+	 * @param novi new {@link Student} that will override old
+	 * @param ma Action from view to model
 	 */
 	public void editPredmetInList(String sifra, Predmet novi, ModelAction ma) {
 		ArrayList<Student> stud = novi.getStudenti();
@@ -282,7 +282,7 @@ public class ListaStudenata implements Serializable, ITableModel {
 	}
 	
 	/**
-	 * @return - {@link ArrayList} of keyValues for all {@link Student}s
+	 * @return {@link ArrayList} of keyValues for all {@link Student}s
 	 */
 	public ArrayList<String> getListOfStudentIndexes()
 	{
@@ -293,8 +293,8 @@ public class ListaStudenata implements Serializable, ITableModel {
 	}
 	
 	/**
-	 * @param god - year on faculty
-	 * @return - {@link ArrayList} of keyValues for all {@link Student}s on god
+	 * @param god year on faculty
+	 * @return {@link ArrayList} of keyValues for all {@link Student}s on god
 	 */
 	public ArrayList<String> getListOfStudentIndexes(GodinaStudija god)
 	{
@@ -306,8 +306,8 @@ public class ListaStudenata implements Serializable, ITableModel {
 	}
 	
 	/**
-	 * @param key - potentially keyValue for {@link Student}
-	 * @return - {@link Student} with keyValue key or null
+	 * @param key potentially keyValue for {@link Student}
+	 * @return {@link Student} with keyValue key or null
 	 */
 	public Student getStudentByKey(String key)
 	{
@@ -318,8 +318,8 @@ public class ListaStudenata implements Serializable, ITableModel {
 	}
 	
 	/**
-	 * @param searchQuery - input from Search {@link TextField}
-	 * @return - {@link ListaStudenata} with {@link Student}s who fulfills data in search
+	 * @param searchQuery input from Search {@link TextField}
+	 * @return {@link ListaStudenata} with {@link Student}s who fulfills data in search
 	 */
 	public ListaStudenata mutableSearch(String searchQuery) {
 		boolean check[] = new boolean[this.getStudenti().size()];
