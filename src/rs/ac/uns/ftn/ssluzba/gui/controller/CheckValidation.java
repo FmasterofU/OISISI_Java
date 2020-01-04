@@ -7,14 +7,16 @@ import java.util.GregorianCalendar;
 import rs.ac.uns.ftn.ssluzba.gui.model.ListaPredmeta;
 import rs.ac.uns.ftn.ssluzba.gui.model.ListaProfesora;
 import rs.ac.uns.ftn.ssluzba.gui.model.ListaStudenata;
+import rs.ac.uns.ftn.ssluzba.gui.model.Predmet;
+import rs.ac.uns.ftn.ssluzba.gui.model.Profesor;
+import rs.ac.uns.ftn.ssluzba.gui.model.Student;
 import rs.ac.uns.ftn.ssluzba.gui.view.centerdata.ViewPredmeti;
 import rs.ac.uns.ftn.ssluzba.gui.view.centerdata.ViewProfesori;
 import rs.ac.uns.ftn.ssluzba.gui.view.centerdata.ViewStudenti;
 import rs.ac.uns.ftn.ssluzba.gui.view.modify.ComboBox;
-import rs.ac.uns.ftn.ssluzba.gui.view.modify.TextField;
 
 /**
- * @author rammmba fmaster
+ * @author rammba fmaster
  * @implNote Validation checks for all data being added/changed
  */
 public class CheckValidation {
@@ -49,7 +51,7 @@ public class CheckValidation {
 	}
 
 	/**
-	 * @param date - String with Date of format DD.MM.YYYY.
+	 * @param date - String with Date of format dd.MM.YYYY.
 	 * @return - isValid date in Calendar
 	 */
 	public static boolean checkDate(String date) {
@@ -132,6 +134,10 @@ public class CheckValidation {
 	}
 
 
+	/**
+	 * @param index - Student index
+	 * @return - true if index year is valid
+	 */
 	public static boolean checkIndexYear(String index) {
 		String s = "0";
 		Double year = 0.0;
@@ -168,6 +174,12 @@ public class CheckValidation {
 		return prosek.matches("(5)|(5\\.0)|(5\\.00)|([6-9]\\.[0-9]{1,2})|(10)|(10\\.0)|(10\\.00)");
 	}
 
+	/**
+	 * @param num - phone number
+	 * 	0nn/nnn-nnn or 0nn/nnn-nnnn or 0nn/nnn-nnnnn for domestic numbers and 
+	 * 	+MMMnn/nnn-nnn or +MMMnn/nnn-nnnn or +MMMnn/nnn-nnnnn for foreign numbers
+	 * @return - isValid number
+	 */
 	public static boolean checkPhoneNumber(String num) {
 		//	0nn/nnn-nnn or 0nn/nnn-nnnn or 0nn/nnn-nnnnn for domestic numbers
 		//    +MMMnn/nnn-nnn or +MMMnn/nnn-nnnn or +MMMnn/nnn-nnnnn for foreign numbers
@@ -184,6 +196,10 @@ public class CheckValidation {
 		return true;
 	}
 
+	/**
+	 * @param god - year
+	 * @return - is god leap year
+	 */
 	public static boolean isLeapYear(int god) {
 		if((god % 4 == 0) && (god % 100 != 0))
 			return true;
@@ -193,6 +209,10 @@ public class CheckValidation {
 			return false;
 	}
 
+	/**
+	 * @param mes - month
+	 * @return - true if mes has 31 days
+	 */
 	public static boolean doesHave31Days(int mes) {
 		switch(mes){
 		case 1:
@@ -208,6 +228,11 @@ public class CheckValidation {
 		}
 	}
 
+	/**
+	 * @param data - input data for {@link Student}
+	 * @param editable - true if editing data for {@link Student}
+	 * @return - boolean array for validity of all input data
+	 */
 	public static boolean[] isStudentValid(Object[] data, boolean editable) {
 		if(data.length != 10)
 			return new boolean[2];
@@ -220,15 +245,28 @@ public class CheckValidation {
 		return ret;
 	}
 
+	/**
+	 * @param o - input data for {@link Predmet}
+	 * @param editable - true if editing data for {@link Predmet}
+	 * @return - boolean array for validity of all input data
+	 */
 	public static boolean[] isPredmetValid(Object[] o, boolean editable) {
 		boolean[] ret = { (o[0]!=null ? (checkName((String) o[0], 1) && checkUniquePredmetCode((String) o[0])) : false) || editable, o[1]!=null ? (checkName((String) o[1], 2) && checkUniquePredmetCode((String) o[1])) : false, o[2]!=null ? true : false, o[3]!=null ? true : false, o[4]!=null ? true : false, o[5] != null ? true : false};
 		return ret;
 	}
 
+	/**
+	 * @param text - {@link Predmet} key for check
+	 * @return - true if text does not exists as keyValue in {@link Predmet}
+	 */
 	public static boolean checkUniquePredmetCode(String text) {
 		return !Data.getListaPredmeta().predmetCodeExists(text);
 	}
 
+	/**
+	 * @param id - {@link Profesor} key for check
+	 * @return - true if id does not exists as keyValue in {@link Profesor}
+	 */
 	public static boolean checkUniqueProfesorID(String id) {
 		return !Data.getListaProfesora().profesorIDExists(id);
 	}
@@ -239,13 +277,17 @@ public class CheckValidation {
 
 	/**
 	 * for {@link ComboBox} highlighting
-	 * @param selectedItem selected item in ComboBox
+	 * @param selectedItem
 	 * @return iSelected (isNotNull)
 	 */
 	public static boolean checkSelection(Object selectedItem) {
 		return selectedItem != null ? true : false;
 	}
 
+	/**
+	 * @param lk - IDcard(keyValue for {@link Profesor})
+	 * @return - isValid lk
+	 */
 	public static boolean checkLK(String lk) {
 		return lk.matches("[0-9]{9}");
 	}
@@ -258,6 +300,11 @@ public class CheckValidation {
 		return z.matches("[a-zA-Z]+");
 	}
 
+	/**
+	 * @param data - input data for {@link Profesor}
+	 * @param editable - true if editing data for {@link Profesor}
+	 * @return - boolean array for validity of all input data
+	 */
 	public static boolean[] isProfesorValid(Object[] data, boolean editable) {
 		if(data.length != 10)
 			return new boolean[2];
@@ -268,6 +315,10 @@ public class CheckValidation {
 		return ret;
 	}
 
+	/**
+	 * @param s - input String
+	 * @return - same String with first upper and others lower characters
+	 */
 	public static String firstLetterToCapital(String s) {
 		String[]	temp = s.split(" ");
 		String ret = "";
@@ -283,14 +334,13 @@ public class CheckValidation {
 	}
 
 	/**
-	 * @author fmaster
-	 * @param searchQuery - input from Search {@link TextField}
-	 * @param tab - in tab (0 - Student/1 - Professor/2 -Subject)
-	 * @return isValid
+	 * @param searchQuery - input string in search field
+	 * @param pane - active tab
+	 * @return - true if input String is valid for pane
 	 */
-	public static boolean checkSearchQuery(String searchQuery, int tab) {
+	public static boolean checkSearchQuery(String searchQuery, int pane) {
 		if(searchQuery.isEmpty()) return false;
-		switch(tab) {
+		switch(pane) {
 		case 0: return searchQuery.matches("(ime:[^;:]+;)?(prezime:[^;:]+;)?(indeks:[^;:]+;)?(email:[^;:]+;)?"); 
 		case 1: return searchQuery.matches("(ime:[^;:]+;)?(prezime:[^;:]+;)?(email:[^;:]+;)?(brlk:[^;:]+;)?");
 		case 2: return searchQuery.matches("(sifra:[^;:]+;)?(naziv:[^;:]+;)?(semestar:[^;:]+;)?(godina:[^;:]+;)?");
@@ -300,7 +350,7 @@ public class CheckValidation {
 
 	/**
 	 * @author fmaster
-	 * @param query - query String validated by checkSearchQuery(String searchQuery, int tab)
+	 * @param query
 	 * @param tab - search in tab (0 - Student/1 - Professor/2 -Subject)
 	 * @return - String Matrix - first row are column names, second are requested values for corresponding column (by name)
 	 */
@@ -349,6 +399,9 @@ public class CheckValidation {
 		return ret;
 	}
 
+	/**
+	 * @return - day in month in this moment
+	 */
 	public static int getTodayDay() {
 		SimpleDateFormat dateFormat = new SimpleDateFormat("dd");
 		String day = dateFormat.format(new GregorianCalendar().getTime());
@@ -361,6 +414,9 @@ public class CheckValidation {
 		}
 	}
 
+	/**
+	 * @return - month in year in this moment
+	 */
 	public static int getTodayMonth() {
 		SimpleDateFormat dateFormat = new SimpleDateFormat("MM");
 		String month = dateFormat.format(new GregorianCalendar().getTime());
@@ -373,6 +429,9 @@ public class CheckValidation {
 		}
 	}
 
+	/**
+	 * @return - year in this moment
+	 */
 	public static int getTodayYear() {
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy");
 		String year = dateFormat.format(new GregorianCalendar().getTime());

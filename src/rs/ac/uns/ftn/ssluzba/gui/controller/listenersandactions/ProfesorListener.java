@@ -7,6 +7,7 @@ import javax.swing.JTextField;
 
 import rs.ac.uns.ftn.ssluzba.gui.controller.CheckValidation;
 import rs.ac.uns.ftn.ssluzba.gui.model.Profesor;
+import rs.ac.uns.ftn.ssluzba.gui.view.modify.data.EditProfesor;
 
 public class ProfesorListener implements FocusListener{
 	
@@ -47,6 +48,9 @@ public class ProfesorListener implements FocusListener{
 		else if(txt.getName().trim().equals("tfzvanje"))		data[9] = txt.getText().trim();
 	}
 	
+	/**
+	 * @param p - {@link Profesor} whose data using in {@link EditProfesor}
+	 */
 	public void setInitialData(Profesor p)
 	{
 		data[0] = p.getIme();
@@ -61,13 +65,19 @@ public class ProfesorListener implements FocusListener{
 		data[9] = p.getZvanje();
 	}
 	
+	/**
+	 * @return - Object array of data for {@link Profesor}
+	 */
 	public Object[] getData()
 	{
 		return data;
 	}
 	
+	/**
+	 * 	clears all data after closing dialog
+	 */
 	public void clearData()
 	{
-		for(int i = 0; i < data.length; i++)		data[i] = "";
+		for(int i = 0; i < data.length; i++)		data[i] = null;
 	}
 }

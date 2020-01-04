@@ -12,7 +12,12 @@ import rs.ac.uns.ftn.ssluzba.gui.model.GodinaStudija;
 import rs.ac.uns.ftn.ssluzba.gui.model.Predmet;
 import rs.ac.uns.ftn.ssluzba.gui.model.Semestar;
 import rs.ac.uns.ftn.ssluzba.gui.model.Student;
+import rs.ac.uns.ftn.ssluzba.gui.view.modify.data.EditPredmet;
 
+/**
+ * 	getting input data from {@link Predmet}
+ *
+ */
 public class PredmetListener implements FocusListener, ItemListener {
 
 	private static Object[] data = new Object[7];
@@ -50,10 +55,7 @@ public class PredmetListener implements FocusListener, ItemListener {
 	}
 
 	@Override
-	public void focusGained(FocusEvent fe) {
-		// TODO Auto-generated method stub
-		
-	}
+	public void focusGained(FocusEvent fe) {}
 
 	@Override
 	public void focusLost(FocusEvent fe) {
@@ -68,6 +70,9 @@ public class PredmetListener implements FocusListener, ItemListener {
 		}		
 	}
 
+	/**
+	 * @param p - {@link Predmet} whose data using in {@link EditPredmet}
+	 */
 	public void setInitialData(Predmet p) {
 		data[0] = p.getSifra();
 		data[1] =  p.getNaziv();
@@ -82,10 +87,16 @@ public class PredmetListener implements FocusListener, ItemListener {
 		data[6] = null;
 	}
 	
+	/**
+	 * 	clears all data after closing dialog
+	 */
 	public void clearData() {
 		for(int i=0; i < data.length; i++) data[i] = null;		
 	}
 
+	/**
+	 * @return - Object array of data for {@link Predmet}
+	 */
 	public Object[] getData() {
 		return data;
 	}

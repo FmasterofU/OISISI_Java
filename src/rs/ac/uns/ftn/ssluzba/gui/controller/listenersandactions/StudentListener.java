@@ -11,6 +11,7 @@ import javax.swing.JTextField;
 import rs.ac.uns.ftn.ssluzba.gui.controller.CheckValidation;
 import rs.ac.uns.ftn.ssluzba.gui.model.GodinaStudija;
 import rs.ac.uns.ftn.ssluzba.gui.model.Student;
+import rs.ac.uns.ftn.ssluzba.gui.view.modify.data.EditStudent;
 
 public class StudentListener implements FocusListener, ItemListener{
 	
@@ -50,6 +51,9 @@ public class StudentListener implements FocusListener, ItemListener{
 		else if(txt.getName().trim().equals("tfpros"))			data[9] = txt.getText().trim();
 	}
 	
+	/**
+	 * @param s - {@link Student} whose date using in {@link EditStudent}
+	 */
 	public void setInitialData(Student s)
 	{
 		data[0] = s.getIme();
@@ -64,11 +68,6 @@ public class StudentListener implements FocusListener, ItemListener{
 		//Double p = s.getProsecnaOcena();
 		data[9] = Double.toString(s.getProsecnaOcena());
 	}
-	
-//	public static void ispis()
-//	{
-//		for(int i = 0; i < data.length; i++)	System.out.println(data[i]);
-//	}
 
 	@SuppressWarnings("rawtypes")
 	@Override
@@ -80,21 +79,22 @@ public class StudentListener implements FocusListener, ItemListener{
 			else if(data[8].equals(GodinaStudija.III.name())) data[8]=GodinaStudija.III;
 			else if(data[8].equals(GodinaStudija.II.name())) data[8]=GodinaStudija.II;
 			else data[8]=GodinaStudija.I;
-//			String temp = (String) e.getItem();
-//			if(temp.contains("prva"))		data[8] = "I";
-//			else if(temp.contains("druga"))		data[8] = "II";
-//			else if(temp.contains("tre"))		data[8] = "III";
-//			else		data[8] = "IV";
 	       }
 	}
 
+	/**
+	 * @return - Object array of all data for {@link Student}
+	 */
 	public Object[] getData()
 	{
 		return data;
 	}
 	
+	/**
+	 * 	clears all data after closing dialog
+	 */
 	public void clearData()
 	{
-		for(int i = 0; i < data.length; i++)		data[i] = "";
+		for(int i = 0; i < data.length; i++)		data[i] = null;
 	}
 }
