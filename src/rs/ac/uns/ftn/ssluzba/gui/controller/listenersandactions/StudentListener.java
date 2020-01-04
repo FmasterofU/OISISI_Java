@@ -52,7 +52,7 @@ public class StudentListener implements FocusListener, ItemListener{
 	}
 	
 	/**
-	 * @param s - {@link Student} whose date using in {@link EditStudent}
+	 * @param s - {@link Student} whose data using in {@link EditStudent}
 	 */
 	public void setInitialData(Student s)
 	{
