@@ -1,5 +1,6 @@
 package rs.ac.uns.ftn.ssluzba.gui.controller.listenersandactions;
 
+import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.InputEvent;
 
@@ -44,6 +45,10 @@ public class ThisAbstractAction extends AbstractAction{
 	private static final long serialVersionUID = 4889011984599408652L;
 	private String name;
 	
+	/**
+	 * 	puts mnemonics, pictures and similar things for {@link Component}
+	 * @param s - name of {@link Component} in program
+	 */
 	public ThisAbstractAction(String s) {
 		String rez = s.trim();
 		rez = s.toLowerCase();

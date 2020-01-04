@@ -1,5 +1,6 @@
 package rs.ac.uns.ftn.ssluzba.gui.model;
 
+import java.awt.TextField;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -8,6 +9,10 @@ import rs.ac.uns.ftn.ssluzba.gui.controller.CheckValidation;
 import rs.ac.uns.ftn.ssluzba.gui.controller.Data;
 import rs.ac.uns.ftn.ssluzba.gui.controller.ModelAction;
 
+/**
+ *		list of all data for {@link Predmet}
+ *
+ */
 public class ListaPredmeta implements Serializable, ITableModel {
 
 	private static final long serialVersionUID = -8045180299982898373L;
@@ -58,7 +63,11 @@ public class ListaPredmeta implements Serializable, ITableModel {
 		 addPredmet(p);
 	 }
 	 */
-	 public void editPredmet(String sifra, Predmet novi) {
+	 /**
+	 * @param sifra - keyValue for {@link Predmet}
+	 * @param novi - new {@link Predmet} that will override old
+	 */
+	public void editPredmet(String sifra, Predmet novi) {
 		 Predmet p = getPredmet(sifra);
 		 p.setNaziv(novi.getNaziv());
 		 p.setSemestar(novi.getSemestar());
@@ -67,7 +76,11 @@ public class ListaPredmeta implements Serializable, ITableModel {
 		 p.setStudenti(novi.getStudenti());
 	 }
 	 
-	 public void deletePredmet(String sifra) {
+	 /**
+	 *		deletes {@link Predmet} with keyValue sifra 
+	 * @param sifra - keyValue for deleting {@link Predmet}
+	 */
+	public void deletePredmet(String sifra) {
 		 predmeti.remove(getPredmet(sifra));
 	 }
 	 
@@ -124,6 +137,10 @@ public class ListaPredmeta implements Serializable, ITableModel {
 		return kolone.get(col);
 	}
 
+	/**
+	 * @param text - potentially keyValue
+	 * @return - false if {@link Predmet} with text does not exists
+	 */
 	public boolean predmetCodeExists(String text) {
 		for(Predmet p : predmeti)
 			if(p.getSifra().equals(text))
@@ -131,6 +148,10 @@ public class ListaPredmeta implements Serializable, ITableModel {
 		return false;
 	}
 
+	/**
+	 *  deletes {@link Student} with indeks from {@link ListaPredmeta}
+	 * @param indeks - keyValue for deleting {@link Student}
+	 */
 	public void deleteStudentInList(String indeks) {
 		for(Predmet p : predmeti)
 			if(p.getStudenti()!=null)
@@ -141,6 +162,11 @@ public class ListaPredmeta implements Serializable, ITableModel {
 					}
 	}
 
+	/**
+	 *
+	 * @param indeks - keyValue for editing {@link Student}
+	 * @param stud - updated {@link Student}
+	 */
 	public void editStudentInList(String indeks, Student stud) {
 		for(Predmet p : predmeti)
 			if(p.getStudenti()!=null)
@@ -149,12 +175,20 @@ public class ListaPredmeta implements Serializable, ITableModel {
 						Student.editStudent(s, stud);
 	}
 
+	/**
+	 * 	deletes p from {@link ListaPredmeta}
+	 * @param p - deleting {@link Profesor}
+	 */
 	public void deleteProfesorInList(Profesor p) {
 		for(Predmet pred : predmeti)
 			if(pred.getProfesor()!=null && pred.getProfesor().getBrojLK().equals(p.getBrojLK()))
 				pred.setProfesor(null);
 	}
 
+	/**
+	 * @param id - keyValue for editing {@link Profesor}
+	 * @param p - updated {@link Profesor}
+	 */
 	public void editProfesorInList(String id, Profesor p) {
 		for(Predmet pred : predmeti)
 			if(pred.getProfesor()!=null && pred.getProfesor().getBrojLK().equals(id))
@@ -166,6 +200,10 @@ public class ListaPredmeta implements Serializable, ITableModel {
 		return predmeti.isEmpty();
 	}
 	
+	/**
+	 * @param p - input {@link Predmet}
+	 * @return - {@link ArrayList} with {@link Student} keyValues who are on the same year as {@link Predmet} p and not listening p
+	 */
 	public ArrayList<String> getStudentIndexesNotListeningPredmet(Predmet p)
 	{
 		ArrayList<String> ret = Data.getListaStudenata().getListOfStudentIndexes(p.getGodinaStudija());
@@ -177,6 +215,10 @@ public class ListaPredmeta implements Serializable, ITableModel {
 		return ret;
 	}
 	
+	/**
+	 * @param p - input {@link Predmet}
+	 * @return - {@link ArrayList} with {@link Student} keyValues who are listening {@link Predmet} p
+	 */
 	public ArrayList<String> getStudentIndexesListeningPredmet(Predmet p)
 	{
 		ArrayList<String> ret = new ArrayList<String>();
@@ -187,6 +229,10 @@ public class ListaPredmeta implements Serializable, ITableModel {
 		return ret;
 	}
 	
+	/**
+	 * @param s - String of {@link Student} keyValues separated with spaceCharacter
+	 * @return - {@link ArrayList} of {@link Student}s with keyValues in {@link String} s
+	 */
 	public ArrayList<Student> getStudents(String s)
 	{
 		ArrayList<Student> ret = new ArrayList<Student>();
@@ -199,6 +245,10 @@ public class ListaPredmeta implements Serializable, ITableModel {
 		return ret;
 	}
 
+	/**
+	 * @param searchQuery - input from Search {@link TextField}
+	 * @return
+	 */
 	public ListaPredmeta mutableSearch(String searchQuery) {
 		String[][] magic = CheckValidation.tokenizeSearchQuery(searchQuery, 1);
 		Predmet[] p = {new Predmet()};

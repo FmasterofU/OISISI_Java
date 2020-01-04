@@ -4,7 +4,7 @@ import rs.ac.uns.ftn.ssluzba.gui.view.centerdata.ThisTableModel;
 
 /**
  * @author fmaster
- * @implNote any moel data structure needs to follow this interface (implement these methods) in order to be acceptable for {@link ThisTableModel}
+ * @implNote any model data structure needs to follow this interface (implement these methods) in order to be acceptable for {@link ThisTableModel}
  */
 public interface ITableModel {
 	public int getColumnCount();

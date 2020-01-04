@@ -114,7 +114,7 @@ public class Data implements Serializable {
 	}
 
 	/**
-	 * @return static get-only filed listaProfesora
+	 * @return static get-only field listaProfesora
 	 */
 	public static ListaProfesora getListaProfesora() {
 		return data.listaProfesora;
