@@ -221,7 +221,7 @@ public class ThisAbstractAction extends AbstractAction{
 				}
 			}
 		}else if(name.equals("help"))
-			JOptionPane.showConfirmDialog(MainWindow.getInstance(), new HTMLMessageWithLink("See this link:<br><a href=\"https://fmasterofu.github.io/OISISI_Java/\">HELP (Product page)</a><br>or contact the developers (mails in About section)."), "Help", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, new ImageIcon("Slike/help.png"));
+			JOptionPane.showConfirmDialog(MainWindow.getInstance(), new HTMLMessageWithLink("See this link:<br><a href=\"https://fmasterofu.github.io/OISISI_Java/HelpSS.html\">HELP (Product page)</a><br>or contact the developers (mails in About section)."), "Help", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, new ImageIcon("Slike/help.png"));
 		else if(name.equals("about"))
 			JOptionPane.showConfirmDialog(MainWindow.getInstance(), "OISISI_Java - Studentska Slu\u017eba v1.0.0\n~ Igor \u0160ikuljak - RA117/2017 - igorsikuljak@uns.ac.rs\n~ Rado\u0161 Mili\u0107ev - RA121/2017 - rados280698@yahoo.com", "About", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, new ImageIcon("Slike/about.png"));
 		else if(name.equals("addprof")) {
