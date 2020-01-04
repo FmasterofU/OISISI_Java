@@ -16,6 +16,10 @@ import com.sun.glass.events.KeyEvent;
 
 import rs.ac.uns.ftn.ssluzba.gui.view.MainWindow;
 
+/**
+ * @author rammba fmaster
+ * @implNote Concrete Dialog class four our use case, extending {@link JDialog}
+ */
 @SuppressWarnings("serial")
 public class Dialog extends JDialog {
 	private int labGBC = 0;
@@ -27,6 +31,12 @@ public class Dialog extends JDialog {
 	public JPanel buttons = new JPanel();
 	//public boolean[] enableAccept;
 	
+	/**
+	 * @see Dialog
+	 * @param windowName - name of the new Dialog window
+	 * @param acceptButtonName - name displayed on the default accept button
+	 * @param cancelButtonName - name displayed on the default cancel button
+	 */
 	public Dialog(String windowName, String acceptButtonName, String cancelButtonName) {
 		super(MainWindow.getInstance(), windowName, true);
 		this.setBackground(Color.WHITE);
@@ -76,6 +86,9 @@ public class Dialog extends JDialog {
 		this.add(middlePanel, BorderLayout.CENTER);
 	}
 	
+	/**
+	 * @return new properly set-up {@link GridBagConstraints} instance for label component in {@link Dialog} instance
+	 */
 	public GridBagConstraints generateLabelGBC(){
 		GridBagConstraints ret = new GridBagConstraints();
 		ret.gridx = 0;
@@ -84,6 +97,9 @@ public class Dialog extends JDialog {
 		return ret;
 	}
 	
+	/**
+	 * @return new properly set-up {@link GridBagConstraints} instance for text field component in {@link Dialog} instance
+	 */
 	public GridBagConstraints generateTextFieldGBC(){
 		GridBagConstraints ret = new GridBagConstraints();
 		ret.gridx = 1;
