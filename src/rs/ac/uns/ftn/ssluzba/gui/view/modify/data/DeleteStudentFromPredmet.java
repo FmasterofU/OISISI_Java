@@ -46,7 +46,7 @@ public class DeleteStudentFromPredmet extends Dialog{
 	
 	private DeleteStudentFromPredmet(String id)
 	{
-		super("Brisanje studenta sa predmeta", "Potvrda", "Odustanak");
+		super("Brisanje studenta sa predmeta", "Obri\u0161i", "Odustanak");
 		
 		old = Data.getListaPredmeta().getPredmet(id);
 		super.setSize(300,200);

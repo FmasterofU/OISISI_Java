@@ -95,6 +95,7 @@ public class ViewSearch extends ViewTableCenter {
 					if(columnIndex!=5) return super.getValueAt(rowIndex, columnIndex);
 					else {
 						JButton button = new JButton("Prika\u017ei vi\u0161e");
+						button.setToolTipText("Prika\u017ei studente");
 						button.addActionListener(new ActionListener() {
 	                        public void actionPerformed(ActionEvent arg0) {
 	                        	String id = getSelectedKey();

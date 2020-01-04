@@ -72,6 +72,7 @@ public class ViewPredmeti extends ViewTableCenter {
 				else {
 					//return super.getValueAt(rowIndex, columnIndex);
 					JButton button = new JButton("Prika\u017ei vi\u0161e");
+					button.setToolTipText("Prika\u017ei studente");
 					button.addActionListener(new ActionListener() {
                         public void actionPerformed(ActionEvent arg0) {
                         	String id = getSelectedKey();
