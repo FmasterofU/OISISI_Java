@@ -2,11 +2,11 @@
 
 This is a site for an application developed by Radoš Milićev and Igor Šikuljak. The Studentska Služba app is a project asignment - first grading half of the curicculum for the OISISI Subject in Applied Computer Scciences at the Faculty of Technical Sciences in Novi Sad. It was realized using Java programming language and the Swing library.
 
-[Specification](./specification/Specifikacija%20prvog%20projekta.pdf)
+[Specification](https://fmasterofu.github.io/OISISI_Java/specification/Specifikacija%20prvog%20projekta.pdf)
 
-[Documentation](./doc/index.html)
+[Documentation](https://fmasterofu.github.io/OISISI_Java/doc/index.html)
 
-[License](../blob/master/LICENSE)
+[License](LICENSE)
 
 ## Welcome to GitHub Pages
 
