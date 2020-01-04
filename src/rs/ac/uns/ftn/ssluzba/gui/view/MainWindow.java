@@ -13,10 +13,17 @@ import javax.swing.UIManager;
 
 import rs.ac.uns.ftn.ssluzba.gui.controller.Data;
 
+/**
+ * @author rammba fmaster
+ * @implNote Main Window extends {@link JFrame}, singleton implementation, exit method for whole program
+ */
 @SuppressWarnings("serial")
 public class MainWindow  extends JFrame {
 	private static MainWindow instance = null;
-	
+
+	/**
+	 * @implNote Constructor sets up Main Window with all its parts
+	 */
 	private MainWindow() {
 		setTitle("Studentska Slu\u017eba");
 		this.setJMenuBar(MenuBar.getInstance());
@@ -30,10 +37,9 @@ public class MainWindow  extends JFrame {
 			@Override
 			public void windowClosing(WindowEvent we) {
 				MainWindow.exit();
-				}
-			});
+			}
+		});
 		JPanel defaultPanel = new JPanel();
-		//BoxLayout vBox = new BoxLayout(defaultPanel, BoxLayout.Y_AXIS);
 		defaultPanel.setLayout(new BorderLayout());
 		defaultPanel.add(ToolBar.getInstance(), BorderLayout.NORTH);
 		defaultPanel.add(CenterBox.getInstance(),BorderLayout.CENTER);
@@ -41,12 +47,18 @@ public class MainWindow  extends JFrame {
 		add(defaultPanel);
 		//pack();
 	}
-	
+
+	/**
+	 * @return singleton instance
+	 */
 	public static MainWindow getInstance() {
 		if(MainWindow.instance==null) MainWindow.instance = new MainWindow();
 		return MainWindow.instance;
 	}
-	
+
+	/**
+	 * Proper full exit with data persistence optional
+	 */
 	public static void exit() {
 		if(instance==null) return;
 		UIManager.put("OptionPane.yesButtonText", "Da");
@@ -60,6 +72,7 @@ public class MainWindow  extends JFrame {
 			if(option == JOptionPane.YES_OPTION) Data.close();
 			instance.setVisible(false);
 			instance.dispose();
+			instance = null;
 			System.exit(0);
 		}
 	}
