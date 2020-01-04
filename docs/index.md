@@ -4,7 +4,7 @@ This is a site for an application developed by Radoš Milićev and Igor Šikulja
 
 [Help Section](HelpSS.md)
 
-[Source Code](https://github.com/FmasterofU/OISISI_Java)
+[Source Code](https://github.com/FmasterofU/OISISI_Java) (Still a private repository)
 
 [Specification](https://fmasterofu.github.io/OISISI_Java/specification/Specifikacija%20prvog%20projekta.pdf)
 
