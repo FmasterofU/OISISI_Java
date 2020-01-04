@@ -11,6 +11,10 @@ import rs.ac.uns.ftn.ssluzba.gui.model.ListaPredmeta;
 import rs.ac.uns.ftn.ssluzba.gui.model.ListaProfesora;
 import rs.ac.uns.ftn.ssluzba.gui.model.ListaStudenata;
 
+/**
+ * @author fmaster
+ * @implNote Data Persistence Service
+ */
 public class Data implements Serializable {
 
 	private static final long serialVersionUID = -3785262540558754322L;
@@ -21,7 +25,7 @@ public class Data implements Serializable {
 	public static String location = "StudentskaSluzba.data";
 
 	/**
-	 * Initialize system
+	 * Initializes system.
 	 * Deserializes data from location stored in static field location, which, if not otherwise set, by default is StudentskaSluzba.data.
 	 */
 	public static void init() {
@@ -33,19 +37,26 @@ public class Data implements Serializable {
 	}
 
 	/**
-	 * Prepares system for proper exit
+	 * Prepares system for proper exit.
 	 * Serializes data to location specified in static field location.
 	 */
 	public static void close() {
 		serialize();
 	}
 
+	/**
+	 * Initializes lists.
+	 * fields listaPredmeta, listaStudenata and listaProfesora
+	 */
 	private Data() {
 		this.listaPredmeta = new ListaPredmeta();
 		this.listaStudenata = new ListaStudenata();
 		this.listaProfesora = new ListaProfesora();
 	}
 
+	/**
+	 * Serializes this class (fields-lists) to location given in field location
+	 */
 	private static void serialize() {
 		try {
 			ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(location));
@@ -58,6 +69,9 @@ public class Data implements Serializable {
 		}
 	}
 
+	/**
+	 * Deserializes this class (fields-lists) from location given in field location
+	 */
 	private static void deserialize() {
 		try {
 			ObjectInputStream in = new ObjectInputStream(new FileInputStream(location));
@@ -72,6 +86,8 @@ public class Data implements Serializable {
 
 	/**
 	 * Do not use this method
+	 * @deprecated used during development process.
+	 * modification needed if using
 	 */
 	public static void checkStackTrace() {
 		StackTraceElement[] stackTraceDataClassCallingCheck = Thread.currentThread().getStackTrace();
@@ -83,14 +99,23 @@ public class Data implements Serializable {
 		}
 	}
 
+	/**
+	 * @return static get-only field listaPredmeta
+	 */
 	public static ListaPredmeta getListaPredmeta() {
 		return data.listaPredmeta;
 	}
 
+	/**
+	 * @return static get-only field listaStudenata
+	 */
 	public static ListaStudenata getListaStudenata() {
 		return data.listaStudenata;
 	}
 
+	/**
+	 * @return static get-only filed listaProfesora
+	 */
 	public static ListaProfesora getListaProfesora() {
 		return data.listaProfesora;
 	}
