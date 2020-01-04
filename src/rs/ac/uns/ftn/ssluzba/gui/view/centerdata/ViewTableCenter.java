@@ -65,7 +65,7 @@ class ViewTableCenter extends JPanel {
 	}
 	
 	/**
-	 * @implNote still testing this feature
+	 * @implNote still testing this feature, supposed to replace setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS)
 	 */
 	public void resizeColumnWidth() {
 	    final TableColumnModel columnModel = table.getColumnModel();
