@@ -15,7 +15,8 @@ import rs.ac.uns.ftn.ssluzba.gui.model.Student;
 import rs.ac.uns.ftn.ssluzba.gui.view.modify.data.EditPredmet;
 
 /**
- * 	getting input data for {@link Predmet} from dialogs
+ * @author fmaster
+ * @implNote getting input data for {@link Predmet} from dialogs
  */
 public class PredmetListener implements FocusListener, ItemListener {
 
@@ -44,11 +45,7 @@ public class PredmetListener implements FocusListener, ItemListener {
 					data[4] = cb.getSelectedItem().toString();
 					break;
 				case "cbStud":
-					data[6] = cb.getSelectedItem().toString();
-//					if(data[5] != null)
-//						data[5] = data[5] += cb.getSelectedItem().toString();
-//					else	data[5] = cb.getSelectedItem().toString();
-					
+					data[6] = cb.getSelectedItem().toString();				
 			}
 		}
 	}
@@ -78,7 +75,6 @@ public class PredmetListener implements FocusListener, ItemListener {
 		data[2] =  p.getSemestar();
 		data[3] =  p.getGodinaStudija();
 		data[4] =  p.getProfesor();
-		//data[5] =  p.getStudenti();
 		data[5] = "";
 		if(!p.getStudenti().isEmpty())
 			for(Student s : p.getStudenti())

@@ -10,10 +10,11 @@ import rs.ac.uns.ftn.ssluzba.gui.model.Profesor;
 import rs.ac.uns.ftn.ssluzba.gui.view.modify.data.EditProfesor;
 
 /**
+ * @author rammba
  * getting input data for {@link Profesor} from dialogs
  */
 public class ProfesorListener implements FocusListener{
-	
+
 	Object data[] = new Object[10];
 
 	@Override
@@ -22,40 +23,31 @@ public class ProfesorListener implements FocusListener{
 	@Override
 	public void focusLost(FocusEvent arg0) {
 		JTextField txt = (JTextField) arg0.getComponent();
-		
-		if(txt.getName().trim().equals("tfime"))
-		{
+
+		if(txt.getName().trim().equals("tfime")){
 			data[0] = txt.getText().trim();
 			if(((String)data[0]).length() != 0)	data[0] = CheckValidation.firstLetterToCapital((String)data[0]);
-		}
-		else if(txt.getName().trim().equals("tfprez")) 
-		{
+		} else if(txt.getName().trim().equals("tfprez")) {
 			data[1] = txt.getText().trim();	
 			if(((String)data[1]).length() != 0)	data[1] = CheckValidation.firstLetterToCapital((String)data[1]);
-		}
-		else if(txt.getName().trim().equals("tfdatr"))			data[2] = txt.getText().trim();
-		else if(txt.getName().trim().equals("tfadrs"))
-		{
+		} else if(txt.getName().trim().equals("tfdatr")) data[2] = txt.getText().trim();
+		else if(txt.getName().trim().equals("tfadrs")){
 			data[3] = txt.getText().trim();
 			if(((String)data[3]).length() != 0)	data[3] = CheckValidation.firstLetterToCapital((String)data[3]);
-		}
-		else if(txt.getName().trim().equals("tftel"))				data[4] = txt.getText().trim();
-		else if(txt.getName().trim().equals("tfmail"))			data[5] = txt.getText().trim();
-		else if(txt.getName().trim().equals("tfadrk"))
-		{
+		} else if(txt.getName().trim().equals("tftel")) data[4] = txt.getText().trim();
+		else if(txt.getName().trim().equals("tfmail")) data[5] = txt.getText().trim();
+		else if(txt.getName().trim().equals("tfadrk")){
 			data[6] = txt.getText().trim();
 			if(((String)data[6]).length() != 0)	data[6] = CheckValidation.firstLetterToCapital((String)data[6]);
-		}
-		else if(txt.getName().trim().equals("tflk"))				data[7] = txt.getText().trim();
-		else if(txt.getName().trim().equals("tftit"))				data[8] = txt.getText().trim();
-		else if(txt.getName().trim().equals("tfzvanje"))		data[9] = txt.getText().trim();
+		} else if(txt.getName().trim().equals("tflk")) data[7] = txt.getText().trim();
+		else if(txt.getName().trim().equals("tftit")) data[8] = txt.getText().trim();
+		else if(txt.getName().trim().equals("tfzvanje")) data[9] = txt.getText().trim();
 	}
-	
+
 	/**
 	 * @param p {@link Profesor} whose data using in {@link EditProfesor}
 	 */
-	public void setInitialData(Profesor p)
-	{
+	public void setInitialData(Profesor p) {
 		data[0] = p.getIme();
 		data[1] = p.getPrezime();
 		data[2] = p.getDatumRodjenja();
@@ -67,20 +59,18 @@ public class ProfesorListener implements FocusListener{
 		data[8] = p.getTitula();
 		data[9] = p.getZvanje();
 	}
-	
+
 	/**
 	 * @return Object array of data for {@link Profesor}
 	 */
-	public Object[] getData()
-	{
+	public Object[] getData() {
 		return data;
 	}
-	
+
 	/**
 	 * clears all data after closing dialog
 	 */
-	public void clearData()
-	{
-		for(int i = 0; i < data.length; i++)		data[i] = null;
+	public void clearData() {
+		for(int i = 0; i < data.length; i++) data[i] = null;
 	}
 }

@@ -14,10 +14,11 @@ import rs.ac.uns.ftn.ssluzba.gui.model.Student;
 import rs.ac.uns.ftn.ssluzba.gui.view.modify.data.EditStudent;
 
 /**
- * getting input data for {@link Student} from dialogs
+ * @author rammba
+ * @implNote getting input data for {@link Student} from dialogs
  */
 public class StudentListener implements FocusListener, ItemListener{
-	
+
 	private static Object data[] = new Object[10];
 
 	@Override
@@ -26,30 +27,27 @@ public class StudentListener implements FocusListener, ItemListener{
 	@Override
 	public void focusLost(FocusEvent e) {
 		JTextField txt = (JTextField) e.getComponent();
-		
-		if(txt.getName().trim().equals("tfime")) 
-		{
+
+		if(txt.getName().trim().equals("tfime")) {
 			data[0] = txt.getText().trim();
 			if(((String)data[0]).length() != 0)	data[0] = CheckValidation.firstLetterToCapital((String)data[0]);
 		}
-		else if(txt.getName().trim().equals("tfprez")) 
-		{
+		else if(txt.getName().trim().equals("tfprez")) {
 			data[1] = txt.getText().trim();
 			if(((String)data[1]).length() != 0)	data[1] = CheckValidation.firstLetterToCapital((String)data[1]);
 		}
-		else if(txt.getName().trim().equals("tfdatr"))			data[2] = txt.getText().trim();
-		else if(txt.getName().trim().equals("tfadr"))
-		{
+		else if(txt.getName().trim().equals("tfdatr")) data[2] = txt.getText().trim();
+		else if(txt.getName().trim().equals("tfadr")){
 			data[3] = txt.getText().trim();
 			if(((String)data[3]).length() != 0)	data[3] = CheckValidation.firstLetterToCapital((String)data[3]);
 		}
-		else if(txt.getName().trim().equals("tftel"))			data[4] = txt.getText().trim();
-		else if(txt.getName().trim().equals("tfmail"))			data[5] = txt.getText().trim();
-		else if(txt.getName().trim().equals("tfindeks"))		data[6] = txt.getText().toUpperCase().trim();
-		else if(txt.getName().trim().equals("tfdatu"))			data[7] = txt.getText().trim();
-		else if(txt.getName().trim().equals("tfpros"))			data[9] = txt.getText().trim();
+		else if(txt.getName().trim().equals("tftel")) data[4] = txt.getText().trim();
+		else if(txt.getName().trim().equals("tfmail")) data[5] = txt.getText().trim();
+		else if(txt.getName().trim().equals("tfindeks")) data[6] = txt.getText().toUpperCase().trim();
+		else if(txt.getName().trim().equals("tfdatu")) data[7] = txt.getText().trim();
+		else if(txt.getName().trim().equals("tfpros")) data[9] = txt.getText().trim();
 	}
-	
+
 	/**
 	 * @param s {@link Student} whose data using in {@link EditStudent}
 	 */
@@ -64,7 +62,6 @@ public class StudentListener implements FocusListener, ItemListener{
 		data[6] = s.getBrIndeksa();
 		data[7] = s.getDatumUpisa();
 		data[8] = s.getGodStudija();
-		//Double p = s.getProsecnaOcena();
 		data[9] = Double.toString(s.getProsecnaOcena());
 	}
 
@@ -78,22 +75,20 @@ public class StudentListener implements FocusListener, ItemListener{
 			else if(data[8].equals(GodinaStudija.III.name())) data[8]=GodinaStudija.III;
 			else if(data[8].equals(GodinaStudija.II.name())) data[8]=GodinaStudija.II;
 			else data[8]=GodinaStudija.I;
-	       }
+		}
 	}
 
 	/**
 	 * @return Object array of all data for {@link Student}
 	 */
-	public Object[] getData()
-	{
+	public Object[] getData() {
 		return data;
 	}
-	
+
 	/**
 	 * 	clears all data after closing dialog
 	 */
-	public void clearData()
-	{
+	public void clearData() {
 		for(int i = 0; i < data.length; i++)		data[i] = null;
 	}
 }
