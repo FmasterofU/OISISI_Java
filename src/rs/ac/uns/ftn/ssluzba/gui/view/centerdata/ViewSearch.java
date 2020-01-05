@@ -133,5 +133,6 @@ public class ViewSearch extends ViewTableCenter {
 		updateInProgress = true;
 		ViewSearch.removeInstance();
 		ToolBar.getInstance().reSearch();
+		updateInProgress = false;
 	}
 }
