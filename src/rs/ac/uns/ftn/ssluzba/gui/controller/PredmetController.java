@@ -43,7 +43,7 @@ public class PredmetController {
 	 * @param ma which action is in progress
 	 */
 	public static void editPredmet(String sifra, Predmet novi, ModelAction ma){
-		if(ma==ModelAction.ADD_S/* || ma==ModelAction.DELETE_S*/) {
+		if(ma==ModelAction.ADD_S || ma==ModelAction.BASIC_EDIT) {
 			Data.getListaStudenata().editPredmetInList(sifra,novi,ma);
 			ViewStudenti.getInstance().updateTable();
 		}
@@ -51,7 +51,7 @@ public class PredmetController {
 			Data.getListaStudenata().deletePredmetInList(novi, ma);
 			ViewStudenti.getInstance().updateTable();
 		}
-		if(ma==ModelAction.ADD_P || ma==ModelAction.DELETE_P) {
+		if(ma==ModelAction.ADD_P || ma==ModelAction.DELETE_P || ma==ModelAction.BASIC_EDIT) {
 			Data.getListaProfesora().editPredmetInList(sifra,novi,ma);
 			ViewProfesori.getInstance().updateTable();
 		}

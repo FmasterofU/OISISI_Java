@@ -186,9 +186,24 @@ public class ListaProfesora implements Serializable, ITableModel {
 			if(ma==ModelAction.ADD_P) {
 				if(novi.getProfesor().getBrojLK().equals(prof.getBrojLK()))
 					prof.getPredajePredmete().add(novi);
-			} else if(ma==ModelAction.DELETE_P)
+			} else if(ma==ModelAction.DELETE_P) {
 				if(Data.getListaPredmeta().getPredmet(sifra).getProfesor().getBrojLK().equals(prof.getBrojLK()))
 					prof.getPredajePredmete().remove(novi);
+			} else if(ma==ModelAction.BASIC_EDIT)
+				{
+					if(novi.getProfesor().getBrojLK().equals(prof.getBrojLK()))
+					{
+						int i = 0;
+						for(Predmet p : prof.getPredajePredmete())
+						{
+							if(p.getSifra().equals(sifra))
+							{
+								prof.getPredajePredmete().set(i, novi);
+							}
+							i++;
+						}
+					}
+				}
 	}
 
 	@Override

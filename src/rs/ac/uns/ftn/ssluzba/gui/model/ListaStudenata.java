@@ -274,6 +274,18 @@ public class ListaStudenata implements Serializable, ITableModel {
 						s.getSlusaPredmete().add(novi);
 				}
 				else if(ma==ModelAction.DELETE_S) s.getSlusaPredmete().remove(novi);
+				else if(ma==ModelAction.BASIC_EDIT)
+				{
+					int i = 0;
+					for(Predmet p : s.getSlusaPredmete())
+					{
+						if(p.getSifra().equals(sifra))
+						{
+							s.getSlusaPredmete().set(i, novi);
+						}
+						i++;
+					}
+				}
 	}
 
 	@Override
