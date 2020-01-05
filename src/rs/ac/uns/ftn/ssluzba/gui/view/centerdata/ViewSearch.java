@@ -69,13 +69,13 @@ public class ViewSearch extends ViewTableCenter {
 	public static void removeInstance() {
 		int tab = CenterBox.getInstance().getSelectedIndex();
 		int rootTab = getRootTab();
+		if(tab==3) CenterBox.getInstance().setSelectedIndex(rootTab);
 		CenterBox.getInstance().remove(instance);
 		ViewStudenti.inSearchMode=false;
 		ViewProfesori.inSearchMode=false;
 		ViewPredmeti.inSearchMode=false;
 		instance=null;
 		CenterBox.redraw();
-		if(tab==3) CenterBox.getInstance().setSelectedIndex(rootTab);
 	}
 	
 	private ViewSearch(int tab, int key, ThisTableModel<?> model) {
@@ -131,6 +131,7 @@ public class ViewSearch extends ViewTableCenter {
 	
 	public void updateTable() {
 		updateInProgress = true;
+		ViewSearch.removeInstance();
 		ToolBar.getInstance().reSearch();
 	}
 }

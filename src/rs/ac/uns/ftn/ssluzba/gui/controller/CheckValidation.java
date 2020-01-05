@@ -12,6 +12,7 @@ import rs.ac.uns.ftn.ssluzba.gui.model.Profesor;
 import rs.ac.uns.ftn.ssluzba.gui.model.Student;
 import rs.ac.uns.ftn.ssluzba.gui.view.centerdata.ViewPredmeti;
 import rs.ac.uns.ftn.ssluzba.gui.view.centerdata.ViewProfesori;
+import rs.ac.uns.ftn.ssluzba.gui.view.centerdata.ViewSearch;
 import rs.ac.uns.ftn.ssluzba.gui.view.centerdata.ViewStudenti;
 import rs.ac.uns.ftn.ssluzba.gui.view.modify.ComboBox;
 import rs.ac.uns.ftn.ssluzba.gui.view.modify.TextField;
@@ -272,10 +273,6 @@ public class CheckValidation {
 		return !Data.getListaProfesora().profesorIDExists(id);
 	}
 
-	public static boolean checkSemester(String text) {
-		return text.matches("[1-8]");
-	}
-
 	/**
 	 * for {@link ComboBox} highlighting
 	 * @param selectedItem selected item in ComboBox
@@ -342,6 +339,7 @@ public class CheckValidation {
 	 */
 	public static boolean checkSearchQuery(String searchQuery, int tab) {
 		if(searchQuery.isEmpty()) return false;
+		if(tab==3) tab=ViewSearch.getRootTab();
 		switch(tab) {
 		case 0: return searchQuery.matches("(ime:[^;:]+;)?(prezime:[^;:]+;)?(indeks:[^;:]+;)?(email:[^;:]+;)?"); 
 		case 1: return searchQuery.matches("(ime:[^;:]+;)?(prezime:[^;:]+;)?(email:[^;:]+;)?(brlk:[^;:]+;)?");

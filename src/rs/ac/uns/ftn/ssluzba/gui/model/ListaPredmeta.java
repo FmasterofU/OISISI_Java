@@ -17,7 +17,7 @@ public class ListaPredmeta implements Serializable, ITableModel {
 	private static final long serialVersionUID = -8045180299982898373L;
 	private LinkedList<Predmet> predmeti;
 	public static ArrayList<String> kolone;
-	
+
 	static {
 		kolone = new ArrayList<String>();
 		kolone.add("\u0160ifra");
@@ -27,11 +27,11 @@ public class ListaPredmeta implements Serializable, ITableModel {
 		kolone.add("Profesor");
 		kolone.add("Studenti");
 	}
-	
+
 	public ListaPredmeta() {
 		this.setPredmeti(new LinkedList<Predmet>());
 	}
-	
+
 	public ListaPredmeta(ListaPredmeta lp) {
 		this.predmeti = new LinkedList<Predmet>();
 		for(Predmet p : lp.predmeti)
@@ -45,52 +45,52 @@ public class ListaPredmeta implements Serializable, ITableModel {
 	public void setPredmeti(LinkedList<Predmet> predmeti) {
 		this.predmeti = predmeti;
 	}
-	
+
 	public void addPredmet(Predmet predmet) {
 		predmeti.add(predmet);
 	}
-	
-	 /**
+
+	/**
 	 * @param sifra keyValue for searching {@link Predmet}
 	 * @return {@link Predmet} with sifra or null
 	 */
 	public Predmet getPredmet(String sifra) {
-		 for(Predmet p : predmeti)
-			 if(p.getSifra().equals(sifra))
-				 return p;
-		 return null;
-	 }
-	 /*
+		for(Predmet p : predmeti)
+			if(p.getSifra().equals(sifra))
+				return p;
+		return null;
+	}
+	/*
 	 public void changePredmet(String sifra, Predmet p) {
 		 deletePredmet(getPredmet(sifra));
 		 addPredmet(p);
 	 }
 	 */
-	 /**
+	/**
 	 * @param sifra keyValue for {@link Predmet}
 	 * @param novi new {@link Predmet} that will override old
 	 */
 	public void editPredmet(String sifra, Predmet novi) {
-		 Predmet p = getPredmet(sifra);
-		 p.setNaziv(novi.getNaziv());
-		 p.setSemestar(novi.getSemestar());
-		 p.setGodinaStudija(novi.getGodinaStudija());
-		 p.setProfesor(novi.getProfesor());
-		 p.setStudenti(novi.getStudenti());
-	 }
-	 
-	 /**
+		Predmet p = getPredmet(sifra);
+		p.setNaziv(novi.getNaziv());
+		p.setSemestar(novi.getSemestar());
+		p.setGodinaStudija(novi.getGodinaStudija());
+		p.setProfesor(novi.getProfesor());
+		p.setStudenti(novi.getStudenti());
+	}
+
+	/**
 	 *		deletes {@link Predmet} with keyValue sifra 
 	 * @param sifra keyValue for deleting {@link Predmet}
 	 */
 	public void deletePredmet(String sifra) {
-		 predmeti.remove(getPredmet(sifra));
-	 }
-	 
-	 public void deletePredmet(Predmet p, ModelAction ma) {
-		 predmeti.remove(p);
-	 }
-	 
+		predmeti.remove(getPredmet(sifra));
+	}
+
+	public void deletePredmet(Predmet p, ModelAction ma) {
+		predmeti.remove(p);
+	}
+
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
@@ -115,23 +115,23 @@ public class ListaPredmeta implements Serializable, ITableModel {
 		Predmet p = predmeti.get(rowIndex);
 		switch(columnIndex) 
 		{
-			case 0:
-				return p.getSifra();
-			case 1:
-				return p.getNaziv();
-			case 2:
-				return p.getSemestar();
-			case 3:
-				return p.getGodinaStudija();
-			case 4:
-				if (p.getProfesor() != null)
-					return p.getProfesor().getIme()+" "+p.getProfesor().getPrezime();
-				else	return "Niko ne predaje";
-			case 5:
-				//return p.getStudenti();
-				return p.haveStudentsString();
-			default:
-				return null;
+		case 0:
+			return p.getSifra();
+		case 1:
+			return p.getNaziv();
+		case 2:
+			return p.getSemestar();
+		case 3:
+			return p.getGodinaStudija();
+		case 4:
+			if (p.getProfesor() != null)
+				return p.getProfesor().getIme()+" "+p.getProfesor().getPrezime();
+			else	return "Niko ne predaje";
+		case 5:
+			//return p.getStudenti();
+			return p.haveStudentsString();
+		default:
+			return null;
 		}
 	}
 
@@ -202,7 +202,7 @@ public class ListaPredmeta implements Serializable, ITableModel {
 	public boolean isEmpty() {
 		return predmeti.isEmpty();
 	}
-	
+
 	/**
 	 * @param p input {@link Predmet}
 	 * @return {@link ArrayList} with {@link Student} keyValues who are on the same year as {@link Predmet} p and not listening p
@@ -217,7 +217,7 @@ public class ListaPredmeta implements Serializable, ITableModel {
 		}
 		return ret;
 	}
-	
+
 	/**
 	 * @param p input {@link Predmet}
 	 * @return {@link ArrayList} with {@link Student} keyValues who are listening {@link Predmet} p
@@ -231,7 +231,7 @@ public class ListaPredmeta implements Serializable, ITableModel {
 		}
 		return ret;
 	}
-	
+
 	/**
 	 * @param s String of {@link Student} keyValues separated with spaceCharacter
 	 * @return {@link ArrayList} of {@link Student}s with keyValues in {@link String} s
@@ -257,7 +257,17 @@ public class ListaPredmeta implements Serializable, ITableModel {
 		Predmet[] p = {new Predmet()};
 		for(Predmet pred : this.predmeti.toArray(p)) 
 			for(int i=0;i<magic[1].length;i++)
-				if(!((String)pred.get(kolone.indexOf(magic[0][i]))).equals(magic[1][i])){
+				if(magic[0][i].equals("Semestar"))
+					if(!((Semestar)pred.get(kolone.indexOf(magic[0][i]))).equals(Semestar.getSemestar(magic[1][i]))){
+						this.predmeti.remove(pred);
+						break;
+					} else continue;
+				else if(magic[0][i].equals("Godina"))
+					if(!((GodinaStudija)pred.get(kolone.indexOf(magic[0][i]))).equals(GodinaStudija.getGodinaStudija(magic[1][i]))){
+						this.predmeti.remove(pred);
+						break;
+					} else continue;
+				else if(!((String)pred.get(kolone.indexOf(magic[0][i]))).equals(magic[1][i])){
 					this.predmeti.remove(pred);
 					break;
 				}

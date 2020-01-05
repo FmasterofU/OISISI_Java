@@ -8,7 +8,6 @@ import javax.swing.AbstractAction;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.KeyStroke;
-
 import com.sun.glass.events.KeyEvent;
 
 import rs.ac.uns.ftn.ssluzba.gui.controller.CheckValidation;
@@ -203,11 +202,14 @@ public class ThisAbstractAction extends AbstractAction{
 					}
 			}
 		else if(name.equals("search")){
-			if(ViewSearch.instanceIfExists()!=null) ViewSearch.removeInstance();
-			int pane = CenterBox.getInstance().getSelectedIndex();
-			if(CheckValidation.checkSearchQuery(ToolBar.getSearchQuery(),pane))
+			if(ViewSearch.instanceIfExists()!=null) {
+				ViewSearch.instanceIfExists().updateTable(); 
+				return;
+			}
+			int tab = CenterBox.getInstance().getSelectedIndex();
+			if(CheckValidation.checkSearchQuery(ToolBar.getSearchQuery(),tab))
 			{
-				switch(pane)
+				switch(tab)
 				{
 					case 0:
 						ViewStudenti.inSearchMode=true;
