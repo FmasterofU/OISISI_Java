@@ -3,12 +3,12 @@ package rs.ac.uns.ftn.ssluzba.gui.controller.listenersandactions;
 import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.InputEvent;
+import java.awt.event.KeyEvent;
 
 import javax.swing.AbstractAction;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.KeyStroke;
-import com.sun.glass.events.KeyEvent;
 
 import resources.Resource;
 import rs.ac.uns.ftn.ssluzba.gui.controller.CheckValidation;

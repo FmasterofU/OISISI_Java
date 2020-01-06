@@ -2,6 +2,7 @@ package rs.ac.uns.ftn.ssluzba.gui.view;
 
 import java.awt.Color;
 import java.awt.event.InputEvent;
+import java.awt.event.KeyEvent;
 
 import javax.swing.AbstractAction;
 import javax.swing.BoxLayout;
@@ -10,12 +11,10 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.KeyStroke;
 
-import com.sun.glass.events.KeyEvent;
-
 import resources.Resource;
 import rs.ac.uns.ftn.ssluzba.gui.controller.listenersandactions.ThisAbstractAction;
 
-@SuppressWarnings("serial")
+@SuppressWarnings({ "serial" })
 public class ExpandedToolBarPanel extends JPanel {
 	
 	private static ExpandedToolBarPanel panel = null;

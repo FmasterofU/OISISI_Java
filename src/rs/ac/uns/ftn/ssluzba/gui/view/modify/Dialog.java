@@ -5,6 +5,8 @@ import java.awt.Color;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import java.awt.event.KeyEvent;
+
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
@@ -12,7 +14,6 @@ import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import com.sun.glass.events.KeyEvent;
 
 import rs.ac.uns.ftn.ssluzba.gui.view.MainWindow;
 
@@ -20,7 +21,7 @@ import rs.ac.uns.ftn.ssluzba.gui.view.MainWindow;
  * @author rammba fmaster
  * @implNote Concrete Dialog class for our use case, extending {@link JDialog}
  */
-@SuppressWarnings("serial")
+@SuppressWarnings({ "serial" })
 public class Dialog extends JDialog {
 	private int labGBC = 0;
 	private int tfGBC = 0;

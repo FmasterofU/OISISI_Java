@@ -1,9 +1,9 @@
 package rs.ac.uns.ftn.ssluzba.gui.view;
 
+import java.awt.event.KeyEvent;
+
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
-
-import com.sun.glass.events.KeyEvent;
 
 import rs.ac.uns.ftn.ssluzba.gui.controller.listenersandactions.ThisAbstractAction;
 

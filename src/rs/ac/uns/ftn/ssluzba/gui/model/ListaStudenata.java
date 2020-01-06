@@ -6,8 +6,6 @@ import java.util.ArrayList;
 
 import javax.swing.JOptionPane;
 
-import com.sun.org.apache.xml.internal.security.keys.content.KeyValue;
-
 import rs.ac.uns.ftn.ssluzba.gui.controller.ModelAction;
 import rs.ac.uns.ftn.ssluzba.gui.view.MainWindow;
 
@@ -149,7 +147,7 @@ public class ListaStudenata implements Serializable, ITableModel {
 
 	/**
 	 * deletes {@link Student} with keyValue from {@link ListaStudenata}
-	 * @param brI {@link KeyValue} for {@link Student}
+	 * @param brI keyValue for {@link Student}
 	 */
 	public void deleteStudent(String brI)
 	{
