@@ -10,7 +10,8 @@ import rs.ac.uns.ftn.ssluzba.gui.controller.Data;
 import rs.ac.uns.ftn.ssluzba.gui.controller.ModelAction;
 
 /**
- *		list of all data for {@link Predmet}
+ *  @author fmaster
+ *	@implNote list of all data for {@link Predmet}, class implementing {@link ITableModel} and {@link Serializable}
  */
 public class ListaPredmeta implements Serializable, ITableModel {
 
@@ -83,10 +84,11 @@ public class ListaPredmeta implements Serializable, ITableModel {
 	 *		deletes {@link Predmet} with keyValue sifra 
 	 * @param sifra keyValue for deleting {@link Predmet}
 	 */
-	public void deletePredmet(String sifra) {
-		predmeti.remove(getPredmet(sifra));
-	}
-
+	/**
+	 * @implNote deletes {@link Predmet}
+	 * @param p {@link Predmet} instance to be removed (see {@link Predmet} equals method)
+	 * @param ma unused
+	 */
 	public void deletePredmet(Predmet p, ModelAction ma) {
 		predmeti.remove(p);
 	}
@@ -207,14 +209,11 @@ public class ListaPredmeta implements Serializable, ITableModel {
 	 * @param p input {@link Predmet}
 	 * @return {@link ArrayList} with {@link Student} keyValues who are on the same year as {@link Predmet} p and not listening p
 	 */
-	public ArrayList<String> getStudentIndexesNotListeningPredmet(Predmet p)
-	{
+	public ArrayList<String> getStudentIndexesNotListeningPredmet(Predmet p) {
 		ArrayList<String> ret = Data.getListaStudenata().getListOfStudentIndexes(p.getGodinaStudija());
-		for(Student stud : p.getStudenti())
-		{
+		for(Student stud : p.getStudenti()) 
 			if(ret.contains(stud.getBrIndeksa()) || (stud.getGodStudija() != p.getGodinaStudija()))
 				ret.remove(stud.getBrIndeksa());
-		}
 		return ret;
 	}
 
@@ -222,13 +221,10 @@ public class ListaPredmeta implements Serializable, ITableModel {
 	 * @param p input {@link Predmet}
 	 * @return {@link ArrayList} with {@link Student} keyValues who are listening {@link Predmet} p
 	 */
-	public ArrayList<String> getStudentIndexesListeningPredmet(Predmet p)
-	{
+	public ArrayList<String> getStudentIndexesListeningPredmet(Predmet p){
 		ArrayList<String> ret = new ArrayList<String>();
 		for(Student stud : p.getStudenti())
-		{
 			ret.add(stud.getBrIndeksa());
-		}
 		return ret;
 	}
 
@@ -236,11 +232,9 @@ public class ListaPredmeta implements Serializable, ITableModel {
 	 * @param s String of {@link Student} keyValues separated with spaceCharacter
 	 * @return {@link ArrayList} of {@link Student}s with keyValues in {@link String} s
 	 */
-	public ArrayList<Student> getStudents(String s)
-	{
+	public ArrayList<Student> getStudents(String s) {
 		ArrayList<Student> ret = new ArrayList<Student>();
-		if(s != "")
-		{
+		if(s != "") {
 			String[] splits = s.split(" ");
 			for(String spl : splits)
 				ret.add(Data.getListaStudenata().getStudentByKey(spl));
@@ -249,6 +243,8 @@ public class ListaPredmeta implements Serializable, ITableModel {
 	}
 
 	/**
+	 * @author fmaster
+	 * @implNote ATTENTION: mutates state of <code>this</code>
 	 * @param searchQuery input from Search {@link TextField}
 	 * @return {@link ListaPredmeta} with {@link Predmet}s which fulfills data in search
 	 */

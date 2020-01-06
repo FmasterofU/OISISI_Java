@@ -12,14 +12,15 @@ import rs.ac.uns.ftn.ssluzba.gui.controller.ModelAction;
 import rs.ac.uns.ftn.ssluzba.gui.view.MainWindow;
 
 /**
- * list of all data for {@link Student}
+ * @author rammba
+ * @implNote list of all data for {@link Student}, class implements {@link ITableModel} and {@link Serializable}
  */
 public class ListaStudenata implements Serializable, ITableModel {
-	
+
 	private static final long serialVersionUID = 3654331325580773015L;
 	private ArrayList<Student> studenti;
 	public static ArrayList<String> kolone;
-	
+
 	static {
 		kolone = new ArrayList<String>();
 		kolone.add("Indeks");
@@ -36,18 +37,18 @@ public class ListaStudenata implements Serializable, ITableModel {
 		kolone.add("Predmeti");
 	}
 
-	
+
 	public ListaStudenata()
 	{
 		this.studenti = new ArrayList<Student>();
 	}
-	
+
 	public ListaStudenata(ListaStudenata ls) {
 		this.studenti = new ArrayList<Student>();
 		for(Student s : ls.studenti)
 			studenti.add(s);
 	}
-	
+
 	/**
 	 * @param index potentially keyValue for {@link Student} (index)
 	 * @return true if {@link Student} with index exists
@@ -69,62 +70,62 @@ public class ListaStudenata implements Serializable, ITableModel {
 	public void setStudenti(ArrayList<Student> studenti) {
 		this.studenti = studenti;
 	}
-	
+
 	public int getColumnCount()
 	{
 		return kolone.size();
 	}
-	
+
 	public String getColumnName(int index)
 	{
 		return kolone.get(index);
 	}
-	
+
 	public int getRowCount()
 	{
 		return this.studenti.size();
 	}
-	
+
 	public Student getRow(int index)
 	{
 		return this.studenti.get(index);
 	}
-	
+
 	public String getValueAt(int row, int column)
 	{
 		Student s = this.studenti.get(row);
 		switch(column)
 		{
-			case 0: 
-				return s.getBrIndeksa();
-			case 1:
-				return s.getIme();
-			case 2:
-				return s.getPrezime();
-			case 3:
-				return s.getDatumRodjenja();
-			case 4:
-				return s.getGodStudija().name();
-			case 5:
-					return s.getFinansiranje().name();
-			case 6:
-				return Double.toString(s.getProsecnaOcena());
-			case 7:
-				return s.getAdresa();
-			case 8:
-				return s.getTelefon();
-			case 9:
-				return s.geteMail();
-			case 10:
-				return s.getDatumUpisa();
-			case 11:
-				//return s.getSlusaPredmete().toString();
-				return s.slusaPredmeteString();
-			default:
-				return null;
+		case 0: 
+			return s.getBrIndeksa();
+		case 1:
+			return s.getIme();
+		case 2:
+			return s.getPrezime();
+		case 3:
+			return s.getDatumRodjenja();
+		case 4:
+			return s.getGodStudija().name();
+		case 5:
+			return s.getFinansiranje().name();
+		case 6:
+			return Double.toString(s.getProsecnaOcena());
+		case 7:
+			return s.getAdresa();
+		case 8:
+			return s.getTelefon();
+		case 9:
+			return s.geteMail();
+		case 10:
+			return s.getDatumUpisa();
+		case 11:
+			//return s.getSlusaPredmete().toString();
+			return s.slusaPredmeteString();
+		default:
+			return null;
 		}
 	}
-	
+
 	public void addStudent(String ime, String prezime, String datumRodjenja, String adresa, String telefon, String eMail,
 			String brIndeksa, String datumUpisa, GodinaStudija godStudija, NacinFinansiranja finansiranje, double prosecnaOcena)
 	{
@@ -135,7 +136,7 @@ public class ListaStudenata implements Serializable, ITableModel {
 			JOptionPane.showConfirmDialog(MainWindow.getInstance(), "Student sa unetim indeksom ve\u0107 postoji!", "Grе\u0161ka", JOptionPane.DEFAULT_OPTION, JOptionPane.ERROR_MESSAGE);
 		}	
 	}
-	
+
 	public void addStudent(Student s)
 	{
 		if(!indexExists(s.getBrIndeksa()))
@@ -145,7 +146,7 @@ public class ListaStudenata implements Serializable, ITableModel {
 			JOptionPane.showConfirmDialog(MainWindow.getInstance(), "Student sa unetim indeksom ve\u0107 postoji!", "Grе\u0161ka", JOptionPane.DEFAULT_OPTION, JOptionPane.ERROR_MESSAGE);
 		}	
 	}
-	
+
 	/**
 	 * deletes {@link Student} with keyValue from {@link ListaStudenata}
 	 * @param brI {@link KeyValue} for {@link Student}
@@ -161,7 +162,7 @@ public class ListaStudenata implements Serializable, ITableModel {
 			}
 		}
 	}
-	
+
 	public void editStudent(String brI, String ime, String prezime, String datumRodjenja, String adresa, String telefon, String eMail,
 			String datumUpisa, GodinaStudija godStudija, NacinFinansiranja finansiranje, double prosecnaOcena)
 	{
@@ -183,7 +184,7 @@ public class ListaStudenata implements Serializable, ITableModel {
 			}
 		}
 	}
-	
+
 	public void editStudent(String brI, Student s)
 	{
 		for(Student stud : studenti)
@@ -237,17 +238,6 @@ public class ListaStudenata implements Serializable, ITableModel {
 								s.getSlusaPredmete().remove(pred);
 								break;
 							}
-//				for(Student other : p.getStudenti())
-//					if(!s.equals(other))
-//					{
-//						if(s.getSlusaPredmete()!=null)
-//							for(Predmet pred : s.getSlusaPredmete())
-//								if(pred.getSifra().equals(p.getSifra())) {
-//									//System.out.println("s " + s + "other " + other);
-//									s.getSlusaPredmete().remove(pred);
-//									break;
-//								}
-//					}
 		}
 		else {
 			for(Student s : studenti)
@@ -292,7 +282,7 @@ public class ListaStudenata implements Serializable, ITableModel {
 	public boolean isEmpty() {
 		return studenti.isEmpty();
 	}
-	
+
 	/**
 	 * @return {@link ArrayList} of keyValues for all {@link Student}s
 	 */
@@ -303,7 +293,7 @@ public class ListaStudenata implements Serializable, ITableModel {
 			ret.add(s.getBrIndeksa());
 		return ret;
 	}
-	
+
 	/**
 	 * @param god year on faculty
 	 * @return {@link ArrayList} of keyValues for all {@link Student}s on god
@@ -316,7 +306,7 @@ public class ListaStudenata implements Serializable, ITableModel {
 				ret.add(s.getBrIndeksa());
 		return ret;
 	}
-	
+
 	/**
 	 * @param key potentially keyValue for {@link Student}
 	 * @return {@link Student} with keyValue key or null
@@ -328,8 +318,9 @@ public class ListaStudenata implements Serializable, ITableModel {
 				return s;
 		return null;
 	}
-	
+
 	/**
+	 * @author rammba
 	 * @param searchQuery input from Search {@link TextField}
 	 * @return {@link ListaStudenata} with {@link Student}s who fulfills data in search
 	 */
@@ -352,26 +343,14 @@ public class ListaStudenata implements Serializable, ITableModel {
 		for(Student s : this.getStudenti())
 		{
 			if(s.getIme().equals((name != "") ? name : s.getIme()) && s.getPrezime().equals((surname != "") ? surname : s.getPrezime()) &&
-				s.getBrIndeksa().equals((index != "") ? index : s.getBrIndeksa()) && s.geteMail().equals((mail != "") ? mail : s.geteMail()))
+					s.getBrIndeksa().equals((index != "") ? index : s.getBrIndeksa()) && s.geteMail().equals((mail != "") ? mail : s.geteMail()))
 				check[i] = true;
 			i++;
 		}
-		
+
 		for(i = check.length - 1; i >= 0; i--)
 			if(!check[i])
 				this.getStudenti().remove(i);
 		return this;
 	}
-	
-//	private String getPredmetIDs(Student s)
-//	{
-//		String ret = "";
-//		if(!s.getSlusaPredmete().isEmpty())
-//		{
-//			for(Predmet p : s.getSlusaPredmete())
-//				ret += p.getSifra() + ", ";
-//		}
-//		else	ret += "Ne slu\u0161a niti jedan predmet";
-//		return ret;
-//	}
 }
