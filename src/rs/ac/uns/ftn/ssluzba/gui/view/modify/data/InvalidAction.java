@@ -3,6 +3,7 @@ package rs.ac.uns.ftn.ssluzba.gui.view.modify.data;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
+import resources.Resource;
 import rs.ac.uns.ftn.ssluzba.gui.view.MainWindow;
 
 /**
@@ -17,6 +18,6 @@ public class InvalidAction extends JOptionPane {
 	 * @see InvalidAction
 	 */
 	public InvalidAction(String error){
-		JOptionPane.showConfirmDialog(MainWindow.getInstance(), error, "Grе\u0161ka", JOptionPane.DEFAULT_OPTION, JOptionPane.ERROR_MESSAGE, new ImageIcon("Slike/error_message-32.png"));
+		JOptionPane.showConfirmDialog(MainWindow.getInstance(), error, "Grе\u0161ka", JOptionPane.DEFAULT_OPTION, JOptionPane.ERROR_MESSAGE, new ImageIcon(Resource.get("error_message-32.png")));
 	}
 }

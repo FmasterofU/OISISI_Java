@@ -7,7 +7,6 @@ import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
@@ -15,6 +14,7 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import resources.Resource;
 import rs.ac.uns.ftn.ssluzba.gui.controller.CheckValidation;
 import rs.ac.uns.ftn.ssluzba.gui.controller.listenersandactions.ThisAbstractAction;
 import rs.ac.uns.ftn.ssluzba.gui.view.centerdata.ViewPredmeti;
@@ -46,7 +46,7 @@ public class ToolBar extends JPanel {
 		buttonAdd.setToolTipText("Dodaj");
 		buttonAdd.setBackground(Color.WHITE);
 		buttonAdd.setBorderPainted(false);
-		buttonAdd.setIcon(new ImageIcon("Slike/add-property-32.png"));
+		buttonAdd.setIcon(new ImageIcon(Resource.get("add-property-32.png")));
 		this.add(buttonAdd);
 		
 		ThisAbstractAction actEdit = new ThisAbstractAction("edit");
@@ -54,7 +54,7 @@ public class ToolBar extends JPanel {
 		buttonEdit.setToolTipText("Izmijeni");
 		buttonEdit.setBackground(Color.WHITE);
 		buttonEdit.setBorderPainted(false);
-		buttonEdit.setIcon(new ImageIcon("Slike/edit-property-32.png"));
+		buttonEdit.setIcon(new ImageIcon(Resource.get("edit-property-32.png")));
 		this.add(buttonEdit);
 		
 		ThisAbstractAction actDelete = new ThisAbstractAction("delete");
@@ -62,7 +62,7 @@ public class ToolBar extends JPanel {
 		buttonDelete.setToolTipText("Ukloni");
 		buttonDelete.setBackground(Color.WHITE);
 		buttonDelete.setBorderPainted(false);
-		buttonDelete.setIcon(new ImageIcon("Slike/remove-property-32.png"));
+		buttonDelete.setIcon(new ImageIcon(Resource.get("remove-property-32.png")));
 		this.add(buttonDelete);
 		
 		currentExpandedToolbarPanel.setMaximumSize(new Dimension());
@@ -76,7 +76,7 @@ public class ToolBar extends JPanel {
 		buttonSearch.setToolTipText("Pretra\u017ei");
 		buttonSearch.setBackground(Color.WHITE);
 		buttonSearch.setBorderPainted(false);
-		buttonSearch.setIcon(new ImageIcon("Slike/search-32.png"));
+		buttonSearch.setIcon(new ImageIcon(Resource.get("search-32.png")));
 		
 		tf = new TextField(30) {
 			@Override

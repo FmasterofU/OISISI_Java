@@ -10,6 +10,7 @@ import javax.swing.JOptionPane;
 import javax.swing.KeyStroke;
 import com.sun.glass.events.KeyEvent;
 
+import resources.Resource;
 import rs.ac.uns.ftn.ssluzba.gui.controller.CheckValidation;
 import rs.ac.uns.ftn.ssluzba.gui.controller.Data;
 import rs.ac.uns.ftn.ssluzba.gui.model.ListaPredmeta;
@@ -59,43 +60,43 @@ public class ThisAbstractAction extends AbstractAction{
 			case "new":
 				putValue(NAME, "New");
 				putValue(MNEMONIC_KEY, KeyEvent.VK_N);
-				putValue(SMALL_ICON, new ImageIcon("Slike/new.png"));
+				putValue(SMALL_ICON, new ImageIcon(Resource.get("new.png")));
 				putValue(ACCELERATOR_KEY, KeyStroke.getKeyStroke(KeyEvent.VK_N, InputEvent.CTRL_MASK));
 				break;
 			case "close":
 				putValue(NAME, "Close");
 				putValue(MNEMONIC_KEY, KeyEvent.VK_Q);
-				putValue(SMALL_ICON, new ImageIcon("Slike/close.png"));
+				putValue(SMALL_ICON, new ImageIcon(Resource.get("close.png")));
 				putValue(ACCELERATOR_KEY, KeyStroke.getKeyStroke(KeyEvent.VK_Q, InputEvent.CTRL_MASK));
 				break;
 			case "edit":
 				putValue(NAME, "Edit");
 				putValue(MNEMONIC_KEY, KeyEvent.VK_E);
-				putValue(SMALL_ICON, new ImageIcon("Slike/edit.png"));
+				putValue(SMALL_ICON, new ImageIcon(Resource.get("edit.png")));
 				putValue(ACCELERATOR_KEY, KeyStroke.getKeyStroke(KeyEvent.VK_E, InputEvent.CTRL_MASK));
 				break;
 			case "delete":
 				putValue(NAME, "Delete");
 				putValue(MNEMONIC_KEY, KeyEvent.VK_D);
-				putValue(SMALL_ICON, new ImageIcon("Slike/delete.png"));
+				putValue(SMALL_ICON, new ImageIcon(Resource.get("delete.png")));
 				putValue(ACCELERATOR_KEY, KeyStroke.getKeyStroke(KeyEvent.VK_D, InputEvent.CTRL_MASK));
 				break;
 			case "search":
 				putValue(NAME, "Search");
-				//putValue(SMALL_ICON, new ImageIcon("Slike/search-24.png"));
+				//putValue(SMALL_ICON, new ImageIcon(Resource.get("search-24.png")));
 				putValue(MNEMONIC_KEY, KeyEvent.VK_S);
 				putValue(ACCELERATOR_KEY, KeyStroke.getKeyStroke(KeyEvent.VK_S, InputEvent.ALT_DOWN_MASK));
 				break;
 			case "help":
 				putValue(NAME, "Help");
 				putValue(MNEMONIC_KEY, KeyEvent.VK_H);
-				putValue(SMALL_ICON, new ImageIcon("Slike/help.png"));
+				putValue(SMALL_ICON, new ImageIcon(Resource.get("help.png")));
 				putValue(ACCELERATOR_KEY, KeyStroke.getKeyStroke(KeyEvent.VK_H, InputEvent.CTRL_MASK));
 				break;
 			case "about":
 				putValue(NAME, "About");
 				putValue(MNEMONIC_KEY, KeyEvent.VK_I);
-				putValue(SMALL_ICON, new ImageIcon("Slike/about.png"));
+				putValue(SMALL_ICON, new ImageIcon(Resource.get("about.png")));
 				putValue(ACCELERATOR_KEY, KeyStroke.getKeyStroke(KeyEvent.VK_I, InputEvent.CTRL_MASK));
 				break;
 		}
@@ -227,9 +228,9 @@ public class ThisAbstractAction extends AbstractAction{
 				}
 			}
 		} else if(name.equals("help"))
-			JOptionPane.showConfirmDialog(MainWindow.getInstance(), new HTMLMessageWithLink("See this link:<br><a href=\"https://fmasterofu.github.io/OISISI_Java/HelpSS.html\">HELP (Product page)</a><br>or contact the developers (mails in About section)."), "Help", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, new ImageIcon("Slike/help.png"));
+			JOptionPane.showConfirmDialog(MainWindow.getInstance(), new HTMLMessageWithLink("See this link:<br><a href=\"https://fmasterofu.github.io/OISISI_Java/HelpSS.html\">HELP (Product page)</a><br>or contact the developers (mails in About section)."), "Help", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, new ImageIcon(Resource.get("help.png")));
 		else if(name.equals("about"))
-			JOptionPane.showConfirmDialog(MainWindow.getInstance(), new HTMLMessageWithLink("OISISI_Java - Studentska Slu\u017eba v1.0.0 <a href=\"https://fmasterofu.github.io/OISISI_Java/\">Product page</a><br>~ Igor \u0160ikuljak - RA117/2017 - igorsikuljak@uns.ac.rs<br>~ Rado\u0161 Mili\u0107ev - RA121/2017 - rados280698@yahoo.com"), "About", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, new ImageIcon("Slike/about.png"));
+			JOptionPane.showConfirmDialog(MainWindow.getInstance(), new HTMLMessageWithLink("OISISI_Java - Studentska Slu\u017eba v1.0.0 <a href=\"https://fmasterofu.github.io/OISISI_Java/\">Product page</a><br>~ Igor \u0160ikuljak - RA117/2017 - igorsikuljak@uns.ac.rs<br>~ Rado\u0161 Mili\u0107ev - RA121/2017 - rados280698@yahoo.com"), "About", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, new ImageIcon(Resource.get("about.png")));
 		else if(name.equals("addprof")) {
 			String sifra;
 			if(ViewSearch.getRootTab()==-1) sifra = ViewPredmeti.getInstance().getSelectedKey();

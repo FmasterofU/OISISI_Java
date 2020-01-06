@@ -14,6 +14,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 
+import resources.Resource;
 import rs.ac.uns.ftn.ssluzba.gui.controller.CheckValidation;
 import rs.ac.uns.ftn.ssluzba.gui.controller.StudentController;
 import rs.ac.uns.ftn.ssluzba.gui.controller.listenersandactions.StudentListener;
@@ -76,7 +77,7 @@ public class AddStudent extends Dialog {
 					listener.clearData();
 					System.gc();
 				} else
-					JOptionPane.showConfirmDialog(instance, "Uneseni su neispravni podaci!", "Grе\u0161ka", JOptionPane.DEFAULT_OPTION, JOptionPane.ERROR_MESSAGE, new ImageIcon("Slike/error_message-32.png"));
+					JOptionPane.showConfirmDialog(instance, "Uneseni su neispravni podaci!", "Grе\u0161ka", JOptionPane.DEFAULT_OPTION, JOptionPane.ERROR_MESSAGE, new ImageIcon(Resource.get("error_message-32.png")));
 			}
 		});
 		

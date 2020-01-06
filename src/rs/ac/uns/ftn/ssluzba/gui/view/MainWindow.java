@@ -11,6 +11,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.UIManager;
 
+import resources.Resource;
 import rs.ac.uns.ftn.ssluzba.gui.controller.Data;
 
 /**
@@ -27,7 +28,7 @@ public class MainWindow  extends JFrame {
 	private MainWindow() {
 		setTitle("Studentska Slu\u017eba");
 		this.setJMenuBar(MenuBar.getInstance());
-		ImageIcon img = new ImageIcon("Slike/student_32x32.jpg");
+		ImageIcon img = new ImageIcon(Resource.get("student_32x32.jpg"));
 		setIconImage(img.getImage());
 		setSize(Toolkit.getDefaultToolkit().getScreenSize().width*3/4, Toolkit.getDefaultToolkit().getScreenSize().height*3/4);
 		setLocationRelativeTo(null);
@@ -67,7 +68,7 @@ public class MainWindow  extends JFrame {
 		UIManager.put("OptionPane.yesButtonMnemonic", "68");
 		UIManager.put("OptionPane.noButtonMnemonic", "83");
 		UIManager.put("OptionPane.cancelButtonMnemonic", "79");
-		int option = JOptionPane.showConfirmDialog(MainWindow.getInstance(), "Da li \u017eelite ugasiti aplikaciju i sa\u010duvati izmjene u bazu?", "Ga\u0161enje", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, new ImageIcon("Slike/save-32.png"));
+		int option = JOptionPane.showConfirmDialog(MainWindow.getInstance(), "Da li \u017eelite ugasiti aplikaciju i sa\u010duvati izmjene u bazu?", "Ga\u0161enje", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, new ImageIcon(Resource.get("save-32.png")));
 		if(option == JOptionPane.YES_OPTION ||  option == JOptionPane.NO_OPTION) {
 			if(option == JOptionPane.YES_OPTION) Data.close();
 			instance.setVisible(false);

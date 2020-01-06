@@ -12,6 +12,7 @@ import javax.swing.KeyStroke;
 
 import com.sun.glass.events.KeyEvent;
 
+import resources.Resource;
 import rs.ac.uns.ftn.ssluzba.gui.controller.listenersandactions.ThisAbstractAction;
 
 @SuppressWarnings("serial")
@@ -37,7 +38,7 @@ public class ExpandedToolBarPanel extends JPanel {
 		buttonAddProf.setToolTipText("Dodaj Profesora na Predmet");
 		buttonAddProf.setBackground(Color.WHITE);
 		buttonAddProf.setBorderPainted(false);
-		buttonAddProf.setIcon(new ImageIcon("Slike/add-teacher-32.png"));
+		buttonAddProf.setIcon(new ImageIcon(Resource.get("add-teacher-32.png")));
 		this.add(buttonAddProf);
 		
 		ThisAbstractAction actRemProf = new ThisAbstractAction("remProf");
@@ -48,7 +49,7 @@ public class ExpandedToolBarPanel extends JPanel {
 		buttonRemProf.setToolTipText("Ukloni Profesora sa Predmeta");
 		buttonRemProf.setBackground(Color.WHITE);
 		buttonRemProf.setBorderPainted(false);
-		buttonRemProf.setIcon(new ImageIcon("Slike/remove-teacher-32.png"));
+		buttonRemProf.setIcon(new ImageIcon(Resource.get("remove-teacher-32.png")));
 		this.add(buttonRemProf);
 		
 		ThisAbstractAction actAddStud = new ThisAbstractAction("addStud");
@@ -59,7 +60,7 @@ public class ExpandedToolBarPanel extends JPanel {
 		buttonAddStud.setToolTipText("Dodaj Studenta na Predmet");
 		buttonAddStud.setBackground(Color.WHITE);
 		buttonAddStud.setBorderPainted(false);
-		buttonAddStud.setIcon(new ImageIcon("Slike/add-student-32.png"));
+		buttonAddStud.setIcon(new ImageIcon(Resource.get("add-student-32.png")));
 		this.add(buttonAddStud);
 		
 		ThisAbstractAction actDelStud = new ThisAbstractAction("remStud");
@@ -70,7 +71,7 @@ public class ExpandedToolBarPanel extends JPanel {
 		buttonDelStud.setToolTipText("Ukloni Studenta sa Predmeta");
 		buttonDelStud.setBackground(Color.WHITE);
 		buttonDelStud.setBorderPainted(false);
-		buttonDelStud.setIcon(new ImageIcon("Slike/delete-student-32.png"));
+		buttonDelStud.setIcon(new ImageIcon(Resource.get("delete-student-32.png")));
 		this.add(buttonDelStud);
 	}
 	
