@@ -7,3 +7,4 @@ relative_links:
 include:
   - HelpSS.md
   - LICENSE.md
+show_downloads: true
