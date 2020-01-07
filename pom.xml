@@ -22,6 +22,26 @@
           <target>1.8</target>
         </configuration>
       </plugin>
+      <plugin>
+      	<groupId>org.apache.maven.plugins</groupId>
+      	<artifactId>maven-jar-plugin</artifactId>
+      	<configuration>
+          <archive>
+            <manifest>
+              <addClasspath>true</addClasspath>
+              <mainClass>rs.ac.uns.ftn.ssluzba.Main</mainClass>
+            </manifest>
+          </archive>
+        </configuration>
+      	<version>2.4</version>
+      </plugin>
     </plugins>
   </build>
+  <distributionManagement>
+   <repository>
+     <id>github</id>
+     <name>GitHub FmasterofU Apache Maven Packages</name>
+     <url>https://maven.pkg.github.com/FmasterofU/OISISI_Java</url>
+   </repository>
+</distributionManagement>
 </project>
