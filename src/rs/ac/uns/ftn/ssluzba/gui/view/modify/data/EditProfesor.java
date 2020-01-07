@@ -23,23 +23,24 @@ import rs.ac.uns.ftn.ssluzba.gui.view.modify.IHighlight;
 import rs.ac.uns.ftn.ssluzba.gui.view.modify.MandatoryTextFieldLabel;
 import rs.ac.uns.ftn.ssluzba.gui.view.modify.TextField;
 
+/**
+ * @author rammba
+ * @implNote extends {@link Dialog}, singleton, Edit Professor
+ */
+@SuppressWarnings("serial")
 public class EditProfesor extends Dialog{
 	
-	private static final long serialVersionUID = 4972687805465509544L;
 	private static EditProfesor instance = null;
 	private ProfesorListener listener = new ProfesorListener();
 	Profesor old = null;
 	private String ime, prez, datr, adrs, tel, mail, adrk, lkk, tit, zvanje;
 	
-	public static EditProfesor getInstance(String lk)
-	{
+	public static EditProfesor getInstance(String lk){
 		if(instance == null)	instance = new EditProfesor(lk);
 		return instance;
 	}
 	
-	@SuppressWarnings("serial")
-	private EditProfesor(String lk)
-	{
+	private EditProfesor(String lk){
 		super("Izmena profesora", "Potvrda", "Odustanak");
 		super.setSize(550, 530);
 		super.setLocationRelativeTo(MainWindow.getInstance());
@@ -237,8 +238,7 @@ public class EditProfesor extends Dialog{
 		middlePanel.add(ltit, gbcltit);
 		
 		tit = old.getTitula();
-		JTextField tftit = new TextField(tit)
-		{
+		JTextField tftit = new TextField(tit){
 			@Override
 			public void maybeHighlight() {
 				setBorder(((CheckValidation.checkTitula(this.getText())) ? IHighlight.defaultBorder : IHighlight.highlightBorder));
@@ -254,8 +254,7 @@ public class EditProfesor extends Dialog{
 		middlePanel.add(lzvanje, gbclzvanje);
 		
 		zvanje = old.getZvanje();
-		JTextField tfzvanje = new TextField(zvanje)
-		{
+		JTextField tfzvanje = new TextField(zvanje){
 			@Override
 			public void maybeHighlight() {
 				setBorder(((CheckValidation.checkZvanje(this.getText())) ? IHighlight.defaultBorder : IHighlight.highlightBorder));
@@ -268,10 +267,8 @@ public class EditProfesor extends Dialog{
 		middlePanel.add(tfzvanje, gbctfzvanje);
 	}
 	
-	private Profesor getProfesor(String lk)
-	{
-		for(Profesor p: Data.getListaProfesora().getProfesori())
-		{
+	private Profesor getProfesor(String lk){
+		for(Profesor p: Data.getListaProfesora().getProfesori()){
 			if(lk.equals(p.getBrojLK()))
 				return p;
 		}

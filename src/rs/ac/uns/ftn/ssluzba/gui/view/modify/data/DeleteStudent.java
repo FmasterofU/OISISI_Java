@@ -6,22 +6,22 @@ import javax.swing.UIManager;
 import rs.ac.uns.ftn.ssluzba.gui.controller.StudentController;
 import rs.ac.uns.ftn.ssluzba.gui.view.MainWindow;
 
+/**
+ * @author rammba
+ * @implNote extends {@link JOptionPane}, deletes Student
+ */
+@SuppressWarnings("serial")
 public class DeleteStudent extends JOptionPane{
 
-		private static final long serialVersionUID = 8706916055932739479L;
 		private static DeleteStudent instance = null;
 		
-		public static DeleteStudent getNew(String idx)
-		{
+		public static DeleteStudent getNew(String idx){
 			instance = new DeleteStudent(idx);
 			return instance;
 		}
 		
-		private DeleteStudent(String idx)
-		{
-			//String index = getIndex(idx);
-			if(!idx.equals(""))
-			{
+		private DeleteStudent(String idx){
+			if(!idx.equals("")){
 				String message = "Da li \u017eelite obrisati studenta sa indeksom " + idx + "?";
 				UIManager.put("OptionPane.yesButtonText", "Da");
 				UIManager.put("OptionPane.noButtonText", "Ne");
@@ -32,17 +32,5 @@ public class DeleteStudent extends JOptionPane{
 				}
 			}
 		}
-		/*
-		private String getIndex(int i)
-		{
-			int temp = 0;
-			for(Student s: Data.data.listaStudenata.getStudenti())
-			{
-				if(i == temp)
-					return s.getBrIndeksa();
-				temp++;
-			}
-			return "";
-		}*/
 
 }

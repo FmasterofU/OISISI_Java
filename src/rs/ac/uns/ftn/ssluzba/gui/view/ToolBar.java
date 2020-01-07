@@ -25,6 +25,10 @@ import rs.ac.uns.ftn.ssluzba.gui.view.centerdata.ViewSearch;
 import rs.ac.uns.ftn.ssluzba.gui.view.modify.IHighlight;
 import rs.ac.uns.ftn.ssluzba.gui.view.modify.TextField;
 
+/**
+ * @author fmaster
+ * @implNote toolbar for {@link MainWindow}, singleton, extending {@link JPanel}
+ */
 @SuppressWarnings("serial")
 public class ToolBar extends JPanel {
 	

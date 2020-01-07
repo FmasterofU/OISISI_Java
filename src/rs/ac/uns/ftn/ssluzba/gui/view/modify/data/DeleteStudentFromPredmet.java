@@ -25,22 +25,23 @@ import rs.ac.uns.ftn.ssluzba.gui.view.MainWindow;
 import rs.ac.uns.ftn.ssluzba.gui.view.modify.ComboBox;
 import rs.ac.uns.ftn.ssluzba.gui.view.modify.Dialog;
 
+/**
+ * @author rammba
+ * @implNote extends {@link Dialog}, deletes student form Subject, singleton
+ */
+@SuppressWarnings("serial")
 public class DeleteStudentFromPredmet extends Dialog{
 
-	private static final long serialVersionUID = -4858530922189597657L;
 	private PredmetListener listener = new PredmetListener();
 	private Predmet old;
 	public static DeleteStudentFromPredmet instance = null;
 	
-	public static DeleteStudentFromPredmet getInstance(String id)
-	{
+	public static DeleteStudentFromPredmet getInstance(String id){
 		if(instance == null)	instance = new DeleteStudentFromPredmet(id);
 		return instance;
 	}
 	
-	public static void error(String id)
-	{
-		//Predmet p = Data.getListaPredmeta().getPredmet(id);
+	public static void error(String id){
 		String message = "Ne postoje studenti koji slu\u0161aju ovaj predmet!";
 		JOptionPane.showConfirmDialog(MainWindow.getInstance(), message, "Grе\u0161ka", JOptionPane.DEFAULT_OPTION, JOptionPane.ERROR_MESSAGE, new ImageIcon(Resource.get("error_message-32.png")));
 	}
@@ -81,8 +82,6 @@ public class DeleteStudentFromPredmet extends Dialog{
 				}
 				if(check)
 				{
-//					Student deleting = Data.data.listaStudenata.getStudentByKey((String) o[5]);
-//					if(deleting != null)		old.getStudenti().remove(deleting);
 					String temp = (String) o[5], ret = "";
 					String[] splits = temp.split(" ");
 					for(String spl : splits) {

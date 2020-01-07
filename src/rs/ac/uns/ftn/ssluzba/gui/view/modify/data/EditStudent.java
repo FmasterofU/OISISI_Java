@@ -27,9 +27,13 @@ import rs.ac.uns.ftn.ssluzba.gui.view.modify.IHighlight;
 import rs.ac.uns.ftn.ssluzba.gui.view.modify.MandatoryTextFieldLabel;
 import rs.ac.uns.ftn.ssluzba.gui.view.modify.TextField;
 
+/**
+ * @author rammba
+ * @implNote extends {@link Dialog}, singleton, edit Student
+ */
+@SuppressWarnings("serial")
 public class EditStudent extends Dialog{
 
-	private static final long serialVersionUID = -4788486876873441092L;
 	private static EditStudent instance = null;
 	private  JRadioButton budget, samof;
 	private StudentListener listener = new StudentListener();
@@ -45,7 +49,6 @@ public class EditStudent extends Dialog{
 		return instance;
 	}
 
-	@SuppressWarnings("serial")
 	private  EditStudent(String idx)
 	{
 		super("Izmeni studenta", "Potvrda", "Odustanak");
@@ -76,8 +79,7 @@ public class EditStudent extends Dialog{
 						check=false;
 						break;
 					}
-				if(check)
-				{
+				if(check){
 					if(budget.isSelected())	nf = NacinFinansiranja.BUD\u017dET;
 					else		nf = NacinFinansiranja.SAMOFINANSIRANJE;
 					//GodinaStudija gs = getGodina(s[8]);
@@ -135,8 +137,7 @@ public class EditStudent extends Dialog{
 		middlePanel.add(lprez, gbclprez);
 		
 		prez = old.getPrezime();
-		JTextField tfprez = new TextField(prez)
-		{
+		JTextField tfprez = new TextField(prez){
 			@Override
 			public void maybeHighlight() {
 				setBorder(((CheckValidation.checkName(this.getText(),0)) ? IHighlight.defaultBorder : IHighlight.highlightBorder));
@@ -165,8 +166,7 @@ public class EditStudent extends Dialog{
 		middlePanel.add(ldatr, gbcldatr);
 		
 		datr = old.getDatumRodjenja();
-		JTextField tfdatr = new TextField(datr)
-		{
+		JTextField tfdatr = new TextField(datr){
 			@Override
 			public void maybeHighlight() {
 				setBorder(((CheckValidation.checkDate(this.getText())) ? IHighlight.defaultBorder : IHighlight.highlightBorder));
@@ -182,8 +182,7 @@ public class EditStudent extends Dialog{
 		middlePanel.add(ladr, gbcladr);
 		
 		adr = old.getAdresa();
-		JTextField tfadr = new TextField(adr)
-		{
+		JTextField tfadr = new TextField(adr){
 			@Override
 			public void maybeHighlight() {
 				setBorder(((CheckValidation.checkAdress(this.getText())) ? IHighlight.defaultBorder : IHighlight.highlightBorder));
@@ -199,8 +198,7 @@ public class EditStudent extends Dialog{
 		middlePanel.add(ltel, gbcltel);
 		
 		tel = old.getTelefon();
-		JTextField tftel = new TextField(tel)
-		{
+		JTextField tftel = new TextField(tel){
 			@Override
 			public void maybeHighlight() {
 				setBorder(((CheckValidation.checkPhoneNumber(this.getText())) ? IHighlight.defaultBorder : IHighlight.highlightBorder));
@@ -216,8 +214,7 @@ public class EditStudent extends Dialog{
 		middlePanel.add(lmail, gbclmail);
 		
 		mail = old.geteMail();
-		JTextField tfmail = new TextField(mail)
-		{
+		JTextField tfmail = new TextField(mail){
 			@Override
 			public void maybeHighlight() {
 				setBorder(((CheckValidation.checkMail(this.getText())) ? IHighlight.defaultBorder : IHighlight.highlightBorder));
@@ -245,8 +242,7 @@ public class EditStudent extends Dialog{
 		middlePanel.add(lpros, gbclpros);
 		
 		pros = old.getProsecnaOcena();
-		JTextField tfpros = new TextField(pros.toString())
-		{
+		JTextField tfpros = new TextField(pros.toString()){
 			@Override
 			public void maybeHighlight() {
 				setBorder(((CheckValidation.checkProsek(this.getText())) ? IHighlight.defaultBorder : IHighlight.highlightBorder));
@@ -279,8 +275,7 @@ public class EditStudent extends Dialog{
 		middlePanel.add(ldatu, gbcldatu);
 		
 		datu = old.getDatumUpisa();
-		JTextField tfdatu = new TextField(datu)
-		{
+		JTextField tfdatu = new TextField(datu){
 			@Override
 			public void maybeHighlight() {
 				setBorder(((CheckValidation.checkDate(this.getText())) ? IHighlight.defaultBorder : IHighlight.highlightBorder));
@@ -293,23 +288,12 @@ public class EditStudent extends Dialog{
 		middlePanel.add(tfdatu, gbctfdatu);
 	}
 	
-	private Student getStudent(String i)
-	{
+	private Student getStudent(String i){
 		for(Student s: Data.getListaStudenata().getStudenti())
 		{
 			if(i.equals(s.getBrIndeksa()))
 				return s;
 		}
 		return null;
-	}
-	
-	@SuppressWarnings("unused")
-	private GodinaStudija getGodina(String s)
-	{
-		if(s.contains("IV"))		return GodinaStudija.IV;
-		else if(s.contains("III"))		return GodinaStudija.III;
-		else if(s.contains("II"))		return GodinaStudija.II;
-		else if(s.contains("I"))	return GodinaStudija.I;
-		else return null;
 	}
 }

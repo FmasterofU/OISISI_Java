@@ -13,7 +13,13 @@ import javax.swing.KeyStroke;
 
 import resources.Resource;
 import rs.ac.uns.ftn.ssluzba.gui.controller.listenersandactions.ThisAbstractAction;
+import rs.ac.uns.ftn.ssluzba.gui.view.centerdata.ViewPredmeti;
+import rs.ac.uns.ftn.ssluzba.gui.view.centerdata.ViewSearch;
 
+/**
+ * @author fmaster
+ * @implNote extended {@link JButton} visible on tab {@link ViewPredmeti} or {@link ViewSearch} (when search is {@link ViewPredmeti} related), singleton
+ */
 @SuppressWarnings({ "serial" })
 public class ExpandedToolBarPanel extends JPanel {
 	

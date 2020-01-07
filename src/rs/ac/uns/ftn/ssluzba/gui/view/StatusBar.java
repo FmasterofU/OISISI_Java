@@ -11,6 +11,10 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
+/**
+ * @author rammba
+ * @implNote status bar for {@link MainWindow}, entending {@link JPanel} and implementing {@link ActionListener}, singleton
+ */
 @SuppressWarnings("serial")
 class StatusBar extends JPanel implements ActionListener{
 	private static StatusBar instance = null;

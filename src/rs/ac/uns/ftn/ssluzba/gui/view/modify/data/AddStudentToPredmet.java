@@ -8,6 +8,7 @@ import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
+import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
@@ -25,9 +26,13 @@ import rs.ac.uns.ftn.ssluzba.gui.view.MainWindow;
 import rs.ac.uns.ftn.ssluzba.gui.view.modify.ComboBox;
 import rs.ac.uns.ftn.ssluzba.gui.view.modify.Dialog;
 
+/**
+ * @author rammba
+ * @implNote extends {@link Dialog}, singleton, in essence {@link JDialog} for adding Students to Subject
+ */
+@SuppressWarnings("serial")
 public class AddStudentToPredmet extends Dialog{
 
-	private static final long serialVersionUID = -964114898264833159L;
 	public static AddStudentToPredmet instance = null;
 	private PredmetListener listener = new PredmetListener();
 	private Predmet old;
@@ -84,8 +89,6 @@ public class AddStudentToPredmet extends Dialog{
 					String temp = (String) o[5];
 					temp += (String) o[6];
 					ArrayList<Student> studenti = Data.getListaPredmeta().getStudents(temp);
-//					Student newAdded = Data.data.listaStudenata.getStudentByKey((String) o[5]);
-//					if(newAdded != null)		old.getStudenti().add(newAdded);
 					Predmet novi = new Predmet((String)o[0], (String)o[1], (Semestar)o[2], (GodinaStudija)o[3], old.getProfesor(), studenti);
 					PredmetController.editPredmet(old.getSifra(), novi, ModelAction.ADD_S);
 					instance.setVisible(false);

@@ -12,9 +12,14 @@ import javax.swing.table.TableCellRenderer;
 
 import rs.ac.uns.ftn.ssluzba.gui.controller.Data;
 import rs.ac.uns.ftn.ssluzba.gui.model.ListaPredmeta;
+import rs.ac.uns.ftn.ssluzba.gui.view.CenterBox;
 import rs.ac.uns.ftn.ssluzba.gui.view.modify.data.DeleteStudentFromPredmet;
 import rs.ac.uns.ftn.ssluzba.gui.view.modify.data.InvalidAction;
 
+/**
+ * @author fmaster rammba
+ * @implNote Predmeti tab in {@link CenterBox}, singleton, extends {@link ViewTableCenter}
+ */
 @SuppressWarnings("serial")
 public class ViewPredmeti extends ViewTableCenter {
 
@@ -62,7 +67,6 @@ public class ViewPredmeti extends ViewTableCenter {
 			public Class<?> getColumnClass(int columnIndex){
 				if(columnIndex!=STUDENTI_BUTTON_COLUMN) return super.getColumnClass(columnIndex);
 				else {
-					//return super.getColumnClass(columnIndex);
 					return JButton.class;
 				}
 			}
@@ -70,7 +74,6 @@ public class ViewPredmeti extends ViewTableCenter {
 			public Object getValueAt(int rowIndex, int columnIndex) {
 				if(columnIndex!=STUDENTI_BUTTON_COLUMN) return super.getValueAt(rowIndex, columnIndex);
 				else {
-					//return super.getValueAt(rowIndex, columnIndex);
 					JButton button = new JButton("Prika\u017ei vi\u0161e");
 					button.setToolTipText("Prika\u017ei studente");
 					button.addActionListener(new ActionListener() {

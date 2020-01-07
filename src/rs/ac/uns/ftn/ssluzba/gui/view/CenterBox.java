@@ -11,6 +11,10 @@ import rs.ac.uns.ftn.ssluzba.gui.view.centerdata.ViewProfesori;
 import rs.ac.uns.ftn.ssluzba.gui.view.centerdata.ViewSearch;
 import rs.ac.uns.ftn.ssluzba.gui.view.centerdata.ViewStudenti;
 
+/**
+ * @author fmaster
+ * @implNote extends {@link JTabbedPane}, pane for data tables, singleton
+ */
 @SuppressWarnings("serial")
 public class CenterBox extends JTabbedPane {
 	

@@ -8,6 +8,7 @@ import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
+import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
@@ -24,6 +25,10 @@ import rs.ac.uns.ftn.ssluzba.gui.view.MainWindow;
 import rs.ac.uns.ftn.ssluzba.gui.view.modify.ComboBox;
 import rs.ac.uns.ftn.ssluzba.gui.view.modify.Dialog;
 
+/**
+ * @author fmaster
+ * @implNote extends {@link Dialog}, singleton, in essence {@link JDialog} for adding Professors to Subjects
+ */
 @SuppressWarnings("serial")
 public class AddProfesorToPredmet extends Dialog {
 	
@@ -67,11 +72,6 @@ public class AddProfesorToPredmet extends Dialog {
 						break;
 					}
 				}
-//				for(boolean b : result)
-//					if(b==false) {
-//						check=false;
-//						break;
-//					}
 				if(check)
 				{
 					String[] splits = ((String)o[4]).trim().split("PK");

@@ -2,7 +2,12 @@ package rs.ac.uns.ftn.ssluzba.gui.view.centerdata;
 
 import rs.ac.uns.ftn.ssluzba.gui.controller.Data;
 import rs.ac.uns.ftn.ssluzba.gui.model.ListaProfesora;
+import rs.ac.uns.ftn.ssluzba.gui.view.CenterBox;
 
+/**
+ * @author fmaster
+ * @implNote tab Profesori for {@link CenterBox}, singleton, extends {@link ViewTableCenter}
+ */
 @SuppressWarnings("serial")
 public class ViewProfesori extends ViewTableCenter {
 	

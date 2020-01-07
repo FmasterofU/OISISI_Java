@@ -27,6 +27,10 @@ import rs.ac.uns.ftn.ssluzba.gui.view.modify.IHighlight;
 import rs.ac.uns.ftn.ssluzba.gui.view.modify.MandatoryTextFieldLabel;
 import rs.ac.uns.ftn.ssluzba.gui.view.modify.TextField;
 
+/**
+ * @author fmaster
+ * @implNote extends {@link Dialog}, singleton, in essence JDialog for adding Subjects
+ */
 @SuppressWarnings("serial")
 public class AddPredmet extends Dialog {
 
@@ -65,7 +69,6 @@ public class AddPredmet extends Dialog {
 						break;
 					}
 				if(check){
-					//String[] splits = ((String)o[4]).trim().split("PK"); umjesto null dole je Data.data.listaProfesora.getProfesor(splits[splits.length-1])
 					Predmet novi = new Predmet((String)o[0], (String)o[1], (Semestar)o[2], (GodinaStudija)o[3], null, new ArrayList<Student>());
 					PredmetController.addPredmet(novi);
 					instance.setVisible(false);

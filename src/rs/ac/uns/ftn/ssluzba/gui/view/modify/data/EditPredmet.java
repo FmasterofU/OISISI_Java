@@ -28,6 +28,10 @@ import rs.ac.uns.ftn.ssluzba.gui.view.modify.IHighlight;
 import rs.ac.uns.ftn.ssluzba.gui.view.modify.MandatoryTextFieldLabel;
 import rs.ac.uns.ftn.ssluzba.gui.view.modify.TextField;
 
+/**
+ * @author fmaster
+ * @implNote extends {@link Dialog}, singleton, Edit Subject
+ */
 @SuppressWarnings("serial")
 public class EditPredmet extends Dialog {
 	

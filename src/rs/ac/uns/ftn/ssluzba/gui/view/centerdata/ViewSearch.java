@@ -116,7 +116,7 @@ public class ViewSearch extends ViewTableCenter {
 			table.addMouseListener(new JTableButtonMouseListener(table));
 		}
 		else	table.setModel(model);
-		//resizeColumnWidth();
+		resizeColumnWidth();
 		table.setRowSorter(((ThisTableModel<?>)table.getModel()).getSorter());
 		CenterBox.getInstance().addTab("Search", this);
 		CenterBox.getInstance().setSelectedComponent(this);

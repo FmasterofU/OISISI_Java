@@ -7,6 +7,7 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
 import javax.swing.ImageIcon;
+import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
@@ -21,9 +22,13 @@ import rs.ac.uns.ftn.ssluzba.gui.view.modify.IHighlight;
 import rs.ac.uns.ftn.ssluzba.gui.view.modify.MandatoryTextFieldLabel;
 import rs.ac.uns.ftn.ssluzba.gui.view.modify.TextField;
 
+/**
+ * @author rammba
+ * @implNote extends {@link Dialog}, singleton, in essence {@link JDialog} for Adding Professors
+ */
+@SuppressWarnings("serial")
 public class AddProfesor extends Dialog{
 
-	private static final long serialVersionUID = 7179064377953039177L;
 	private static AddProfesor instance = null;
 	private ProfesorListener listener = new ProfesorListener();
 	
@@ -33,7 +38,6 @@ public class AddProfesor extends Dialog{
 		return instance;
 	}
 	
-	@SuppressWarnings("serial")
 	private AddProfesor()
 	{
 		super("Dodavanje profesora", "Potvrda", "Odustanak");

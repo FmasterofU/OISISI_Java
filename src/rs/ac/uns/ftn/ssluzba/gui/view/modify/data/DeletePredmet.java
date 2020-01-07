@@ -9,6 +9,10 @@ import rs.ac.uns.ftn.ssluzba.gui.controller.PredmetController;
 import rs.ac.uns.ftn.ssluzba.gui.model.Predmet;
 import rs.ac.uns.ftn.ssluzba.gui.view.MainWindow;
 
+/**
+ * @author fmaster
+ * @implNote extends {@link JOptionPane}, deletes Subject
+ */
 @SuppressWarnings("serial")
 public class DeletePredmet extends JOptionPane {
 	

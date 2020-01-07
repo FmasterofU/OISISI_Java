@@ -55,7 +55,7 @@ class ViewTableCenter extends JPanel {
         table.setRowSelectionAllowed(true);
 		table.setColumnSelectionAllowed(true);
 		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		//table.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
+		table.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
 		table.getTableHeader().setFont(new Font("Dialog", Font.PLAIN, 13));
 		//table.getTableHeader().setPreferredSize(new Dimension(CenterBox.getInstance().getWidth(), table.getTableHeader().getSize().height+table.getTableHeader().getFont().getSize()-12)); //12 default font size
 		table.setFont(new Font("Dialog", Font.PLAIN, 13));

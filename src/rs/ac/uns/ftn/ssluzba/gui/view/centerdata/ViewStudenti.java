@@ -2,10 +2,15 @@ package rs.ac.uns.ftn.ssluzba.gui.view.centerdata;
 
 import rs.ac.uns.ftn.ssluzba.gui.controller.Data;
 import rs.ac.uns.ftn.ssluzba.gui.model.ListaStudenata;
+import rs.ac.uns.ftn.ssluzba.gui.view.CenterBox;
 
+/**
+ * @author rammba fmaster-commented(backup plan for sorting at some point)
+ * @implNote tab Studenti for {@link CenterBox}, singleton, extends {@link ViewTableCenter}
+ */
+@SuppressWarnings("serial")
 public class ViewStudenti extends ViewTableCenter {
 	
-	private static final long serialVersionUID = -4008708277153917046L;
 	private static ViewStudenti instance = null;
 	private ThisTableModel<ListaStudenata> model = null;
 	private static final int KEY_COLUMN = 0;
@@ -50,20 +55,12 @@ public class ViewStudenti extends ViewTableCenter {
 			
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				/*int col = table.columnAtPoint(e.getPoint());
-				System.out.println(col);*/
+				int col = table.columnAtPoint(e.getPoint());
+				System.out.println(col);
 				
-			//}
-		//});*/
-		/*System.out.println(model.getRowCount());
-		System.out.println(model.getDataVector());
-		model.removeRow(2);
-		System.out.println(model.getDataVector());
-		model.fireTableDataChanged();
-		System.out.println(model.getRowCount());
-		table.repaint();
-		table.setModel(model);
-		table.revalidate();*/
+			}
+		});
+		*/
 	}
 	
 	public void updateTable()

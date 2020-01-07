@@ -9,6 +9,7 @@ import java.awt.event.WindowEvent;
 
 import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
+import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JRadioButton;
@@ -27,9 +28,13 @@ import rs.ac.uns.ftn.ssluzba.gui.view.modify.IHighlight;
 import rs.ac.uns.ftn.ssluzba.gui.view.modify.MandatoryTextFieldLabel;
 import rs.ac.uns.ftn.ssluzba.gui.view.modify.TextField;
 
+/**
+ * @author rammba
+ * @implNote extends {@link Dialog}, singleton, in essence {@link JDialog} for Adding Students
+ */
+@SuppressWarnings("serial")
 public class AddStudent extends Dialog {
 	
-	private static final long serialVersionUID = 5160676555418089845L;
 	private static AddStudent instance = null;
 	private JRadioButton budget, samof;
 	private StudentListener listener = new StudentListener();
@@ -39,7 +44,6 @@ public class AddStudent extends Dialog {
 		return instance;
 	}
 
-	@SuppressWarnings("serial")
 	private AddStudent(){
 		super("Dodavanje studenta", "Potvrda", "Odustanak");
 		
@@ -69,7 +73,6 @@ public class AddStudent extends Dialog {
 				if(check){
 					if(budget.isSelected())	nf = NacinFinansiranja.BUD\u017dET;
 					else		nf = NacinFinansiranja.SAMOFINANSIRANJE;
-					//GodinaStudija gs = getGodina(s[8]);
 					Student novi = new Student((String) s[0], (String) s[1], (String) s[2], (String) s[3], (String) s[4], (String) s[5], (String) s[6], (String) s[7], (GodinaStudija) s[8], nf, Double.parseDouble((String) s[9]));
 					StudentController.addStudent(novi);
 					instance.setVisible(false);

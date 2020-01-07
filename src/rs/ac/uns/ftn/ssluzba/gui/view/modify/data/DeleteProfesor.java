@@ -8,6 +8,10 @@ import rs.ac.uns.ftn.ssluzba.gui.controller.ProfesorController;
 import rs.ac.uns.ftn.ssluzba.gui.model.Profesor;
 import rs.ac.uns.ftn.ssluzba.gui.view.MainWindow;
 
+/**
+ * @author fmaster
+ * @implNote extends {@link JOptionPane}, deletes Professor
+ */
 @SuppressWarnings("serial")
 public class DeleteProfesor extends JOptionPane{
 

@@ -8,12 +8,13 @@ import javax.swing.JMenuBar;
 
 import rs.ac.uns.ftn.ssluzba.gui.controller.listenersandactions.ThisAbstractAction;
 
+/**
+ * @author rammba
+ * @implNote extends {@link JMenuBar}, singleton
+ */
+@SuppressWarnings("serial")
 public class MenuBar extends JMenuBar{
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = -4419127483078704097L;
 	private static JMenuBar instance = null;
 	public static JMenuBar getInstance()
 	{
