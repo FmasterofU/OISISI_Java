@@ -33,7 +33,7 @@ public class ExpandedToolBarPanel extends JPanel {
 		actAddProf.putValue(AbstractAction.MNEMONIC_KEY, KeyEvent.VK_P);
 		actAddProf.putValue(AbstractAction.ACCELERATOR_KEY, KeyStroke.getKeyStroke(KeyEvent.VK_P, InputEvent.ALT_DOWN_MASK));
 		JButton buttonAddProf = new JButton(actAddProf);
-		buttonAddProf.setText("Add Prof.");
+		if(ToolBar.nameValues) buttonAddProf.setText("Add Prof.");
 		buttonAddProf.setToolTipText("Dodaj Profesora na Predmet");
 		buttonAddProf.setBackground(Color.WHITE);
 		buttonAddProf.setBorderPainted(false);
@@ -44,7 +44,7 @@ public class ExpandedToolBarPanel extends JPanel {
 		actRemProf.putValue(AbstractAction.MNEMONIC_KEY, KeyEvent.VK_R);
 		actRemProf.putValue(AbstractAction.ACCELERATOR_KEY, KeyStroke.getKeyStroke(KeyEvent.VK_R, InputEvent.ALT_DOWN_MASK));
 		JButton buttonRemProf = new JButton(actRemProf);
-		buttonRemProf.setText("Remove Prof.");
+		if(ToolBar.nameValues) buttonRemProf.setText("Remove Prof.");
 		buttonRemProf.setToolTipText("Ukloni Profesora sa Predmeta");
 		buttonRemProf.setBackground(Color.WHITE);
 		buttonRemProf.setBorderPainted(false);
@@ -55,7 +55,7 @@ public class ExpandedToolBarPanel extends JPanel {
 		actAddStud.putValue(AbstractAction.MNEMONIC_KEY, KeyEvent.VK_T);
 		actAddStud.putValue(AbstractAction.ACCELERATOR_KEY, KeyStroke.getKeyStroke(KeyEvent.VK_T, InputEvent.ALT_DOWN_MASK));
 		JButton buttonAddStud = new JButton(actAddStud);
-		buttonAddStud.setText("Add Stud.");
+		if(ToolBar.nameValues) buttonAddStud.setText("Add Stud.");
 		buttonAddStud.setToolTipText("Dodaj Studenta na Predmet");
 		buttonAddStud.setBackground(Color.WHITE);
 		buttonAddStud.setBorderPainted(false);
@@ -66,7 +66,7 @@ public class ExpandedToolBarPanel extends JPanel {
 		actDelStud.putValue(AbstractAction.MNEMONIC_KEY, KeyEvent.VK_U);
 		actDelStud.putValue(AbstractAction.ACCELERATOR_KEY, KeyStroke.getKeyStroke(KeyEvent.VK_U, InputEvent.ALT_DOWN_MASK));
 		JButton buttonDelStud = new JButton(actDelStud);
-		buttonDelStud.setText("Remove Stud.");
+		if(ToolBar.nameValues) buttonDelStud.setText("Remove Stud.");
 		buttonDelStud.setToolTipText("Ukloni Studenta sa Predmeta");
 		buttonDelStud.setBackground(Color.WHITE);
 		buttonDelStud.setBorderPainted(false);

@@ -3,10 +3,13 @@ package rs.ac.uns.ftn.ssluzba.gui.view;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.Toolkit;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+
+import javax.swing.Action;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
@@ -30,6 +33,7 @@ public class ToolBar extends JPanel {
 	private static String searchQuery = new String();
 	private static TextField tf;
 	private static JButton buttonSearch;
+	public static boolean nameValues = false;
 	
 	public static ToolBar getInstance() {
 		if(instance==null) instance = new ToolBar();
@@ -37,11 +41,15 @@ public class ToolBar extends JPanel {
 	}
 	
 	private ToolBar() {
+		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+		if(screenSize.width>=1680 && screenSize.height>=1050) nameValues=true;
+		
 		BoxLayout box = new BoxLayout(this, BoxLayout.X_AXIS);
 		this.setLayout(box);
 		this.add(Box.createHorizontalStrut(5));
 
 		ThisAbstractAction actNew = new ThisAbstractAction("new");
+		if(ToolBar.nameValues) actNew.putValue(Action.NAME, "New");
 		JButton buttonAdd = new JButton(actNew);
 		buttonAdd.setToolTipText("Dodaj");
 		buttonAdd.setBackground(Color.WHITE);
@@ -50,6 +58,7 @@ public class ToolBar extends JPanel {
 		this.add(buttonAdd);
 		
 		ThisAbstractAction actEdit = new ThisAbstractAction("edit");
+		if(ToolBar.nameValues) actEdit.putValue(Action.NAME, "Edit");
 		JButton buttonEdit = new JButton(actEdit);
 		buttonEdit.setToolTipText("Izmijeni");
 		buttonEdit.setBackground(Color.WHITE);
@@ -58,6 +67,7 @@ public class ToolBar extends JPanel {
 		this.add(buttonEdit);
 		
 		ThisAbstractAction actDelete = new ThisAbstractAction("delete");
+		if(ToolBar.nameValues) actDelete.putValue(Action.NAME, "Delete");
 		JButton buttonDelete = new JButton(actDelete);
 		buttonDelete.setToolTipText("Ukloni");
 		buttonDelete.setBackground(Color.WHITE);
@@ -72,6 +82,7 @@ public class ToolBar extends JPanel {
 		
 		///is added later, now just declared to be available for text field listener on enter key
 		ThisAbstractAction actSearch = new ThisAbstractAction("search");
+		if(ToolBar.nameValues) actSearch.putValue(Action.NAME, "Search");
 		buttonSearch = new JButton(actSearch);
 		buttonSearch.setToolTipText("Pretra\u017ei");
 		buttonSearch.setBackground(Color.WHITE);
@@ -83,13 +94,6 @@ public class ToolBar extends JPanel {
 			public void maybeHighlight() {
 				setBorder(((this.getText().isEmpty() || CheckValidation.checkSearchQuery(this.getText(),CenterBox.getInstance().getSelectedIndex())) ? IHighlight.defaultBorder : IHighlight.highlightBorder));
 			}
-			/*
-			public boolean isEmpty() {
-				if(this.getText().isEmpty()) {
-					CenterBox.reset(CenterBox.getInstance().getSelectedIndex());
-					return true;
-				}else return false;
-			}*/
 		};
 		Dimension d = this.getPreferredSize();
 		tf.setSize(70, d.height*3/4);

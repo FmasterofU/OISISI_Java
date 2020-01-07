@@ -1,5 +1,6 @@
 package rs.ac.uns.ftn.ssluzba.gui.view;
 
+import javax.swing.Action;
 import java.awt.event.KeyEvent;
 
 import javax.swing.JMenu;
@@ -31,9 +32,12 @@ public class MenuBar extends JMenuBar{
 		help.setMnemonic(KeyEvent.VK_H);
 		
 		ThisAbstractAction aNew = new ThisAbstractAction("new");
+		aNew.putValue(Action.NAME, "New");
 		ThisAbstractAction aClose = new ThisAbstractAction("close");
 		ThisAbstractAction aEdit = new ThisAbstractAction("edit");
+		aEdit.putValue(Action.NAME, "Edit");
 		ThisAbstractAction aDelete = new ThisAbstractAction("delete");
+		aDelete.putValue(Action.NAME, "Delete");
 		ThisAbstractAction aHelp = new ThisAbstractAction("help");
 		ThisAbstractAction aAbout = new ThisAbstractAction("about");
 		
