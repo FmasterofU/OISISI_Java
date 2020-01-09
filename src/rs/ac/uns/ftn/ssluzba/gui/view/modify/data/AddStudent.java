@@ -154,7 +154,7 @@ public class AddStudent extends Dialog {
 		GridBagConstraints gbctfindeks = generateTextFieldGBC();
 		middlePanel.add(tfindeks, gbctfindeks);
 		
-		ldatr.setToolTipText("dd.MM.yyyy.");
+		ldatr.setToolTipText("DD.MM.YYYY.");
 		GridBagConstraints gbcldatr = generateLabelGBC();
 		middlePanel.add(ldatr, gbcldatr);
 		
@@ -261,7 +261,7 @@ public class AddStudent extends Dialog {
 		GridBagConstraints gbcsamof = generateTextFieldGBC();
 		middlePanel.add(samof, gbcsamof);
 		
-		ldatu.setToolTipText("dd.MM.yyyy.");
+		ldatu.setToolTipText("DD.MM.YYYY.");
 		GridBagConstraints gbcldatu = generateLabelGBC();
 		middlePanel.add(ldatu, gbcldatu);
 		

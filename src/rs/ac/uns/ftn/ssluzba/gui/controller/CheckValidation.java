@@ -53,7 +53,7 @@ public class CheckValidation {
 	}
 
 	/**
-	 * @param date String with Date of format dd.MM.yyyy.
+	 * @param date String with Date of format DD.MM.YYYY.
 	 * @return isValid date in Calendar
 	 */
 	public static boolean checkDate(String date) {
