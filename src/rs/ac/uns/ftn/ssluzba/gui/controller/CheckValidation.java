@@ -291,11 +291,11 @@ public class CheckValidation {
 	}
 
 	public static boolean checkTitula(String t) {
-		return t.matches("[a-zA-Z]+");
+		return t.matches("[a-zA-Z. ]+");
 	}
 
 	public static boolean checkZvanje(String z) {
-		return z.matches("[a-zA-Z]+");
+		return z.matches("[a-zA-Z. ]+");
 	}
 
 	/**

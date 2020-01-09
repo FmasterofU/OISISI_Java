@@ -28,6 +28,7 @@
 - Email `([a-zA-Z0-9]+\.?)*[a-zA-Z0-9]@[a-z0-9]+(\.[a-z]{2,3})+`
 - Phone number `(\+[1-9][0-9]{2}|0)[1-9][0-9][/][0-9]{3}-[0-9]{3,5}`
 - Professor ID card `[0-9]{9}`
+- Title, calling `[a-zA-Z. ]+`
 - Search query for Student `(ime:[^;:]+;)?(prezime:[^;:]+;)?(indeks:[^;:]+;)?(email:[^;:]+;)?`
 - Search query for Professor `(ime:[^;:]+;)?(prezime:[^;:]+;)?(email:[^;:]+;)?(brlk:[^;:]+;)?`
 - Search query for Subject `(sifra:[^;:]+;)?(naziv:[^;:]+;)?(semestar:[^;:]+;)?(godina:[^;:]+;)?`

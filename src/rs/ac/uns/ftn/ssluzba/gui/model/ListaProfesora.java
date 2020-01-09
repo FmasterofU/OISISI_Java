@@ -36,6 +36,17 @@ public class ListaProfesora implements Serializable, ITableModel {
 
 	public ListaProfesora() {
 		this.profesori = new LinkedList<Profesor>();
+		
+		// Default mode setup
+		
+		profesori.add(new Profesor("Aleksa", "Petkovi\u0107", "15.01.1965.", "Temerinska 15, Novi Sad", "021/334-990", "aleksa.petkovic@mailinator.com", "Dositeja Obradovi\u0107a 6, Novi Sad, MI 105", "007198721", "Prof. dr", "Redovni profesor"));
+		profesori.add(new Profesor("Jana", "Lazarevi\u0107", "25.02.1963.", "Jovana Cviji\u0107a 26, Novi Sad", "021/435-891", "jana.lazarevic@mailinator.com", "Dositeja Obradovi\u0107a 6, Novi Sad, Nastavni blok 206", "008431903", "Prof. dr", "Redovni profesor"));
+		profesori.add(new Profesor("Na\u0111a", "Aleksi\u0107", "23.03.1973.", "Gunduli\u0107eva 75, Novi Sad", "021/730-172", "nadja.aleksic@mailinator.com", "Dositeja Obradovi\u0107a 6, Novi Sad, NTP 307", "005671007", "Dr", "Vanredni profesor"));
+		profesori.add(new Profesor("\u0110or\u0111e", "Spasojevi\u0107", "24.08.1978.", "\u0160ekspirova 44, Novi Sad", "021/514-893", "djordje.spasojevic@mailinator.com", "Dositeja Obradovi\u0107a 6, Novi Sad, MI 118", "009999331", "Dr", "Vanredni profesor"));
+		profesori.add(new Profesor("Elena", "Milenkovi\u0107", "08.11.1985.", "Tolstojeva 52, Novi Sad", "021/834-901", "elena.milenkovic@mailinator.com", "Dositeja Obradovi\u0107a 6, Novi Sad, Nastavni blok 217", "003330976", "Dr", "Docent"));
+		profesori.add(new Profesor("Teodor", "Mladenovi\u0107", "14.12.1983.", "Jovana Suboti\u0107a 33, Novi Sad", "021/441-007", "teodor.mladenovic@mailinator.com", "Dositeja Obradovi\u0107a 6, Novi Sad, NTP M35", "007441998", "Dr", "Docent"));
+		
+		//end
 	}
 
 	public ListaProfesora(ListaProfesora lp) {

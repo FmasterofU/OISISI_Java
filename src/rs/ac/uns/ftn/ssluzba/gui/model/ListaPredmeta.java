@@ -31,6 +31,38 @@ public class ListaPredmeta implements Serializable, ITableModel {
 
 	public ListaPredmeta() {
 		this.setPredmeti(new LinkedList<Predmet>());
+		
+		// Default mode setup
+		
+		Predmet p = new Predmet("OP301", "Osnove programiranja", Semestar.ZIMSKI, GodinaStudija.I, null);
+		predmeti.add(p);
+		p.setProfesor(Data.getListaProfesora().getProfesor("007198721"));
+		Data.getListaProfesora().editPredmetInList(p.getSifra(), p, ModelAction.ADD_P);
+		this.editPredmet(p.getSifra(), p);
+		
+		p = new Predmet("DM881", "Diskretna matematika", Semestar.ZIMSKI, GodinaStudija.II, null);
+		predmeti.add(p);
+		p.setProfesor(Data.getListaProfesora().getProfesor("008431903"));
+		Data.getListaProfesora().editPredmetInList(p.getSifra(), p, ModelAction.ADD_P);
+		this.editPredmet(p.getSifra(), p);
+		
+		p = new Predmet("PP007", "Paralelno programiranje", Semestar.ZIMSKI, GodinaStudija.III, null);
+		predmeti.add(p);
+		p.setProfesor(Data.getListaProfesora().getProfesor("005671007"));
+		Data.getListaProfesora().editPredmetInList(p.getSifra(), p, ModelAction.ADD_P);
+		this.editPredmet(p.getSifra(), p);
+		
+		p = new Predmet("RVP33", "Ra\u010dunarstvo visokih performansi", Semestar.ZIMSKI, GodinaStudija.IV, null);
+		predmeti.add(p);
+		p.setProfesor(Data.getListaProfesora().getProfesor("009999331"));
+		Data.getListaProfesora().editPredmetInList(p.getSifra(), p, ModelAction.ADD_P);
+		this.editPredmet(p.getSifra(), p);
+		
+		p = new Predmet("JSD91", "Jezici specifi\u010dni za domen", Semestar.LJETNJI, GodinaStudija.IV, null);
+		predmeti.add(p);
+		
+		//end
+		
 	}
 
 	public ListaPredmeta(ListaPredmeta lp) {

@@ -23,6 +23,10 @@ public class Data implements Serializable {
 	private ListaProfesora listaProfesora = null;
 	private static Data data = null;
 	public static String location = "StudentskaSluzba.data";
+	
+	private static ListaPredmeta predmeti = null;
+	private static ListaStudenata studenti = null;
+	private static ListaProfesora profesori = null;
 
 	/**
 	 * Initializes system.
@@ -33,6 +37,9 @@ public class Data implements Serializable {
 			Data.data = new Data();
 			deserialize();
 		}
+		studenti = data.listaStudenata;
+		profesori = data.listaProfesora;
+		predmeti = data.listaPredmeta;
 		System.gc();
 	}
 
@@ -49,9 +56,12 @@ public class Data implements Serializable {
 	 * fields listaPredmeta, listaStudenata and listaProfesora
 	 */
 	private Data() {
-		this.listaPredmeta = new ListaPredmeta();
-		this.listaStudenata = new ListaStudenata();
-		this.listaProfesora = new ListaProfesora();
+		studenti = new ListaStudenata();
+		profesori = new ListaProfesora();
+		predmeti = new ListaPredmeta();
+		listaStudenata = studenti;
+		listaProfesora = profesori;
+		listaPredmeta = predmeti;
 	}
 
 	/**
@@ -78,7 +88,8 @@ public class Data implements Serializable {
 			Data.data = (Data) in.readObject();
 			in.close();
 		} catch (IOException i) {
-			i.printStackTrace();
+			System.out.println("DataBase file not found, starting application in default mode!");
+			//i.printStackTrace(); // This exception is expected if no DataBase file is present
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -103,20 +114,20 @@ public class Data implements Serializable {
 	 * @return static get-only field listaPredmeta
 	 */
 	public static ListaPredmeta getListaPredmeta() {
-		return data.listaPredmeta;
+		return data != null ? data.listaPredmeta : predmeti ;
 	}
 
 	/**
 	 * @return static get-only field listaStudenata
 	 */
 	public static ListaStudenata getListaStudenata() {
-		return data.listaStudenata;
+		return data != null ? data.listaStudenata : studenti;
 	}
 
 	/**
 	 * @return static get-only field listaProfesora
 	 */
 	public static ListaProfesora getListaProfesora() {
-		return data.listaProfesora;
+		return data != null ? data.listaProfesora : profesori;
 	}
 }
