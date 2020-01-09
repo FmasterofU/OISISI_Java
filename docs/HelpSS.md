@@ -16,7 +16,7 @@
 - Remove Student from Subject `ALT+U`
 
 
-**Date fields** are following format `DD.MM.YYYY.`
+**Date fields** are following format `dd.MM.yyyy.`
 
 
 ## Valid Field inputs (RegEx definition follows)

@@ -39,11 +39,27 @@ public class ListaPredmeta implements Serializable, ITableModel {
 		p.setProfesor(Data.getListaProfesora().getProfesor("007198721"));
 		Data.getListaProfesora().editPredmetInList(p.getSifra(), p, ModelAction.ADD_P);
 		this.editPredmet(p.getSifra(), p);
+		ArrayList<Student> initial = new ArrayList<Student>();
+		initial.add(Data.getListaStudenata().getStudentByKey("RA1/2019"));
+		initial.add(Data.getListaStudenata().getStudentByKey("RA5/2019"));
+		initial.add(Data.getListaStudenata().getStudentByKey("RA3/2019"));
+		initial.add(Data.getListaStudenata().getStudentByKey("RA2/2019"));
+		p.setStudenti(initial);
+		Data.getListaStudenata().editPredmetInList(p.getSifra(), p, ModelAction.ADD_S);
+		this.editPredmet(p.getSifra(), p);
 		
 		p = new Predmet("DM881", "Diskretna matematika", Semestar.ZIMSKI, GodinaStudija.II, null);
 		predmeti.add(p);
 		p.setProfesor(Data.getListaProfesora().getProfesor("008431903"));
 		Data.getListaProfesora().editPredmetInList(p.getSifra(), p, ModelAction.ADD_P);
+		this.editPredmet(p.getSifra(), p);
+		initial = new ArrayList<Student>();
+		initial.add(Data.getListaStudenata().getStudentByKey("RA3/2018"));
+		initial.add(Data.getListaStudenata().getStudentByKey("RA15/2018"));
+		initial.add(Data.getListaStudenata().getStudentByKey("RA133/2017"));
+		initial.add(Data.getListaStudenata().getStudentByKey("RA122/2017"));
+		p.setStudenti(initial);
+		Data.getListaStudenata().editPredmetInList(p.getSifra(), p, ModelAction.ADD_S);
 		this.editPredmet(p.getSifra(), p);
 		
 		p = new Predmet("PP007", "Paralelno programiranje", Semestar.ZIMSKI, GodinaStudija.III, null);
@@ -51,11 +67,27 @@ public class ListaPredmeta implements Serializable, ITableModel {
 		p.setProfesor(Data.getListaProfesora().getProfesor("005671007"));
 		Data.getListaProfesora().editPredmetInList(p.getSifra(), p, ModelAction.ADD_P);
 		this.editPredmet(p.getSifra(), p);
+		initial = new ArrayList<Student>();
+		initial.add(Data.getListaStudenata().getStudentByKey("RA1/2017"));
+		initial.add(Data.getListaStudenata().getStudentByKey("RA5/2017"));
+		initial.add(Data.getListaStudenata().getStudentByKey("RA33/2017"));
+		initial.add(Data.getListaStudenata().getStudentByKey("RA152/2016"));
+		p.setStudenti(initial);
+		Data.getListaStudenata().editPredmetInList(p.getSifra(), p, ModelAction.ADD_S);
+		this.editPredmet(p.getSifra(), p);
 		
 		p = new Predmet("RVP33", "Ra\u010dunarstvo visokih performansi", Semestar.ZIMSKI, GodinaStudija.IV, null);
 		predmeti.add(p);
 		p.setProfesor(Data.getListaProfesora().getProfesor("009999331"));
 		Data.getListaProfesora().editPredmetInList(p.getSifra(), p, ModelAction.ADD_P);
+		this.editPredmet(p.getSifra(), p);
+		initial = new ArrayList<Student>();
+		initial.add(Data.getListaStudenata().getStudentByKey("RA1/2016"));
+		initial.add(Data.getListaStudenata().getStudentByKey("RA5/2016"));
+		initial.add(Data.getListaStudenata().getStudentByKey("RA33/2015"));
+		initial.add(Data.getListaStudenata().getStudentByKey("RA102/2015"));
+		p.setStudenti(initial);
+		Data.getListaStudenata().editPredmetInList(p.getSifra(), p, ModelAction.ADD_S);
 		this.editPredmet(p.getSifra(), p);
 		
 		p = new Predmet("JSD91", "Jezici specifi\u010dni za domen", Semestar.LJETNJI, GodinaStudija.IV, null);

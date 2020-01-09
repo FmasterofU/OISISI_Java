@@ -39,6 +39,29 @@ public class ListaStudenata implements Serializable, ITableModel {
 	public ListaStudenata()
 	{
 		this.studenti = new ArrayList<Student>();
+		
+		//	Default data
+		studenti.add(new Student("Luka", "Jovanovi\u0107", "01.01.2000.", "Kara\u0111or\u0111eva 83, Novi Sad", "021/333-555", "luka.jovanovic@mailinator.com", "RA1/2019", "01.07.2019.", GodinaStudija.I, NacinFinansiranja.BUD\u017dET, 5.0));
+		studenti.add(new Student("Sofija", "Petrovi\u0107", "16.05.2000.", "Milo\u0161a Pocerca 55, \u0160abac", "015/343-356", "sofija.petrovic@mailinator.com", "RA5/2019", "11.07.2019.", GodinaStudija.I, NacinFinansiranja.BUD\u017dET, 5.0));
+		studenti.add(new Student("Stefan", "Nikoli\u0107", "18.03.2000.", "Knez Mihajlova 16, Beograd", "011/923-4857", "stefan.nikolic@mailinator.com", "RA3/2019", "03.07.2019.", GodinaStudija.I, NacinFinansiranja.BUD\u017dET, 5.0));
+		studenti.add(new Student("Dunja", "Ili\u0107", "11.11.2000.", "Petefi \u0160andora 15, Novi Sad", "021/433-958", "dunja.ilic@mailinator.com", "RA2/2019", "01.07.2019.", GodinaStudija.I, NacinFinansiranja.SAMOFINANSIRANJE, 5.0));
+		studenti.add(new Student("Lazar", "\u0110or\u0111evi\u0107", "03.12.2000.", "Josip Broz Tito 13, Subotica", "024/333-559", "lazar.djordjevic@mailinator.com", "RA4/2019", "06.07.2019.", GodinaStudija.I, NacinFinansiranja.SAMOFINANSIRANJE, 5.0));
+		studenti.add(new Student("Sara", "Pavlovi\u0107", "03.12.1999.", "Vojvode Mi\u0161i\u0107a 23, \u0160abac", "015/313-061", "sara.pavlovic@mailinator.com", "RA3/2018", "01.07.2018.", GodinaStudija.II, NacinFinansiranja.BUD\u017dET, 9.43));
+		studenti.add(new Student("Vuk", "Markovi\u0107", "03.12.1999.", "Temerinska 133, Novi Sad", "021/351-091", "vuk.markovic@mailinator.com", "RA15/2018", "11.07.2018.", GodinaStudija.II, NacinFinansiranja.BUD\u017dET, 8.32));
+		studenti.add(new Student("Teodora", "Popovi\u0107", "03.12.1998.", "Surepova 15, \u0160abac", "015/324-500", "teodora.popovic@mailinator.com", "RA133/2017", "03.07.2017.", GodinaStudija.II, NacinFinansiranja.SAMOFINANSIRANJE, 8.03));
+		studenti.add(new Student("Filip", "Stojanovi\u0107", "03.12.1998.", "Francuska 113, Beograd", "011/233-3900", "filip.stojanovic@mailinator.com", "RA122/2017", "02.07.2017.", GodinaStudija.II, NacinFinansiranja.SAMOFINANSIRANJE, 6.05));
+		studenti.add(new Student("Ana", "\u017divkovi\u0107", "03.12.1998.", "Kralja Petra 20, Novi Sad", "021/231-114", "ana.zivkovic@mailinator.com", "RA201/2017", "04.07.2017.", GodinaStudija.II, NacinFinansiranja.SAMOFINANSIRANJE, 7.56));
+		studenti.add(new Student("Viktor", "Jankovi\u0107", "03.12.1998.", "Gogoljeva 3, Novi Sad", "021/135-463", "viktor.jankovic@mailinator.com", "RA1/2017", "01.07.2017.", GodinaStudija.III, NacinFinansiranja.BUD\u017dET, 10.0));
+		studenti.add(new Student("Petra", "Todorovi\u0107", "03.12.1998.", "Njego\u0161eva 2, Novi Sad", "021/903-463", "petra.todorovic@mailinator.com", "RA5/2017", "12.07.2017.", GodinaStudija.III, NacinFinansiranja.BUD\u017dET, 7.65));
+		studenti.add(new Student("Andrej", "Stankovi\u0107", "03.12.1998.", "Radoja Domanovi\u0107a 5, Novi Sad", "021/731-067", "andrej.stankovic@mailinator.com", "RA33/2017", "19.07.2017.", GodinaStudija.III, NacinFinansiranja.BUD\u017dET, 9.56));
+		studenti.add(new Student("Mila", "Risti\u0107", "03.12.1997.", "Vojvode Stepe 183, Beograd", "011/433-3800", "mila.ristic@mailinator.com", "RA152/2016", "15.07.2016.", GodinaStudija.III, NacinFinansiranja.SAMOFINANSIRANJE, 6.54));
+		studenti.add(new Student("Pavle", "Kosti\u0107", "03.12.1997.", "Crnotravska 13, Beograd", "011/313-0007", "pavle.kostic@mailinator.com", "RA104/2016", "06.07.2016.", GodinaStudija.III, NacinFinansiranja.SAMOFINANSIRANJE, 8.04));
+		studenti.add(new Student("Lena", "Kova\u010devi\u0107", "03.12.1997.", "Bulevar Oslobo\u0111enja 143, Novi Sad", "021/533-3801", "lena.kovacevic@mailinator.com", "RA1/2016", "01.07.2016.", GodinaStudija.IV, NacinFinansiranja.BUD\u017dET, 7.90));
+		studenti.add(new Student("Filip", "\u017divkovi\u0107", "03.12.1997.", "1300 Kaplara, \u0160abac", "015/333-500", "filip.zivkovic@mailinator.com", "RA5/2016", "21.07.2016.", GodinaStudija.IV, NacinFinansiranja.BUD\u017dET, 7.23));
+		studenti.add(new Student("Tara", "Dimitrijevi\u0107", "03.12.1996.", "Milovana Gli\u0161i\u0107a, Valjevo", "014/303-007", "tara.dimitrijevic@mailinator.com", "RA33/2015", "23.07.2015.", GodinaStudija.IV, NacinFinansiranja.SAMOFINANSIRANJE, 8.32));
+		studenti.add(new Student("Vasilije", "Mici\u0107", "03.12.1996.", "Vuka Karad\u017ei\u0107a, Loznica", "015/101-909", "vasilije.micic@mailinator.com", "RA102/2015", "04.07.2015.", GodinaStudija.IV, NacinFinansiranja.SAMOFINANSIRANJE, 6.45));
+		studenti.add(new Student("Lenka", "Jovi\u0107", "03.12.1997.", "Bulevar Mihajla Pupina, Novi Sad", "021/431-500", "lenka.jovic@mailinator.com", "RA244/2016", "07.07.2016.", GodinaStudija.IV, NacinFinansiranja.SAMOFINANSIRANJE, 6.0));
+		
 	}
 
 	public ListaStudenata(ListaStudenata ls) {

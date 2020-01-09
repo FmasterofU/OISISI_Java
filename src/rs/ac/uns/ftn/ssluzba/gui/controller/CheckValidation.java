@@ -53,7 +53,7 @@ public class CheckValidation {
 	}
 
 	/**
-	 * @param date String with Date of format dd.MM.YYYY.
+	 * @param date String with Date of format dd.MM.yyyy.
 	 * @return isValid date in Calendar
 	 */
 	public static boolean checkDate(String date) {
@@ -229,6 +229,40 @@ public class CheckValidation {
 			return false;
 		}
 	}
+	
+	/**
+	 * @param s input Date
+	 * @return year in input Date
+	 */
+	public static int getGodinaUpisa(String s) {
+		String g = "0";
+		int ret = 0;
+		if(s.length() >= 10)
+			g = s.substring(6, 10);
+		try {
+			ret = Integer.parseInt(g);
+			return ret;
+		}catch(Exception e) {
+			return 0;
+		}
+	}
+	
+	/**
+	 * @param s input index({@link Student}'s keyValue)
+	 * @return year in that index
+	 */
+	public static int getGodinaIndeksa(String s) {
+		String g = "0";
+		int ret = 0;
+		if(s.length() > 4)
+			g = s.substring(s.length() - 4, s.length());
+		try {
+			ret = Integer.parseInt(g);
+			return ret;
+		}catch(Exception e) {
+			return 0;
+		}
+	}
 
 	/**
 	 * @param data input data for {@link Student}
@@ -243,7 +277,9 @@ public class CheckValidation {
 			if(o == null)	return new boolean[2];
 
 		boolean[] ret = {checkName((String)data[0],0), checkName((String)data[1],0), checkDate((String)data[2]), checkAdress((String)data[3]), checkPhoneNumber((String)data[4]), checkMail((String)data[5]), checkIndex((String)data[6]) || editable, checkDate((String)data[7]), data[8] != null ? true : false, checkProsek((String)data[9])};
-		//if(!data[8].equals(""))	ret[8] = true;
+		int godu = getGodinaUpisa((String) data[7]);
+		int godi = getGodinaIndeksa((String) data[6]);
+		if(godu != godi)	return new boolean[2];
 		return ret;
 	}
 
