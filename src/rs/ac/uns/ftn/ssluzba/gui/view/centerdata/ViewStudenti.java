@@ -20,6 +20,7 @@ public class ViewStudenti extends ViewTableCenter {
 	public static boolean inSearchMode = false;
 	public static final int[] SEARCH_COLUMNS = {1, 2, 0, 9};
 	public static final int[] DATE_COLUMNS = {3, 10};
+	public static final int[] INDEX_COLUMNS = {0};
 	
 	public static ViewStudenti getInstance() {
 		if(instance == null)	instance = new ViewStudenti();
@@ -42,6 +43,34 @@ public class ViewStudenti extends ViewTableCenter {
 					for(int i : check)
 						if(first[i].compareTo(second[i])!=0)
 							return first[i].compareTo(second[i]);
+					return 0;
+				}
+			});
+		for(int i : INDEX_COLUMNS)
+			((DefaultRowSorter) model.getSorter()).setComparator(i, new Comparator<String>() {
+
+				@Override
+				public int compare(String o1, String o2) {
+					String s1 = o1.substring(0, 2), s2 = o2.substring(0, 2);
+					String[] first = o1.substring(2, o1.length()).split("/");
+					String[] second = o2.substring(2, o2.length()).split("/");
+					String[] f1 = {s1, "", ""}, f2 = {s2, "", ""};
+					for(int i = 0; i < first.length;i++) {
+						f1[i+1] = first[i];
+						f2[i+1] = second[i];
+					}
+					String temp = "";
+					if(f1[1].length() == 1)	temp = "00";
+					else if(f1[1].length() == 2)	temp = "0";
+					f1[1] = temp + f1[1];
+					temp = "";
+					if(f2[1].length() == 1)	temp = "00";
+					else if(f2[1].length() == 2)	temp = "0";
+					f2[1] = temp + f2[1];
+					int[] check = {0, 2, 1};
+					for(int i : check)
+						if(f1[i].compareTo(f2[i])!=0) 
+							return f1[i].compareTo(f2[i]);
 					return 0;
 				}
 			});

@@ -5,7 +5,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.Comparator;
 
+import javax.swing.DefaultRowSorter;
 import javax.swing.JButton;
 import javax.swing.JTable;
 import javax.swing.table.TableCellRenderer;
@@ -24,6 +26,8 @@ public class ViewSearch extends ViewTableCenter {
 	private int rootTab = -1;
 	private int KEY_COLUMN; //sifra
 	public static boolean updateInProgress = false;
+	public static int[] DATE_COLUMNS = {};
+	public static int[] INDEX_COLUMNS = {};
 	
 	private static class JTableButtonRenderer implements TableCellRenderer {        
         @Override 
@@ -78,10 +82,16 @@ public class ViewSearch extends ViewTableCenter {
 		CenterBox.redraw();
 	}
 	
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	private ViewSearch(int tab, int key, ThisTableModel<?> model) {
 		rootTab=tab;
 		KEY_COLUMN=key;
 		updateInProgress = false;
+		if(rootTab == 0) {
+			DATE_COLUMNS = ViewStudenti.DATE_COLUMNS;
+			INDEX_COLUMNS = ViewStudenti.INDEX_COLUMNS;
+		}
+		else if(rootTab == 1)	DATE_COLUMNS = ViewProfesori.DATE_COLUMNS;
 		if(rootTab == 2) {
 			model = new ThisTableModel<ListaPredmeta>((new ListaPredmeta(Data.getListaPredmeta())).mutableSearch(ToolBar.getSearchQuery())) {
 				@Override
@@ -117,6 +127,66 @@ public class ViewSearch extends ViewTableCenter {
 		}
 		else	table.setModel(model);
 		resizeColumnWidth();
+		if(rootTab == 0) {
+			for(int i : DATE_COLUMNS)
+				((DefaultRowSorter) model.getSorter()).setComparator(i, new Comparator<String>() {
+
+					@Override
+					public int compare(String o1, String o2) {
+						String[] first = o1.split("\\.");
+						String[] second = o2.split("\\.");
+						int[] check = {2, 1, 0};
+						for(int i : check)
+							if(first[i].compareTo(second[i])!=0)
+								return first[i].compareTo(second[i]);
+						return 0;
+					}
+				});
+			for(int i : INDEX_COLUMNS)
+				((DefaultRowSorter) model.getSorter()).setComparator(i, new Comparator<String>() {
+
+					@Override
+					public int compare(String o1, String o2) {
+						String s1 = o1.substring(0, 2), s2 = o2.substring(0, 2);
+						String[] first = o1.substring(2, o1.length()).split("/");
+						String[] second = o2.substring(2, o2.length()).split("/");
+						String[] f1 = {s1, "", ""}, f2 = {s2, "", ""};
+						for(int i = 0; i < first.length;i++) {
+							f1[i+1] = first[i];
+							f2[i+1] = second[i];
+						}
+						String temp = "";
+						if(f1[1].length() == 1)	temp = "00";
+						else if(f1[1].length() == 2)	temp = "0";
+						f1[1] = temp + f1[1];
+						temp = "";
+						if(f2[1].length() == 1)	temp = "00";
+						else if(f2[1].length() == 2)	temp = "0";
+						f2[1] = temp + f2[1];
+						int[] check = {0, 2, 1};
+						for(int i : check)
+							if(f1[i].compareTo(f2[i])!=0) 
+								return f1[i].compareTo(f2[i]);
+						return 0;
+					}
+				});
+		}
+		else if(rootTab == 1) {
+			for(int i : DATE_COLUMNS)
+				((DefaultRowSorter) model.getSorter()).setComparator(i, new Comparator<String>() {
+
+					@Override
+					public int compare(String o1, String o2) {
+						String[] first = o1.split("\\.");
+						String[] second = o2.split("\\.");
+						int[] check = {2, 1, 0};
+						for(int i : check)
+							if(first[i].compareTo(second[i])!=0)
+								return first[i].compareTo(second[i]);
+						return 0;
+					}
+				});
+		}
 		table.setRowSorter(((ThisTableModel<?>)table.getModel()).getSorter());
 		CenterBox.getInstance().addTab("Search", this);
 		CenterBox.getInstance().setSelectedComponent(this);
