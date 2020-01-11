@@ -19,6 +19,10 @@ import rs.ac.uns.ftn.ssluzba.gui.view.ToolBar;
 import rs.ac.uns.ftn.ssluzba.gui.view.modify.data.DeleteStudentFromPredmet;
 import rs.ac.uns.ftn.ssluzba.gui.view.modify.data.InvalidAction;
 
+/**
+ * @author fmaster rammba
+ * @implNote Search tab for {@link CenterBox}, invoked by {@link ToolBar} Search function, singleton, extends {@link ViewTableCenter}
+ */
 @SuppressWarnings("serial")
 public class ViewSearch extends ViewTableCenter {
 
