@@ -173,7 +173,7 @@ public class CheckValidation {
 	 */
 	public static boolean checkProsek(String prosek) {
 		prosek = prosek.trim();
-		return prosek.matches("(5)|(5\\.0)|(5\\.00)|([6-9]\\.[0-9]{1,2})|(10)|(10\\.0)|(10\\.00)");
+		return prosek.matches("(5)|(5\\.0)|(5\\.00)|([6-9](\\.[0-9]{1,2})?)|(10)|(10\\.0)|(10\\.00)");
 	}
 
 	/**
@@ -279,7 +279,8 @@ public class CheckValidation {
 		boolean[] ret = {checkName((String)data[0],0), checkName((String)data[1],0), checkDate((String)data[2]), checkAdress((String)data[3]), checkPhoneNumber((String)data[4]), checkMail((String)data[5]), checkIndex((String)data[6]) || editable, checkDate((String)data[7]), data[8] != null ? true : false, checkProsek((String)data[9])};
 		int godu = getGodinaUpisa((String) data[7]);
 		int godi = getGodinaIndeksa((String) data[6]);
-		if(godu != godi)	return new boolean[2];
+		int godr = getGodinaUpisa((String) data[2]);
+		if(godu == 0 || godi == 0 || godr == 0 || godu > godi || godu < godr+17 || godi < godr+17)	return new boolean[2];
 		return ret;
 	}
 
@@ -326,10 +327,18 @@ public class CheckValidation {
 		return lk.matches("[0-9]{9}");
 	}
 
+	/**
+	 * @param t input {@link Profesor}'s title
+	 * @return true if title has valid format
+	 */
 	public static boolean checkTitula(String t) {
 		return t.matches("[a-zA-Z. ]+");
 	}
 
+	/**
+	 * @param z input {@link Profesor}'s calling
+	 * @return true if calling has valid format
+	 */
 	public static boolean checkZvanje(String z) {
 		return z.matches("[a-zA-Z. ]+");
 	}

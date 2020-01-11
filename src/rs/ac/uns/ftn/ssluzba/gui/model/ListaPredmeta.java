@@ -92,9 +92,6 @@ public class ListaPredmeta implements Serializable, ITableModel {
 		
 		p = new Predmet("JSD91", "Jezici specifi\u010dni za domen", Semestar.LJETNJI, GodinaStudija.IV, null);
 		predmeti.add(p);
-		
-		//end
-		
 	}
 
 	public ListaPredmeta(ListaPredmeta lp) {
@@ -144,10 +141,6 @@ public class ListaPredmeta implements Serializable, ITableModel {
 		p.setStudenti(novi.getStudenti());
 	}
 
-	/**
-	 *		deletes {@link Predmet} with keyValue sifra 
-	 * @param sifra keyValue for deleting {@link Predmet}
-	 */
 	/**
 	 * @implNote deletes {@link Predmet}
 	 * @param p {@link Predmet} instance to be removed (see {@link Predmet} equals method)
@@ -232,7 +225,6 @@ public class ListaPredmeta implements Serializable, ITableModel {
 	}
 
 	/**
-	 *
 	 * @param indeks keyValue for editing {@link Student}
 	 * @param stud updated {@link Student}
 	 */
