@@ -176,7 +176,7 @@ public class Profesor implements Serializable {
 		//builder.append(predajePredmete);
 		builder.append(".\n\t\tPredaje predmete sa \u0161iframa: ");
 		
-		if(predajePredmete.isEmpty())		builder.append("Ne predaje niti jedan predmet! ");
+		if(predajePredmete.isEmpty())		builder.append("Ne predaje ni jedan predmet! ");
 		else
 		{
 			for(Predmet s : predajePredmete)

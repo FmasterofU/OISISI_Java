@@ -192,7 +192,7 @@ public class Student implements Serializable{
 		builder.append(prosecnaOcena);
 		builder.append(".\n\t\tSlu\u0161a predmete sa \u0161iframa: ");
 		
-		if(slusaPredmete.isEmpty())		builder.append("Ne slu\u0161a niti jedan predmet! ");
+		if(slusaPredmete.isEmpty())		builder.append("Ne slu\u0161a ni jedan predmet! ");
 		else
 		{
 			for(Predmet s : slusaPredmete)
@@ -231,7 +231,7 @@ public class Student implements Serializable{
 			builder.append(", ");
 		}
 		if(builder.toString().endsWith(", ")) builder.setLength(builder.toString().length()-2);
-		else builder.append("Ne slu\u0161a niti jedan predmet");
+		else builder.append("Ne slu\u0161a ni jedan predmet");
 		return builder.toString();
 	}
 }
