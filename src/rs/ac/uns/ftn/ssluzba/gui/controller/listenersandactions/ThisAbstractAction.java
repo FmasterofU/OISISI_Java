@@ -10,7 +10,6 @@ import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.KeyStroke;
 
-import resources.Resource;
 import rs.ac.uns.ftn.ssluzba.Main;
 import rs.ac.uns.ftn.ssluzba.gui.controller.CheckValidation;
 import rs.ac.uns.ftn.ssluzba.gui.controller.Data;
@@ -40,6 +39,7 @@ import rs.ac.uns.ftn.ssluzba.gui.view.modify.data.EditPredmet;
 import rs.ac.uns.ftn.ssluzba.gui.view.modify.data.EditProfesor;
 import rs.ac.uns.ftn.ssluzba.gui.view.modify.data.EditStudent;
 import rs.ac.uns.ftn.ssluzba.gui.view.modify.data.InvalidAction;
+import rs.ac.uns.ftn.ssluzba.resources.Resource;
 
 /**
  * this class is literally brain of our app

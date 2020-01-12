@@ -12,7 +12,6 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
-import resources.Resource;
 import rs.ac.uns.ftn.ssluzba.gui.controller.CheckValidation;
 import rs.ac.uns.ftn.ssluzba.gui.controller.PredmetController;
 import rs.ac.uns.ftn.ssluzba.gui.controller.listenersandactions.PredmetListener;
@@ -26,6 +25,7 @@ import rs.ac.uns.ftn.ssluzba.gui.view.modify.Dialog;
 import rs.ac.uns.ftn.ssluzba.gui.view.modify.IHighlight;
 import rs.ac.uns.ftn.ssluzba.gui.view.modify.MandatoryTextFieldLabel;
 import rs.ac.uns.ftn.ssluzba.gui.view.modify.TextField;
+import rs.ac.uns.ftn.ssluzba.resources.Resource;
 
 /**
  * @author fmaster

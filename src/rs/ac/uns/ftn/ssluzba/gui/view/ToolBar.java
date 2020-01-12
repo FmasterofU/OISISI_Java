@@ -17,13 +17,13 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-import resources.Resource;
 import rs.ac.uns.ftn.ssluzba.gui.controller.CheckValidation;
 import rs.ac.uns.ftn.ssluzba.gui.controller.listenersandactions.ThisAbstractAction;
 import rs.ac.uns.ftn.ssluzba.gui.view.centerdata.ViewPredmeti;
 import rs.ac.uns.ftn.ssluzba.gui.view.centerdata.ViewSearch;
 import rs.ac.uns.ftn.ssluzba.gui.view.modify.IHighlight;
 import rs.ac.uns.ftn.ssluzba.gui.view.modify.TextField;
+import rs.ac.uns.ftn.ssluzba.resources.Resource;
 
 /**
  * @author fmaster

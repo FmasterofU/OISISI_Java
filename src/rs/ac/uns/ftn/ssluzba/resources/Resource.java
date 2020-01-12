@@ -1,4 +1,4 @@
-package resources;
+package rs.ac.uns.ftn.ssluzba.resources;
 
 import java.net.URL;
 
@@ -8,7 +8,9 @@ import java.net.URL;
  */
 public class Resource {
 	
+	private Resource() {}
+	
 	public static URL get(String name) {
-		return Resource.class.getResource("/resources/"+name);
+		return Resource.class.getResource("/rs/ac/uns/ftn/ssluzba/resources/"+name);
 	}
 }

@@ -11,8 +11,8 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.UIManager;
 
-import resources.Resource;
 import rs.ac.uns.ftn.ssluzba.gui.controller.Data;
+import rs.ac.uns.ftn.ssluzba.resources.Resource;
 
 /**
  * @author rammba fmaster

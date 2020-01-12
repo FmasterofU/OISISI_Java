@@ -3,8 +3,8 @@ package rs.ac.uns.ftn.ssluzba.gui.view.modify.data;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
-import resources.Resource;
 import rs.ac.uns.ftn.ssluzba.gui.view.MainWindow;
+import rs.ac.uns.ftn.ssluzba.resources.Resource;
 
 /**
  * @author rammba
