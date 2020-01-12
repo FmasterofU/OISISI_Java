@@ -9,7 +9,7 @@
 - Delete `CRTL+D`
 - Help `CTRL+H`
 - About `CTRL+I`
-- Search `ALT+S`
+- Search `ALT+S` or `ENTER`/`RETURN` inside Search Text Field
 - Add Professor to Subject `ALT+P`
 - Remove Professor from Subject `ALT+R`
 - Add Student to Subject `ALT+T`
