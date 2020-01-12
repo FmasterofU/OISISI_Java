@@ -1,4 +1,3 @@
-resources
 rs.ac.uns.ftn.ssluzba
 rs.ac.uns.ftn.ssluzba.gui.controller
 rs.ac.uns.ftn.ssluzba.gui.controller.listenersandactions
@@ -7,3 +6,4 @@ rs.ac.uns.ftn.ssluzba.gui.view
 rs.ac.uns.ftn.ssluzba.gui.view.centerdata
 rs.ac.uns.ftn.ssluzba.gui.view.modify
 rs.ac.uns.ftn.ssluzba.gui.view.modify.data
+rs.ac.uns.ftn.ssluzba.resources
