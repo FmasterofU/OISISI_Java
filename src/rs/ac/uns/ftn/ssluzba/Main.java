@@ -10,7 +10,7 @@ import rs.ac.uns.ftn.ssluzba.gui.view.MainWindow;
 public class Main {
 
 	
-	public static String version = "v1.0.1";
+	public static String version = "v1.1.0";
 	
 	/**
 	 * @implNote Practically doesn't do a single damn thing :)
