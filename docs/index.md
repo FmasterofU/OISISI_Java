@@ -4,9 +4,9 @@ This is a site for an application developed by Radoš Milićev and Igor Šikulja
 
 [Help Section](HelpSS.md)
 
-[Source Code](https://github.com/FmasterofU/OISISI_Java) (Still a private repository, visible only to [**@katarinaa94**](https://github.com/katarinaa94))
+[Source Code](https://github.com/FmasterofU/OISISI_Java)
 
-[Download Latest Release - Runnable JAR file](https://github.com/FmasterofU/OISISI_Java/releases/download/v1.0.1/OISISI_Java-StudentskaSluzba-v1.0.1.jar) (Final v1.0.1, still private, collaborators only)
+[Download Latest Release - Runnable JAR file](https://github.com/FmasterofU/OISISI_Java/releases/download/v1.1.0/OISISI_Java-StudentskaSluzba-v1.1.0.jar) (Final v1.1.0)
 
 [Specification](https://fmasterofu.github.io/OISISI_Java/specification/Specifikacija%20prvog%20projekta.pdf)
 
