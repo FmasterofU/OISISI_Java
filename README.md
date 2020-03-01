@@ -1,4 +1,4 @@
-# OISISI_Java
-Prvi projekat iz predmeta OISISI (Osnovi informacionih sistema i softverskog inženjerstva) E2/RA-PRNiI, peti semestar - JAVA.
+# OISISI_SSluzba
+First project from OISISI Subject (Fundamentals of Information Systems and Software Engineering); E2/RA-PRNiI, 5th semester - Java.
 
-[Studentska Služba website](https://fmasterofu.github.io/OISISI_Java/)
+[Studentska Služba website](https://fmasterofu.github.io/OISISI_SSluzba/)
