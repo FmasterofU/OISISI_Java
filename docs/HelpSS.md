@@ -41,5 +41,5 @@ For further help contact developers:
 - [Igor Šikuljak](mailto:igorsikuljak@uns.ac.rs)
 
 
-[**Go to Product page**](https://fmasterofu.github.io/OISISI_Java/)
+[**Go to Product page**](https://one-e2-team.github.io/OISISI_SSluzba/)
 
